@@ -300,10 +300,7 @@ function renderMainChart(data, events) {
       interaction: { mode: "index", intersect: false },
       layout: { padding: { bottom: 70 } }, // room for 2-row marker strip
       plugins: {
-        legend: {
-          labels: { color: "#e8eaed", boxWidth: 14, padding: 12, font: { size: 12 } },
-          align: "end",
-        },
+        legend: { display: false },
         tooltip: {
           backgroundColor: "#0a0e1a",
           borderColor: "#1f2940",
