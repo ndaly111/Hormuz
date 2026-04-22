@@ -90,6 +90,13 @@ header .tagline {
   margin-top: 0.3rem;
 }
 
+/* HEADER ACTIONS (nav + tip button) */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 /* TOP NAV */
 .top-nav {
   display: flex;
@@ -98,6 +105,31 @@ header .tagline {
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 3px;
+}
+
+/* MINI TIP BUTTON in header */
+.bmc-mini {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.75rem;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 120ms ease;
+}
+
+.bmc-mini:hover {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+.bmc-mini svg {
+  flex-shrink: 0;
 }
 
 .nav-link {
@@ -439,6 +471,65 @@ main {
   border: none;
 }
 
+/* SUPPORT CALLOUT */
+.support-callout {
+  background: linear-gradient(135deg, rgba(245, 166, 35, 0.08) 0%, rgba(245, 166, 35, 0.03) 100%);
+  border: 1px solid rgba(245, 166, 35, 0.35);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.support-text {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.support-text h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: var(--text);
+}
+
+.support-text p {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  margin: 0;
+  max-width: 56ch;
+}
+
+.bmc-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.7rem 1.15rem;
+  border-radius: 10px;
+  border: none;
+  white-space: nowrap;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3), 0 4px 12px rgba(245, 166, 35, 0.25);
+}
+
+.bmc-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.3), 0 6px 16px rgba(245, 166, 35, 0.35);
+  border-bottom: none;
+}
+
+.bmc-cta svg {
+  flex-shrink: 0;
+}
+
 /* FOOTER */
 footer {
   padding: 1.25rem 0 1.5rem;
@@ -461,6 +552,22 @@ footer {
   }
   .top-nav {
     margin-top: 0;
+  }
+  .bmc-mini span {
+    display: none;
+  }
+  .bmc-mini {
+    padding: 0.4rem 0.55rem;
+  }
+  .support-callout {
+    padding: 1.15rem;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .bmc-cta {
+    width: 100%;
+    justify-content: center;
   }
   main {
     padding: 0.85rem 0 2rem;
