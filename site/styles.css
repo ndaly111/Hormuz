@@ -48,12 +48,12 @@ a:hover {
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 0 1rem;
 }
 
 /* HEADER */
 header {
-  padding: 1.5rem 0 1.75rem;
+  padding: 0.85rem 0 0.85rem;
   border-bottom: 1px solid var(--border);
   background: linear-gradient(180deg, #0d1322 0%, var(--bg) 100%);
 }
@@ -61,21 +61,21 @@ header {
 .header-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
 .brand {
   flex: 1 1 auto;
-  min-width: 250px;
+  min-width: 200px;
 }
 
 header h1 {
-  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-size: clamp(1.1rem, 2.8vw, 1.5rem);
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin-bottom: 0.4rem;
+  line-height: 1.15;
 }
 
 header h1 a {
@@ -85,8 +85,9 @@ header h1 a {
 
 header .tagline {
   color: var(--text-dim);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   max-width: 50ch;
+  margin-top: 0.3rem;
 }
 
 /* TOP NAV */
@@ -97,13 +98,12 @@ header .tagline {
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 3px;
-  margin-top: 0.25rem;
 }
 
 .nav-link {
   color: var(--text-dim);
-  padding: 0.45rem 0.9rem;
-  font-size: 0.88rem;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.85rem;
   font-weight: 500;
   border-radius: 6px;
   border: none;
@@ -169,50 +169,51 @@ header .tagline {
 }
 
 main {
-  padding: 2rem 0 4rem;
+  padding: 1.25rem 0 3rem;
 }
 
-/* STATS */
+/* STATS — promoted, more visual punch */
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2.5rem;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .stat-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.25rem;
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
   transition: background 120ms ease;
 }
 
 .stat-card.highlight {
   border-color: var(--accent);
-  background: linear-gradient(180deg, var(--bg-card) 0%, rgba(245, 166, 35, 0.06) 100%);
+  background: linear-gradient(180deg, var(--bg-card) 0%, rgba(245, 166, 35, 0.08) 100%);
 }
 
 .stat-label {
-  font-size: 0.78rem;
-  font-weight: 500;
+  font-size: 0.7rem;
+  font-weight: 600;
   color: var(--text-dim);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 0.5rem;
+  letter-spacing: 0.07em;
+  margin-bottom: 0.35rem;
 }
 
 .stat-value {
-  font-size: clamp(1.6rem, 3.5vw, 2rem);
+  font-size: clamp(1.6rem, 4.5vw, 2.2rem);
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
 }
 
 .stat-sub {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: var(--text-faint);
-  margin-top: 0.4rem;
+  margin-top: 0.3rem;
 }
 
 .stat-value.down {
@@ -229,28 +230,28 @@ main {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.chart-header {
+  padding: 1.25rem;
   margin-bottom: 1.25rem;
 }
 
+.chart-header {
+  margin-bottom: 1rem;
+}
+
 .chart-header h2 {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
 }
 
 .chart-sub {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   color: var(--text-dim);
 }
 
 .chart-wrap {
   position: relative;
-  height: 480px;
+  height: 460px;
   width: 100%;
 }
 
@@ -258,14 +259,29 @@ main {
   height: 280px;
 }
 
+/* HTML watermark — sits in chart corner so screenshots include it.
+   The exported PNG also bakes its own watermark in the title bar/footer. */
+.chart-watermark {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
 /* CHART TOOLBAR */
 .chart-toolbar {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.5rem;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 
 .range-buttons {
@@ -281,13 +297,14 @@ main {
   background: transparent;
   border: none;
   color: var(--text-dim);
-  padding: 0.45rem 0.85rem;
+  padding: 0.4rem 0.85rem;
   font-size: 0.82rem;
   font-weight: 500;
   border-radius: 6px;
   cursor: pointer;
   transition: all 120ms ease;
   font-family: inherit;
+  white-space: nowrap;
 }
 
 .range-btn:hover {
@@ -299,12 +316,16 @@ main {
   color: var(--bg);
 }
 
-.download-btn {
+/* Compact icon button for download */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   background: transparent;
   border: 1px solid var(--border);
   color: var(--text-dim);
-  padding: 0.5rem 0.85rem;
-  font-size: 0.82rem;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.8rem;
   font-weight: 500;
   border-radius: 8px;
   cursor: pointer;
@@ -312,119 +333,177 @@ main {
   font-family: inherit;
 }
 
-.download-btn:hover {
+.icon-btn:hover {
   color: var(--accent);
   border-color: var(--accent);
 }
 
-/* EVENT CHIPS */
-.event-chips {
-  margin-top: 1.25rem;
-  padding-top: 1rem;
+.icon-btn svg {
+  flex-shrink: 0;
+}
+
+/* EVENT LIST — informative rows, replacing duplicate chip set */
+.event-list {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
   border-top: 1px solid var(--border);
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
+  flex-direction: column;
+  gap: 0.3rem;
 }
 
-.event-chip {
-  display: inline-flex;
+.event-empty {
+  color: var(--text-faint);
+  font-size: 0.85rem;
+  padding: 0.5rem 0;
+}
+
+.event-row {
+  display: grid;
+  grid-template-columns: 26px 90px 1fr auto;
+  gap: 0.6rem;
   align-items: center;
-  gap: 0.4rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 8px;
   background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 0.35rem 0.75rem;
-  font-size: 0.8rem;
-  color: var(--text-dim);
+  border: 1px solid transparent;
   cursor: pointer;
+  font-size: 0.88rem;
+  color: var(--text-dim);
   transition: all 120ms ease;
   font-family: inherit;
+  text-align: left;
+  width: 100%;
 }
 
-.event-chip:hover,
-.event-chip.active {
+.event-row:hover {
+  background: rgba(245, 166, 35, 0.05);
+  border-color: rgba(245, 166, 35, 0.3);
+  color: var(--text);
+}
+
+.event-row.active {
+  background: var(--accent-soft);
   border-color: var(--accent);
   color: var(--text);
-  background: var(--accent-soft);
 }
 
-.event-chip .chip-num {
+.event-row .ev-num {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: var(--bg);
-  font-size: 0.7rem;
-  font-weight: 700;
-}
-
-.event-chip .chip-date {
-  font-variant-numeric: tabular-nums;
-  font-weight: 500;
-}
-
-.event-detail {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: var(--bg);
-  border: 1px solid var(--accent);
-  border-radius: 8px;
-  font-size: 0.9rem;
-}
-
-.event-detail .ed-num {
-  display: inline-block;
-  background: var(--accent);
-  color: var(--bg);
-  font-weight: 700;
-  border-radius: 50%;
   width: 22px;
   height: 22px;
-  text-align: center;
-  line-height: 22px;
-  margin-right: 0.5rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 0.74rem;
+  font-weight: 700;
+  flex-shrink: 0;
 }
 
-.event-detail .ed-date {
+/* Minor events: outlined ring, matches chart marker style */
+.event-row:not(.major) .ev-num {
+  background: transparent;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  width: 20px;
+  height: 20px;
+  font-size: 0.68rem;
+}
+
+.event-row .ev-date {
   color: var(--accent);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
+  font-size: 0.8rem;
+  white-space: nowrap;
 }
 
-.event-detail .ed-label {
-  display: block;
-  margin-top: 0.5rem;
+.event-row .ev-label {
   color: var(--text);
-  font-size: 1rem;
+  font-size: 0.88rem;
+  line-height: 1.3;
 }
 
-.event-detail .ed-source {
-  margin-top: 0.6rem;
-  font-size: 0.85rem;
+.event-row .ev-source {
+  color: var(--text-faint);
+  font-size: 0.78rem;
+  white-space: nowrap;
+  border: none;
+  padding: 0.2rem 0.4rem;
+}
+
+.event-row .ev-source:hover {
+  color: var(--accent);
+  border: none;
 }
 
 /* FOOTER */
 footer {
-  padding: 1.5rem 0 2rem;
+  padding: 1.25rem 0 1.5rem;
   border-top: 1px solid var(--border);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--text-faint);
   text-align: center;
 }
 
 /* MOBILE */
 @media (max-width: 600px) {
+  .container {
+    padding: 0 0.85rem;
+  }
+  header {
+    padding: 0.6rem 0;
+  }
+  header h1 {
+    font-size: 1rem;
+  }
+  .top-nav {
+    margin-top: 0;
+  }
+  main {
+    padding: 0.85rem 0 2rem;
+  }
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+  }
+  .stat-card {
+    padding: 0.7rem 0.8rem;
+  }
+  .stat-value {
+    font-size: 1.45rem;
+  }
+  .stat-label {
+    font-size: 0.62rem;
+  }
+  .stat-sub {
+    font-size: 0.7rem;
+  }
+  .chart-section,
+  .vessel-section {
+    padding: 0.85rem;
+  }
   .chart-wrap {
-    height: 320px;
+    height: 380px;
   }
   .chart-wrap.small {
     height: 240px;
   }
-  .stats {
-    grid-template-columns: repeat(2, 1fr);
+  /* Stack event row contents differently on small screens */
+  .event-row {
+    grid-template-columns: 26px 1fr auto;
+    grid-template-areas:
+      "num date source"
+      "num label label";
+    row-gap: 0.15rem;
+    column-gap: 0.5rem;
+    padding: 0.5rem 0.6rem;
   }
+  .event-row .ev-num { grid-area: num; align-self: start; margin-top: 2px; }
+  .event-row .ev-date { grid-area: date; }
+  .event-row .ev-label { grid-area: label; font-size: 0.85rem; }
+  .event-row .ev-source { grid-area: source; }
 }

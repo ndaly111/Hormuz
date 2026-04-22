@@ -9,25 +9,8 @@ const RANGES = {
   closure: { min: "2026-02-01", label: "Feb 2026 – present" },
 };
 
-/* Watermark plugin — paints site name in top-right of every chart so screenshots carry attribution */
-const watermarkPlugin = {
-  id: "watermark",
-  afterDraw(chart) {
-    const { ctx, chartArea } = chart;
-    if (!chartArea) return;
-    ctx.save();
-    ctx.font = "600 11px -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif";
-    ctx.fillStyle = "rgba(149, 163, 184, 0.55)";
-    ctx.textAlign = "right";
-    ctx.textBaseline = "top";
-    ctx.fillText(SITE_NAME, chartArea.right - 8, chartArea.top + 6);
-    ctx.restore();
-  },
-};
-Chart.register(watermarkPlugin);
-
 /* Event markers plugin — draws numbered chips in a strip below the chart,
-   with dotted connectors up to the chart and staggering for close events.
+   with dotted connectors. Caps stagger at 2 rows; nudges edge markers inward.
    Reads its config from chart.options.plugins.eventMarkers. */
 const eventMarkersPlugin = {
   id: "eventMarkers",
@@ -41,69 +24,108 @@ const eventMarkersPlugin = {
     const minDate = cfg.minDate || null;
     const highlightedIdx = cfg.highlightedIdx ?? -1;
 
-    // Convert date string to UTC timestamp for Chart.js time scale
     const tsFor = (d) => new Date(d + "T00:00:00Z").getTime();
 
-    // Filter to visible events within current x-axis range
+    // Filter to visible events; keep dataX (true position) and adjust x for edge nudge.
     const positions = cfg.events
       .map((e, i) => ({ ...e, idx: i }))
       .filter((e) => !minDate || e.date >= minDate)
-      .map((e) => ({ ...e, x: xScale.getPixelForValue(tsFor(e.date)) }))
-      .filter((p) => Number.isFinite(p.x) && p.x >= chartArea.left && p.x <= chartArea.right + 2);
+      .map((e) => {
+        const x = xScale.getPixelForValue(tsFor(e.date));
+        return { ...e, x, dataX: x };
+      })
+      .filter((p) => Number.isFinite(p.x) && p.x >= chartArea.left - 4 && p.x <= chartArea.right + 4)
+      .sort((a, b) => a.x - b.x);
 
-    // Pack into rows: try row 0 first; if too close to last marker in that row, try row 1, etc.
-    const MARKER_GAP_PX = 26;
-    const rows = [];
+    if (!positions.length) return;
+
+    // Edge nudging — keep marker fully inside the chart horizontally
+    const RADIUS_MAJOR = 11;
+    const RADIUS_MINOR = 8;
     positions.forEach((p) => {
-      let r = 0;
-      while (rows[r] !== undefined && p.x - rows[r] < MARKER_GAP_PX) r++;
-      p.row = r;
-      rows[r] = p.x;
+      const r = (p.priority === "major" ? RADIUS_MAJOR : RADIUS_MINOR) + 2;
+      if (p.x - r < chartArea.left) p.x = chartArea.left + r;
+      if (p.x + r > chartArea.right) p.x = chartArea.right - r;
     });
 
-    const ROW_HEIGHT = 22;
-    const ROW_OFFSET = 24; // gap between chart and first row of markers
+    // Stagger: cap at 2 rows. If both rows are too close, accept slight overlap.
+    const MAX_ROWS = 2;
+    const MARKER_GAP_PX = 26;
+    const lastInRow = [];
+    positions.forEach((p) => {
+      let chosen = 0;
+      for (let r = 0; r < MAX_ROWS; r++) {
+        if (lastInRow[r] === undefined || p.x - lastInRow[r] >= MARKER_GAP_PX) {
+          chosen = r;
+          break;
+        }
+        chosen = r; // remember; if no row fits, last iteration wins
+      }
+      p.row = chosen;
+      lastInRow[chosen] = p.x;
+    });
 
+    const ROW_HEIGHT = 24;
+    const ROW_OFFSET = 22;
+
+    // Draw connectors first (under markers)
     positions.forEach((p) => {
       const major = p.priority === "major";
       const isHi = p.idx === highlightedIdx;
-      const radius = major ? 11 : 8;
+      const radius = major ? RADIUS_MAJOR : RADIUS_MINOR;
       const yMarker = chartArea.bottom + ROW_OFFSET + p.row * ROW_HEIGHT;
 
-      // Dotted connector from chart bottom to the marker
       ctx.save();
       ctx.strokeStyle = isHi
         ? "rgba(245, 166, 35, 0.95)"
         : major
-          ? "rgba(245, 166, 35, 0.5)"
-          : "rgba(245, 166, 35, 0.3)";
+          ? "rgba(245, 166, 35, 0.55)"
+          : "rgba(245, 166, 35, 0.32)";
       ctx.lineWidth = isHi ? 1.5 : 1;
       ctx.setLineDash([2, 3]);
       ctx.beginPath();
-      ctx.moveTo(p.x, chartArea.bottom);
+      // Connector goes from the true date position at chart bottom
+      // diagonally to the (possibly nudged) marker position.
+      ctx.moveTo(p.dataX, chartArea.bottom);
       ctx.lineTo(p.x, yMarker - radius);
       ctx.stroke();
       ctx.restore();
+    });
 
-      // Filled circle
+    // Draw markers and numbers
+    positions.forEach((p) => {
+      const major = p.priority === "major";
+      const isHi = p.idx === highlightedIdx;
+      const radius = major ? RADIUS_MAJOR : RADIUS_MINOR;
+      const yMarker = chartArea.bottom + ROW_OFFSET + p.row * ROW_HEIGHT;
+
       ctx.save();
-      ctx.fillStyle = isHi
-        ? "#ffffff"
-        : major
-          ? "rgba(245, 166, 35, 0.95)"
-          : "rgba(245, 166, 35, 0.75)";
-      if (isHi) {
-        ctx.shadowColor = "rgba(245, 166, 35, 0.8)";
-        ctx.shadowBlur = 8;
+      // Major: filled solid. Minor: outlined ring (visual differentiation beyond size).
+      if (major) {
+        ctx.fillStyle = isHi ? "#ffffff" : "rgba(245, 166, 35, 0.95)";
+        if (isHi) {
+          ctx.shadowColor = "rgba(245, 166, 35, 0.8)";
+          ctx.shadowBlur = 8;
+        }
+        ctx.beginPath();
+        ctx.arc(p.x, yMarker, radius, 0, Math.PI * 2);
+        ctx.fill();
+      } else {
+        ctx.fillStyle = "#0a0e1a";
+        ctx.beginPath();
+        ctx.arc(p.x, yMarker, radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = isHi ? "#ffffff" : "rgba(245, 166, 35, 0.85)";
+        ctx.lineWidth = isHi ? 2 : 1.5;
+        ctx.beginPath();
+        ctx.arc(p.x, yMarker, radius, 0, Math.PI * 2);
+        ctx.stroke();
       }
-      ctx.beginPath();
-      ctx.arc(p.x, yMarker, radius, 0, Math.PI * 2);
-      ctx.fill();
       ctx.restore();
 
       // Number
       ctx.save();
-      ctx.fillStyle = isHi ? "#0a0e1a" : "#0a0e1a";
+      ctx.fillStyle = major ? "#0a0e1a" : isHi ? "#ffffff" : "rgba(245, 166, 35, 0.95)";
       ctx.font = `bold ${major ? 12 : 10}px -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
@@ -122,6 +144,11 @@ const fmt = {
     { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }),
   dateShort: (s) => new Date(s + "T00:00:00Z").toLocaleDateString("en-US",
     { month: "short", day: "numeric", timeZone: "UTC" }),
+  dateShortYr: (s) => {
+    const d = new Date(s + "T00:00:00Z");
+    return d.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" })
+      + " '" + String(d.getUTCFullYear()).slice(2);
+  },
 };
 
 const daysBetween = (a, b) =>
@@ -144,22 +171,22 @@ function renderStats(data) {
 
   const cards = [
     {
-      label: "30-day average",
-      value: fmt.num(cur.last_30d_avg),
-      sub: `transits per day · through ${fmt.dateShort(cur.latest_date)}`,
-    },
-    {
       label: "vs pre-closure baseline",
       value: fmt.pct(cur.vs_pre_feb_2026_pct),
-      sub: `pre-Feb 2026 avg: ${fmt.num(preFeb.avg_total)}/day`,
+      sub: `pre-Feb 2026: ${fmt.num(preFeb.avg_total)}/day`,
       cls: pctClass(cur.vs_pre_feb_2026_pct),
       highlight: true,
     },
     {
       label: "Days since closure",
       value: daysSinceClosure >= 0 ? daysSinceClosure : "—",
-      sub: `Iran closed strait ${fmt.dateShort(CLOSURE_DATE)}, 2026`,
+      sub: `since ${fmt.dateShort(CLOSURE_DATE)} '26`,
       highlight: true,
+    },
+    {
+      label: "30-day average",
+      value: fmt.num(cur.last_30d_avg),
+      sub: `transits/day`,
     },
     {
       label: "Latest day",
@@ -178,9 +205,8 @@ function renderStats(data) {
     .join("");
 }
 
-/* --- ANNOTATIONS --- */
+/* --- ANNOTATIONS (subtle vertical lines through chart data area) --- */
 
-// Vertical lines through the data area only (no labels — numbered chips live below).
 function makeAnnotations(events) {
   const ann = {};
   events.forEach((e, i) => {
@@ -189,9 +215,9 @@ function makeAnnotations(events) {
       type: "line",
       xMin: e.date,
       xMax: e.date,
-      borderColor: major ? "rgba(245, 166, 35, 0.55)" : "rgba(245, 166, 35, 0.3)",
-      borderWidth: major ? 1.25 : 1,
-      borderDash: major ? [5, 4] : [3, 4],
+      borderColor: major ? "rgba(245, 166, 35, 0.5)" : "rgba(245, 166, 35, 0.25)",
+      borderWidth: major ? 1 : 0.8,
+      borderDash: [3, 4],
       _major: major,
     };
   });
@@ -203,10 +229,10 @@ function highlightAnnotation(chart, idx) {
     const isTarget = key === "evt" + idx;
     if (isTarget) {
       a.borderColor = "rgba(245, 166, 35, 1)";
-      a.borderWidth = 2.5;
+      a.borderWidth = 2;
     } else {
-      a.borderColor = a._major ? "rgba(245, 166, 35, 0.3)" : "rgba(245, 166, 35, 0.18)";
-      a.borderWidth = a._major ? 1.25 : 1;
+      a.borderColor = a._major ? "rgba(245, 166, 35, 0.25)" : "rgba(245, 166, 35, 0.15)";
+      a.borderWidth = a._major ? 1 : 0.8;
     }
   });
   if (chart.options.plugins.eventMarkers) {
@@ -217,8 +243,8 @@ function highlightAnnotation(chart, idx) {
 
 function clearAnnotationHighlight(chart) {
   Object.values(chart.options.plugins.annotation.annotations).forEach((a) => {
-    a.borderColor = a._major ? "rgba(245, 166, 35, 0.55)" : "rgba(245, 166, 35, 0.3)";
-    a.borderWidth = a._major ? 1.25 : 1;
+    a.borderColor = a._major ? "rgba(245, 166, 35, 0.5)" : "rgba(245, 166, 35, 0.25)";
+    a.borderWidth = a._major ? 1 : 0.8;
   });
   if (chart.options.plugins.eventMarkers) {
     chart.options.plugins.eventMarkers.highlightedIdx = -1;
@@ -229,14 +255,15 @@ function clearAnnotationHighlight(chart) {
 /* --- MAIN CHART --- */
 
 let mainChartRef = null;
-let allSeries = null;
 let sortedEvents = [];
 let currentRangeKey = "closure";
+let activeEventIdx = -1;
 
 function renderMainChart(data, events) {
   const labels = data.series.map((d) => d.date);
   const totals = data.series.map((d) => d.total);
   const ma7 = data.series.map((d) => d.ma7);
+  const isMobile = window.innerWidth < 600;
 
   mainChartRef = new Chart(document.getElementById("mainChart"), {
     type: "line",
@@ -271,9 +298,12 @@ function renderMainChart(data, events) {
       maintainAspectRatio: false,
       animation: { duration: 300 },
       interaction: { mode: "index", intersect: false },
-      layout: { padding: { bottom: 80 } }, // room below for event marker strip
+      layout: { padding: { bottom: 70 } }, // room for 2-row marker strip
       plugins: {
-        legend: { labels: { color: "#e8eaed", boxWidth: 14, padding: 12 } },
+        legend: {
+          labels: { color: "#e8eaed", boxWidth: 14, padding: 12, font: { size: 12 } },
+          align: "end",
+        },
         tooltip: {
           backgroundColor: "#0a0e1a",
           borderColor: "#1f2940",
@@ -293,20 +323,18 @@ function renderMainChart(data, events) {
         x: {
           type: "time",
           time: { unit: "year", tooltipFormat: "MMM d, yyyy" },
-          grid: { color: "rgba(95, 107, 133, 0.1)" },
+          grid: { color: "rgba(95, 107, 133, 0.08)" },
           ticks: { color: "#5c6b85" },
         },
         y: {
           beginAtZero: true,
-          title: { display: true, text: "Transits per day", color: "#95a3b8" },
-          grid: { color: "rgba(95, 107, 133, 0.1)" },
+          title: isMobile ? { display: false } : { display: true, text: "Transits per day", color: "#95a3b8" },
+          grid: { color: "rgba(95, 107, 133, 0.08)" },
           ticks: { color: "#5c6b85" },
         },
       },
     },
   });
-
-  allSeries = { latestDate: data.current.latest_date };
 }
 
 function applyRange(rangeKey) {
@@ -316,6 +344,7 @@ function applyRange(rangeKey) {
   const x = mainChartRef.options.scales.x;
   if (range.min) {
     x.min = range.min;
+    x.max = sortedEvents.length ? undefined : undefined;
     x.time.unit = "month";
   } else {
     delete x.min;
@@ -325,7 +354,7 @@ function applyRange(rangeKey) {
     mainChartRef.options.plugins.eventMarkers.minDate = range.min;
   }
   mainChartRef.update();
-  renderEventChips();
+  renderEventList();
 }
 
 /* --- VESSEL CHART --- */
@@ -375,8 +404,7 @@ function renderVesselChart(data) {
         y: {
           stacked: true,
           beginAtZero: true,
-          title: { display: true, text: "Transits per day", color: "#95a3b8" },
-          grid: { color: "rgba(95, 107, 133, 0.1)" },
+          grid: { color: "rgba(95, 107, 133, 0.08)" },
           ticks: { color: "#5c6b85" },
         },
       },
@@ -384,14 +412,12 @@ function renderVesselChart(data) {
   });
 }
 
-/* --- EVENT CHIPS --- */
+/* --- EVENT LIST (informative rows, not duplicate chips) --- */
 
-function renderEventChips(events) {
-  if (events) {
-    sortedEvents = events.slice().sort((a, b) => (a.date < b.date ? -1 : 1));
-  }
-  const chipsEl = document.getElementById("eventChips");
-  const detailEl = document.getElementById("eventDetail");
+function renderEventList() {
+  const listEl = document.getElementById("eventList");
+  if (!listEl) return;
+  if (!sortedEvents.length) return;
 
   const minDate = RANGES[currentRangeKey] ? RANGES[currentRangeKey].min : null;
   const visible = sortedEvents
@@ -399,45 +425,42 @@ function renderEventChips(events) {
     .filter((e) => !minDate || e.date >= minDate);
 
   if (visible.length === 0) {
-    chipsEl.innerHTML = `<div style="color:var(--text-faint);font-size:0.85rem">No events in this range.</div>`;
-    detailEl.hidden = true;
+    listEl.innerHTML = `<div class="event-empty">No events in this range.</div>`;
     return;
   }
 
-  chipsEl.innerHTML = visible
-    .map((e) => `
-      <button class="event-chip" data-idx="${e.idx}" data-date="${e.date}" type="button">
-        <span class="chip-num">${e.idx + 1}</span>
-        <span class="chip-date">${fmt.dateShort(e.date)} '${String(new Date(e.date).getUTCFullYear()).slice(2)}</span>
-      </button>`)
+  listEl.innerHTML = visible
+    .map((e) => {
+      const major = e.priority === "major";
+      const isActive = e.idx === activeEventIdx;
+      return `
+        <button class="event-row${isActive ? " active" : ""}${major ? " major" : ""}" data-idx="${e.idx}" type="button">
+          <span class="ev-num">${e.idx + 1}</span>
+          <span class="ev-date">${fmt.dateShortYr(e.date)}</span>
+          <span class="ev-label">${e.label}</span>
+          ${e.source ? `<a class="ev-source" href="${e.source}" rel="noopener" target="_blank" onclick="event.stopPropagation();">Source ↗</a>` : ""}
+        </button>`;
+    })
     .join("");
 
-  detailEl.hidden = true;
-
-  const showDetail = (i) => {
-    const e = sortedEvents[i];
-    detailEl.hidden = false;
-    detailEl.innerHTML = `
-      <span class="ed-num">${i + 1}</span>
-      <span class="ed-date">${fmt.date(e.date)}</span>
-      <span class="ed-label">${e.label}</span>
-      ${e.source ? `<div class="ed-source"><a href="${e.source}" rel="noopener" target="_blank">↗ Source</a></div>` : ""}
-    `;
-    chipsEl.querySelectorAll(".event-chip").forEach((c) => {
-      c.classList.toggle("active", Number(c.dataset.idx) === i);
+  listEl.querySelectorAll(".event-row").forEach((row) => {
+    const idx = Number(row.dataset.idx);
+    row.addEventListener("click", () => {
+      activeEventIdx = activeEventIdx === idx ? -1 : idx;
+      renderEventList(); // re-render to update active state
+      if (mainChartRef) {
+        if (activeEventIdx >= 0) highlightAnnotation(mainChartRef, activeEventIdx);
+        else clearAnnotationHighlight(mainChartRef);
+      }
     });
-    if (mainChartRef) highlightAnnotation(mainChartRef, i);
-  };
-
-  chipsEl.querySelectorAll(".event-chip").forEach((chip) => {
-    chip.addEventListener("click", () => showDetail(Number(chip.dataset.idx)));
-    chip.addEventListener("mouseenter", () => {
-      if (mainChartRef) highlightAnnotation(mainChartRef, Number(chip.dataset.idx));
+    row.addEventListener("mouseenter", () => {
+      if (mainChartRef) highlightAnnotation(mainChartRef, idx);
     });
-    chip.addEventListener("mouseleave", () => {
-      const active = chipsEl.querySelector(".event-chip.active");
-      if (active) highlightAnnotation(mainChartRef, Number(active.dataset.idx));
-      else clearAnnotationHighlight(mainChartRef);
+    row.addEventListener("mouseleave", () => {
+      if (mainChartRef) {
+        if (activeEventIdx >= 0) highlightAnnotation(mainChartRef, activeEventIdx);
+        else clearAnnotationHighlight(mainChartRef);
+      }
     });
   });
 }
@@ -454,36 +477,33 @@ function downloadChartAsImage(data) {
   out.height = H;
   const ctx = out.getContext("2d");
 
-  // Background
   ctx.fillStyle = "#0a0e1a";
   ctx.fillRect(0, 0, W, H);
 
-  // Title
   ctx.fillStyle = "#e8eaed";
   ctx.font = "bold 36px -apple-system, Segoe UI, Roboto, sans-serif";
   ctx.fillText("Strait of Hormuz — Daily Ship Transits", 60, 70);
 
-  // Subtitle (current state)
   const cur = data.current;
   const sub = `30-day avg: ${fmt.num(cur.last_30d_avg)}/day · ${fmt.pct(cur.vs_pre_feb_2026_pct)} vs pre-closure baseline · through ${fmt.date(cur.latest_date)}`;
   ctx.fillStyle = "#95a3b8";
   ctx.font = "20px -apple-system, Segoe UI, Roboto, sans-serif";
   ctx.fillText(sub, 60, 110);
 
-  // Chart image
   const chartImg = new Image();
   chartImg.onload = () => {
     ctx.drawImage(chartImg, 60, 150, W - 120, H - 240);
 
-    // Watermark
+    // Footer watermark
+    ctx.fillStyle = "#f5a623";
+    ctx.font = "bold 20px -apple-system, Segoe UI, Roboto, sans-serif";
+    ctx.fillText(SITE_NAME, 60, H - 38);
     ctx.fillStyle = "#5c6b85";
-    ctx.font = "18px -apple-system, Segoe UI, Roboto, sans-serif";
-    ctx.fillText("hormuz-traffic.com", 60, H - 40);
+    ctx.font = "16px -apple-system, Segoe UI, Roboto, sans-serif";
     ctx.textAlign = "right";
-    ctx.fillText("Source: IMF PortWatch (satellite AIS)", W - 60, H - 40);
+    ctx.fillText("Source: IMF PortWatch (satellite AIS)", W - 60, H - 38);
     ctx.textAlign = "left";
 
-    // Trigger download
     const url = out.toDataURL("image/png");
     const a = document.createElement("a");
     a.href = url;
@@ -514,13 +534,12 @@ function renderUpdated(data) {
       loadJson("data/events.json"),
     ]);
 
-    // Sort events once and cache so chart annotations + chips + plugin all use the same idx
     sortedEvents = events.slice().sort((a, b) => (a.date < b.date ? -1 : 1));
 
     renderStats(data);
     renderMainChart(data, sortedEvents);
     renderVesselChart(data);
-    renderEventChips();
+    renderEventList();
     renderUpdated(data);
     applyRange(currentRangeKey);
 
@@ -533,6 +552,19 @@ function renderUpdated(data) {
     });
 
     document.getElementById("downloadBtn").addEventListener("click", () => downloadChartAsImage(data));
+
+    // Re-render on resize so y-axis title shows/hides correctly
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (mainChartRef) {
+          const isMobile = window.innerWidth < 600;
+          mainChartRef.options.scales.y.title.display = !isMobile;
+          mainChartRef.update();
+        }
+      }, 200);
+    });
   } catch (e) {
     console.error(e);
     document.getElementById("stats").innerHTML =

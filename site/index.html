@@ -22,11 +22,10 @@
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.1.0/dist/chartjs-plugin-annotation.min.js"></script>
 </head>
 <body>
-  <header>
+  <header class="compact">
     <div class="container header-row">
       <div class="brand">
         <h1>Strait of Hormuz Traffic Tracker</h1>
-        <p class="tagline">Daily ship transits through the world's most critical oil chokepoint.</p>
       </div>
       <nav class="top-nav" aria-label="Primary">
         <a href="/" class="nav-link active">Data</a>
@@ -41,32 +40,29 @@
     </section>
 
     <section class="chart-section">
-      <div class="chart-header">
-        <h2>Transit history</h2>
-        <p class="chart-sub">Daily transits with 7-day rolling average. Numbered markers below the chart point to major events.</p>
-      </div>
-
       <div class="chart-toolbar">
         <div class="range-buttons" role="group" aria-label="Date range">
-          <button class="range-btn" data-range="all">All time</button>
-          <button class="range-btn" data-range="war">Iran war era (Jun '25–)</button>
-          <button class="range-btn active" data-range="closure">Closure (Feb '26–)</button>
+          <button class="range-btn" data-range="all" title="All time (2019 – present)">All time</button>
+          <button class="range-btn" data-range="war" title="Iran war era (Jun 2025 – present)">Iran war</button>
+          <button class="range-btn active" data-range="closure" title="Closure (Feb 2026 – present)">Closure</button>
         </div>
-        <button class="download-btn" id="downloadBtn" title="Download chart as PNG for sharing">
-          Download as image
+        <button class="icon-btn" id="downloadBtn" title="Download chart as PNG for sharing" aria-label="Download chart">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Image</span>
         </button>
       </div>
 
       <div class="chart-wrap">
         <canvas id="mainChart"></canvas>
+        <div class="chart-watermark">hormuz-traffic.com</div>
       </div>
 
-      <div class="event-chips" id="eventChips">
-        <!-- populated by app.js: numbered, clickable -->
-      </div>
-
-      <div class="event-detail" id="eventDetail" hidden>
-        <!-- populated when a chip is selected -->
+      <div class="event-list" id="eventList">
+        <!-- populated by app.js: rich rows with date + label + source -->
       </div>
     </section>
 
