@@ -1,0 +1,62 @@
+[
+  {
+    "date": "2023-11-19",
+    "label": "Houthi attacks begin (Galaxy Leader hijacked)",
+    "category": "shipping",
+    "source": "https://en.wikipedia.org/wiki/Galaxy_Leader_seizure"
+  },
+  {
+    "date": "2025-06-13",
+    "label": "Israel strikes Iran — 12-day war begins",
+    "category": "iran",
+    "source": "https://en.wikipedia.org/wiki/2025_Israel_strikes_on_Iran"
+  },
+  {
+    "date": "2025-06-22",
+    "label": "US strikes Iranian nuclear sites (Fordow, Natanz, Isfahan)",
+    "category": "iran",
+    "source": "https://en.wikipedia.org/wiki/2025_US_strikes_on_Iranian_nuclear_sites"
+  },
+  {
+    "date": "2025-06-24",
+    "label": "Ceasefire ends 12-day war",
+    "category": "iran",
+    "source": "https://en.wikipedia.org/wiki/Iran%E2%80%93Israel_war"
+  },
+  {
+    "date": "2026-02-28",
+    "label": "US/Israel air war begins; Supreme Leader Khamenei killed",
+    "category": "iran",
+    "source": "https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis"
+  },
+  {
+    "date": "2026-03-04",
+    "label": "Iran closes Strait of Hormuz",
+    "category": "iran",
+    "source": "https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis"
+  },
+  {
+    "date": "2026-04-11",
+    "label": "US Navy mine-clearing operations begin",
+    "category": "iran",
+    "source": "https://www.aljazeera.com/news/2026/4/11/us-says-two-naval-ships-transited-strait-of-hormuz-for-mine-clearing"
+  },
+  {
+    "date": "2026-04-13",
+    "label": "US Navy blockade of strait announced",
+    "category": "iran",
+    "source": "https://www.navalnews.com/naval-news/2026/04/u-s-navy-stages-for-mine-clearance-as-hormuz-blockade-begins-showing-strain/"
+  },
+  {
+    "date": "2026-04-17",
+    "label": "Iran declares strait \"fully open\"",
+    "category": "iran",
+    "source": "https://www.aljazeera.com/economy/2026/4/18/as-oil-prices-plunge-below-91-after-weeks-a-new-hormuz-crisis-emerges"
+  },
+  {
+    "date": "2026-04-19",
+    "label": "US seizes Iranian container ship Touska",
+    "category": "iran",
+    "source": "https://www.npr.org/2026/04/19/nx-s1-5790378/iran-us-hormuz-closed-impossible"
+  }
+]

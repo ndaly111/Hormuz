@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strait of Hormuz Traffic Tracker — Daily Ship Transit Data</title>
+  <meta name="description" content="Daily transit counts for the Strait of Hormuz, with annotated geopolitical events from 2019 to today. Free, public-facing, updated daily from IMF PortWatch satellite AIS data." />
+
+  <meta property="og:title" content="Strait of Hormuz Traffic Tracker" />
+  <meta property="og:description" content="Daily ship transit data for the Strait of Hormuz, updated from satellite AIS. See how the 2026 closure compares to history." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hormuz-traffic.com" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Strait of Hormuz Traffic Tracker" />
+  <meta name="twitter:description" content="Daily ship transit data for the Strait of Hormuz, with annotated events from 2019 to today." />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.1.0/dist/chartjs-plugin-annotation.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Strait of Hormuz Traffic Tracker</h1>
+      <p class="tagline">Daily ship transits through the world's most critical oil chokepoint.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="stats" id="stats">
+      <!-- populated by app.js -->
+    </section>
+
+    <section class="chart-section">
+      <div class="chart-header">
+        <h2>Transit history</h2>
+        <p class="chart-sub">Daily transits with 7-day rolling average. Vertical lines mark major events — tap a numbered chip below for context and source.</p>
+      </div>
+
+      <div class="chart-toolbar">
+        <div class="range-buttons" role="group" aria-label="Date range">
+          <button class="range-btn active" data-range="all">All time</button>
+          <button class="range-btn" data-range="war">Iran war era (Jun '25–)</button>
+          <button class="range-btn" data-range="closure">Closure (Feb '26–)</button>
+        </div>
+        <button class="download-btn" id="downloadBtn" title="Download chart as PNG for sharing">
+          ⬇ Download as image
+        </button>
+      </div>
+
+      <div class="chart-wrap">
+        <canvas id="mainChart"></canvas>
+      </div>
+
+      <div class="event-chips" id="eventChips">
+        <!-- populated by app.js: numbered, clickable -->
+      </div>
+
+      <div class="event-detail" id="eventDetail" hidden>
+        <!-- populated when a chip is selected -->
+      </div>
+    </section>
+
+    <section class="vessel-section">
+      <div class="chart-header">
+        <h2>Vessel mix — last 90 days</h2>
+        <p class="chart-sub">Tankers carry the strait's strategic importance. Other cargo is the rest.</p>
+      </div>
+      <div class="chart-wrap small">
+        <canvas id="vesselChart"></canvas>
+      </div>
+    </section>
+
+    <section class="about">
+      <h2>About this site</h2>
+      <p>
+        This site tracks daily ship transits through the <strong>Strait of Hormuz</strong>, the narrow waterway between Iran and Oman through which roughly <strong>20% of global oil supply</strong> passes.
+      </p>
+      <p>
+        Data comes from the <a href="https://portwatch.imf.org" rel="noopener" target="_blank">IMF PortWatch</a> project, which derives daily transit counts from satellite AIS (vessel transponder) data. The dataset goes back to 2019. Counts are refreshed weekly by IMF; this site re-pulls daily.
+      </p>
+
+      <h3>Methodology</h3>
+      <ul>
+        <li><strong>Source:</strong> IMF PortWatch "Daily Chokepoint Transit Calls" dataset — chokepoint6 (Strait of Hormuz)</li>
+        <li><strong>Refresh:</strong> Pipeline runs daily at 06:00 UTC via GitHub Actions</li>
+        <li><strong>Vessel types:</strong> Tankers (oil/product/chemical), dry bulk, container, RoRo, general cargo</li>
+        <li><strong>Lag:</strong> PortWatch typically lags real-world events by 2–5 days</li>
+        <li><strong>Code:</strong> <a href="https://github.com/ndaly111/Hormuz" rel="noopener" target="_blank">github.com/ndaly111/Hormuz</a> — open source, MIT licensed</li>
+      </ul>
+
+      <h3>Caveats</h3>
+      <ul>
+        <li>PortWatch counts <em>port calls within the chokepoint geofence</em>, not pure transits. The numbers are directionally meaningful but not a literal ship count.</li>
+        <li>Some vessels disable AIS for security reasons. These would not appear in counts.</li>
+        <li>Event annotations reflect the editorial judgment of this site's author about which dates matter most for context.</li>
+      </ul>
+
+      <h3>Support</h3>
+      <p>
+        This site is free and ad-free. If it's useful to you, you can <a href="https://buymeacoffee.com/" rel="noopener" target="_blank">buy me a coffee</a> — donations help cover the domain and the time to keep it running.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        Data: <a href="https://portwatch.imf.org" rel="noopener" target="_blank">IMF PortWatch</a> ·
+        Code: <a href="https://github.com/ndaly111/Hormuz" rel="noopener" target="_blank">GitHub</a> ·
+        Last updated: <span id="updatedAt">—</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
