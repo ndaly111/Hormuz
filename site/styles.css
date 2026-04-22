@@ -259,16 +259,19 @@ main {
   height: 280px;
 }
 
-/* Small attribution caption below the chart. The exported PNG also bakes
-   its own watermarks in the title bar and footer for shared screenshots. */
-.chart-attribution {
-  text-align: right;
+/* Watermark sits in chart's bottom-left corner so screenshots include it.
+   The exported PNG also bakes its own watermarks in the title bar/footer. */
+.chart-watermark {
+  position: absolute;
+  bottom: 6px;
+  left: 8px;
   font-size: 0.7rem;
   font-weight: 600;
   color: var(--text-faint);
   letter-spacing: 0.04em;
-  margin-top: 0.4rem;
+  pointer-events: none;
   user-select: none;
+  z-index: 1;
 }
 
 /* CHART TOOLBAR */
