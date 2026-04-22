@@ -53,22 +53,119 @@ a:hover {
 
 /* HEADER */
 header {
-  padding: 2.5rem 0 2rem;
+  padding: 1.5rem 0 1.75rem;
   border-bottom: 1px solid var(--border);
   background: linear-gradient(180deg, #0d1322 0%, var(--bg) 100%);
 }
 
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.brand {
+  flex: 1 1 auto;
+  min-width: 250px;
+}
+
 header h1 {
-  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 0.4rem;
 }
 
+header h1 a {
+  color: inherit;
+  border: none;
+}
+
 header .tagline {
   color: var(--text-dim);
-  font-size: 1rem;
+  font-size: 0.95rem;
   max-width: 50ch;
+}
+
+/* TOP NAV */
+.top-nav {
+  display: flex;
+  gap: 0.25rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 3px;
+  margin-top: 0.25rem;
+}
+
+.nav-link {
+  color: var(--text-dim);
+  padding: 0.45rem 0.9rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  border-radius: 6px;
+  border: none;
+  transition: all 120ms ease;
+}
+
+.nav-link:hover {
+  color: var(--text);
+  border: none;
+}
+
+.nav-link.active {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.nav-link.active:hover {
+  color: var(--bg);
+}
+
+/* ABOUT PAGE */
+.about-page {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 2rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-page h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.about-page h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 1.75rem;
+  margin-bottom: 0.6rem;
+  color: var(--text);
+}
+
+.about-page p,
+.about-page ul {
+  color: var(--text-dim);
+  margin-bottom: 0.85rem;
+}
+
+.about-page ul {
+  padding-left: 1.25rem;
+}
+
+.about-page li {
+  margin-bottom: 0.5rem;
+}
+
+.about-page strong {
+  color: var(--text);
 }
 
 main {
@@ -128,8 +225,7 @@ main {
 
 /* CHART SECTIONS */
 .chart-section,
-.vessel-section,
-.about {
+.vessel-section {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -154,7 +250,7 @@ main {
 
 .chart-wrap {
   position: relative;
-  height: 420px;
+  height: 480px;
   width: 100%;
 }
 
@@ -309,39 +405,6 @@ main {
 .event-detail .ed-source {
   margin-top: 0.6rem;
   font-size: 0.85rem;
-}
-
-/* ABOUT */
-.about h2 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.about h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-top: 1.5rem;
-  margin-bottom: 0.6rem;
-  color: var(--text);
-}
-
-.about p,
-.about ul {
-  color: var(--text-dim);
-  margin-bottom: 0.75rem;
-}
-
-.about ul {
-  padding-left: 1.25rem;
-}
-
-.about li {
-  margin-bottom: 0.4rem;
-}
-
-.about strong {
-  color: var(--text);
 }
 
 /* FOOTER */

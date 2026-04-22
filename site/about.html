@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Strait of Hormuz Traffic Tracker</title>
+  <meta name="description" content="About the Strait of Hormuz Traffic Tracker — methodology, data source, caveats, and support." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container header-row">
+      <div class="brand">
+        <h1><a href="/" style="color:inherit;border:none;">Strait of Hormuz Traffic Tracker</a></h1>
+        <p class="tagline">Daily ship transits through the world's most critical oil chokepoint.</p>
+      </div>
+      <nav class="top-nav" aria-label="Primary">
+        <a href="/" class="nav-link">Data</a>
+        <a href="/about.html" class="nav-link active">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="about-page">
+      <h2>About this site</h2>
+      <p>
+        This site tracks daily ship transits through the <strong>Strait of Hormuz</strong>, the narrow waterway between Iran and Oman through which roughly <strong>20% of global oil supply</strong> passes.
+      </p>
+      <p>
+        Data comes from the <a href="https://portwatch.imf.org" rel="noopener" target="_blank">IMF PortWatch</a> project, which derives daily transit counts from satellite AIS (vessel transponder) data. The dataset goes back to 2019. Counts are refreshed weekly by the IMF; this site re-pulls them daily.
+      </p>
+
+      <h3>Methodology</h3>
+      <ul>
+        <li><strong>Source:</strong> IMF PortWatch "Daily Chokepoint Transit Calls" dataset — chokepoint6 (Strait of Hormuz)</li>
+        <li><strong>Refresh:</strong> Pipeline runs daily at 06:00 UTC</li>
+        <li><strong>Vessel types:</strong> Tankers (oil/product/chemical), dry bulk, container, RoRo, general cargo</li>
+        <li><strong>Lag:</strong> PortWatch typically lags real-world events by 2–5 days</li>
+      </ul>
+
+      <h3>Caveats</h3>
+      <ul>
+        <li>PortWatch counts <em>port calls within the chokepoint geofence</em>, not pure transits. The numbers are directionally meaningful but not a literal ship count.</li>
+        <li>Some vessels disable AIS for security reasons. These would not appear in counts.</li>
+        <li>Event annotations reflect the editorial judgment of this site's author about which dates matter most for context.</li>
+      </ul>
+
+      <h3>Support</h3>
+      <p>
+        This site is free and ad-free. If it's useful to you, you can <a href="https://buymeacoffee.com/" rel="noopener" target="_blank">buy me a coffee</a> — donations help cover the domain and the time to keep it running.
+      </p>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        Data: <a href="https://portwatch.imf.org" rel="noopener" target="_blank">IMF PortWatch</a> ·
+        <a href="/">Back to data</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

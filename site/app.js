@@ -26,6 +26,90 @@ const watermarkPlugin = {
 };
 Chart.register(watermarkPlugin);
 
+/* Event markers plugin — draws numbered chips in a strip below the chart,
+   with dotted connectors up to the chart and staggering for close events.
+   Reads its config from chart.options.plugins.eventMarkers. */
+const eventMarkersPlugin = {
+  id: "eventMarkers",
+  afterDatasetsDraw(chart) {
+    const cfg = chart.options.plugins.eventMarkers;
+    if (!cfg || !cfg.events || !cfg.events.length) return;
+
+    const { ctx, chartArea, scales } = chart;
+    const xScale = scales.x;
+    const minDate = cfg.minDate || null;
+    const highlightedIdx = cfg.highlightedIdx ?? -1;
+
+    // Filter to visible events within current x-axis range
+    const positions = cfg.events
+      .map((e, i) => ({ ...e, idx: i }))
+      .filter((e) => !minDate || e.date >= minDate)
+      .map((e) => ({ ...e, x: xScale.getPixelForValue(e.date) }))
+      .filter((p) => p.x >= chartArea.left && p.x <= chartArea.right + 2);
+
+    // Pack into rows: try row 0 first; if too close to last marker in that row, try row 1, etc.
+    const MARKER_GAP_PX = 26;
+    const rows = [];
+    positions.forEach((p) => {
+      let r = 0;
+      while (rows[r] !== undefined && p.x - rows[r] < MARKER_GAP_PX) r++;
+      p.row = r;
+      rows[r] = p.x;
+    });
+
+    const ROW_HEIGHT = 22;
+    const ROW_OFFSET = 24; // gap between chart and first row of markers
+
+    positions.forEach((p) => {
+      const major = p.priority === "major";
+      const isHi = p.idx === highlightedIdx;
+      const radius = major ? 11 : 8;
+      const yMarker = chartArea.bottom + ROW_OFFSET + p.row * ROW_HEIGHT;
+
+      // Dotted connector from chart bottom to the marker
+      ctx.save();
+      ctx.strokeStyle = isHi
+        ? "rgba(245, 166, 35, 0.95)"
+        : major
+          ? "rgba(245, 166, 35, 0.5)"
+          : "rgba(245, 166, 35, 0.3)";
+      ctx.lineWidth = isHi ? 1.5 : 1;
+      ctx.setLineDash([2, 3]);
+      ctx.beginPath();
+      ctx.moveTo(p.x, chartArea.bottom);
+      ctx.lineTo(p.x, yMarker - radius);
+      ctx.stroke();
+      ctx.restore();
+
+      // Filled circle
+      ctx.save();
+      ctx.fillStyle = isHi
+        ? "#ffffff"
+        : major
+          ? "rgba(245, 166, 35, 0.95)"
+          : "rgba(245, 166, 35, 0.75)";
+      if (isHi) {
+        ctx.shadowColor = "rgba(245, 166, 35, 0.8)";
+        ctx.shadowBlur = 8;
+      }
+      ctx.beginPath();
+      ctx.arc(p.x, yMarker, radius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // Number
+      ctx.save();
+      ctx.fillStyle = isHi ? "#0a0e1a" : "#0a0e1a";
+      ctx.font = `bold ${major ? 12 : 10}px -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(String(p.idx + 1), p.x, yMarker + 0.5);
+      ctx.restore();
+    });
+  },
+};
+Chart.register(eventMarkersPlugin);
+
 const fmt = {
   int: (n) => (n == null ? "—" : Math.round(n).toLocaleString()),
   num: (n) => (n == null ? "—" : Number(n).toLocaleString(undefined, { maximumFractionDigits: 1 })),
@@ -92,7 +176,7 @@ function renderStats(data) {
 
 /* --- ANNOTATIONS --- */
 
-// Vertical lines + numbered labels at top of chart. Major events get bigger labels.
+// Vertical lines through the data area only (no labels — numbered chips live below).
 function makeAnnotations(events) {
   const ann = {};
   events.forEach((e, i) => {
@@ -101,24 +185,10 @@ function makeAnnotations(events) {
       type: "line",
       xMin: e.date,
       xMax: e.date,
-      borderColor: major ? "rgba(245, 166, 35, 0.65)" : "rgba(245, 166, 35, 0.35)",
-      borderWidth: major ? 1.5 : 1,
+      borderColor: major ? "rgba(245, 166, 35, 0.55)" : "rgba(245, 166, 35, 0.3)",
+      borderWidth: major ? 1.25 : 1,
       borderDash: major ? [5, 4] : [3, 4],
-      label: {
-        display: true,
-        content: String(i + 1),
-        position: "start",
-        backgroundColor: major ? "rgba(245, 166, 35, 0.95)" : "rgba(245, 166, 35, 0.7)",
-        color: "#0a0e1a",
-        font: {
-          size: major ? 12 : 9,
-          weight: "bold",
-          family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
-        },
-        padding: major ? { top: 3, bottom: 3, left: 7, right: 7 } : { top: 1, bottom: 1, left: 4, right: 4 },
-        borderRadius: 999,
-        yAdjust: 0,
-      },
+      _major: major,
     };
   });
   return ann;
@@ -127,24 +197,28 @@ function makeAnnotations(events) {
 function highlightAnnotation(chart, idx) {
   Object.entries(chart.options.plugins.annotation.annotations).forEach(([key, a]) => {
     const isTarget = key === "evt" + idx;
-    const major = a.label && a.label.font && a.label.font.size === 12;
     if (isTarget) {
       a.borderColor = "rgba(245, 166, 35, 1)";
       a.borderWidth = 2.5;
     } else {
-      a.borderColor = major ? "rgba(245, 166, 35, 0.35)" : "rgba(245, 166, 35, 0.2)";
-      a.borderWidth = major ? 1.5 : 1;
+      a.borderColor = a._major ? "rgba(245, 166, 35, 0.3)" : "rgba(245, 166, 35, 0.18)";
+      a.borderWidth = a._major ? 1.25 : 1;
     }
   });
+  if (chart.options.plugins.eventMarkers) {
+    chart.options.plugins.eventMarkers.highlightedIdx = idx;
+  }
   chart.update("none");
 }
 
 function clearAnnotationHighlight(chart) {
   Object.values(chart.options.plugins.annotation.annotations).forEach((a) => {
-    const major = a.label && a.label.font && a.label.font.size === 12;
-    a.borderColor = major ? "rgba(245, 166, 35, 0.65)" : "rgba(245, 166, 35, 0.35)";
-    a.borderWidth = major ? 1.5 : 1;
+    a.borderColor = a._major ? "rgba(245, 166, 35, 0.55)" : "rgba(245, 166, 35, 0.3)";
+    a.borderWidth = a._major ? 1.25 : 1;
   });
+  if (chart.options.plugins.eventMarkers) {
+    chart.options.plugins.eventMarkers.highlightedIdx = -1;
+  }
   chart.update("none");
 }
 
@@ -193,6 +267,7 @@ function renderMainChart(data, events) {
       maintainAspectRatio: false,
       animation: { duration: 300 },
       interaction: { mode: "index", intersect: false },
+      layout: { padding: { bottom: 80 } }, // room below for event marker strip
       plugins: {
         legend: { labels: { color: "#e8eaed", boxWidth: 14, padding: 12 } },
         tooltip: {
@@ -204,6 +279,11 @@ function renderMainChart(data, events) {
           padding: 10,
         },
         annotation: { annotations: makeAnnotations(events) },
+        eventMarkers: {
+          events: events,
+          minDate: RANGES[currentRangeKey] ? RANGES[currentRangeKey].min : null,
+          highlightedIdx: -1,
+        },
       },
       scales: {
         x: {
@@ -236,6 +316,9 @@ function applyRange(rangeKey) {
   } else {
     delete x.min;
     x.time.unit = "year";
+  }
+  if (mainChartRef.options.plugins.eventMarkers) {
+    mainChartRef.options.plugins.eventMarkers.minDate = range.min;
   }
   mainChartRef.update();
   renderEventChips();
@@ -427,10 +510,13 @@ function renderUpdated(data) {
       loadJson("data/events.json"),
     ]);
 
+    // Sort events once and cache so chart annotations + chips + plugin all use the same idx
+    sortedEvents = events.slice().sort((a, b) => (a.date < b.date ? -1 : 1));
+
     renderStats(data);
-    renderMainChart(data, events);
+    renderMainChart(data, sortedEvents);
     renderVesselChart(data);
-    renderEventChips(events);
+    renderEventChips();
     renderUpdated(data);
     applyRange(currentRangeKey);
 
