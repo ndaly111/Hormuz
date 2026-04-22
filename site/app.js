@@ -9,7 +9,7 @@ const RANGES = {
   closure: { min: "2026-02-01", label: "Feb 2026 – present" },
 };
 
-/* Watermark plugin — paints site name on every chart so screenshots carry attribution */
+/* Watermark plugin — paints site name in top-right of every chart so screenshots carry attribution */
 const watermarkPlugin = {
   id: "watermark",
   afterDraw(chart) {
@@ -19,8 +19,8 @@ const watermarkPlugin = {
     ctx.font = "600 11px -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif";
     ctx.fillStyle = "rgba(149, 163, 184, 0.55)";
     ctx.textAlign = "right";
-    ctx.textBaseline = "bottom";
-    ctx.fillText(SITE_NAME, chartArea.right - 8, chartArea.bottom - 6);
+    ctx.textBaseline = "top";
+    ctx.fillText(SITE_NAME, chartArea.right - 8, chartArea.top + 6);
     ctx.restore();
   },
 };
@@ -36,16 +36,20 @@ const eventMarkersPlugin = {
     if (!cfg || !cfg.events || !cfg.events.length) return;
 
     const { ctx, chartArea, scales } = chart;
+    if (!chartArea) return;
     const xScale = scales.x;
     const minDate = cfg.minDate || null;
     const highlightedIdx = cfg.highlightedIdx ?? -1;
+
+    // Convert date string to UTC timestamp for Chart.js time scale
+    const tsFor = (d) => new Date(d + "T00:00:00Z").getTime();
 
     // Filter to visible events within current x-axis range
     const positions = cfg.events
       .map((e, i) => ({ ...e, idx: i }))
       .filter((e) => !minDate || e.date >= minDate)
-      .map((e) => ({ ...e, x: xScale.getPixelForValue(e.date) }))
-      .filter((p) => p.x >= chartArea.left && p.x <= chartArea.right + 2);
+      .map((e) => ({ ...e, x: xScale.getPixelForValue(tsFor(e.date)) }))
+      .filter((p) => Number.isFinite(p.x) && p.x >= chartArea.left && p.x <= chartArea.right + 2);
 
     // Pack into rows: try row 0 first; if too close to last marker in that row, try row 1, etc.
     const MARKER_GAP_PX = 26;
