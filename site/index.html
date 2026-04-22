@@ -47,9 +47,12 @@
     <section class="chart-section">
       <div class="chart-toolbar">
         <div class="range-buttons" role="group" aria-label="Date range">
-          <button class="range-btn" data-range="all" title="All time (2019 – present)">All time</button>
+          <button class="range-btn" data-range="all" title="All time (2019 – present)">All</button>
           <button class="range-btn" data-range="war" title="Iran war era (Jun 2025 – present)">Iran war</button>
           <button class="range-btn active" data-range="closure" title="Closure (Feb 2026 – present)">Closure</button>
+          <button class="range-btn" data-range="d30" title="Last 30 days">30d</button>
+          <button class="range-btn" data-range="d7" title="Last 7 days">7d</button>
+          <button class="range-btn" data-range="custom" title="Custom date range">Custom</button>
         </div>
         <button class="icon-btn" id="downloadBtn" title="Download chart as PNG for sharing" aria-label="Download chart">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -61,6 +64,12 @@
         </button>
       </div>
 
+      <div class="custom-range" id="customRange" hidden>
+        <label>From <input type="date" id="customFrom" /></label>
+        <label>To <input type="date" id="customTo" /></label>
+        <button class="icon-btn" id="customApplyBtn">Apply</button>
+      </div>
+
       <div class="chart-wrap">
         <canvas id="mainChart"></canvas>
         <div class="chart-watermark">hormuz-traffic.com</div>
@@ -69,6 +78,28 @@
       <div class="event-list" id="eventList">
         <!-- populated by app.js: rich rows with date + label + source -->
       </div>
+
+      <details class="data-table-section">
+        <summary>
+          <span>Show daily numbers</span>
+          <span class="caret">▾</span>
+        </summary>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th class="th-date">Date</th>
+                <th class="th-num">Total</th>
+                <th class="th-num">Tankers</th>
+                <th class="th-num">7-day avg</th>
+                <th class="th-num">vs pre-closure</th>
+              </tr>
+            </thead>
+            <tbody id="dataTableBody"><!-- populated by app.js --></tbody>
+          </table>
+        </div>
+        <div class="table-footer" id="dataTableFooter"></div>
+      </details>
     </section>
 
     <section class="vessel-section">

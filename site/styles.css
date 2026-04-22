@@ -318,6 +318,7 @@ main {
 
 .range-buttons {
   display: inline-flex;
+  flex-wrap: wrap;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -346,6 +347,48 @@ main {
 .range-btn.active {
   background: var(--accent);
   color: var(--bg);
+}
+
+/* CUSTOM DATE RANGE */
+.custom-range {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 0.85rem;
+  padding: 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.custom-range label {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.custom-range input[type="date"] {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  min-width: 130px;
+  color-scheme: dark;
+}
+
+.custom-range input[type="date"]:focus {
+  outline: none;
+  border-color: var(--accent);
 }
 
 /* Compact icon button for download */
@@ -469,6 +512,119 @@ main {
 .event-row .ev-source:hover {
   color: var(--accent);
   border: none;
+}
+
+/* DATA TABLE */
+.data-table-section {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+
+.data-table-section summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  padding: 0.4rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  user-select: none;
+}
+
+.data-table-section summary::-webkit-details-marker {
+  display: none;
+}
+
+.data-table-section summary:hover {
+  color: var(--text);
+}
+
+.data-table-section summary .caret {
+  font-size: 1rem;
+  transition: transform 200ms ease;
+}
+
+.data-table-section[open] summary .caret {
+  transform: rotate(180deg);
+}
+
+.table-wrap {
+  margin-top: 0.6rem;
+  max-height: 380px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.data-table thead {
+  position: sticky;
+  top: 0;
+  background: var(--bg-card);
+  z-index: 1;
+}
+
+.data-table th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-dim);
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.data-table th.th-num,
+.data-table td.td-num {
+  text-align: right;
+}
+
+.data-table tbody tr {
+  border-bottom: 1px solid rgba(31, 41, 64, 0.5);
+}
+
+.data-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.data-table tbody tr:hover {
+  background: rgba(245, 166, 35, 0.04);
+}
+
+.data-table td {
+  padding: 0.45rem 0.75rem;
+  color: var(--text);
+}
+
+.data-table td.td-date {
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.data-table td.td-num.down {
+  color: var(--red);
+}
+
+.data-table td.td-num.up {
+  color: var(--green);
+}
+
+.table-footer {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  margin-top: 0.5rem;
+  text-align: right;
 }
 
 /* SUPPORT CALLOUT */
@@ -598,6 +754,23 @@ footer {
   }
   .chart-wrap.small {
     height: 240px;
+  }
+  /* Tighter range buttons on mobile */
+  .range-btn {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.78rem;
+  }
+  .custom-range {
+    padding: 0.6rem;
+  }
+  .custom-range input[type="date"] {
+    min-width: 110px;
+    font-size: 0.8rem;
+  }
+  .data-table th,
+  .data-table td {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.76rem;
   }
   /* Stack event row contents differently on small screens */
   .event-row {

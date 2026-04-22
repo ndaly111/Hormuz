@@ -7,7 +7,14 @@ const RANGES = {
   all: { min: null, label: "2019 – present" },
   war: { min: "2025-06-01", label: "Jun 2025 – present" },
   closure: { min: "2026-02-01", label: "Feb 2026 – present" },
+  d30: { dynamic: 30, label: "Last 30 days" },
+  d7: { dynamic: 7, label: "Last 7 days" },
+  custom: { custom: true, label: "Custom range" },
 };
+
+let customRangeMin = null;
+let customRangeMax = null;
+let dataLatestDate = null;
 
 /* Event markers plugin — draws numbered chips in a strip below the chart,
    with dotted connectors. Caps stagger at 2 rows; nudges edge markers inward.
@@ -22,6 +29,7 @@ const eventMarkersPlugin = {
     if (!chartArea) return;
     const xScale = scales.x;
     const minDate = cfg.minDate || null;
+    const maxDate = cfg.maxDate || null;
     const highlightedIdx = cfg.highlightedIdx ?? -1;
 
     const tsFor = (d) => new Date(d + "T00:00:00Z").getTime();
@@ -29,7 +37,7 @@ const eventMarkersPlugin = {
     // Filter to visible events; keep dataX (true position) and adjust x for edge nudge.
     const positions = cfg.events
       .map((e, i) => ({ ...e, idx: i }))
-      .filter((e) => !minDate || e.date >= minDate)
+      .filter((e) => (!minDate || e.date >= minDate) && (!maxDate || e.date <= maxDate))
       .map((e) => {
         const x = xScale.getPixelForValue(tsFor(e.date));
         return { ...e, x, dataX: x };
@@ -334,24 +342,53 @@ function renderMainChart(data, events) {
   });
 }
 
+// Compute the effective min/max for a given range key.
+function resolveRange(rangeKey) {
+  const range = RANGES[rangeKey];
+  if (!range) return { min: null, max: null };
+  if (range.dynamic && dataLatestDate) {
+    const end = new Date(dataLatestDate + "T00:00:00Z");
+    const start = new Date(end);
+    start.setUTCDate(start.getUTCDate() - range.dynamic + 1);
+    return { min: start.toISOString().slice(0, 10), max: dataLatestDate };
+  }
+  if (range.custom) {
+    return { min: customRangeMin, max: customRangeMax };
+  }
+  return { min: range.min || null, max: null };
+}
+
 function applyRange(rangeKey) {
   if (!mainChartRef) return;
   currentRangeKey = rangeKey;
-  const range = RANGES[rangeKey];
+  const { min, max } = resolveRange(rangeKey);
   const x = mainChartRef.options.scales.x;
-  if (range.min) {
-    x.min = range.min;
-    x.max = sortedEvents.length ? undefined : undefined;
-    x.time.unit = "month";
+
+  if (min) { x.min = min; } else { delete x.min; }
+  if (max) { x.max = max; } else { delete x.max; }
+
+  // Pick a sensible time-axis unit based on window size
+  if (min) {
+    const span = (max ? new Date(max) : new Date()) - new Date(min);
+    const days = span / 86400000;
+    if (days <= 14) x.time.unit = "day";
+    else if (days <= 120) x.time.unit = "week";
+    else if (days <= 730) x.time.unit = "month";
+    else x.time.unit = "year";
   } else {
-    delete x.min;
     x.time.unit = "year";
   }
+
   if (mainChartRef.options.plugins.eventMarkers) {
-    mainChartRef.options.plugins.eventMarkers.minDate = range.min;
+    mainChartRef.options.plugins.eventMarkers.minDate = min;
+    mainChartRef.options.plugins.eventMarkers.maxDate = max;
   }
   mainChartRef.update();
   renderEventList();
+
+  // Toggle custom date input row
+  const customEl = document.getElementById("customRange");
+  if (customEl) customEl.hidden = rangeKey !== "custom";
 }
 
 /* --- VESSEL CHART --- */
@@ -416,10 +453,10 @@ function renderEventList() {
   if (!listEl) return;
   if (!sortedEvents.length) return;
 
-  const minDate = RANGES[currentRangeKey] ? RANGES[currentRangeKey].min : null;
+  const { min: minDate, max: maxDate } = resolveRange(currentRangeKey);
   const visible = sortedEvents
     .map((e, i) => ({ ...e, idx: i }))
-    .filter((e) => !minDate || e.date >= minDate);
+    .filter((e) => (!minDate || e.date >= minDate) && (!maxDate || e.date <= maxDate));
 
   if (visible.length === 0) {
     listEl.innerHTML = `<div class="event-empty">No events in this range.</div>`;
@@ -460,6 +497,43 @@ function renderEventList() {
       }
     });
   });
+}
+
+/* --- DATA TABLE --- */
+
+let allSeriesData = null;
+
+function renderDataTable(data) {
+  allSeriesData = data;
+  const tbody = document.getElementById("dataTableBody");
+  const footer = document.getElementById("dataTableFooter");
+  if (!tbody) return;
+
+  const preFebAvg = data.baselines.pre_feb_2026.avg_total;
+  const series = data.series;
+
+  // Show last 60 days; user can scroll within the wrapper
+  const SHOW_N = 60;
+  const recent = series.slice(-SHOW_N).reverse(); // most recent first
+
+  tbody.innerHTML = recent
+    .map((row) => {
+      const pct = preFebAvg ? ((row.total - preFebAvg) / preFebAvg) * 100 : null;
+      const pctClass = pct == null ? "" : pct < -2 ? "down" : pct > 2 ? "up" : "";
+      return `
+        <tr>
+          <td class="td-date">${fmt.date(row.date)}</td>
+          <td class="td-num">${row.total}</td>
+          <td class="td-num">${row.tanker}</td>
+          <td class="td-num">${row.ma7 != null ? row.ma7.toFixed(1) : "—"}</td>
+          <td class="td-num ${pctClass}">${pct == null ? "—" : (pct > 0 ? "+" : "") + pct.toFixed(0) + "%"}</td>
+        </tr>`;
+    })
+    .join("");
+
+  if (footer) {
+    footer.textContent = `Showing latest ${recent.length} of ${series.length.toLocaleString()} days`;
+  }
 }
 
 /* --- DOWNLOAD AS PNG --- */
@@ -532,11 +606,13 @@ function renderUpdated(data) {
     ]);
 
     sortedEvents = events.slice().sort((a, b) => (a.date < b.date ? -1 : 1));
+    dataLatestDate = data.current.latest_date;
 
     renderStats(data);
     renderMainChart(data, sortedEvents);
     renderVesselChart(data);
     renderEventList();
+    renderDataTable(data);
     renderUpdated(data);
     applyRange(currentRangeKey);
 
@@ -547,6 +623,39 @@ function renderUpdated(data) {
         applyRange(btn.dataset.range);
       });
     });
+
+    // Initialize custom date inputs with sensible defaults
+    const fromEl = document.getElementById("customFrom");
+    const toEl = document.getElementById("customTo");
+    if (fromEl && toEl) {
+      const earliest = data.series[0].date;
+      fromEl.min = earliest;
+      fromEl.max = dataLatestDate;
+      toEl.min = earliest;
+      toEl.max = dataLatestDate;
+      // Default to a 90-day window ending on latest
+      const latest = new Date(dataLatestDate + "T00:00:00Z");
+      const ninetyAgo = new Date(latest);
+      ninetyAgo.setUTCDate(ninetyAgo.getUTCDate() - 89);
+      fromEl.value = ninetyAgo.toISOString().slice(0, 10);
+      toEl.value = dataLatestDate;
+    }
+
+    const customApplyBtn = document.getElementById("customApplyBtn");
+    if (customApplyBtn) {
+      customApplyBtn.addEventListener("click", () => {
+        const f = document.getElementById("customFrom").value;
+        const t = document.getElementById("customTo").value;
+        if (!f || !t) return;
+        if (f > t) {
+          alert("'From' date must be before 'To' date.");
+          return;
+        }
+        customRangeMin = f;
+        customRangeMax = t;
+        applyRange("custom");
+      });
+    }
 
     document.getElementById("downloadBtn").addEventListener("click", () => downloadChartAsImage(data));
 
