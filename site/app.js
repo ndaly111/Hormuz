@@ -92,17 +92,33 @@ function renderStats(data) {
 
 /* --- ANNOTATIONS --- */
 
-// Subtle vertical lines only (no labels on chart). Numbered markers handled by chips.
+// Vertical lines + numbered labels at top of chart. Major events get bigger labels.
 function makeAnnotations(events) {
   const ann = {};
   events.forEach((e, i) => {
+    const major = e.priority === "major";
     ann["evt" + i] = {
       type: "line",
       xMin: e.date,
       xMax: e.date,
-      borderColor: "rgba(245, 166, 35, 0.45)",
-      borderWidth: 1,
-      borderDash: [3, 4],
+      borderColor: major ? "rgba(245, 166, 35, 0.65)" : "rgba(245, 166, 35, 0.35)",
+      borderWidth: major ? 1.5 : 1,
+      borderDash: major ? [5, 4] : [3, 4],
+      label: {
+        display: true,
+        content: String(i + 1),
+        position: "start",
+        backgroundColor: major ? "rgba(245, 166, 35, 0.95)" : "rgba(245, 166, 35, 0.7)",
+        color: "#0a0e1a",
+        font: {
+          size: major ? 12 : 9,
+          weight: "bold",
+          family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+        },
+        padding: major ? { top: 3, bottom: 3, left: 7, right: 7 } : { top: 1, bottom: 1, left: 4, right: 4 },
+        borderRadius: 999,
+        yAdjust: 0,
+      },
     };
   });
   return ann;
@@ -111,16 +127,23 @@ function makeAnnotations(events) {
 function highlightAnnotation(chart, idx) {
   Object.entries(chart.options.plugins.annotation.annotations).forEach(([key, a]) => {
     const isTarget = key === "evt" + idx;
-    a.borderColor = isTarget ? "rgba(245, 166, 35, 1)" : "rgba(245, 166, 35, 0.25)";
-    a.borderWidth = isTarget ? 2.5 : 1;
+    const major = a.label && a.label.font && a.label.font.size === 12;
+    if (isTarget) {
+      a.borderColor = "rgba(245, 166, 35, 1)";
+      a.borderWidth = 2.5;
+    } else {
+      a.borderColor = major ? "rgba(245, 166, 35, 0.35)" : "rgba(245, 166, 35, 0.2)";
+      a.borderWidth = major ? 1.5 : 1;
+    }
   });
   chart.update("none");
 }
 
 function clearAnnotationHighlight(chart) {
   Object.values(chart.options.plugins.annotation.annotations).forEach((a) => {
-    a.borderColor = "rgba(245, 166, 35, 0.45)";
-    a.borderWidth = 1;
+    const major = a.label && a.label.font && a.label.font.size === 12;
+    a.borderColor = major ? "rgba(245, 166, 35, 0.65)" : "rgba(245, 166, 35, 0.35)";
+    a.borderWidth = major ? 1.5 : 1;
   });
   chart.update("none");
 }
@@ -129,6 +152,8 @@ function clearAnnotationHighlight(chart) {
 
 let mainChartRef = null;
 let allSeries = null;
+let sortedEvents = [];
+let currentRangeKey = "all";
 
 function renderMainChart(data, events) {
   const labels = data.series.map((d) => d.date);
@@ -202,6 +227,7 @@ function renderMainChart(data, events) {
 
 function applyRange(rangeKey) {
   if (!mainChartRef) return;
+  currentRangeKey = rangeKey;
   const range = RANGES[rangeKey];
   const x = mainChartRef.options.scales.x;
   if (range.min) {
@@ -212,6 +238,7 @@ function applyRange(rangeKey) {
     x.time.unit = "year";
   }
   mainChartRef.update();
+  renderEventChips();
 }
 
 /* --- VESSEL CHART --- */
@@ -273,21 +300,35 @@ function renderVesselChart(data) {
 /* --- EVENT CHIPS --- */
 
 function renderEventChips(events) {
-  const sorted = events.slice().sort((a, b) => (a.date < b.date ? -1 : 1));
+  if (events) {
+    sortedEvents = events.slice().sort((a, b) => (a.date < b.date ? -1 : 1));
+  }
   const chipsEl = document.getElementById("eventChips");
   const detailEl = document.getElementById("eventDetail");
 
-  chipsEl.innerHTML = sorted
-    .map((e, i) => `
-      <button class="event-chip" data-idx="${i}" data-date="${e.date}" type="button">
-        <span class="chip-num">${i + 1}</span>
+  const minDate = RANGES[currentRangeKey] ? RANGES[currentRangeKey].min : null;
+  const visible = sortedEvents
+    .map((e, i) => ({ ...e, idx: i }))
+    .filter((e) => !minDate || e.date >= minDate);
+
+  if (visible.length === 0) {
+    chipsEl.innerHTML = `<div style="color:var(--text-faint);font-size:0.85rem">No events in this range.</div>`;
+    detailEl.hidden = true;
+    return;
+  }
+
+  chipsEl.innerHTML = visible
+    .map((e) => `
+      <button class="event-chip" data-idx="${e.idx}" data-date="${e.date}" type="button">
+        <span class="chip-num">${e.idx + 1}</span>
         <span class="chip-date">${fmt.dateShort(e.date)} '${String(new Date(e.date).getUTCFullYear()).slice(2)}</span>
       </button>`)
     .join("");
 
-  // Map sorted index -> original event annotation index (they're in the same order)
+  detailEl.hidden = true;
+
   const showDetail = (i) => {
-    const e = sorted[i];
+    const e = sortedEvents[i];
     detailEl.hidden = false;
     detailEl.innerHTML = `
       <span class="ed-num">${i + 1}</span>
