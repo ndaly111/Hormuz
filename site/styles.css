@@ -627,6 +627,173 @@ main {
   text-align: right;
 }
 
+/* SHARE PAGE (/today) */
+.share-page {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.share-page h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.share-intro {
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  margin-bottom: 1.5rem;
+}
+
+.share-page h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.share-image-section,
+.share-text-section,
+.share-instructions-section {
+  margin-bottom: 1.75rem;
+}
+
+.share-tip {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-bottom: 0.75rem;
+}
+
+.share-image-wrap {
+  position: relative;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-image-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.share-image-loader {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  padding: 2rem;
+}
+
+#tweetText {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 140px;
+}
+
+#tweetText:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.share-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.share-buttons .icon-btn,
+.share-buttons .bmc-cta {
+  flex: 0 0 auto;
+}
+
+.share-instructions {
+  padding-left: 1.25rem;
+  color: var(--text-dim);
+  font-size: 0.92rem;
+}
+
+.share-instructions li {
+  margin-bottom: 0.4rem;
+}
+
+.share-instructions strong {
+  color: var(--text);
+}
+
+.share-customize {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.share-customize summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  padding: 0.4rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+
+.share-customize summary::-webkit-details-marker {
+  display: none;
+}
+
+.share-customize summary:hover {
+  color: var(--text);
+}
+
+.share-customize summary .caret {
+  font-size: 1rem;
+  transition: transform 200ms ease;
+}
+
+.share-customize[open] summary .caret {
+  transform: rotate(180deg);
+}
+
+.share-range-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.share-range-buttons .range-btn {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.85rem;
+}
+
+.share-range-buttons .range-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
 /* SUPPORT CALLOUT */
 .support-callout {
   background: linear-gradient(135deg, rgba(245, 166, 35, 0.08) 0%, rgba(245, 166, 35, 0.03) 100%);
