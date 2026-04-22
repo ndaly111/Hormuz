@@ -153,7 +153,7 @@ function clearAnnotationHighlight(chart) {
 let mainChartRef = null;
 let allSeries = null;
 let sortedEvents = [];
-let currentRangeKey = "all";
+let currentRangeKey = "closure";
 
 function renderMainChart(data, events) {
   const labels = data.series.map((d) => d.date);
@@ -432,6 +432,7 @@ function renderUpdated(data) {
     renderVesselChart(data);
     renderEventChips(events);
     renderUpdated(data);
+    applyRange(currentRangeKey);
 
     document.querySelectorAll(".range-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
