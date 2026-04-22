@@ -1,0 +1,47 @@
+name: Daily PortWatch refresh
+
+on:
+  schedule:
+    # Run every day at 06:00 UTC. PortWatch updates Tuesdays 13:00 UTC,
+    # so a daily run keeps things fresh without missing the update.
+    - cron: "0 6 * * *"
+  workflow_dispatch:  # allow manual trigger
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: pipeline/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r pipeline/requirements.txt
+
+      - name: Run pipeline
+        run: python pipeline/fetch_portwatch.py
+
+      - name: Commit updated data (if changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/data/transits.json
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "Daily refresh: PortWatch data through $(date -u +%Y-%m-%d)"
+            git push
+          fi
