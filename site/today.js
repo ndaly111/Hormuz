@@ -193,12 +193,9 @@ async function generateShareImage(data, events, rangeKey) {
 function buildTweetText(data) {
   const cur = data.current;
   const daysSince = daysBetween(CLOSURE_DATE, cur.latest_date);
-  return `🚢 Strait of Hormuz transit update — Day ${daysSince} since closure
+  return `Day ${daysSince} of Hormuz closure: 7-day avg ${fmt.num(cur.last_7d_avg)} ships/day (${fmt.pct(cur.vs_pre_feb_2026_pct)} vs pre-closure norm)
 
-Latest day: ${cur.latest_total} transits (${cur.latest_tanker} tankers)
-7-day avg: ${fmt.num(cur.last_7d_avg)}/day vs ~89/day pre-closure (${fmt.pct(cur.vs_pre_feb_2026_pct)})
-
-📊 Live tracker: ${SITE_URL}`;
+${SITE_URL}`;
 }
 
 function updateTweetUI(data) {
