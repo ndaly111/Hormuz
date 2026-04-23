@@ -193,14 +193,18 @@ async function generateShareImage(data, events, rangeKey) {
 function buildTweetText(data) {
   const cur = data.current;
   const daysSince = daysBetween(CLOSURE_DATE, cur.latest_date);
-  return `Day ${daysSince} of Hormuz closure: 7-day avg ${fmt.num(cur.last_7d_avg)} ships/day (${fmt.pct(cur.vs_pre_feb_2026_pct)} vs pre-closure norm)
+  return `Day ${daysSince} of Hormuz closure: 7-day avg ${fmt.num(cur.last_7d_avg)} ships/day (${fmt.pct(cur.vs_pre_feb_2026_pct)} vs pre-closure norm)`;
+}
 
-${SITE_URL}`;
+function buildReplyText() {
+  return `Daily updates + historical chart: ${SITE_URL}`;
 }
 
 function updateTweetUI(data) {
   const text = buildTweetText(data);
+  const reply = buildReplyText();
   document.getElementById("tweetText").value = text;
+  document.getElementById("replyText").value = reply;
   const tweetLink = document.getElementById("tweetLink");
   tweetLink.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
 }
@@ -246,21 +250,24 @@ async function updateShareImage() {
       });
     });
 
-    // Copy text
-    document.getElementById("copyTextBtn").addEventListener("click", async () => {
-      const ta = document.getElementById("tweetText");
-      try {
-        await navigator.clipboard.writeText(ta.value);
-        const btn = document.getElementById("copyTextBtn");
-        const orig = btn.textContent;
-        btn.textContent = "Copied ✓";
-        setTimeout(() => (btn.textContent = orig), 1500);
-      } catch (e) {
-        // Fallback for browsers without clipboard API
-        ta.select();
-        document.execCommand("copy");
-      }
-    });
+    // Copy buttons
+    function wireCopy(btnId, taId) {
+      document.getElementById(btnId).addEventListener("click", async () => {
+        const ta = document.getElementById(taId);
+        try {
+          await navigator.clipboard.writeText(ta.value);
+          const btn = document.getElementById(btnId);
+          const orig = btn.textContent;
+          btn.textContent = "Copied ✓";
+          setTimeout(() => (btn.textContent = orig), 1500);
+        } catch (e) {
+          ta.select();
+          document.execCommand("copy");
+        }
+      });
+    }
+    wireCopy("copyTextBtn", "tweetText");
+    wireCopy("copyReplyBtn", "replyText");
   } catch (e) {
     console.error(e);
     document.getElementById("imageLoader").textContent = "Failed to load: " + e.message;
