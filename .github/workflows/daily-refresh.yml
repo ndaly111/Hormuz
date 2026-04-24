@@ -5,7 +5,20 @@ on:
     # Run every day at 06:00 UTC. PortWatch updates Tuesdays 13:00 UTC,
     # so a daily run keeps things fresh without missing the update.
     - cron: "0 6 * * *"
-  workflow_dispatch:  # allow manual trigger
+  workflow_dispatch:
+    inputs:
+      force_post:
+        description: "Post to Bluesky even if data did not change (for testing)"
+        required: false
+        default: "false"
+        type: choice
+        options: [ "false", "true" ]
+      dry_run_post:
+        description: "Render image + log caption, but skip actual Bluesky post"
+        required: false
+        default: "false"
+        type: choice
+        options: [ "false", "true" ]
 
 permissions:
   contents: write
@@ -35,13 +48,41 @@ jobs:
         run: python pipeline/fetch_portwatch.py
 
       - name: Commit updated data (if changed)
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add site/data/transits.json
           if git diff --cached --quiet; then
             echo "No data changes to commit."
+            echo "data_changed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "Daily refresh: PortWatch data through $(date -u +%Y-%m-%d)"
             git push
+            echo "data_changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Install Playwright browser
+        if: steps.commit.outputs.data_changed == 'true' || inputs.force_post == 'true'
+        run: python -m playwright install --with-deps chromium
+
+      - name: Post update to Bluesky
+        if: steps.commit.outputs.data_changed == 'true' || inputs.force_post == 'true'
+        env:
+          BLUESKY_HANDLE: hormuz-traffic.bsky.social
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          SHARE_RANGE_KEY: war
+        run: |
+          if [ "${{ inputs.dry_run_post }}" = "true" ]; then
+            python pipeline/post_bluesky.py --dry-run
+          else
+            python pipeline/post_bluesky.py
+          fi
+
+      - name: Upload dry-run preview
+        if: inputs.dry_run_post == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: bluesky-dry-run-preview
+          path: pipeline/_latest_share.png
+          if-no-files-found: ignore
