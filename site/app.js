@@ -4,21 +4,43 @@ const CLOSURE_DATE = "2026-03-04";
 const SITE_NAME = "hormuz-traffic.com";
 
 const RANGES = {
-  all: { min: null, label: "2019 – present" },
-  war: { min: "2025-06-01", label: "Jun 2025 – present" },
+  all:     { min: null,         label: "2019 – present" },
+  war:     { min: "2025-06-01", label: "Jun 2025 – present" },
   closure: { min: "2026-02-01", label: "Feb 2026 – present" },
-  d30: { dynamic: 30, label: "Last 30 days" },
-  d7: { dynamic: 7, label: "Last 7 days" },
-  custom: { custom: true, label: "Custom range" },
+  d30:     { dynamic: 30,       label: "Last 30 days" },
+  d7:      { dynamic: 7,        label: "Last 7 days" },
+  custom:  { custom: true,      label: "Custom range" },
 };
+
+/* Dispatch palette (mirrored from CSS tokens) */
+const C = {
+  paper:       "#ede4cb",
+  paperDim:    "#c0b89e",
+  paperFaint:  "#6f6a58",
+  steel:       "#8a98b5",
+  steelFaint:  "#5a6680",
+  ink:         "#0a0f1c",
+  inkDeep:     "#060912",
+  inkRaised:   "#121a2c",
+  inkEdge:     "#2a3548",
+  alert:       "#c83232",
+  caution:     "#d99a2b",
+  cautionLine: "rgba(217, 154, 43, 1)",
+  dataBlue:    "#5a8fc2",
+  dataViolet:  "#8a6fb8",
+  dataMute:    "#4a5670",
+};
+
+const FONT_MONO = "JetBrains Mono, IBM Plex Mono, Menlo, monospace";
+const FONT_DISPLAY = "Bebas Neue, Oswald, sans-serif";
 
 let customRangeMin = null;
 let customRangeMax = null;
 let dataLatestDate = null;
 
-/* Event markers plugin — draws numbered chips in a strip below the chart,
-   with dotted connectors. Caps stagger at 2 rows; nudges edge markers inward.
-   Reads its config from chart.options.plugins.eventMarkers. */
+/* ============================================================
+   EVENT MARKERS PLUGIN — strip below chart with staggered chips
+   ============================================================ */
 const eventMarkersPlugin = {
   id: "eventMarkers",
   afterDatasetsDraw(chart) {
@@ -34,7 +56,6 @@ const eventMarkersPlugin = {
 
     const tsFor = (d) => new Date(d + "T00:00:00Z").getTime();
 
-    // Filter to visible events; keep dataX (true position) and adjust x for edge nudge.
     const positions = cfg.events
       .map((e, i) => ({ ...e, idx: i }))
       .filter((e) => (!minDate || e.date >= minDate) && (!maxDate || e.date <= maxDate))
@@ -47,7 +68,6 @@ const eventMarkersPlugin = {
 
     if (!positions.length) return;
 
-    // Edge nudging — keep marker fully inside the chart horizontally
     const RADIUS_MAJOR = 11;
     const RADIUS_MINOR = 8;
     positions.forEach((p) => {
@@ -56,9 +76,8 @@ const eventMarkersPlugin = {
       if (p.x + r > chartArea.right) p.x = chartArea.right - r;
     });
 
-    // Stagger: cap at 2 rows. If both rows are too close, accept slight overlap.
     const MAX_ROWS = 2;
-    const MARKER_GAP_PX = 26;
+    const MARKER_GAP_PX = 28;
     const lastInRow = [];
     positions.forEach((p) => {
       let chosen = 0;
@@ -67,7 +86,7 @@ const eventMarkersPlugin = {
           chosen = r;
           break;
         }
-        chosen = r; // remember; if no row fits, last iteration wins
+        chosen = r;
       }
       p.row = chosen;
       lastInRow[chosen] = p.x;
@@ -76,7 +95,7 @@ const eventMarkersPlugin = {
     const ROW_HEIGHT = 24;
     const ROW_OFFSET = 22;
 
-    // Draw connectors first (under markers)
+    // Connectors first (under markers)
     positions.forEach((p) => {
       const major = p.priority === "major";
       const isHi = p.idx === highlightedIdx;
@@ -85,22 +104,20 @@ const eventMarkersPlugin = {
 
       ctx.save();
       ctx.strokeStyle = isHi
-        ? "rgba(245, 166, 35, 0.95)"
+        ? "rgba(217, 154, 43, 0.95)"
         : major
-          ? "rgba(245, 166, 35, 0.55)"
-          : "rgba(245, 166, 35, 0.32)";
+          ? "rgba(217, 154, 43, 0.55)"
+          : "rgba(217, 154, 43, 0.32)";
       ctx.lineWidth = isHi ? 1.5 : 1;
       ctx.setLineDash([2, 3]);
       ctx.beginPath();
-      // Connector goes from the true date position at chart bottom
-      // diagonally to the (possibly nudged) marker position.
       ctx.moveTo(p.dataX, chartArea.bottom);
       ctx.lineTo(p.x, yMarker - radius);
       ctx.stroke();
       ctx.restore();
     });
 
-    // Draw markers and numbers
+    // Markers + numbers
     positions.forEach((p) => {
       const major = p.priority === "major";
       const isHi = p.idx === highlightedIdx;
@@ -108,22 +125,21 @@ const eventMarkersPlugin = {
       const yMarker = chartArea.bottom + ROW_OFFSET + p.row * ROW_HEIGHT;
 
       ctx.save();
-      // Major: filled solid. Minor: outlined ring (visual differentiation beyond size).
       if (major) {
-        ctx.fillStyle = isHi ? "#ffffff" : "rgba(245, 166, 35, 0.95)";
+        ctx.fillStyle = isHi ? C.paper : "rgba(217, 154, 43, 0.95)";
         if (isHi) {
-          ctx.shadowColor = "rgba(245, 166, 35, 0.8)";
+          ctx.shadowColor = "rgba(217, 154, 43, 0.8)";
           ctx.shadowBlur = 8;
         }
         ctx.beginPath();
         ctx.arc(p.x, yMarker, radius, 0, Math.PI * 2);
         ctx.fill();
       } else {
-        ctx.fillStyle = "#0a0e1a";
+        ctx.fillStyle = C.ink;
         ctx.beginPath();
         ctx.arc(p.x, yMarker, radius, 0, Math.PI * 2);
         ctx.fill();
-        ctx.strokeStyle = isHi ? "#ffffff" : "rgba(245, 166, 35, 0.85)";
+        ctx.strokeStyle = isHi ? C.paper : "rgba(217, 154, 43, 0.85)";
         ctx.lineWidth = isHi ? 2 : 1.5;
         ctx.beginPath();
         ctx.arc(p.x, yMarker, radius, 0, Math.PI * 2);
@@ -131,10 +147,9 @@ const eventMarkersPlugin = {
       }
       ctx.restore();
 
-      // Number
       ctx.save();
-      ctx.fillStyle = major ? "#0a0e1a" : isHi ? "#ffffff" : "rgba(245, 166, 35, 0.95)";
-      ctx.font = `bold ${major ? 12 : 10}px -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif`;
+      ctx.fillStyle = major ? C.ink : (isHi ? C.paper : "rgba(217, 154, 43, 0.95)");
+      ctx.font = `bold ${major ? 12 : 10}px ${FONT_MONO}`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(String(p.idx + 1), p.x, yMarker + 0.5);
@@ -144,18 +159,30 @@ const eventMarkersPlugin = {
 };
 Chart.register(eventMarkersPlugin);
 
+/* ============================================================
+   FORMATTERS
+   ============================================================ */
 const fmt = {
   int: (n) => (n == null ? "—" : Math.round(n).toLocaleString()),
   num: (n) => (n == null ? "—" : Number(n).toLocaleString(undefined, { maximumFractionDigits: 1 })),
   pct: (n) => (n == null ? "—" : `${n > 0 ? "+" : ""}${n.toFixed(1)}%`),
+  pctHero: (n) => (n == null ? "—" : `${n > 0 ? "+" : n < 0 ? "−" : ""}${Math.abs(n).toFixed(1)}%`),
   date: (s) => new Date(s + "T00:00:00Z").toLocaleDateString("en-US",
     { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }),
   dateShort: (s) => new Date(s + "T00:00:00Z").toLocaleDateString("en-US",
     { month: "short", day: "numeric", timeZone: "UTC" }),
+  dateMonoShort: (s) => {
+    const d = new Date(s + "T00:00:00Z");
+    return d.toLocaleDateString("en-US", { month: "short", day: "2-digit", timeZone: "UTC" }).toUpperCase();
+  },
   dateShortYr: (s) => {
     const d = new Date(s + "T00:00:00Z");
     return d.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" })
       + " '" + String(d.getUTCFullYear()).slice(2);
+  },
+  dateMonoFull: (s) => {
+    const d = new Date(s + "T00:00:00Z");
+    return d.toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric", timeZone: "UTC" }).toUpperCase();
   },
 };
 
@@ -168,53 +195,157 @@ async function loadJson(path) {
   return r.json();
 }
 
-/* --- STATS --- */
+/* ============================================================
+   COUNT-UP ANIMATION (eased, percentage-aware)
+   ============================================================ */
+function animatePercent(el, target, durationMs = 1100) {
+  if (target == null) { el.textContent = "—"; return; }
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    el.textContent = fmt.pctHero(target);
+    return;
+  }
+  const start = performance.now();
+  const ease = (t) => 1 - Math.pow(1 - t, 3); // easeOutCubic
+  function frame(now) {
+    const t = Math.min(1, (now - start) / durationMs);
+    const v = target * ease(t);
+    el.textContent = fmt.pctHero(v);
+    if (t < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
 
+function animateInt(el, target, durationMs = 900, suffix = "") {
+  if (target == null) { el.textContent = "—"; return; }
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    el.textContent = fmt.int(target) + suffix;
+    return;
+  }
+  const start = performance.now();
+  const ease = (t) => 1 - Math.pow(1 - t, 3);
+  function frame(now) {
+    const t = Math.min(1, (now - start) / durationMs);
+    const v = Math.round(target * ease(t));
+    el.textContent = v.toLocaleString() + suffix;
+    if (t < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
+/* ============================================================
+   WIRE TICKER (top strip)
+   ============================================================ */
+function renderTicker(data) {
+  const cur = data.current;
+  const daysSince = daysBetween(CLOSURE_DATE, cur.latest_date);
+  const dt = document.getElementById("tickerDays");
+  if (dt) dt.textContent = daysSince >= 0 ? String(daysSince) : "—";
+  const dthru = document.getElementById("tickerDataThrough");
+  if (dthru) dthru.textContent = fmt.dateMonoShort(cur.latest_date);
+  const refreshed = document.getElementById("tickerRefreshed");
+  if (refreshed) {
+    const d = new Date(data.updated);
+    refreshed.textContent = d.toLocaleString("en-US", {
+      month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit",
+      timeZone: "UTC", hour12: false,
+    }).toUpperCase().replace(",", "") + " UTC";
+  }
+}
+
+/* ============================================================
+   HERO HEADLINE (count-up + editorial deck)
+   ============================================================ */
+function renderHero(data) {
+  const cur = data.current;
+  const pct = cur.vs_pre_feb_2026_pct;
+  const headline = document.getElementById("heroHeadline");
+  const deck = document.getElementById("heroDeck");
+  if (!headline) return;
+
+  // Direction class
+  headline.classList.remove("up", "down", "flat");
+  if (pct == null) headline.classList.add("flat");
+  else if (pct < -2) headline.classList.add("down");
+  else if (pct > 2) headline.classList.add("up");
+  else headline.classList.add("flat");
+
+  animatePercent(headline, pct);
+
+  // Editorial deck — context-aware framing
+  const daysSince = daysBetween(CLOSURE_DATE, cur.latest_date);
+  const deckText = composeDeck(pct, daysSince, cur);
+  if (deck) deck.innerHTML = deckText;
+}
+
+function composeDeck(pct, daysSince, cur) {
+  const pre = "~89/day";
+  const latest = `${cur.latest_total} transits`;
+  const sevenDay = fmt.num(cur.last_7d_avg);
+  if (pct == null) {
+    return `Live count of ship traffic through the world's most critical oil chokepoint, refreshed daily from satellite AIS.`;
+  }
+  if (pct < -50) {
+    return `Ship traffic through the strait has <strong>collapsed</strong> from a pre-closure baseline near <strong>${pre}</strong> to a 7-day average of <strong>${sevenDay}/day</strong>. Iran has held the chokepoint closed for <strong>${daysSince} days</strong>.`;
+  }
+  if (pct < -15) {
+    return `Transit traffic remains materially below pre-closure levels (~${pre}) at <strong>${sevenDay}/day</strong> on a 7-day average. <strong>Day ${daysSince}</strong> of the closure crisis.`;
+  }
+  if (pct > 15) {
+    return `Transit traffic now exceeds pre-closure norms — <strong>${sevenDay}/day</strong> vs. a baseline of <strong>${pre}</strong>.`;
+  }
+  return `Transit traffic is hovering near pre-closure norms — <strong>${sevenDay}/day</strong> vs. a baseline of <strong>${pre}</strong>. ${daysSince > 0 ? `Day ${daysSince} since the closure was declared.` : ""}`;
+}
+
+/* ============================================================
+   SUPPORTING STATS (3 cards in a tight row)
+   ============================================================ */
 function renderStats(data) {
   const cur = data.current;
-  const preFeb = data.baselines.pre_feb_2026;
   const daysSinceClosure = daysBetween(CLOSURE_DATE, cur.latest_date);
-
-  const pctClass = (p) => (p == null ? "" : p < -2 ? "down" : p > 2 ? "up" : "");
 
   const cards = [
     {
-      label: "vs pre-closure baseline",
-      value: fmt.pct(cur.vs_pre_feb_2026_pct),
-      sub: `pre-Feb 2026: ${fmt.num(preFeb.avg_total)}/day`,
-      cls: pctClass(cur.vs_pre_feb_2026_pct),
-      highlight: true,
-    },
-    {
-      label: "Days since closure",
-      value: daysSinceClosure >= 0 ? daysSinceClosure : "—",
+      label: "Days closed",
+      value: daysSinceClosure >= 0 ? String(daysSinceClosure) : "—",
       sub: `since ${fmt.dateShort(CLOSURE_DATE)} '26`,
-      highlight: true,
+      animate: { kind: "int", target: daysSinceClosure },
     },
     {
-      label: "30-day average",
+      label: "30-day avg",
       value: fmt.num(cur.last_30d_avg),
-      sub: `transits/day`,
+      sub: "transits/day",
     },
     {
       label: "Latest day",
       value: fmt.int(cur.latest_total),
       sub: `${fmt.dateShort(cur.latest_date)} · ${cur.latest_tanker} tankers`,
+      animate: { kind: "int", target: cur.latest_total },
     },
   ];
 
   document.getElementById("stats").innerHTML = cards
-    .map((c) => `
-      <div class="stat-card${c.highlight ? " highlight" : ""}">
+    .map((c, i) => `
+      <div class="stat-card">
         <div class="stat-label">${c.label}</div>
-        <div class="stat-value ${c.cls || ""}">${c.value}</div>
+        <div class="stat-value" data-stat-idx="${i}">${c.value}</div>
         <div class="stat-sub">${c.sub}</div>
       </div>`)
     .join("");
+
+  // Apply count-up animations after a tiny delay so stagger is visible
+  setTimeout(() => {
+    cards.forEach((c, i) => {
+      if (!c.animate) return;
+      const el = document.querySelector(`[data-stat-idx="${i}"]`);
+      if (!el) return;
+      if (c.animate.kind === "int") animateInt(el, c.animate.target);
+    });
+  }, 380);
 }
 
-/* --- ANNOTATIONS (subtle vertical lines through chart data area) --- */
-
+/* ============================================================
+   ANNOTATIONS (subtle vertical lines)
+   ============================================================ */
 function makeAnnotations(events) {
   const ann = {};
   events.forEach((e, i) => {
@@ -223,7 +354,7 @@ function makeAnnotations(events) {
       type: "line",
       xMin: e.date,
       xMax: e.date,
-      borderColor: major ? "rgba(245, 166, 35, 0.5)" : "rgba(245, 166, 35, 0.25)",
+      borderColor: major ? "rgba(217, 154, 43, 0.5)" : "rgba(217, 154, 43, 0.25)",
       borderWidth: major ? 1 : 0.8,
       borderDash: [3, 4],
       _major: major,
@@ -236,10 +367,10 @@ function highlightAnnotation(chart, idx) {
   Object.entries(chart.options.plugins.annotation.annotations).forEach(([key, a]) => {
     const isTarget = key === "evt" + idx;
     if (isTarget) {
-      a.borderColor = "rgba(245, 166, 35, 1)";
+      a.borderColor = "rgba(217, 154, 43, 1)";
       a.borderWidth = 2;
     } else {
-      a.borderColor = a._major ? "rgba(245, 166, 35, 0.25)" : "rgba(245, 166, 35, 0.15)";
+      a.borderColor = a._major ? "rgba(217, 154, 43, 0.25)" : "rgba(217, 154, 43, 0.15)";
       a.borderWidth = a._major ? 1 : 0.8;
     }
   });
@@ -251,7 +382,7 @@ function highlightAnnotation(chart, idx) {
 
 function clearAnnotationHighlight(chart) {
   Object.values(chart.options.plugins.annotation.annotations).forEach((a) => {
-    a.borderColor = a._major ? "rgba(245, 166, 35, 0.5)" : "rgba(245, 166, 35, 0.25)";
+    a.borderColor = a._major ? "rgba(217, 154, 43, 0.5)" : "rgba(217, 154, 43, 0.25)";
     a.borderWidth = a._major ? 1 : 0.8;
   });
   if (chart.options.plugins.eventMarkers) {
@@ -260,8 +391,9 @@ function clearAnnotationHighlight(chart) {
   chart.update("none");
 }
 
-/* --- MAIN CHART --- */
-
+/* ============================================================
+   MAIN CHART
+   ============================================================ */
 let mainChartRef = null;
 let sortedEvents = [];
 let currentRangeKey = "closure";
@@ -271,7 +403,9 @@ function renderMainChart(data, events) {
   const labels = data.series.map((d) => d.date);
   const totals = data.series.map((d) => d.total);
   const ma7 = data.series.map((d) => d.ma7);
-  const isMobile = window.innerWidth < 600;
+  const isMobile = window.innerWidth < 720;
+
+  const tickFont = { family: FONT_MONO, size: 11 };
 
   mainChartRef = new Chart(document.getElementById("mainChart"), {
     type: "line",
@@ -281,8 +415,8 @@ function renderMainChart(data, events) {
         {
           label: "Daily transits",
           data: totals,
-          borderColor: "rgba(74, 144, 226, 0.45)",
-          backgroundColor: "rgba(74, 144, 226, 0.06)",
+          borderColor: "rgba(90, 143, 194, 0.55)",
+          backgroundColor: "rgba(90, 143, 194, 0.07)",
           borderWidth: 1,
           pointRadius: 0,
           pointHoverRadius: 4,
@@ -292,9 +426,9 @@ function renderMainChart(data, events) {
         {
           label: "7-day average",
           data: ma7,
-          borderColor: "#f5a623",
+          borderColor: C.caution,
           backgroundColor: "transparent",
-          borderWidth: 2,
+          borderWidth: 2.2,
           pointRadius: 0,
           pointHoverRadius: 4,
           tension: 0.2,
@@ -304,18 +438,21 @@ function renderMainChart(data, events) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      animation: { duration: 300 },
+      animation: { duration: 350 },
       interaction: { mode: "index", intersect: false },
-      layout: { padding: { bottom: 70 } }, // room for 2-row marker strip
+      layout: { padding: { bottom: 70 } },
       plugins: {
         legend: { display: false },
         tooltip: {
-          backgroundColor: "#0a0e1a",
-          borderColor: "#1f2940",
+          backgroundColor: "#000",
+          borderColor: C.inkEdge,
           borderWidth: 1,
-          titleColor: "#e8eaed",
-          bodyColor: "#e8eaed",
+          titleColor: C.paper,
+          bodyColor: C.paper,
+          titleFont: { family: FONT_MONO, size: 11, weight: "600" },
+          bodyFont: { family: FONT_MONO, size: 11 },
           padding: 10,
+          cornerRadius: 0,
         },
         annotation: { annotations: makeAnnotations(events) },
         eventMarkers: {
@@ -328,21 +465,27 @@ function renderMainChart(data, events) {
         x: {
           type: "time",
           time: { unit: "year", tooltipFormat: "MMM d, yyyy" },
-          grid: { color: "rgba(95, 107, 133, 0.08)" },
-          ticks: { color: "#5c6b85" },
+          grid: { color: "rgba(138, 152, 181, 0.06)", drawTicks: false },
+          ticks: { color: C.steelFaint, font: tickFont, padding: 6 },
+          border: { color: C.inkEdge },
         },
         y: {
           beginAtZero: true,
-          title: isMobile ? { display: false } : { display: true, text: "Transits per day", color: "#95a3b8" },
-          grid: { color: "rgba(95, 107, 133, 0.08)" },
-          ticks: { color: "#5c6b85" },
+          title: isMobile ? { display: false } : {
+            display: true,
+            text: "TRANSITS / DAY",
+            color: C.paperFaint,
+            font: { family: FONT_MONO, size: 10, weight: "500" },
+          },
+          grid: { color: "rgba(138, 152, 181, 0.06)", drawTicks: false },
+          ticks: { color: C.steelFaint, font: tickFont, padding: 8 },
+          border: { color: C.inkEdge },
         },
       },
     },
   });
 }
 
-// Compute the effective min/max for a given range key.
 function resolveRange(rangeKey) {
   const range = RANGES[rangeKey];
   if (!range) return { min: null, max: null };
@@ -364,10 +507,9 @@ function applyRange(rangeKey) {
   const { min, max } = resolveRange(rangeKey);
   const x = mainChartRef.options.scales.x;
 
-  if (min) { x.min = min; } else { delete x.min; }
-  if (max) { x.max = max; } else { delete x.max; }
+  if (min) x.min = min; else delete x.min;
+  if (max) x.max = max; else delete x.max;
 
-  // Pick a sensible time-axis unit based on window size
   if (min) {
     const span = (max ? new Date(max) : new Date()) - new Date(min);
     const days = span / 86400000;
@@ -386,13 +528,13 @@ function applyRange(rangeKey) {
   mainChartRef.update();
   renderEventList();
 
-  // Toggle custom date input row
   const customEl = document.getElementById("customRange");
   if (customEl) customEl.hidden = rangeKey !== "custom";
 }
 
-/* --- VESSEL CHART --- */
-
+/* ============================================================
+   VESSEL CHART
+   ============================================================ */
 function renderVesselChart(data) {
   const last90 = data.series.slice(-90);
   const labels = last90.map((d) => d.date);
@@ -401,15 +543,18 @@ function renderVesselChart(data) {
   const container = last90.map((d) => d.container);
   const cargoOther = last90.map((d) => Math.max(d.cargo - d.dry_bulk - d.container, 0));
 
+  const tickFont = { family: FONT_MONO, size: 11 };
+  const legendFont = { family: FONT_MONO, size: 10, weight: "500" };
+
   new Chart(document.getElementById("vesselChart"), {
     type: "bar",
     data: {
       labels,
       datasets: [
-        { label: "Tankers", data: tanker, backgroundColor: "#f5a623" },
-        { label: "Dry bulk", data: dryBulk, backgroundColor: "#4a90e2" },
-        { label: "Container", data: container, backgroundColor: "#9b59b6" },
-        { label: "Other cargo", data: cargoOther, backgroundColor: "#5c6b85" },
+        { label: "TANKERS",     data: tanker,     backgroundColor: C.caution },
+        { label: "DRY BULK",    data: dryBulk,    backgroundColor: C.dataBlue },
+        { label: "CONTAINER",   data: container,  backgroundColor: C.dataViolet },
+        { label: "OTHER CARGO", data: cargoOther, backgroundColor: C.dataMute },
       ],
     },
     options: {
@@ -417,14 +562,26 @@ function renderVesselChart(data) {
       maintainAspectRatio: false,
       interaction: { mode: "index", intersect: false },
       plugins: {
-        legend: { labels: { color: "#e8eaed", boxWidth: 14, padding: 12 } },
+        legend: {
+          labels: {
+            color: C.paperDim,
+            boxWidth: 12,
+            boxHeight: 12,
+            padding: 14,
+            font: legendFont,
+          },
+          align: "start",
+        },
         tooltip: {
-          backgroundColor: "#0a0e1a",
-          borderColor: "#1f2940",
+          backgroundColor: "#000",
+          borderColor: C.inkEdge,
           borderWidth: 1,
-          titleColor: "#e8eaed",
-          bodyColor: "#e8eaed",
+          titleColor: C.paper,
+          bodyColor: C.paper,
+          titleFont: { family: FONT_MONO, size: 11, weight: "600" },
+          bodyFont: { family: FONT_MONO, size: 11 },
           padding: 10,
+          cornerRadius: 0,
         },
       },
       scales: {
@@ -433,21 +590,24 @@ function renderVesselChart(data) {
           time: { unit: "month", tooltipFormat: "MMM d, yyyy" },
           stacked: true,
           grid: { display: false },
-          ticks: { color: "#5c6b85" },
+          ticks: { color: C.steelFaint, font: tickFont, padding: 6 },
+          border: { color: C.inkEdge },
         },
         y: {
           stacked: true,
           beginAtZero: true,
-          grid: { color: "rgba(95, 107, 133, 0.08)" },
-          ticks: { color: "#5c6b85" },
+          grid: { color: "rgba(138, 152, 181, 0.06)", drawTicks: false },
+          ticks: { color: C.steelFaint, font: tickFont, padding: 8 },
+          border: { color: C.inkEdge },
         },
       },
     },
   });
 }
 
-/* --- EVENT LIST (informative rows, not duplicate chips) --- */
-
+/* ============================================================
+   EVENT LIST (dispatch footnotes)
+   ============================================================ */
 function renderEventList() {
   const listEl = document.getElementById("eventList");
   if (!listEl) return;
@@ -469,8 +629,8 @@ function renderEventList() {
       const isActive = e.idx === activeEventIdx;
       return `
         <button class="event-row${isActive ? " active" : ""}${major ? " major" : ""}" data-idx="${e.idx}" type="button">
-          <span class="ev-num">${e.idx + 1}</span>
-          <span class="ev-date">${fmt.dateShortYr(e.date)}</span>
+          <span class="ev-num">${String(e.idx + 1).padStart(2, "0")}</span>
+          <span class="ev-date">${fmt.dateMonoShort(e.date)} '${String(new Date(e.date).getUTCFullYear()).slice(2)}</span>
           <span class="ev-label">${e.label}</span>
           ${e.source ? `<a class="ev-source" href="${e.source}" rel="noopener" target="_blank" onclick="event.stopPropagation();">Source ↗</a>` : ""}
         </button>`;
@@ -481,7 +641,7 @@ function renderEventList() {
     const idx = Number(row.dataset.idx);
     row.addEventListener("click", () => {
       activeEventIdx = activeEventIdx === idx ? -1 : idx;
-      renderEventList(); // re-render to update active state
+      renderEventList();
       if (mainChartRef) {
         if (activeEventIdx >= 0) highlightAnnotation(mainChartRef, activeEventIdx);
         else clearAnnotationHighlight(mainChartRef);
@@ -499,8 +659,9 @@ function renderEventList() {
   });
 }
 
-/* --- DATA TABLE --- */
-
+/* ============================================================
+   DATA TABLE
+   ============================================================ */
 let allSeriesData = null;
 
 function renderDataTable(data) {
@@ -512,9 +673,8 @@ function renderDataTable(data) {
   const preFebAvg = data.baselines.pre_feb_2026.avg_total;
   const series = data.series;
 
-  // Show last 60 days; user can scroll within the wrapper
   const SHOW_N = 60;
-  const recent = series.slice(-SHOW_N).reverse(); // most recent first
+  const recent = series.slice(-SHOW_N).reverse();
 
   tbody.innerHTML = recent
     .map((row) => {
@@ -522,7 +682,7 @@ function renderDataTable(data) {
       const pctClass = pct == null ? "" : pct < -2 ? "down" : pct > 2 ? "up" : "";
       return `
         <tr>
-          <td class="td-date">${fmt.date(row.date)}</td>
+          <td class="td-date">${fmt.dateMonoFull(row.date)}</td>
           <td class="td-num">${row.total}</td>
           <td class="td-num">${row.tanker}</td>
           <td class="td-num">${row.ma7 != null ? row.ma7.toFixed(1) : "—"}</td>
@@ -532,12 +692,13 @@ function renderDataTable(data) {
     .join("");
 
   if (footer) {
-    footer.textContent = `Showing latest ${recent.length} of ${series.length.toLocaleString()} days`;
+    footer.textContent = `Latest ${recent.length} of ${series.length.toLocaleString()} days`;
   }
 }
 
-/* --- DOWNLOAD AS PNG --- */
-
+/* ============================================================
+   DOWNLOAD AS PNG (matches dispatch styling)
+   ============================================================ */
 function downloadChartAsImage(data) {
   if (!mainChartRef) return;
   const W = 1600;
@@ -548,31 +709,41 @@ function downloadChartAsImage(data) {
   out.height = H;
   const ctx = out.getContext("2d");
 
-  ctx.fillStyle = "#0a0e1a";
+  // Background
+  ctx.fillStyle = C.inkDeep;
   ctx.fillRect(0, 0, W, H);
 
-  ctx.fillStyle = "#e8eaed";
-  ctx.font = "bold 36px -apple-system, Segoe UI, Roboto, sans-serif";
-  ctx.fillText("Strait of Hormuz — Daily Ship Transits", 60, 70);
+  // Top kicker bar
+  ctx.fillStyle = C.caution;
+  ctx.font = `500 18px ${FONT_MONO}`;
+  ctx.fillText("DISPATCH №01 — PERSIAN GULF", 60, 60);
 
+  // Title
+  ctx.fillStyle = C.paper;
+  ctx.font = `400 56px ${FONT_DISPLAY}`;
+  ctx.fillText("HORMUZ TRACKER", 60, 115);
+
+  // Subtitle
   const cur = data.current;
-  const sub = `30-day avg: ${fmt.num(cur.last_30d_avg)}/day · ${fmt.pct(cur.vs_pre_feb_2026_pct)} vs pre-closure baseline · through ${fmt.date(cur.latest_date)}`;
-  ctx.fillStyle = "#95a3b8";
-  ctx.font = "20px -apple-system, Segoe UI, Roboto, sans-serif";
-  ctx.fillText(sub, 60, 110);
+  const sub = `30-DAY AVG ${fmt.num(cur.last_30d_avg)}/DAY · ${fmt.pct(cur.vs_pre_feb_2026_pct)} VS PRE-CLOSURE · THROUGH ${fmt.dateMonoFull(cur.latest_date)}`;
+  ctx.fillStyle = C.paperDim;
+  ctx.font = `500 18px ${FONT_MONO}`;
+  ctx.fillText(sub, 60, 145);
 
+  // Chart image
   const chartImg = new Image();
   chartImg.onload = () => {
-    ctx.drawImage(chartImg, 60, 150, W - 120, H - 240);
+    ctx.drawImage(chartImg, 60, 175, W - 120, H - 260);
 
-    // Footer watermark
-    ctx.fillStyle = "#f5a623";
-    ctx.font = "bold 20px -apple-system, Segoe UI, Roboto, sans-serif";
-    ctx.fillText(SITE_NAME, 60, H - 38);
-    ctx.fillStyle = "#5c6b85";
-    ctx.font = "16px -apple-system, Segoe UI, Roboto, sans-serif";
+    // Footer
+    ctx.fillStyle = C.caution;
+    ctx.font = `700 22px ${FONT_DISPLAY}`;
+    ctx.fillText(SITE_NAME.toUpperCase(), 60, H - 38);
+
+    ctx.fillStyle = C.paperFaint;
+    ctx.font = `500 14px ${FONT_MONO}`;
     ctx.textAlign = "right";
-    ctx.fillText("Source: IMF PortWatch (satellite AIS)", W - 60, H - 38);
+    ctx.fillText("SOURCE · IMF PORTWATCH (SAT. AIS)", W - 60, H - 38);
     ctx.textAlign = "left";
 
     const url = out.toDataURL("image/png");
@@ -586,18 +757,23 @@ function downloadChartAsImage(data) {
   chartImg.src = mainChartRef.toBase64Image("image/png", 1);
 }
 
-/* --- FOOTER --- */
-
+/* ============================================================
+   COLOPHON
+   ============================================================ */
 function renderUpdated(data) {
   const el = document.getElementById("updatedAt");
-  el.textContent = new Date(data.updated).toLocaleString("en-US", {
-    month: "short", day: "numeric", year: "numeric",
-    hour: "numeric", minute: "2-digit", timeZone: "UTC", timeZoneName: "short",
-  });
+  if (!el) return;
+  const d = new Date(data.updated);
+  const formatted = d.toLocaleString("en-US", {
+    month: "short", day: "2-digit", year: "numeric",
+    hour: "2-digit", minute: "2-digit", timeZone: "UTC", hour12: false,
+  }).toUpperCase().replace(",", "") + " UTC";
+  el.textContent = formatted;
 }
 
-/* --- INIT --- */
-
+/* ============================================================
+   INIT
+   ============================================================ */
 (async function init() {
   try {
     const [data, events] = await Promise.all([
@@ -608,6 +784,8 @@ function renderUpdated(data) {
     sortedEvents = events.slice().sort((a, b) => (a.date < b.date ? -1 : 1));
     dataLatestDate = data.current.latest_date;
 
+    renderTicker(data);
+    renderHero(data);
     renderStats(data);
     renderMainChart(data, sortedEvents);
     renderVesselChart(data);
@@ -624,7 +802,6 @@ function renderUpdated(data) {
       });
     });
 
-    // Initialize custom date inputs with sensible defaults
     const fromEl = document.getElementById("customFrom");
     const toEl = document.getElementById("customTo");
     if (fromEl && toEl) {
@@ -633,7 +810,6 @@ function renderUpdated(data) {
       fromEl.max = dataLatestDate;
       toEl.min = earliest;
       toEl.max = dataLatestDate;
-      // Default to a 90-day window ending on latest
       const latest = new Date(dataLatestDate + "T00:00:00Z");
       const ninetyAgo = new Date(latest);
       ninetyAgo.setUTCDate(ninetyAgo.getUTCDate() - 89);
@@ -665,7 +841,7 @@ function renderUpdated(data) {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         if (mainChartRef) {
-          const isMobile = window.innerWidth < 600;
+          const isMobile = window.innerWidth < 720;
           mainChartRef.options.scales.y.title.display = !isMobile;
           mainChartRef.update();
         }
@@ -673,7 +849,7 @@ function renderUpdated(data) {
     });
   } catch (e) {
     console.error(e);
-    document.getElementById("stats").innerHTML =
-      `<p style="color:#e74c3c">Failed to load data: ${e.message}</p>`;
+    const stats = document.getElementById("stats");
+    if (stats) stats.innerHTML = `<p style="color:${C.alert}; padding: 1rem;">Failed to load data: ${e.message}</p>`;
   }
 })();

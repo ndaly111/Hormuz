@@ -5,68 +5,101 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daily Share Kit — Hormuz Tracker</title>
   <meta name="description" content="Today's chart and ready-to-post text for the Strait of Hormuz Traffic Tracker." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" />
   <link rel="stylesheet" href="styles.css" />
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
-  <header class="compact">
-    <div class="container header-row">
-      <div class="brand">
-        <h1><a href="/" style="color:inherit;border:none;">Strait of Hormuz Traffic Tracker</a></h1>
+  <div class="wire-ticker">
+    <div class="container">
+      <div class="wire-ticker__items">
+        <span class="wire-ticker__item">
+          <span class="wire-ticker__dot" aria-hidden="true"></span>
+          <span class="wire-ticker__label">Status</span>
+          <span class="wire-ticker__value">Strait closed</span>
+        </span>
       </div>
-      <div class="header-actions">
-        <nav class="top-nav" aria-label="Primary">
+      <span class="wire-ticker__brand">Dispatch · 06:00 UTC daily</span>
+    </div>
+  </div>
+
+  <header class="dispatch">
+    <div class="container dispatch__row">
+      <div class="dispatch__title">
+        <span class="dispatch__kicker">Daily share kit</span>
+        <h1 class="dispatch__h1"><a href="/">Hormuz Tracker</a></h1>
+      </div>
+      <div class="dispatch__nav">
+        <nav class="dispatch__nav-links" aria-label="Primary">
           <a href="/" class="nav-link">Data</a>
-          <a href="/about" class="nav-link">About</a>
+          <a href="/about" class="nav-link">Mission</a>
           <a href="/today" class="nav-link active">Share</a>
         </nav>
-        <a href="https://buymeacoffee.com/hormuztraffic" target="_blank" rel="noopener" class="bmc-mini" title="Donate to support this site">Donate</a>
+        <a href="https://buymeacoffee.com/hormuztraffic" target="_blank" rel="noopener" class="bmc-mini">Donate</a>
       </div>
     </div>
   </header>
 
   <main class="container">
     <section class="share-page">
-      <h2>Today's share kit</h2>
-      <p class="share-intro">A ready-to-post chart and caption for X (Twitter), updated whenever the data updates.</p>
+      <div class="share-page__kicker">For X · Bluesky · Mastodon</div>
+      <h2>File today's dispatch.</h2>
+      <p class="share-intro">
+        A short caption and a chart image, refreshed whenever the data updates. Save the image, copy the caption, post. The link goes in a reply so the algorithm doesn't bury your post.
+      </p>
 
-      <div class="share-image-section">
-        <h3>1. Save the chart</h3>
-        <p class="share-tip">Long-press (mobile) or right-click (desktop) the image and choose <strong>Save Image</strong>.</p>
-        <div class="share-image-wrap">
-          <div class="share-image-loader" id="imageLoader">Generating image…</div>
-          <img id="shareImage" alt="Daily Strait of Hormuz transits chart" hidden />
+      <div class="share-step">
+        <div class="share-step__num">01</div>
+        <div class="share-step__body">
+          <div class="share-step__title">Save the chart</div>
+          <p class="share-tip">Long-press (mobile) or right-click (desktop) → <strong>Save Image</strong>.</p>
+          <div class="share-image-wrap">
+            <div class="share-image-loader" id="imageLoader">Generating image…</div>
+            <img id="shareImage" alt="Daily Strait of Hormuz transits chart" hidden />
+          </div>
         </div>
       </div>
 
-      <div class="share-text-section">
-        <h3>2. Copy the caption</h3>
-        <p class="share-tip">Short caption — let the chart speak. The link goes in a reply, not the main post (X downranks posts with links).</p>
-        <textarea id="tweetText" rows="3" readonly></textarea>
-        <div class="share-buttons">
-          <button class="icon-btn" id="copyTextBtn">Copy caption</button>
-          <a class="bmc-cta" id="tweetLink" href="#" target="_blank" rel="noopener">Open X compose →</a>
+      <div class="share-step">
+        <div class="share-step__num">02</div>
+        <div class="share-step__body">
+          <div class="share-step__title">Copy the caption</div>
+          <p class="share-tip">Short — let the chart speak.</p>
+          <textarea id="tweetText" rows="3" readonly></textarea>
+          <div class="share-buttons">
+            <button class="icon-btn" id="copyTextBtn"><span>Copy caption</span></button>
+            <a class="bmc-cta" id="tweetLink" href="#" target="_blank" rel="noopener">Open X compose →</a>
+          </div>
         </div>
       </div>
 
-      <div class="share-text-section">
-        <h3>3. Reply text (paste after posting)</h3>
-        <p class="share-tip">After your main post is up, reply to it with this so the link doesn't hurt your reach.</p>
-        <textarea id="replyText" rows="2" readonly></textarea>
-        <div class="share-buttons">
-          <button class="icon-btn" id="copyReplyBtn">Copy reply</button>
+      <div class="share-step">
+        <div class="share-step__num">03</div>
+        <div class="share-step__body">
+          <div class="share-step__title">Reply text</div>
+          <p class="share-tip">Paste this as a reply to your own post — keeps the link out of the main tweet so the algorithm doesn't downrank it.</p>
+          <textarea id="replyText" rows="2" readonly></textarea>
+          <div class="share-buttons">
+            <button class="icon-btn" id="copyReplyBtn"><span>Copy reply</span></button>
+          </div>
         </div>
       </div>
 
-      <div class="share-instructions-section">
-        <h3>4. Post</h3>
-        <ol class="share-instructions">
-          <li>Tap <strong>Open X compose</strong> — caption auto-fills</li>
-          <li>Attach the saved chart image, post</li>
-          <li>On your own post, tap <strong>Reply</strong> and paste the reply text</li>
-        </ol>
+      <div class="share-step">
+        <div class="share-step__num">04</div>
+        <div class="share-step__body">
+          <div class="share-step__title">Post</div>
+          <ol class="share-instructions">
+            <li>Tap <strong>Open X compose</strong> — caption auto-fills</li>
+            <li>Attach the saved image, post</li>
+            <li>Reply to your own post and paste the reply text</li>
+          </ol>
+        </div>
       </div>
 
       <details class="share-customize">
@@ -74,7 +107,7 @@
         <div class="share-range-buttons" role="group">
           <button class="range-btn" data-range="d7">Last 7 days</button>
           <button class="range-btn active" data-range="d30">Last 30 days</button>
-          <button class="range-btn" data-range="closure">Closure (Feb '26–)</button>
+          <button class="range-btn" data-range="closure">Closure</button>
           <button class="range-btn" data-range="war">Iran war era</button>
           <button class="range-btn" data-range="all">All time</button>
         </div>
@@ -84,12 +117,11 @@
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <p>
-        Data: <a href="https://portwatch.imf.org" rel="noopener" target="_blank">IMF PortWatch</a> ·
-        <a href="/about">About &amp; methodology</a>
-      </p>
+  <footer class="colophon">
+    <div class="container colophon__inner">
+      <span class="colophon__brand">Hormuz Tracker</span>
+      <span>Source · <a href="https://portwatch.imf.org" rel="noopener" target="_blank">IMF PortWatch</a></span>
+      <span><a href="/about">Mission &amp; methodology</a></span>
     </div>
   </footer>
 

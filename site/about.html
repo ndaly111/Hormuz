@@ -3,68 +3,97 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — Strait of Hormuz Traffic Tracker</title>
-  <meta name="description" content="About the Strait of Hormuz Traffic Tracker — methodology, data source, caveats, and support." />
+  <title>Mission — Hormuz Tracker</title>
+  <meta name="description" content="The mission, methodology, and limits behind Hormuz Tracker — a free public dispatch on Strait of Hormuz ship traffic." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <div class="container header-row">
-      <div class="brand">
-        <h1><a href="/" style="color:inherit;border:none;">Strait of Hormuz Traffic Tracker</a></h1>
-        <p class="tagline">Daily ship transits through the world's most critical oil chokepoint.</p>
+  <div class="wire-ticker">
+    <div class="container">
+      <div class="wire-ticker__items">
+        <span class="wire-ticker__item">
+          <span class="wire-ticker__dot" aria-hidden="true"></span>
+          <span class="wire-ticker__label">Status</span>
+          <span class="wire-ticker__value">Strait closed</span>
+        </span>
       </div>
-      <nav class="top-nav" aria-label="Primary">
-        <a href="/" class="nav-link">Data</a>
-        <a href="/about" class="nav-link active">About</a>
-        <a href="/today" class="nav-link">Share</a>
-      </nav>
+      <span class="wire-ticker__brand">Dispatch · 06:00 UTC daily</span>
+    </div>
+  </div>
+
+  <header class="dispatch">
+    <div class="container dispatch__row">
+      <div class="dispatch__title">
+        <span class="dispatch__kicker">Mission · Methodology · Limits</span>
+        <h1 class="dispatch__h1"><a href="/">Hormuz Tracker</a></h1>
+      </div>
+      <div class="dispatch__nav">
+        <nav class="dispatch__nav-links" aria-label="Primary">
+          <a href="/" class="nav-link">Data</a>
+          <a href="/about" class="nav-link active">Mission</a>
+          <a href="/today" class="nav-link">Share</a>
+        </nav>
+        <a href="https://buymeacoffee.com/hormuztraffic" target="_blank" rel="noopener" class="bmc-mini">Donate</a>
+      </div>
     </div>
   </header>
 
   <main class="container">
-    <article class="about-page">
-      <h2>About this site</h2>
-      <p>
-        This site tracks daily ship transits through the <strong>Strait of Hormuz</strong>, the narrow waterway between Iran and Oman through which roughly <strong>20% of global oil supply</strong> passes.
-      </p>
-      <p>
-        Data comes from the <a href="https://portwatch.imf.org" rel="noopener" target="_blank">IMF PortWatch</a> project, which derives daily transit counts from satellite AIS (vessel transponder) data. The dataset goes back to 2019. Counts are refreshed weekly by the IMF; this site re-pulls them daily.
+    <article class="mission">
+      <div class="mission__kicker">
+        <span>Mission</span>
+        <span class="ruler"></span>
+      </div>
+      <h2 class="mission__h1">A daily public count of ships in a closed strait.</h2>
+
+      <p class="mission__lede">
+        Roughly one in five barrels of seaborne oil passes through the Strait of Hormuz. When that artery seizes, it touches every gas pump, every airline ticket, every container ship rerouted around Africa. This site exists to put that movement — or the absence of it — in front of the public, every day, for free.
       </p>
 
-      <h3>Methodology</h3>
-      <ul>
-        <li><strong>Source:</strong> IMF PortWatch "Daily Chokepoint Transit Calls" dataset — chokepoint6 (Strait of Hormuz)</li>
-        <li><strong>Refresh:</strong> Pipeline runs daily at 06:00 UTC</li>
-        <li><strong>Vessel types:</strong> Tankers (oil/product/chemical), dry bulk, container, RoRo, general cargo</li>
-        <li><strong>Lag:</strong> PortWatch typically lags real-world events by 2–5 days</li>
+      <div class="mission__body">
+        <p>
+          Specialist trackers like Lloyd's List, TankerTrackers, and Kpler do this work behind paywalls for shipping firms and intelligence shops. Most people never see those numbers. <strong>Hormuz Tracker is a public-facing alternative</strong>: simpler, free, refreshed every 24 hours, and built so a journalist, an analyst, or a curious citizen can find the same evidence in 10 seconds.
+        </p>
+        <p>
+          Each morning a small Python pipeline pulls the latest satellite AIS-derived counts from the IMF's PortWatch dataset, recomputes the rolling averages and historical baselines, and republishes the page. Major geopolitical events are annotated by hand so the data sits inside the story it belongs to.
+        </p>
+      </div>
+
+      <h3 class="mission__h2">Methodology</h3>
+      <ul class="mission__list">
+        <li><strong>Source</strong>IMF PortWatch — "Daily Chokepoint Transit Calls and Trade Volume Estimates," chokepoint6 (Strait of Hormuz). Derived from satellite AIS vessel transponders.</li>
+        <li><strong>Refresh</strong>Pipeline runs daily at 06:00 UTC via GitHub Actions. Output JSON re-deploys to Cloudflare automatically.</li>
+        <li><strong>Coverage</strong>Daily counts go back to January 2019 — over six years of baseline.</li>
+        <li><strong>Vessel types</strong>Tankers (oil, product, chemical), dry bulk, container, RoRo, general cargo.</li>
+        <li><strong>Lag</strong>PortWatch typically lags real-world events by 2 to 5 days. The closure of the strait can extend that further as ships go AIS-dark.</li>
       </ul>
 
-      <h3>Caveats</h3>
-      <ul>
-        <li>PortWatch counts <em>port calls within the chokepoint geofence</em>, not pure transits. The numbers are directionally meaningful but not a literal ship count.</li>
-        <li>Some vessels disable AIS for security reasons. These would not appear in counts.</li>
-        <li>Event annotations reflect the editorial judgment of this site's author about which dates matter most for context.</li>
+      <h3 class="mission__h2">Caveats</h3>
+      <ul class="mission__list">
+        <li><strong>Definition</strong>PortWatch counts <em>port calls within the chokepoint geofence</em>, not literal transits. Numbers are directionally meaningful, not a pure ship census.</li>
+        <li><strong>AIS dark</strong>Vessels that disable transponders for security reasons do not appear. During an active closure, this undercount is likely material.</li>
+        <li><strong>Editorial framing</strong>Event annotations are the author's judgment about which dates matter most for context. Reasonable readers can disagree about the framing; the data itself is unfiltered.</li>
       </ul>
 
-      <h3>Support</h3>
-      <p>
-        This site is free and ad-free. If it's useful to you, please consider a <a href="https://buymeacoffee.com/hormuztraffic" rel="noopener" target="_blank">donation</a> — it helps cover the domain and the time to keep it running.
-      </p>
-      <p style="margin-top: 1.25rem">
-        <a href="https://buymeacoffee.com/hormuztraffic" target="_blank" rel="noopener" class="bmc-cta">
-          Donate
-        </a>
-      </p>
+      <div class="mission__support">
+        <h3 class="mission__h2">Support the dispatch</h3>
+        <p style="font-family: var(--serif); color: var(--paper-dim); margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.6;">
+          This site is free, ad-free, and will remain so. If it's useful to you, a one-time or recurring <a href="https://buymeacoffee.com/hormuztraffic" target="_blank" rel="noopener">donation</a> covers the domain renewal and the time to keep the pipeline alive.
+        </p>
+        <a href="https://buymeacoffee.com/hormuztraffic" target="_blank" rel="noopener" class="bmc-cta">Donate</a>
+      </div>
     </article>
   </main>
 
-  <footer>
-    <div class="container">
-      <p>
-        Data: <a href="https://portwatch.imf.org" rel="noopener" target="_blank">IMF PortWatch</a> ·
-        <a href="/">Back to data</a>
-      </p>
+  <footer class="colophon">
+    <div class="container colophon__inner">
+      <span class="colophon__brand">Hormuz Tracker</span>
+      <span>Source · <a href="https://portwatch.imf.org" rel="noopener" target="_blank">IMF PortWatch</a></span>
+      <span><a href="/">Back to dispatch</a></span>
     </div>
   </footer>
 </body>

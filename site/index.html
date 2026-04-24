@@ -3,17 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Strait of Hormuz Traffic Tracker — Daily Ship Transit Data</title>
-  <meta name="description" content="Daily transit counts for the Strait of Hormuz, with annotated geopolitical events from 2019 to today. Free, public-facing, updated daily from IMF PortWatch satellite AIS data." />
+  <title>Hormuz Tracker — Daily Ship Transit Dispatch</title>
+  <meta name="description" content="A daily public dispatch tracking ship transits through the Strait of Hormuz. Updated every 24 hours from satellite AIS data, with annotated geopolitical events from 2019 to today." />
 
-  <meta property="og:title" content="Strait of Hormuz Traffic Tracker" />
-  <meta property="og:description" content="Daily ship transit data for the Strait of Hormuz, updated from satellite AIS. See how the 2026 closure compares to history." />
+  <meta property="og:title" content="Hormuz Tracker — Daily Ship Transit Dispatch" />
+  <meta property="og:description" content="Live count of ship traffic through the Strait of Hormuz during the active 2026 closure crisis." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hormuz-traffic.com" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Strait of Hormuz Traffic Tracker" />
-  <meta name="twitter:description" content="Daily ship transit data for the Strait of Hormuz, with annotated events from 2019 to today." />
+  <meta name="twitter:title" content="Hormuz Tracker" />
+  <meta name="twitter:description" content="Daily dispatch on Strait of Hormuz ship traffic." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" />
 
   <link rel="stylesheet" href="styles.css" />
 
@@ -22,30 +26,70 @@
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.1.0/dist/chartjs-plugin-annotation.min.js"></script>
 </head>
 <body>
-  <header class="compact">
-    <div class="container header-row">
-      <div class="brand">
-        <h1>Strait of Hormuz Traffic Tracker</h1>
+  <div class="wire-ticker">
+    <div class="container">
+      <div class="wire-ticker__items">
+        <span class="wire-ticker__item">
+          <span class="wire-ticker__dot" aria-hidden="true"></span>
+          <span class="wire-ticker__label">Status</span>
+          <span class="wire-ticker__value">Strait closed</span>
+        </span>
+        <span class="wire-ticker__item">
+          <span class="wire-ticker__label">Day</span>
+          <span class="wire-ticker__value" id="tickerDays">—</span>
+        </span>
+        <span class="wire-ticker__item">
+          <span class="wire-ticker__label">Data thru</span>
+          <span class="wire-ticker__value" id="tickerDataThrough">—</span>
+        </span>
+        <span class="wire-ticker__item">
+          <span class="wire-ticker__label">Refreshed</span>
+          <span class="wire-ticker__value" id="tickerRefreshed">—</span>
+        </span>
       </div>
-      <div class="header-actions">
-        <nav class="top-nav" aria-label="Primary">
+      <span class="wire-ticker__brand">Dispatch · 06:00 UTC daily</span>
+    </div>
+  </div>
+
+  <header class="dispatch">
+    <div class="container dispatch__row">
+      <div class="dispatch__title">
+        <span class="dispatch__kicker">Dispatch №01 — Persian Gulf</span>
+        <h1 class="dispatch__h1">Hormuz Tracker</h1>
+        <p class="dispatch__sub">A public daily count of ships transiting the strait</p>
+      </div>
+      <div class="dispatch__nav">
+        <nav class="dispatch__nav-links" aria-label="Primary">
           <a href="/" class="nav-link active">Data</a>
-          <a href="/about" class="nav-link">About</a>
+          <a href="/about" class="nav-link">Mission</a>
           <a href="/today" class="nav-link">Share</a>
         </nav>
-        <a href="https://buymeacoffee.com/hormuztraffic" target="_blank" rel="noopener" class="bmc-mini" title="Donate to support this site">
-          Donate
-        </a>
+        <a href="https://buymeacoffee.com/hormuztraffic" target="_blank" rel="noopener" class="bmc-mini">Donate</a>
       </div>
     </div>
   </header>
 
   <main class="container">
-    <section class="stats" id="stats">
-      <!-- populated by app.js -->
+    <section class="hero">
+      <div class="hero__kicker">
+        <span>Headline collapse vs. pre-closure norm</span>
+        <span class="ruler"></span>
+      </div>
+      <div class="hero__headline" id="heroHeadline" data-target="0">—</div>
+      <p class="hero__deck" id="heroDeck">Loading dispatch…</p>
     </section>
 
-    <section class="chart-section">
+    <section class="stats" id="stats">
+      <!-- populated by app.js: 3 supporting cards -->
+    </section>
+
+    <section class="section section--chart">
+      <div class="section__head">
+        <span class="section__num">01</span>
+        <h2 class="section__title">Ship transits — Strait of Hormuz</h2>
+        <span class="section__meta">Daily, 7-day moving avg</span>
+      </div>
+
       <div class="chart-toolbar">
         <div class="range-buttons" role="group" aria-label="Date range">
           <button class="range-btn" data-range="all" title="All time (2019 – present)">All</button>
@@ -56,7 +100,7 @@
           <button class="range-btn" data-range="custom" title="Custom date range">Custom</button>
         </div>
         <button class="icon-btn" id="downloadBtn" title="Download chart as PNG for sharing" aria-label="Download chart">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <polyline points="7 10 12 15 17 10"/>
             <line x1="12" y1="15" x2="12" y2="3"/>
@@ -68,7 +112,7 @@
       <div class="custom-range" id="customRange" hidden>
         <label>From <input type="date" id="customFrom" /></label>
         <label>To <input type="date" id="customTo" /></label>
-        <button class="icon-btn" id="customApplyBtn">Apply</button>
+        <button class="icon-btn" id="customApplyBtn"><span>Apply</span></button>
       </div>
 
       <div class="chart-wrap">
@@ -76,13 +120,14 @@
         <div class="chart-watermark">hormuz-traffic.com</div>
       </div>
 
+      <div class="event-list-kicker">Annotated events</div>
       <div class="event-list" id="eventList">
-        <!-- populated by app.js: rich rows with date + label + source -->
+        <!-- populated by app.js -->
       </div>
 
       <details class="data-table-section">
         <summary>
-          <span>Show daily numbers</span>
+          <span>Daily numbers — last 60 days</span>
           <span class="caret">▾</span>
         </summary>
         <div class="table-wrap">
@@ -103,10 +148,11 @@
       </details>
     </section>
 
-    <section class="vessel-section">
-      <div class="chart-header">
-        <h2>Vessel mix — last 90 days</h2>
-        <p class="chart-sub">Tankers carry the strait's strategic importance. Other cargo is the rest.</p>
+    <section class="section section--vessel">
+      <div class="section__head">
+        <span class="section__num">02</span>
+        <h2 class="section__title">Fleet composition</h2>
+        <span class="section__meta">Last 90 days, stacked daily counts</span>
       </div>
       <div class="chart-wrap small">
         <canvas id="vesselChart"></canvas>
@@ -115,22 +161,19 @@
 
     <section class="support-callout">
       <div class="support-text">
-        <h3>Find this useful?</h3>
-        <p>This site is free, ad-free, and updated daily. If it helps you make sense of what's happening at the strait, a small tip keeps it running.</p>
+        <h3>Keep this dispatch running</h3>
+        <p>Free, ad-free, and updated daily from public satellite AIS data. A small donation covers the domain and the hours behind every chart.</p>
       </div>
-      <a href="https://buymeacoffee.com/hormuztraffic" target="_blank" rel="noopener" class="bmc-cta">
-        Donate
-      </a>
+      <a href="https://buymeacoffee.com/hormuztraffic" target="_blank" rel="noopener" class="bmc-cta">Donate</a>
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <p>
-        Data: <a href="https://portwatch.imf.org" rel="noopener" target="_blank">IMF PortWatch</a> ·
-        <a href="/about">About &amp; methodology</a> ·
-        Last updated: <span id="updatedAt">—</span>
-      </p>
+  <footer class="colophon">
+    <div class="container colophon__inner">
+      <span class="colophon__brand">Hormuz Tracker</span>
+      <span>Source · <a href="https://portwatch.imf.org" rel="noopener" target="_blank">IMF PortWatch</a></span>
+      <span><a href="/about">Mission &amp; methodology</a></span>
+      <span>Filed <span id="updatedAt">—</span></span>
     </div>
   </footer>
 
