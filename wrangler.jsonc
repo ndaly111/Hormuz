@@ -1,0 +1,7 @@
+{
+  "name": "hormuz-traffic",
+  "compatibility_date": "2026-04-27",
+  "assets": {
+    "directory": "./site"
+  }
+}
