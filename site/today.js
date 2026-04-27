@@ -7,7 +7,7 @@ const SHARE_RANGES = {
   d7:      { dynamic: 7,        label: "Last 7 days" },
   d30:     { dynamic: 30,       label: "Last 30 days" },
   closure: { min: "2026-02-01", label: "Since closure" },
-  war:     { min: "2025-06-01", label: "Iran war era" },
+  war:     { min: "2026-02-28", label: "Iran war era" },
   all:     { min: null,         label: "All time" },
 };
 
