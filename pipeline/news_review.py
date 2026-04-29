@@ -4,7 +4,7 @@ Runs find_top_story(), composes the would-be Bluesky caption, and sends
 it to a Discord webhook for review. No live Bluesky posting.
 
 Env vars:
-  DISCORD_WEBHOOK_URL_HORMUZ  Discord webhook URL. If unset, prints to stdout.
+  DISCORD_WEBHOOK  Discord webhook URL. If unset, prints to stdout.
 """
 
 from __future__ import annotations
@@ -19,7 +19,7 @@ import requests
 
 from find_news import find_top_story
 
-WEBHOOK = os.environ.get("DISCORD_WEBHOOK_URL_HORMUZ")
+WEBHOOK = os.environ.get("DISCORD_WEBHOOK")
 ROOT = Path(__file__).resolve().parent.parent
 TRANSITS_JSON = ROOT / "site" / "data" / "transits.json"
 CLOSURE_DATE = datetime(2026, 3, 4, tzinfo=timezone.utc).date()
@@ -80,7 +80,7 @@ def discord_message(caption: str, story: dict | None) -> str:
 
 def send_discord(content: str) -> None:
     if not WEBHOOK:
-        print("DISCORD_WEBHOOK_URL_HORMUZ not set — printing to stdout instead:\n")
+        print("DISCORD_WEBHOOK not set — printing to stdout instead:\n")
         print(content)
         return
     # Discord webhook content is limited to 2000 chars; truncate if needed

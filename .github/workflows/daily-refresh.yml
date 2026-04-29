@@ -56,7 +56,7 @@ jobs:
       - name: News preview (Discord)
         if: always()
         env:
-          DISCORD_WEBHOOK_URL_HORMUZ: ${{ secrets.DISCORD_WEBHOOK_URL_HORMUZ }}
+          DISCORD_WEBHOOK: ${{ secrets.Discord_webhook }}
         run: python pipeline/news_review.py
         continue-on-error: true
 
