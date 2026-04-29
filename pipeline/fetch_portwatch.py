@@ -16,15 +16,20 @@ import io
 import json
 import sqlite3
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
 import requests
 
+# IMF rotated the dataset 2026-04-29 — old item 42132aa4e2fc4d41bdaf9a445f688931
+# now returns 500 "Item does not exist or is inaccessible". The replacement
+# dataset is "Daily_Chokepoints_Data" (same schema + extra capacity_* columns
+# we ignore). Found via ArcGIS Hub search on the IMF org's content.
 PORTWATCH_CSV = (
     "https://hub.arcgis.com/api/v3/datasets/"
-    "42132aa4e2fc4d41bdaf9a445f688931_0/downloads/data"
+    "6cd06d3554474ea7a9aebfcc135021c2_0/downloads/data"
     "?format=csv&spatialRefId=4326"
 )
 
@@ -38,13 +43,38 @@ VESSEL_TYPES = ["container", "dry_bulk", "general_cargo", "roro", "tanker", "car
 
 
 def download_csv() -> pd.DataFrame:
-    print(f"Downloading {PORTWATCH_CSV}")
-    r = requests.get(PORTWATCH_CSV, timeout=120)
-    r.raise_for_status()
-    df = pd.read_csv(io.BytesIO(r.content))
-    df.columns = [c.lstrip("﻿") for c in df.columns]  # strip BOM
-    print(f"  got {len(df):,} rows across all chokepoints")
-    return df
+    """Download the PortWatch CSV with retries.
+
+    ArcGIS Hub's /downloads/data endpoint is regularly flaky — the CSV is
+    generated on demand and 5xx errors are common during high-load windows.
+    Retry transient failures so a single blip doesn't fail the daily run.
+    """
+    last_err: Exception | None = None
+    for attempt in range(1, 4):  # 3 attempts: t+0, t+30s, t+90s
+        try:
+            print(f"Downloading {PORTWATCH_CSV} (attempt {attempt}/3)")
+            r = requests.get(PORTWATCH_CSV, timeout=180)
+            # 5xx from ArcGIS Hub is almost always transient; retry.
+            if 500 <= r.status_code < 600:
+                raise requests.exceptions.HTTPError(
+                    f"upstream {r.status_code} {r.reason}", response=r
+                )
+            r.raise_for_status()
+            df = pd.read_csv(io.BytesIO(r.content))
+            df.columns = [c.lstrip("﻿") for c in df.columns]  # strip BOM
+            print(f"  got {len(df):,} rows across all chokepoints")
+            return df
+        except (requests.exceptions.RequestException, pd.errors.ParserError) as e:
+            last_err = e
+            print(f"  attempt {attempt} failed: {e}")
+            if attempt < 3:
+                wait = 30 * attempt  # 30s, then 60s
+                print(f"  retrying in {wait}s")
+                time.sleep(wait)
+    raise SystemExit(
+        f"PortWatch upstream unavailable after 3 attempts ({last_err}). "
+        "Existing site/data/transits.json kept; no changes pushed."
+    )
 
 
 def write_cache(df: pd.DataFrame) -> None:
