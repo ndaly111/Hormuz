@@ -53,6 +53,13 @@ jobs:
       - name: Run pipeline
         run: python pipeline/fetch_portwatch.py
 
+      - name: News preview (Discord)
+        if: always()
+        env:
+          DISCORD_WEBHOOK_URL_HORMUZ: ${{ secrets.DISCORD_WEBHOOK_URL_HORMUZ }}
+        run: python pipeline/news_review.py
+        continue-on-error: true
+
       - name: Commit updated data (if changed)
         id: commit
         run: |

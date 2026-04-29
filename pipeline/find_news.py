@@ -1,0 +1,224 @@
+"""Find Hormuz news clusters via Google News RSS.
+
+Pulls articles for several queries, clusters by title-token similarity,
+and returns the top cluster IF it has ≥3 distinct outlets from a
+reputable-source whitelist. The whitelist filter is what stops Iran
+state media echoing each other from registering as a "big story."
+
+Pure stdlib + requests. No API keys. No model downloads.
+"""
+
+from __future__ import annotations
+
+import re
+import xml.etree.ElementTree as ET
+from collections import defaultdict
+from dataclasses import dataclass, field
+from datetime import datetime, timedelta, timezone
+from typing import Optional
+from urllib.parse import quote
+
+import requests
+
+# Queries against Google News RSS. Each fetches up to ~100 results,
+# we dedupe by URL across all queries.
+QUERIES = [
+    '"Strait of Hormuz"',
+    "Hormuz tanker",
+    "Hormuz Iran",
+    "Iran shipping",
+    "Hormuz blockade OR closure",
+]
+
+# Outlets that count toward the cluster threshold. Goal: real wire services
+# and reputable maritime/business publications. Excludes Iranian state media,
+# tabloids, and aggregators that just rehash other outlets.
+OUTLET_WHITELIST = {
+    "Reuters", "AP", "Associated Press", "AFP",
+    "BBC", "BBC News", "Al Jazeera", "Al Jazeera English",
+    "Bloomberg", "Financial Times", "FT.com", "Wall Street Journal", "WSJ",
+    "The New York Times", "NYT", "The Washington Post", "Washington Post",
+    "The Guardian", "CNN", "CNBC", "Politico", "Axios",
+    "ABC News", "CBS News", "NBC News", "USA Today", "NPR",
+    "Voice of America", "VOA News",
+    "Lloyd's List", "gCaptain", "Splash247", "Splash 247", "TradeWinds",
+    "Maritime Executive", "The Maritime Executive", "Marine Link",
+    "FreightWaves", "Hellenic Shipping News",
+    "S&P Global", "S&P Global Commodity Insights",
+    "DefenseNews", "Defense News", "Stars and Stripes",
+}
+
+STOPWORDS = {
+    "a", "an", "the", "and", "or", "but", "if", "then", "of", "in", "on", "at",
+    "to", "for", "with", "without", "from", "by", "is", "are", "was", "were",
+    "be", "been", "as", "that", "this", "these", "those", "it", "its", "over",
+    "under", "into", "out", "up", "down", "about", "after", "before", "again",
+    "once", "than", "more", "less", "very", "via", "amid", "while", "during",
+    "says", "said", "say", "new", "news",
+}
+
+LOOKBACK = timedelta(hours=36)
+SIMILARITY_THRESHOLD = 0.35
+MIN_DISTINCT_WHITELISTED_OUTLETS = 3
+USER_AGENT = "Mozilla/5.0 (compatible; HormuzTrackerBot/1.0; +https://hormuz-traffic.com)"
+
+
+@dataclass
+class Article:
+    title: str
+    url: str
+    outlet: str
+    published: datetime
+
+
+def fetch_rss(query: str) -> list[Article]:
+    url = (
+        f"https://news.google.com/rss/search?q={quote(query)}"
+        "&ceid=US:en&hl=en-US&gl=US"
+    )
+    r = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=30)
+    r.raise_for_status()
+    try:
+        root = ET.fromstring(r.content)
+    except ET.ParseError:
+        return []
+    channel = root.find("channel")
+    if channel is None:
+        return []
+
+    out: list[Article] = []
+    for item in channel.findall("item"):
+        title = (item.findtext("title") or "").strip()
+        link = (item.findtext("link") or "").strip()
+        pub_text = item.findtext("pubDate") or ""
+        source_el = item.find("source")
+        outlet = (source_el.text or "").strip() if source_el is not None else ""
+        if not title or not link or not outlet:
+            continue
+        try:
+            published = datetime.strptime(pub_text, "%a, %d %b %Y %H:%M:%S %Z")
+            published = published.replace(tzinfo=timezone.utc)
+        except ValueError:
+            continue
+        # Google News RSS often appends " - Outlet" to titles. Strip it.
+        title = re.sub(rf"\s*-\s*{re.escape(outlet)}\s*$", "", title)
+        out.append(Article(title=title, url=link, outlet=outlet, published=published))
+    return out
+
+
+def tokenize(text: str) -> set[str]:
+    text = text.lower()
+    tokens = re.findall(r"[a-z]{3,}", text)
+    return {t for t in tokens if t not in STOPWORDS}
+
+
+def jaccard(a: set[str], b: set[str]) -> float:
+    if not a or not b:
+        return 0.0
+    return len(a & b) / len(a | b)
+
+
+def cluster(articles: list[Article]) -> list[list[Article]]:
+    """Union-find clustering over articles whose token-set Jaccard ≥ threshold."""
+    n = len(articles)
+    parent = list(range(n))
+
+    def find(i: int) -> int:
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+
+    def union(i: int, j: int) -> None:
+        ri, rj = find(i), find(j)
+        if ri != rj:
+            parent[ri] = rj
+
+    tokens = [tokenize(a.title) for a in articles]
+    for i in range(n):
+        for j in range(i + 1, n):
+            if jaccard(tokens[i], tokens[j]) >= SIMILARITY_THRESHOLD:
+                union(i, j)
+
+    grouped: dict[int, list[Article]] = defaultdict(list)
+    for i, a in enumerate(articles):
+        grouped[find(i)].append(a)
+    return list(grouped.values())
+
+
+def find_top_story(now: Optional[datetime] = None) -> Optional[dict]:
+    """Return cluster summary for the top corroborated story, or None.
+
+    Returns a dict like:
+      {
+        "headline": str,             # representative title
+        "outlet": str,               # representative outlet
+        "url": str,                  # representative URL
+        "whitelisted_outlets": [str],
+        "all_outlets": [str],
+        "article_count": int,
+      }
+    """
+    now = now or datetime.now(timezone.utc)
+    cutoff = now - LOOKBACK
+
+    seen_urls: set[str] = set()
+    fresh: list[Article] = []
+    for q in QUERIES:
+        try:
+            articles = fetch_rss(q)
+        except Exception as e:
+            print(f"  rss fetch failed for {q!r}: {e}")
+            continue
+        for a in articles:
+            if a.published < cutoff:
+                continue
+            if a.url in seen_urls:
+                continue
+            seen_urls.add(a.url)
+            fresh.append(a)
+
+    if not fresh:
+        return None
+
+    clusters = cluster(fresh)
+    candidates: list[tuple[list[Article], set[str]]] = []
+    for arts in clusters:
+        whitelisted = {a.outlet for a in arts if a.outlet in OUTLET_WHITELIST}
+        if len(whitelisted) >= MIN_DISTINCT_WHITELISTED_OUTLETS:
+            candidates.append((arts, whitelisted))
+
+    if not candidates:
+        return None
+
+    # Best cluster: most whitelisted outlets, tiebreak by most recent article
+    candidates.sort(
+        key=lambda c: (
+            -len(c[1]),
+            -max(a.published for a in c[0]).timestamp(),
+        )
+    )
+    arts, whitelisted = candidates[0]
+
+    rep = min(
+        (a for a in arts if a.outlet in OUTLET_WHITELIST),
+        key=lambda a: len(a.title),
+    )
+
+    return {
+        "headline": rep.title,
+        "outlet": rep.outlet,
+        "url": rep.url,
+        "whitelisted_outlets": sorted(whitelisted),
+        "all_outlets": sorted({a.outlet for a in arts}),
+        "article_count": len(arts),
+    }
+
+
+if __name__ == "__main__":
+    import json
+    result = find_top_story()
+    if result:
+        print(json.dumps(result, indent=2))
+    else:
+        print("No qualifying cluster (need ≥3 whitelisted outlets in last 36h).")
