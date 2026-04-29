@@ -113,8 +113,22 @@ def post(png_bytes: bytes, caption: str) -> str:
 
     blob = client.upload_blob(png_bytes)
 
+    # Build the rich-text post. Hashtags must be added via tb.tag() so they
+    # become real Bluesky facets — without that they render as plain text and
+    # don't surface in tag search or feed-curator pipelines. The caption from
+    # today.js already includes them as plain "#Word" tokens; we split them
+    # out here and tag-facet each one.
+    import re
+    HASHTAG_RE = re.compile(r"(#\w+)")
+
     tb = client_utils.TextBuilder()
-    tb.text(caption)
+    for part in HASHTAG_RE.split(caption):
+        if not part:
+            continue
+        if HASHTAG_RE.match(part):
+            tb.tag(part, part[1:])  # tb.tag(displayed_text, tag_value)
+        else:
+            tb.text(part)
     tb.text("\n\n")
     tb.link(SITE_LABEL, SITE_URL)
 
