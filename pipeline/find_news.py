@@ -205,6 +205,19 @@ def find_top_story(now: Optional[datetime] = None) -> Optional[dict]:
         key=lambda a: len(a.title),
     )
 
+    # Sample up to 8 distinct headlines (whitelisted first, then others) for Claude
+    seen_titles: set[str] = set()
+    sampled: list[str] = []
+    for a in sorted(arts, key=lambda a: a.outlet not in OUTLET_WHITELIST):
+        # crude dedupe — collapse near-identical titles by lowercased prefix
+        key = a.title.lower()[:60]
+        if key in seen_titles:
+            continue
+        seen_titles.add(key)
+        sampled.append(a.title)
+        if len(sampled) >= 8:
+            break
+
     return {
         "headline": rep.title,
         "outlet": rep.outlet,
@@ -212,6 +225,7 @@ def find_top_story(now: Optional[datetime] = None) -> Optional[dict]:
         "whitelisted_outlets": sorted(whitelisted),
         "all_outlets": sorted({a.outlet for a in arts}),
         "article_count": len(arts),
+        "cluster_headlines": sampled,
     }
 
 
