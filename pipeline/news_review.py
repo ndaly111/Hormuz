@@ -144,6 +144,11 @@ def main() -> int:
     lede = get_lede(data, story) if story else None
     caption = build_caption(data, story, lede)
     msg = discord_message(caption, story, lede)
+    print("\n========== NEWS PREVIEW ==========\n")
+    print(f"Composed lede: {lede!r}\n")
+    print("---- Discord message ----")
+    print(msg)
+    print("\n========== END PREVIEW ==========\n")
     send_discord(msg)
     return 0
 
