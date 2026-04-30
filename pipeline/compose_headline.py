@@ -141,9 +141,6 @@ def compose(req: HeadlineRequest) -> Optional[str]:
         return None
 
     user_msg = _build_user_message(req)
-    print(f"[compose_headline] user_msg length: {len(user_msg)} chars")
-    print("[compose_headline] last 600 chars of user_msg:")
-    print(user_msg[-600:])
 
     try:
         client = Anthropic(api_key=api_key)
