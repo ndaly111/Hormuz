@@ -151,6 +151,11 @@ def main() -> int:
     if bodies:
         for b in bodies:
             print(f"  - {b.get('outlet')}: {len(b.get('body', ''))} chars")
+        print("\n---- Article bodies (what Claude saw) ----")
+        for b in bodies:
+            print(f"\n>>> {b.get('outlet')}: {b.get('title')}")
+            print(b.get('body', '')[:2000])
+            print("<<<\n")
     print(f"\nComposed lede: {lede!r}\n")
     print("---- Discord message ----")
     print(msg)
