@@ -142,6 +142,28 @@ def post(png_bytes: bytes, caption: str) -> str:
     return response.uri
 
 
+def get_news_lede() -> str | None:
+    """Try to compose a Claude news lede for today. None if no qualifying
+    story, no API key, or any error. Never raises — the post must still go
+    out as data-only if anything in this path fails."""
+    try:
+        from find_news import find_top_story
+        from news_review import get_lede, load_data
+    except ImportError as e:
+        print(f"  news pipeline import failed: {e}")
+        return None
+    try:
+        story = find_top_story()
+        if not story:
+            print("  no qualifying news cluster today")
+            return None
+        data = load_data()
+        return get_lede(data, story)
+    except Exception as e:
+        print(f"  lede composition failed: {e}", file=sys.stderr)
+        return None
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true",
@@ -156,12 +178,20 @@ def main() -> int:
     try:
         print(f"Local server on :{port}, rendering today.html (range={RANGE_KEY})")
         png, caption = capture_share_assets(port)
-        print(f"  PNG: {len(png):,} bytes   Caption: {caption!r}")
+        print(f"  PNG: {len(png):,} bytes   Base caption: {caption!r}")
+
+        lede = get_news_lede()
+        if lede:
+            caption = f"{lede}\n\n{caption}"
+            print(f"  With Claude lede prepended: {caption!r}")
+        else:
+            print("  no lede; posting data-only caption")
 
         if args.dry_run:
             out = ROOT / "pipeline" / "_latest_share.png"
             out.write_bytes(png)
             print(f"DRY RUN — PNG saved to {out}, not posting.")
+            print(f"DRY RUN — final caption:\n{caption}")
             return 0
 
         uri = post(png, caption)

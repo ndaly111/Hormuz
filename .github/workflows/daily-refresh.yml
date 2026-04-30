@@ -85,6 +85,7 @@ jobs:
         env:
           BLUESKY_HANDLE: hormuz-traffic.bsky.social
           BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          ANTHROPIC_API_KEY: ${{ secrets.claude }}
           SHARE_RANGE_KEY: ${{ inputs.share_range || 'war' }}
         run: |
           if [ "${{ inputs.dry_run_post }}" = "true" ]; then
