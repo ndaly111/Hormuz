@@ -270,18 +270,32 @@ def _extract_article_bodies(arts: list[Article], n: int = 5) -> list[dict]:
         if len(ordered) >= n:
             break
 
-    # Lazy import — keep find_news importable even if trafilatura missing
+    # Lazy imports — keep find_news importable even if libs missing
     try:
         import trafilatura
     except ImportError:
         print("  trafilatura not installed; skipping body extraction")
         return []
+    try:
+        from googlenewsdecoder import gnewsdecoder
+    except ImportError:
+        print("  googlenewsdecoder not installed; skipping body extraction")
+        return []
 
     out: list[dict] = []
     for a in ordered:
         try:
-            html = trafilatura.fetch_url(a.url, no_ssl=True)
+            # Resolve Google News redirect to the actual outlet URL
+            decoded = gnewsdecoder(a.url, interval=1)
+            if not decoded.get("status"):
+                print(f"  decode failed for {a.outlet}: {decoded.get('message')}")
+                continue
+            real_url = decoded.get("decoded_url")
+            if not real_url:
+                continue
+            html = trafilatura.fetch_url(real_url, no_ssl=True)
             if not html:
+                print(f"  fetch failed for {a.outlet}: {real_url}")
                 continue
             text = trafilatura.extract(
                 html,
@@ -290,6 +304,7 @@ def _extract_article_bodies(arts: list[Article], n: int = 5) -> list[dict]:
                 no_fallback=False,
             )
             if not text:
+                print(f"  extract failed for {a.outlet}: no readable content")
                 continue
             body = text.strip()[:1500]
             out.append({"outlet": a.outlet, "title": a.title, "body": body})

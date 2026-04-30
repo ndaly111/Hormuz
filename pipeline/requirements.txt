@@ -4,3 +4,4 @@ atproto>=0.0.46
 playwright>=1.43
 anthropic>=0.40
 trafilatura>=1.12
+googlenewsdecoder>=0.1.7
