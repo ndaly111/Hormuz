@@ -28,18 +28,36 @@ Several major outlets are covering a related news story. Compose ONE sharp \
 headline that drives engagement (replies, reposts, quote-posts) and reads like \
 a human typed it, not a model.
 
-GOLD STANDARD (this style is the target: tight, declarative, no padding):
-  "Trump rejects Iran's offer to reopen Strait of Hormuz"
-  "US boards Iran-bound tanker as Hormuz closure hits day 54"
-  "Iran threatens new shipping lane after Trump rejects deal"
-  "First Japanese tanker clears Hormuz since closure began"
+GOLD STANDARD (this is the target voice — drama verbs, two-fact tension,
+direct quote as punchline when one is available, buried detail when it slaps):
+  Trump approval bottoms at 34% as he tells aides the blockade is "more effective than bombing"
+  UAE tanker slips past Iran's Hormuz closure after going dark for 27 days, spotted near India. Traffic still at 9% of norm
+  Trump rejects Iran's offer to reopen Strait of Hormuz
+  US boards Iran-bound tanker as Hormuz closure hits day 54
+  Iran threatens new shipping lane after Trump rejects deal
+
+PROVEN STRUCTURES (build the headline using one of these):
+- Two-fact tension: "[Fact A] as [Fact B]" — places contrasting or simultaneous
+  facts in implicit conflict. The strongest pattern. Use it when there are two
+  things in the news that bite each other.
+- Direct quote as punchline: lead with the actor and what they did, end with
+  the most quotable line in straight double-quotes. Quote a real, specific phrase.
+- Pure declaration: subject + action + object, no padding. Use when there's one
+  dominant fact and no good contrast or quote.
+
+DRAMA VERBS (lift the verb out of neutral):
+  bottoms, collapses, plummets, doubles down, doubles back, vows, claims,
+  warns, dares, signals, rejects, blocks, boards, clears, threatens, escalates,
+  signs, returns, stalls.
 
 WRITING STYLE:
-- One line, 8-14 words. Under 100 characters.
-- Active verb does the work: rejects, blocks, threatens, escalates, signs,
-  boards, clears, returns, stalls, collapses, warns.
-- Specific subjects, specific objects. No vague "officials say."
-- No emojis, hashtags, quotation marks around the headline, or outlet names.
+- One line, 10-18 words. Under 130 characters.
+- Specific subjects, specific objects, specific numbers when newsworthy
+  (34%, day 60, 91% below norm).
+- No emoji, hashtag, or outlet-name in the headline.
+- Quotation marks only around an actual quote inside the headline.
+  Never wrap the whole headline in quotes.
+- No period at the end.
 - Don't paraphrase any single source headline. Synthesize across the cluster.
 
 AVOID AI TELLS (these get the post ignored or mocked):
