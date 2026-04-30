@@ -188,6 +188,13 @@ def _build_user_message(req: HeadlineRequest) -> str:
     else:
         trend = f"flat (7-day avg within {trend_pct:+.1f}% of 30-day avg)"
 
+    # Pre-compute "% of norm" so the model never has to do arithmetic.
+    # Phrasings to use verbatim if a data hook is needed.
+    if req.pre_closure_norm > 0:
+        pct_of_norm = req.seven_day_avg / req.pre_closure_norm * 100
+    else:
+        pct_of_norm = 0.0
+
     bodies_block = ""
     if req.article_bodies:
         chunks = []
@@ -208,10 +215,14 @@ def _build_user_message(req: HeadlineRequest) -> str:
         f"Today's traffic data (chart will follow the headline):\n"
         f"  Day {req.days_since_closure} of Hormuz closure\n"
         f"  7-day avg: {req.seven_day_avg:.1f} ships/day\n"
-        f"  30-day avg: {req.thirty_day_avg:.1f} ships/day\n"
         f"  Pre-closure norm: {req.pre_closure_norm:.1f} ships/day\n"
-        f"  vs pre-closure norm: {req.pct_vs_norm:+.1f}%\n"
+        f"  Currently at {pct_of_norm:.0f}% of normal "
+        f"({-req.pct_vs_norm:.0f}% below norm)\n"
         f"  Recent trend: {trend}\n\n"
+        f"USE THESE EXACT PHRASINGS (do not recompute, do not round differently):\n"
+        f"  - \"{pct_of_norm:.0f}% of normal\"\n"
+        f"  - \"{-req.pct_vs_norm:.0f}% below norm\"\n"
+        f"  - \"day {req.days_since_closure}\"\n\n"
         "Compose the sharpest one-line headline that drives engagement. "
         "Lead with a buried fact from the article bodies if one is available."
     )

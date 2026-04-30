@@ -252,6 +252,22 @@ EXTRACTION_PRIORITY = [
 ]
 
 
+def _looks_like_nav_chrome(body: str) -> bool:
+    """Detect when trafilatura grabbed page navigation instead of the article.
+
+    Symptoms: very short avg line length (lots of one-word menu items),
+    high proportion of single-word lines, or a body dominated by city/show
+    names.
+    """
+    lines = [ln.strip() for ln in body.splitlines() if ln.strip()]
+    if len(lines) < 5:
+        return False  # too short to judge; let it through
+    short_lines = sum(1 for ln in lines if len(ln.split()) <= 2)
+    avg_words = sum(len(ln.split()) for ln in lines) / len(lines)
+    # If most lines are 1-2 words and average is under 4, it's a menu
+    return (short_lines / len(lines) > 0.6) and avg_words < 4
+
+
 def _extract_article_bodies(arts: list[Article], n: int = 5) -> list[dict]:
     """Fetch and clean article text for top-priority articles, one per outlet.
 
@@ -307,6 +323,9 @@ def _extract_article_bodies(arts: list[Article], n: int = 5) -> list[dict]:
                 print(f"  extract failed for {a.outlet}: no readable content")
                 continue
             body = text.strip()[:1500]
+            if _looks_like_nav_chrome(body):
+                print(f"  rejected {a.outlet}: extracted body is nav chrome")
+                continue
             out.append({"outlet": a.outlet, "title": a.title, "body": body})
             print(f"  extracted {len(body)} chars from {a.outlet}")
         except Exception as e:
