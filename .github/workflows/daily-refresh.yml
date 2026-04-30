@@ -57,7 +57,7 @@ jobs:
         if: always()
         env:
           DISCORD_WEBHOOK: ${{ secrets.Discord_webhook }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.claude }}
         run: python pipeline/news_review.py
         continue-on-error: true
 
