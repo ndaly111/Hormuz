@@ -234,8 +234,13 @@ def main() -> int:
         )
     summary = header + "\n".join(top5_lines)
 
-    analysis = analyze(top) or "_(Claude analysis unavailable — set ANTHROPIC_API_KEY.)_"
+    analysis = analyze(top) or "_(Claude analysis unavailable. Set ANTHROPIC_API_KEY.)_"
     full = summary + "\n\n**Pattern analysis:**\n\n" + analysis
+
+    # Always echo to stdout so the workflow log captures the full report
+    print("\n========== PEER REVIEW REPORT ==========\n")
+    print(full)
+    print("\n========== END REPORT ==========\n")
 
     post_discord(full)
     return 0
