@@ -218,6 +218,10 @@ def find_top_story(now: Optional[datetime] = None) -> Optional[dict]:
         if len(sampled) >= 8:
             break
 
+    # Pull article bodies from up to 5 articles, prioritized by outlet quality.
+    # Wire services and majors first — they have the most fact-density.
+    bodies = _extract_article_bodies(arts, n=5)
+
     return {
         "headline": rep.title,
         "outlet": rep.outlet,
@@ -226,7 +230,74 @@ def find_top_story(now: Optional[datetime] = None) -> Optional[dict]:
         "all_outlets": sorted({a.outlet for a in arts}),
         "article_count": len(arts),
         "cluster_headlines": sampled,
+        "article_bodies": bodies,
     }
+
+
+# Outlet ranking for body extraction: wire services first, then majors,
+# then broadcast / digital natives. The order is the priority queue.
+EXTRACTION_PRIORITY = [
+    "Reuters", "Associated Press", "AP", "AFP",
+    "Bloomberg", "Financial Times", "FT.com",
+    "The New York Times", "NYT",
+    "The Wall Street Journal", "WSJ",
+    "The Washington Post", "Washington Post",
+    "BBC", "BBC News", "The Guardian",
+    "Al Jazeera", "Al Jazeera English",
+    "Axios", "Politico", "CNN", "CNBC",
+    "NBC News", "CBS News", "ABC News", "NPR",
+    "Lloyd's List", "gCaptain", "TradeWinds", "Splash247", "Splash 247",
+    "Maritime Executive", "The Maritime Executive",
+    "S&P Global", "S&P Global Commodity Insights",
+]
+
+
+def _extract_article_bodies(arts: list[Article], n: int = 5) -> list[dict]:
+    """Fetch and clean article text for top-priority articles, one per outlet.
+
+    Returns a list of {outlet, title, body} dicts. Empty list on total failure.
+    Each body is truncated to ~1500 chars to keep the prompt budget sane.
+    """
+    by_outlet: dict[str, Article] = {}
+    for a in arts:
+        if a.outlet not in by_outlet:
+            by_outlet[a.outlet] = a
+
+    ordered: list[Article] = []
+    for outlet in EXTRACTION_PRIORITY:
+        if outlet in by_outlet:
+            ordered.append(by_outlet[outlet])
+        if len(ordered) >= n:
+            break
+
+    # Lazy import — keep find_news importable even if trafilatura missing
+    try:
+        import trafilatura
+    except ImportError:
+        print("  trafilatura not installed; skipping body extraction")
+        return []
+
+    out: list[dict] = []
+    for a in ordered:
+        try:
+            html = trafilatura.fetch_url(a.url, no_ssl=True)
+            if not html:
+                continue
+            text = trafilatura.extract(
+                html,
+                include_comments=False,
+                include_tables=False,
+                no_fallback=False,
+            )
+            if not text:
+                continue
+            body = text.strip()[:1500]
+            out.append({"outlet": a.outlet, "title": a.title, "body": body})
+            print(f"  extracted {len(body)} chars from {a.outlet}")
+        except Exception as e:
+            print(f"  extraction failed for {a.outlet}: {e}")
+            continue
+    return out
 
 
 if __name__ == "__main__":

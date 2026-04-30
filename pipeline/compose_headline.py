@@ -28,6 +28,17 @@ Several major outlets are covering a related news story. Compose ONE sharp \
 headline that drives engagement (replies, reposts, quote-posts) and reads like \
 a human typed it, not a model.
 
+FIND THE BURIED FACT — most important rule:
+You will receive both the cluster's headlines AND article bodies (when available).
+Headlines are written for SEO and all sound the same. The article bodies are
+where the news lives — specific dollar amounts, vessel names, named officials,
+direct quotes, surprising sub-details. SCAN THE BODIES and lead with the most
+striking buried fact that other accounts won't have. If one outlet got an
+exclusive quote, lead with the quote. If one body has a specific number
+(34% approval, 27 days dark, $800K bet), lead with the number. If one body
+names a vessel or person other outlets don't, use that. Do not regurgitate
+the headlines — the headlines are what every other account will post.
+
 GOLD STANDARD (this is the target voice — drama verbs, two-fact tension,
 direct quote as punchline when one is available, buried detail when it slaps):
   Trump approval bottoms at 34% as he tells aides the blockade is "more effective than bombing"
@@ -112,6 +123,9 @@ class HeadlineRequest:
     thirty_day_avg: float
     pct_vs_norm: float
     pre_closure_norm: float
+    # List of {"outlet": str, "title": str, "body": str} dicts. Optional —
+    # falls back to headlines-only if the extractor didn't get any bodies.
+    article_bodies: list[dict] | None = None
 
 
 def compose(req: HeadlineRequest) -> Optional[str]:
@@ -174,9 +188,23 @@ def _build_user_message(req: HeadlineRequest) -> str:
     else:
         trend = f"flat (7-day avg within {trend_pct:+.1f}% of 30-day avg)"
 
+    bodies_block = ""
+    if req.article_bodies:
+        chunks = []
+        for i, art in enumerate(req.article_bodies, 1):
+            outlet = art.get("outlet", "?")
+            title = art.get("title", "")
+            body = art.get("body", "")
+            chunks.append(f"--- Article {i}: {outlet} ---\n{title}\n\n{body}\n")
+        bodies_block = (
+            "Article bodies (scan these for buried facts; do not summarize, "
+            "find one striking detail to lead with):\n\n" + "\n".join(chunks) + "\n"
+        )
+
     return (
         f"News cluster covered by: {outlets}\n\n"
         f"Headlines from the cluster:\n{headlines_block}\n\n"
+        f"{bodies_block}"
         f"Today's traffic data (chart will follow the headline):\n"
         f"  Day {req.days_since_closure} of Hormuz closure\n"
         f"  7-day avg: {req.seven_day_avg:.1f} ships/day\n"
@@ -184,7 +212,8 @@ def _build_user_message(req: HeadlineRequest) -> str:
         f"  Pre-closure norm: {req.pre_closure_norm:.1f} ships/day\n"
         f"  vs pre-closure norm: {req.pct_vs_norm:+.1f}%\n"
         f"  Recent trend: {trend}\n\n"
-        "Compose the sharpest one-line headline that drives engagement."
+        "Compose the sharpest one-line headline that drives engagement. "
+        "Lead with a buried fact from the article bodies if one is available."
     )
 
 

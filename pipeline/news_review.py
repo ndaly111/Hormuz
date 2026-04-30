@@ -94,6 +94,7 @@ def get_lede(data: dict, story: dict) -> str | None:
         thirty_day_avg=float(cur.get("last_30d_avg") or 0.0),
         pct_vs_norm=float(cur.get("vs_pre_feb_2026_pct") or 0.0),
         pre_closure_norm=float(pre_norm),
+        article_bodies=story.get("article_bodies") or None,
     )
     return compose_headline(req)
 
@@ -144,8 +145,13 @@ def main() -> int:
     lede = get_lede(data, story) if story else None
     caption = build_caption(data, story, lede)
     msg = discord_message(caption, story, lede)
+    bodies = (story or {}).get("article_bodies") or []
     print("\n========== NEWS PREVIEW ==========\n")
-    print(f"Composed lede: {lede!r}\n")
+    print(f"Article bodies extracted: {len(bodies)}")
+    if bodies:
+        for b in bodies:
+            print(f"  - {b.get('outlet')}: {len(b.get('body', ''))} chars")
+    print(f"\nComposed lede: {lede!r}\n")
     print("---- Discord message ----")
     print(msg)
     print("\n========== END PREVIEW ==========\n")
