@@ -142,26 +142,54 @@ def post(png_bytes: bytes, caption: str) -> str:
     return response.uri
 
 
-def get_news_lede() -> str | None:
-    """Try to compose a Claude news lede for today. None if no qualifying
-    story, no API key, or any error. Never raises — the post must still go
-    out as data-only if anything in this path fails."""
+def get_news_lede() -> tuple[str | None, dict | None]:
+    """Try to compose a Claude news lede for today. Returns (lede, story).
+    Either or both may be None if no qualifying story, no API key, or error.
+    Never raises — the post must still go out as data-only on any failure."""
     try:
         from find_news import find_top_story
         from news_review import get_lede, load_data
     except ImportError as e:
         print(f"  news pipeline import failed: {e}")
-        return None
+        return None, None
     try:
         story = find_top_story()
         if not story:
             print("  no qualifying news cluster today")
-            return None
+            return None, None
         data = load_data()
-        return get_lede(data, story)
+        return get_lede(data, story), story
     except Exception as e:
         print(f"  lede composition failed: {e}", file=sys.stderr)
-        return None
+        return None, None
+
+
+def append_to_ledger(post_uri: str, lede: str | None, story: dict | None) -> None:
+    """Append a post entry to engagement_log.json. Called once per successful
+    Bluesky post. Engagement metrics are filled in later by fetch_engagement.py
+    once the post is at least 24h old."""
+    import json
+    from datetime import datetime, timezone
+
+    ledger_path = ROOT / "pipeline" / "engagement_log.json"
+    try:
+        existing = json.loads(ledger_path.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        existing = []
+
+    entry = {
+        "ts": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "post_uri": post_uri,
+        "lede": lede,
+        "had_news_cluster": story is not None,
+        "story_headline": (story or {}).get("headline"),
+        "outlets": (story or {}).get("whitelisted_outlets") or [],
+        "article_count": (story or {}).get("article_count"),
+        "engagement": None,  # filled in by fetch_engagement.py
+    }
+    existing.append(entry)
+    ledger_path.write_text(json.dumps(existing, indent=2), encoding="utf-8")
+    print(f"  appended to engagement ledger ({len(existing)} entries)")
 
 
 def main() -> int:
@@ -180,7 +208,7 @@ def main() -> int:
         png, caption = capture_share_assets(port)
         print(f"  PNG: {len(png):,} bytes   Base caption: {caption!r}")
 
-        lede = get_news_lede()
+        lede, story = get_news_lede()
         if lede:
             caption = f"{lede}\n\n{caption}"
             print(f"  With Claude lede prepended: {caption!r}")
@@ -196,6 +224,10 @@ def main() -> int:
 
         uri = post(png, caption)
         print(f"Posted to Bluesky: {uri}")
+        try:
+            append_to_ledger(uri, lede, story)
+        except Exception as e:
+            print(f"  ledger append failed (non-fatal): {e}", file=sys.stderr)
         return 0
     finally:
         srv.shutdown()
