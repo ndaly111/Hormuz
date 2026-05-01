@@ -33,6 +33,8 @@ jobs:
 
       - name: Run reply scout
         env:
+          BLUESKY_HANDLE: hormuz-traffic.bsky.social
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
           ANTHROPIC_API_KEY: ${{ secrets.claude }}
           DISCORD_WEBHOOK: ${{ secrets.Discord_webhook }}
         run: python pipeline/reply_scout.py

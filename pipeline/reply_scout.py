@@ -42,12 +42,22 @@ SEARCH_KEYWORDS = [
 ]
 
 OUR_HANDLE = "hormuz-traffic.bsky.social"
-SEARCH_POSTS = "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts"
 LOOKBACK = timedelta(hours=24)
 MIN_LIKES = 10
 MAX_CANDIDATES = 8  # cap candidates fed to Claude to bound cost
 
 MODEL = os.environ.get("ANTHROPIC_HEADLINE_MODEL", "claude-haiku-4-5-20251001")
+
+
+def _bsky_client():
+    """Logged-in atproto client. searchPosts now requires auth on bsky.app."""
+    handle = os.environ.get("BLUESKY_HANDLE")
+    pw = os.environ.get("BLUESKY_APP_PASSWORD")
+    from atproto import Client
+    client = Client()
+    if handle and pw:
+        client.login(handle, pw)
+    return client
 
 
 @dataclass
@@ -63,50 +73,48 @@ class Candidate:
     web_url: str
 
 
-def search_keyword(keyword: str, since_iso: str) -> list[dict]:
-    params = {
-        "q": keyword,
-        "limit": 50,
-        "sort": "top",     # rank by engagement
-        "since": since_iso,
-        "lang": "en",
-    }
+def search_keyword(client, keyword: str, since_iso: str) -> list:
+    """Returns a list of post views from the atproto SDK."""
     try:
-        r = requests.get(SEARCH_POSTS, params=params, timeout=30)
-        r.raise_for_status()
+        resp = client.app.bsky.feed.search_posts({
+            "q": keyword,
+            "limit": 50,
+            "sort": "top",
+            "since": since_iso,
+            "lang": "en",
+        })
+        return list(resp.posts or [])
     except Exception as e:
         print(f"  search failed for {keyword!r}: {e}", file=sys.stderr)
         return []
-    return r.json().get("posts", [])
 
 
-def collect_candidates(now: datetime) -> list[Candidate]:
+def collect_candidates(client, now: datetime) -> list[Candidate]:
     since_iso = (now - LOOKBACK).isoformat(timespec="seconds")
     seen_uris: set[str] = set()
     out: list[Candidate] = []
     for kw in SEARCH_KEYWORDS:
-        posts = search_keyword(kw, since_iso)
+        posts = search_keyword(client, kw, since_iso)
         print(f"  '{kw}': {len(posts)} results")
         for p in posts:
-            uri = p.get("uri")
+            uri = getattr(p, "uri", None)
             if not uri or uri in seen_uris:
                 continue
             seen_uris.add(uri)
-            author = p.get("author") or {}
-            handle = author.get("handle", "")
+            author = getattr(p, "author", None)
+            handle = getattr(author, "handle", "") if author else ""
             if handle == OUR_HANDLE:
-                continue  # skip our own posts
-            rec = p.get("record") or {}
-            text = (rec.get("text") or "").strip()
+                continue
+            rec = getattr(p, "record", None)
+            text = (getattr(rec, "text", "") or "").strip() if rec else ""
             if len(text) < 20:
                 continue
-            # Skip replies — top-level posts give our reply more visibility
-            if rec.get("reply"):
+            # Skip replies; top-level posts give our reply better visibility
+            if rec and getattr(rec, "reply", None):
                 continue
-            likes = p.get("likeCount", 0) or 0
+            likes = getattr(p, "like_count", 0) or 0
             if likes < MIN_LIKES:
                 continue
-            # Convert at:// URI to the public bsky.app web URL for easy click
             try:
                 rkey = uri.split("/")[-1]
                 web_url = f"https://bsky.app/profile/{handle}/post/{rkey}"
@@ -115,12 +123,12 @@ def collect_candidates(now: datetime) -> list[Candidate]:
             out.append(Candidate(
                 uri=uri,
                 author_handle=handle,
-                author_display=author.get("displayName") or handle,
+                author_display=getattr(author, "display_name", handle) or handle,
                 text=text,
                 likes=likes,
-                reposts=p.get("repostCount", 0) or 0,
-                replies=p.get("replyCount", 0) or 0,
-                created_at=rec.get("createdAt", ""),
+                reposts=getattr(p, "repost_count", 0) or 0,
+                replies=getattr(p, "reply_count", 0) or 0,
+                created_at=getattr(rec, "created_at", "") if rec else "",
                 web_url=web_url,
             ))
     out.sort(key=lambda c: c.likes + 3 * c.reposts + 5 * c.replies, reverse=True)
@@ -293,7 +301,16 @@ def main() -> int:
     now = datetime.now(timezone.utc)
     print(f"Reply scout — {now:%Y-%m-%d %H:%M UTC}")
     print("Searching Bluesky...")
-    candidates = collect_candidates(now)
+    try:
+        client = _bsky_client()
+    except Exception as e:
+        print(f"Bluesky login failed: {e}", file=sys.stderr)
+        post_discord(
+            f"**Reply scout — {now:%Y-%m-%d %H:%M UTC}**\n"
+            f"_Could not log in to Bluesky: {e}_"
+        )
+        return 1
+    candidates = collect_candidates(client, now)
     print(f"\n{len(candidates)} candidates after filtering")
     if not candidates:
         post_discord(
