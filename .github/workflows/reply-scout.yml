@@ -1,0 +1,38 @@
+name: Reply scout
+
+on:
+  schedule:
+    # 14:00 UTC daily — late morning US east, late afternoon Europe.
+    # Most peer accounts have posted by then; gives us a fresh 24h window.
+    - cron: "0 14 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: reply-scout
+  cancel-in-progress: false
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: pipeline/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r pipeline/requirements.txt
+
+      - name: Run reply scout
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.claude }}
+          DISCORD_WEBHOOK: ${{ secrets.Discord_webhook }}
+        run: python pipeline/reply_scout.py
