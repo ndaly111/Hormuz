@@ -23,13 +23,17 @@ from pathlib import Path
 import pandas as pd
 import requests
 
-# IMF rotated the dataset 2026-04-29 — old item 42132aa4e2fc4d41bdaf9a445f688931
-# now returns 500 "Item does not exist or is inaccessible". The replacement
-# dataset is "Daily_Chokepoints_Data" (same schema + extra capacity_* columns
-# we ignore). Found via ArcGIS Hub search on the IMF org's content.
+# IMF rotates this dataset every few months — when it does, the old item ID
+# returns 500 "Item does not exist or is inaccessible" and a new one appears
+# under owner=IMF-portwatch_imf_dataviz on ArcGIS Hub. Same schema each time
+# (the n_* columns we care about; extra capacity_* columns we ignore).
+# Rotation history: 42132aa4… (pre-2026-04-29) -> 6cd06d35… (2026-04-29) ->
+# 3da2b9ca… (2026-05-12). To find the next one: search
+# hub.arcgis.com/api/v3/search?filter[owner]=IMF-portwatch_imf_dataviz for
+# "Daily Chokepoints Data".
 PORTWATCH_CSV = (
     "https://hub.arcgis.com/api/v3/datasets/"
-    "6cd06d3554474ea7a9aebfcc135021c2_0/downloads/data"
+    "3da2b9ca97684916b75c4013f95d18ab_0/downloads/data"
     "?format=csv&spatialRefId=4326"
 )
 
