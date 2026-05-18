@@ -286,5 +286,209 @@
       "replies": 0,
       "quotes": 0
     }
+  },
+  {
+    "ts": "2026-05-01T06:51:46.515947+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mkrk3vfcqu2s",
+    "lede": "Khamenei breaks two-month silence claiming US \"defeat\" as Hormuz traffic collapses to 6% of normal",
+    "had_news_cluster": true,
+    "story_headline": null,
+    "outlets": [],
+    "article_count": null,
+    "engagement": {
+      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0,
+      "backfilled": true
+    }
+  },
+  {
+    "ts": "2026-05-02T06:36:06.116150+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mktzorz66x2s",
+    "lede": null,
+    "had_news_cluster": false,
+    "story_headline": null,
+    "outlets": [],
+    "article_count": null,
+    "engagement": {
+      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0,
+      "backfilled": true
+    }
+  },
+  {
+    "ts": "2026-05-03T06:48:46.798209+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mkwkuewi5q2q",
+    "lede": "Trump calls blockade \"very profitable business\" as Hormuz traffic collapses to 6% of normal",
+    "had_news_cluster": true,
+    "story_headline": null,
+    "outlets": [],
+    "article_count": null,
+    "engagement": {
+      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0,
+      "backfilled": true
+    }
+  },
+  {
+    "ts": "2026-05-04T07:01:31.466298+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mkz423n2si2h",
+    "lede": "Trump seizes Iranian ship, announces 'Project Freedom' as Hormuz traffic collapses to 6% of normal",
+    "had_news_cluster": true,
+    "story_headline": null,
+    "outlets": [],
+    "article_count": null,
+    "engagement": {
+      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0,
+      "backfilled": true
+    }
+  },
+  {
+    "ts": "2026-05-05T06:46:52.644742+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3ml3loszeh52u",
+    "lede": "Trump launches \"Project Freedom\" as Hormuz traffic collapses to 6% of normal on day 54",
+    "had_news_cluster": true,
+    "story_headline": null,
+    "outlets": [],
+    "article_count": null,
+    "engagement": {
+      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0,
+      "backfilled": true
+    }
+  },
+  {
+    "ts": "2026-05-06T06:55:53.422949+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3ml64nu6vsy2c",
+    "lede": "Trump pauses Project Freedom after just two days as 22,500 mariners remain trapped in the Gulf",
+    "had_news_cluster": true,
+    "story_headline": null,
+    "outlets": [],
+    "article_count": null,
+    "engagement": {
+      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0,
+      "backfilled": true
+    }
+  },
+  {
+    "ts": "2026-05-07T06:58:21.792909+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mlanb75a332s",
+    "lede": "Trump pauses 'Project Freedom' 50 hours after launching it, citing Iran deal progress as Hormuz traffic falls to 6% of normal",
+    "had_news_cluster": true,
+    "story_headline": null,
+    "outlets": [],
+    "article_count": null,
+    "engagement": {
+      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0,
+      "backfilled": true
+    }
+  },
+  {
+    "ts": "2026-05-08T06:37:40.509735+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mld4l4tl4r2s",
+    "lede": "Trump calls Iran strikes a \"love tap\" as Hormuz traffic collapses to 6% of normal on day 61",
+    "had_news_cluster": true,
+    "story_headline": null,
+    "outlets": [],
+    "article_count": null,
+    "engagement": {
+      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0,
+      "backfilled": true
+    }
+  },
+  {
+    "ts": "2026-05-09T06:41:11.341944+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mlfnade2iz2i",
+    "lede": "Trump calls Hormuz firefight a \"love tap\" as ceasefire frays on day 61",
+    "had_news_cluster": true,
+    "story_headline": null,
+    "outlets": [],
+    "article_count": null,
+    "engagement": {
+      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0,
+      "backfilled": true
+    }
+  },
+  {
+    "ts": "2026-05-10T06:52:07.765722+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mli6csujoc2i",
+    "lede": "Qatari tanker Al Kharaitiyat attempts first LNG transit since war began as Hormuz stays at 6% of normal",
+    "had_news_cluster": true,
+    "story_headline": null,
+    "outlets": [],
+    "article_count": null,
+    "engagement": {
+      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "likes": 1,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0,
+      "backfilled": true
+    }
+  },
+  {
+    "ts": "2026-05-11T07:09:59.759023+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mlkpronjjp2u",
+    "lede": "Trump rejects Iran's terms as Hormuz traffic collapses to 6% of normal on day 61",
+    "had_news_cluster": true,
+    "story_headline": null,
+    "outlets": [],
+    "article_count": null,
+    "engagement": {
+      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0,
+      "backfilled": true
+    }
+  },
+  {
+    "ts": "2026-05-12T06:58:29.002930+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mln7lzdtm72q",
+    "lede": "Trump rejects Iran's peace plan as Hormuz traffic collapses to 6% of normal on day 61",
+    "had_news_cluster": true,
+    "story_headline": null,
+    "outlets": [],
+    "article_count": null,
+    "engagement": {
+      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0,
+      "backfilled": true
+    }
   }
 ]

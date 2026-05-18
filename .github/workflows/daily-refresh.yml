@@ -94,6 +94,22 @@ jobs:
             python pipeline/post_bluesky.py
           fi
 
+      - name: Commit ledger update (if changed)
+        if: steps.commit.outputs.data_changed == 'true' || inputs.force_post == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pipeline/engagement_log.json
+          if git diff --cached --quiet; then
+            echo "No ledger changes to commit."
+          else
+            # Pull latest in case another workflow (e.g. fetch-engagement) ran
+            # in the meantime and pushed to the ledger.
+            git pull --rebase --autostash origin main || true
+            git commit -m "Append post entry to engagement ledger $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
       - name: Upload dry-run preview
         if: inputs.dry_run_post == 'true'
         uses: actions/upload-artifact@v4
