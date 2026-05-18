@@ -146,8 +146,13 @@ def cluster(articles: list[Article]) -> list[list[Article]]:
     return list(grouped.values())
 
 
-def find_top_story(now: Optional[datetime] = None) -> Optional[dict]:
-    """Return cluster summary for the top corroborated story, or None.
+def find_top_story(rank: int = 0, now: Optional[datetime] = None) -> Optional[dict]:
+    """Return cluster summary for a corroborated story, or None.
+
+    rank=0 (default): the top cluster (most whitelisted outlets, then most recent).
+    rank=1: the second-best cluster — used by the afternoon post to surface a
+            different topic than the morning post.
+    Returns None when no cluster qualifies at the given rank.
 
     Returns a dict like:
       {
@@ -188,17 +193,17 @@ def find_top_story(now: Optional[datetime] = None) -> Optional[dict]:
         if len(whitelisted) >= MIN_DISTINCT_WHITELISTED_OUTLETS:
             candidates.append((arts, whitelisted))
 
-    if not candidates:
+    if not candidates or rank >= len(candidates):
         return None
 
-    # Best cluster: most whitelisted outlets, tiebreak by most recent article
+    # Sort by: most whitelisted outlets, tiebreak by most recent article
     candidates.sort(
         key=lambda c: (
             -len(c[1]),
             -max(a.published for a in c[0]).timestamp(),
         )
     )
-    arts, whitelisted = candidates[0]
+    arts, whitelisted = candidates[rank]
 
     rep = min(
         (a for a in arts if a.outlet in OUTLET_WHITELIST),

@@ -142,10 +142,12 @@ def post(png_bytes: bytes, caption: str) -> str:
     return response.uri
 
 
-def get_news_lede() -> tuple[str | None, dict | None]:
+def get_news_lede(rank: int = 0) -> tuple[str | None, dict | None]:
     """Try to compose a Claude news lede for today. Returns (lede, story).
-    Either or both may be None if no qualifying story, no API key, or error.
-    Never raises — the post must still go out as data-only on any failure."""
+    rank=0 = top cluster; rank=1 = second cluster (for the afternoon post).
+    Either or both may be None if no qualifying story at that rank, no API
+    key, or error. Never raises — the post must still go out as data-only
+    on any failure."""
     try:
         from find_news import find_top_story
         from news_review import get_lede, load_data
@@ -153,9 +155,9 @@ def get_news_lede() -> tuple[str | None, dict | None]:
         print(f"  news pipeline import failed: {e}")
         return None, None
     try:
-        story = find_top_story()
+        story = find_top_story(rank=rank)
         if not story:
-            print("  no qualifying news cluster today")
+            print(f"  no qualifying news cluster at rank {rank}")
             return None, None
         data = load_data()
         return get_lede(data, story), story
@@ -196,11 +198,24 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true",
                         help="Render + log caption, skip Bluesky post")
+    parser.add_argument("--cluster-rank", type=int, default=0,
+                        help="News cluster rank to use as the lede source. "
+                             "0=top cluster (morning), 1=second cluster (afternoon).")
+    parser.add_argument("--require-cluster", action="store_true",
+                        help="Skip the post (exit 0) when no qualifying news "
+                             "cluster exists at the requested rank. Used by the "
+                             "afternoon workflow so quiet news days don't force "
+                             "a redundant data-only second post.")
     args = parser.parse_args()
 
     if not args.dry_run and not APP_PASSWORD:
         print("ERROR: BLUESKY_APP_PASSWORD env var not set", file=sys.stderr)
         return 2
+
+    lede, story = get_news_lede(rank=args.cluster_rank)
+    if args.require_cluster and story is None:
+        print(f"Skipping post — no qualifying cluster at rank {args.cluster_rank}.")
+        return 0
 
     srv, port = _start_server()
     try:
@@ -208,7 +223,6 @@ def main() -> int:
         png, caption = capture_share_assets(port)
         print(f"  PNG: {len(png):,} bytes   Base caption: {caption!r}")
 
-        lede, story = get_news_lede()
         if lede:
             caption = f"{lede}\n\n{caption}"
             print(f"  With Claude lede prepended: {caption!r}")

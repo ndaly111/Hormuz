@@ -1,0 +1,80 @@
+name: Afternoon Bluesky post
+
+# Second daily Bluesky post — uses the #2 news cluster (different topic than
+# the morning's #1 cluster) and a shorter chart range for visual contrast.
+# Skips silently when no qualifying second cluster exists (quiet news days).
+# Does NOT refetch PortWatch data; the morning workflow already pulled today's.
+
+on:
+  schedule:
+    # 17:00 UTC = 1pm ET / 6pm UK — afternoon US, early-evening Europe.
+    - cron: "0 17 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run_post:
+        description: "Render image + log caption, but skip the actual Bluesky post"
+        required: false
+        default: "false"
+        type: choice
+        options: [ "false", "true" ]
+      share_range:
+        description: "Chart range for the afternoon post"
+        required: false
+        default: "d30"
+        type: choice
+        options: [ "d7", "d30", "closure", "war", "all" ]
+      cluster_rank:
+        description: "News cluster rank (0=top, 1=second)"
+        required: false
+        default: "1"
+        type: choice
+        options: [ "0", "1" ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: afternoon-post
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: pipeline/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r pipeline/requirements.txt
+
+      - name: Install Playwright browser
+        run: python -m playwright install --with-deps chromium
+
+      - name: Post second update to Bluesky
+        env:
+          BLUESKY_HANDLE: hormuz-traffic.bsky.social
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          ANTHROPIC_API_KEY: ${{ secrets.claude }}
+          SHARE_RANGE_KEY: ${{ inputs.share_range || 'd30' }}
+        run: |
+          RANK="${{ inputs.cluster_rank || '1' }}"
+          if [ "${{ inputs.dry_run_post }}" = "true" ]; then
+            python pipeline/post_bluesky.py --dry-run --cluster-rank "$RANK" --require-cluster
+          else
+            python pipeline/post_bluesky.py --cluster-rank "$RANK" --require-cluster
+          fi
+
+      - name: Upload dry-run preview
+        if: inputs.dry_run_post == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: afternoon-bluesky-dry-run-preview
+          path: pipeline/_latest_share.png
+          if-no-files-found: ignore
