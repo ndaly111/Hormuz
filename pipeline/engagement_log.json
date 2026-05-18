@@ -490,5 +490,20 @@
       "quotes": 0,
       "backfilled": true
     }
+  },
+  {
+    "ts": "2026-05-18T12:04:51+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mm4tjexui22c",
+    "lede": "Trump warns Iran \"nothing left of them\" as Hormuz traffic collapses to 2% of normal on day 68",
+    "had_news_cluster": true,
+    "story_headline": "Trump warns Iran \"clock is ticking\" until U.S. launches harder strikes",
+    "outlets": [
+      "Al Jazeera",
+      "Axios",
+      "CNBC",
+      "Hellenic Shipping News"
+    ],
+    "article_count": 68,
+    "engagement": null
   }
 ]
