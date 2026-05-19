@@ -296,12 +296,11 @@
     "outlets": [],
     "article_count": null,
     "engagement": {
-      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "fetched_at": "2026-05-19T13:09:06+00:00",
       "likes": 0,
       "reposts": 0,
       "replies": 0,
-      "quotes": 0,
-      "backfilled": true
+      "quotes": 0
     }
   },
   {
@@ -313,12 +312,11 @@
     "outlets": [],
     "article_count": null,
     "engagement": {
-      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "fetched_at": "2026-05-19T13:09:06+00:00",
       "likes": 0,
       "reposts": 0,
       "replies": 0,
-      "quotes": 0,
-      "backfilled": true
+      "quotes": 0
     }
   },
   {
@@ -330,12 +328,11 @@
     "outlets": [],
     "article_count": null,
     "engagement": {
-      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "fetched_at": "2026-05-19T13:09:06+00:00",
       "likes": 0,
       "reposts": 0,
       "replies": 0,
-      "quotes": 0,
-      "backfilled": true
+      "quotes": 0
     }
   },
   {
@@ -347,12 +344,11 @@
     "outlets": [],
     "article_count": null,
     "engagement": {
-      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "fetched_at": "2026-05-19T13:09:06+00:00",
       "likes": 0,
       "reposts": 0,
       "replies": 0,
-      "quotes": 0,
-      "backfilled": true
+      "quotes": 0
     }
   },
   {
@@ -364,12 +360,11 @@
     "outlets": [],
     "article_count": null,
     "engagement": {
-      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "fetched_at": "2026-05-19T13:09:06+00:00",
       "likes": 0,
       "reposts": 0,
       "replies": 0,
-      "quotes": 0,
-      "backfilled": true
+      "quotes": 0
     }
   },
   {
@@ -381,12 +376,11 @@
     "outlets": [],
     "article_count": null,
     "engagement": {
-      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "fetched_at": "2026-05-19T13:09:06+00:00",
       "likes": 0,
       "reposts": 0,
       "replies": 0,
-      "quotes": 0,
-      "backfilled": true
+      "quotes": 0
     }
   },
   {
@@ -398,12 +392,11 @@
     "outlets": [],
     "article_count": null,
     "engagement": {
-      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "fetched_at": "2026-05-19T13:09:06+00:00",
       "likes": 0,
       "reposts": 0,
       "replies": 0,
-      "quotes": 0,
-      "backfilled": true
+      "quotes": 0
     }
   },
   {
@@ -415,12 +408,11 @@
     "outlets": [],
     "article_count": null,
     "engagement": {
-      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "fetched_at": "2026-05-19T13:09:06+00:00",
       "likes": 0,
       "reposts": 0,
       "replies": 0,
-      "quotes": 0,
-      "backfilled": true
+      "quotes": 0
     }
   },
   {
@@ -432,12 +424,11 @@
     "outlets": [],
     "article_count": null,
     "engagement": {
-      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "fetched_at": "2026-05-19T13:09:06+00:00",
       "likes": 0,
       "reposts": 0,
       "replies": 0,
-      "quotes": 0,
-      "backfilled": true
+      "quotes": 0
     }
   },
   {
@@ -449,12 +440,11 @@
     "outlets": [],
     "article_count": null,
     "engagement": {
-      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "fetched_at": "2026-05-19T13:09:06+00:00",
       "likes": 1,
       "reposts": 0,
       "replies": 0,
-      "quotes": 0,
-      "backfilled": true
+      "quotes": 0
     }
   },
   {
@@ -466,12 +456,11 @@
     "outlets": [],
     "article_count": null,
     "engagement": {
-      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "fetched_at": "2026-05-19T13:09:06+00:00",
       "likes": 0,
       "reposts": 0,
       "replies": 0,
-      "quotes": 0,
-      "backfilled": true
+      "quotes": 0
     }
   },
   {
@@ -483,12 +472,11 @@
     "outlets": [],
     "article_count": null,
     "engagement": {
-      "fetched_at": "2026-05-18T12:00:43+00:00",
+      "fetched_at": "2026-05-19T13:09:06+00:00",
       "likes": 0,
       "reposts": 0,
       "replies": 0,
-      "quotes": 0,
-      "backfilled": true
+      "quotes": 0
     }
   },
   {
@@ -504,7 +492,13 @@
       "Hellenic Shipping News"
     ],
     "article_count": 68,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-05-19T13:09:06+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-05-19T07:07:56+00:00",
