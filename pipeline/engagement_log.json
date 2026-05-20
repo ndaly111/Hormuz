@@ -543,5 +543,18 @@
     ],
     "article_count": 4,
     "engagement": null
+  },
+  {
+    "ts": "2026-05-20T17:58:38+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mmci7tbjb72s",
+    "lede": "UAE fast-tracks pipeline as Hormuz blockade erases 1 billion barrels of oil",
+    "had_news_cluster": true,
+    "story_headline": "New UAE oil pipeline bypassing Hormuz 50% complete ahead of 2027 start",
+    "outlets": [
+      "CNBC",
+      "Reuters"
+    ],
+    "article_count": 5,
+    "engagement": null
   }
 ]
