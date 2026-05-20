@@ -13,6 +13,7 @@ go out even if Claude is down.
 from __future__ import annotations
 
 import os
+import time
 from dataclasses import dataclass
 from typing import Optional
 
@@ -128,6 +129,25 @@ class HeadlineRequest:
     article_bodies: list[dict] | None = None
 
 
+def _is_retryable_error(exc: Exception) -> bool:
+    """True for transient API failures worth retrying.
+
+    529 (Overloaded) is what we saw on 2026-05-19 — peak-hour capacity
+    pressure that clears within seconds. 5xx, 429, and connection
+    errors all benefit from a brief wait.
+    """
+    status = getattr(exc, "status_code", None)
+    if status is not None and (status == 429 or status >= 500):
+        return True
+    cls_name = type(exc).__name__
+    return cls_name in {
+        "APIConnectionError",
+        "APITimeoutError",
+        "InternalServerError",
+        "RateLimitError",
+    }
+
+
 def compose(req: HeadlineRequest) -> Optional[str]:
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
@@ -142,17 +162,37 @@ def compose(req: HeadlineRequest) -> Optional[str]:
 
     user_msg = _build_user_message(req)
 
-    try:
-        client = Anthropic(api_key=api_key)
-        resp = client.messages.create(
-            model=MODEL,
-            max_tokens=80,
-            temperature=0.4,
-            system=SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": user_msg}],
-        )
-    except Exception as e:
-        print(f"[compose_headline] API call failed: {e}")
+    # The SDK does its own short-burst retry (~1.5s total by default), which
+    # is too quick for a real 529 overload event. Disable the SDK's retries
+    # and run our own loop with longer backoff so we actually outlast the
+    # capacity blip.
+    client = Anthropic(api_key=api_key, max_retries=0)
+    backoffs = [2, 5, 15, 30]  # 4 attempts, ~52s total worst case
+
+    resp = None
+    last_err: Exception | None = None
+    for attempt, delay in enumerate(backoffs, start=1):
+        try:
+            resp = client.messages.create(
+                model=MODEL,
+                max_tokens=80,
+                temperature=0.4,
+                system=SYSTEM_PROMPT,
+                messages=[{"role": "user", "content": user_msg}],
+            )
+            break
+        except Exception as e:
+            last_err = e
+            if not _is_retryable_error(e) or attempt == len(backoffs):
+                print(f"[compose_headline] API call failed (attempt {attempt}/{len(backoffs)}): {e}")
+                return None
+            print(f"[compose_headline] transient API error (attempt {attempt}/{len(backoffs)}): {e}; retrying in {delay}s")
+            time.sleep(delay)
+
+    if resp is None:
+        # Shouldn't reach here, but guard the type checker.
+        if last_err is not None:
+            print(f"[compose_headline] exhausted retries: {last_err}")
         return None
 
     if not resp.content or resp.content[0].type != "text":

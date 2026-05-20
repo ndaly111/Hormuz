@@ -59,7 +59,11 @@ STOPWORDS = {
 
 LOOKBACK = timedelta(hours=36)
 SIMILARITY_THRESHOLD = 0.35
-MIN_DISTINCT_WHITELISTED_OUTLETS = 3
+# Lowered from 3 to 2 on 2026-05-20 — 3 was eliminating real stories during
+# slower news days (e.g. 2026-05-20 morning had a Reuters+gCaptain cluster on
+# supertanker movements that didn't qualify). Two reputable outlets clustered
+# is still meaningful corroboration; the whitelist itself is the main filter.
+MIN_DISTINCT_WHITELISTED_OUTLETS = 2
 USER_AGENT = "Mozilla/5.0 (compatible; HormuzTrackerBot/1.0; +https://hormuz-traffic.com)"
 
 
