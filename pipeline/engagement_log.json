@@ -524,5 +524,18 @@
     "outlets": [],
     "article_count": null,
     "engagement": null
+  },
+  {
+    "ts": "2026-05-20T11:08:14+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mmbrbxxtjv24",
+    "lede": "Iran's Revolutionary Guards vows war \"beyond the region\" as Hormuz traffic stays at 7% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Iran threatens war 'beyond the region' if US attacks",
+    "outlets": [
+      "Reuters",
+      "The Guardian"
+    ],
+    "article_count": 4,
+    "engagement": null
   }
 ]
