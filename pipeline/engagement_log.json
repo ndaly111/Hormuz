@@ -582,5 +582,18 @@
     ],
     "article_count": 20,
     "engagement": null
+  },
+  {
+    "ts": "2026-05-21T17:41:10+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mmexpjajaz2u",
+    "lede": "Iran's new authority says all Hormuz transit now needs its permission as traffic stays at 7% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Iran steps up claim to control Strait of Hormuz",
+    "outlets": [
+      "BBC",
+      "gCaptain"
+    ],
+    "article_count": 48,
+    "engagement": null
   }
 ]
