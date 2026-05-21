@@ -556,5 +556,19 @@
     ],
     "article_count": 5,
     "engagement": null
+  },
+  {
+    "ts": "2026-05-21T07:14:04+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mmduo4644n2h",
+    "lede": "Trump claims Iran deal is \"final stages\" as oil plunges below $100, tankers slip through Hormuz",
+    "had_news_cluster": true,
+    "story_headline": "Three Oil Tankers Cross Strait of Hormuz",
+    "outlets": [
+      "CNBC",
+      "Reuters",
+      "WSJ"
+    ],
+    "article_count": 20,
+    "engagement": null
   }
 ]
