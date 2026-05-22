@@ -595,5 +595,19 @@
     ],
     "article_count": 48,
     "engagement": null
+  },
+  {
+    "ts": "2026-05-22T07:09:07+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mmgeual4m22x",
+    "lede": null,
+    "had_news_cluster": true,
+    "story_headline": "Iran steps up claim to control Strait of Hormuz",
+    "outlets": [
+      "BBC",
+      "The New York Times",
+      "gCaptain"
+    ],
+    "article_count": 59,
+    "engagement": null
   }
 ]
