@@ -567,7 +567,13 @@
       "Reuters"
     ],
     "article_count": 5,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-05-22T12:52:08+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-05-21T07:14:04+00:00",
@@ -581,7 +587,13 @@
       "WSJ"
     ],
     "article_count": 20,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-05-22T12:52:08+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-05-21T17:41:10+00:00",
