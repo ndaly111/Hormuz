@@ -621,5 +621,20 @@
     ],
     "article_count": 59,
     "engagement": null
+  },
+  {
+    "ts": "2026-05-23T06:51:43+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mmiue2p7w52s",
+    "lede": "US preparing strikes while Pakistan's army chief mediates in Tehran, Hormuz at 7% of normal",
+    "had_news_cluster": true,
+    "story_headline": "The Risks of Iran\u2019s Threat to Control the Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "CBS News",
+      "CNBC",
+      "The New York Times"
+    ],
+    "article_count": 54,
+    "engagement": null
   }
 ]
