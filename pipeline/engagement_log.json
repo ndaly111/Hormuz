@@ -648,5 +648,29 @@
     ],
     "article_count": 54,
     "engagement": null
+  },
+  {
+    "ts": "2026-05-24T07:07:11+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mmlfonncsn2x",
+    "lede": "Trump claims Iran deal \"largely negotiated\" as Hormuz traffic stays at 7% of normal",
+    "had_news_cluster": true,
+    "story_headline": "What If the Strait of Hormuz Didn\u2019t Reopen?",
+    "outlets": [
+      "Al Jazeera",
+      "BBC",
+      "Bloomberg",
+      "CBS News",
+      "CNBC",
+      "CNN",
+      "Financial Times",
+      "NPR",
+      "Politico",
+      "Reuters",
+      "The Guardian",
+      "The New York Times",
+      "The Washington Post"
+    ],
+    "article_count": 81,
+    "engagement": null
   }
 ]
