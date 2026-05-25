@@ -707,5 +707,18 @@
     ],
     "article_count": 74,
     "engagement": null
+  },
+  {
+    "ts": "2026-05-25T17:32:40+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mmoz3zista2l",
+    "lede": "Two LNG tankers slip through as Hormuz traffic crawls at 7% of normal on day 75",
+    "had_news_cluster": true,
+    "story_headline": "Two LNG tankers pass through Strait of Hormuz",
+    "outlets": [
+      "Financial Times",
+      "Reuters"
+    ],
+    "article_count": 19,
+    "engagement": null
   }
 ]
