@@ -720,5 +720,20 @@
     ],
     "article_count": 19,
     "engagement": null
+  },
+  {
+    "ts": "2026-05-26T07:07:41+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mmqgnecnd52c",
+    "lede": "Rubio says Hormuz \"one way or the other\" as Brent crashes 5.5% on deal hopes, day 75",
+    "had_news_cluster": true,
+    "story_headline": "Oil prices slide on hopes of US-Iran peace deal",
+    "outlets": [
+      "Al Jazeera",
+      "BBC",
+      "Reuters",
+      "The New York Times"
+    ],
+    "article_count": 30,
+    "engagement": null
   }
 ]
