@@ -784,5 +784,19 @@
     ],
     "article_count": 18,
     "engagement": null
+  },
+  {
+    "ts": "2026-05-27T18:01:03+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mmu3mkfzy32s",
+    "lede": "Rubio says talks made \"some progress\" as Hormuz stays at 7% of normal on day 75",
+    "had_news_cluster": true,
+    "story_headline": "White House says Iranian media report on memorandum of understanding is false",
+    "outlets": [
+      "CNBC",
+      "Reuters",
+      "The Guardian"
+    ],
+    "article_count": 75,
+    "engagement": null
   }
 ]
