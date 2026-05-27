@@ -755,5 +755,22 @@
     ],
     "article_count": 3,
     "engagement": null
+  },
+  {
+    "ts": "2026-05-27T07:21:25+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mmsxuu6pi724",
+    "lede": "US strikes near Hormuz as Iran negotiators head to Qatar, tanker hit by explosion off Oman",
+    "had_news_cluster": true,
+    "story_headline": "Tanker reports explosion off Oman",
+    "outlets": [
+      "Al Jazeera",
+      "BBC",
+      "Lloyd's List",
+      "Reuters",
+      "The Maritime Executive",
+      "gCaptain"
+    ],
+    "article_count": 18,
+    "engagement": null
   }
 ]
