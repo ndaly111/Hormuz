@@ -798,5 +798,24 @@
     ],
     "article_count": 75,
     "engagement": null
+  },
+  {
+    "ts": "2026-05-28T07:14:31+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mmvhxgm5hf2i",
+    "lede": "Trump threatens to blow up Oman as Iran deal stalls on day 82, traffic at 7% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Trump says no one will control Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "BBC",
+      "CBS News",
+      "Politico",
+      "Reuters",
+      "The Guardian",
+      "The New York Times",
+      "gCaptain"
+    ],
+    "article_count": 94,
+    "engagement": null
   }
 ]
