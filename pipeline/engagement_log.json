@@ -829,5 +829,21 @@
     ],
     "article_count": 94,
     "engagement": null
+  },
+  {
+    "ts": "2026-05-29T07:19:01+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mmxyof4v4q2m",
+    "lede": "Iran fires on ships as US and Tehran inch toward Hormuz deal, traffic still at 7% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Iran says it targeted American base after fresh US strikes",
+    "outlets": [
+      "BBC",
+      "Reuters",
+      "The New York Times",
+      "The Washington Post",
+      "gCaptain"
+    ],
+    "article_count": 32,
+    "engagement": null
   }
 ]
