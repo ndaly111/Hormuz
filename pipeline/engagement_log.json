@@ -857,5 +857,19 @@
     ],
     "article_count": 32,
     "engagement": null
+  },
+  {
+    "ts": "2026-05-29T18:03:39+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mmz4p3nznn25",
+    "lede": "Trump demands Iran bury nuclear material as Hormuz stays at 7% of normal",
+    "had_news_cluster": true,
+    "story_headline": "US Treasury threatens Oman with sanctions over Hormuz Strait",
+    "outlets": [
+      "Al Jazeera",
+      "CNBC",
+      "Reuters"
+    ],
+    "article_count": 44,
+    "engagement": null
   }
 ]
