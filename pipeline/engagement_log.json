@@ -896,5 +896,19 @@
     ],
     "article_count": 75,
     "engagement": null
+  },
+  {
+    "ts": "2026-05-30T17:26:04+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mn3l2qfhdu2g",
+    "lede": "Trump demands Hormuz reopen as talks advance, traffic still at 7% of normal on day 82",
+    "had_news_cluster": true,
+    "story_headline": "U.S., Iran nearing deal to end war and reopen Strait of Hormuz",
+    "outlets": [
+      "Reuters",
+      "The New York Times",
+      "The Washington Post"
+    ],
+    "article_count": 48,
+    "engagement": null
   }
 ]
