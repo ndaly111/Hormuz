@@ -935,5 +935,18 @@
     ],
     "article_count": 23,
     "engagement": null
+  },
+  {
+    "ts": "2026-05-31T17:26:04+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mn63jnsgmc2e",
+    "lede": "US fires missile at cargo ship as Hormuz traffic crawls at 7% of normal on day 82",
+    "had_news_cluster": true,
+    "story_headline": "U.S. military hits commercial ship trying to reach Iran as peace talks continue",
+    "outlets": [
+      "Politico",
+      "The Washington Post"
+    ],
+    "article_count": 26,
+    "engagement": null
   }
 ]
