@@ -948,5 +948,18 @@
     ],
     "article_count": 26,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-01T07:38:51+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mn7l6mqvr52a",
+    "lede": "US Navy quietly escorts 70 ships through Hormuz as traffic stays at 7% of normal",
+    "had_news_cluster": true,
+    "story_headline": "U.S. and Iran Trade Fire as Strait of Hormuz Tensions Continue",
+    "outlets": [
+      "The Maritime Executive",
+      "The New York Times"
+    ],
+    "article_count": 16,
+    "engagement": null
   }
 ]
