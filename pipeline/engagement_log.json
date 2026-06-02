@@ -986,5 +986,20 @@
     ],
     "article_count": 3,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-02T07:33:09+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mnc3dehtpl2c",
+    "lede": "Iran vows to \"completely block\" Hormuz and activate Bab el-Mandeb as oil jumps 7%",
+    "had_news_cluster": true,
+    "story_headline": "Iran suspends US talks, threatens continued Hormuz closure",
+    "outlets": [
+      "CNBC",
+      "Financial Times",
+      "Stars and Stripes",
+      "The Maritime Executive"
+    ],
+    "article_count": 56,
+    "engagement": null
   }
 ]
