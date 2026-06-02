@@ -959,7 +959,13 @@
       "The Washington Post"
     ],
     "article_count": 26,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-06-02T13:19:37+00:00",
+      "likes": 4,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-06-01T07:38:51+00:00",
@@ -972,7 +978,13 @@
       "The New York Times"
     ],
     "article_count": 16,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-06-02T13:19:37+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-06-01T18:54:22+00:00",
