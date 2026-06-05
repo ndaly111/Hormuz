@@ -1056,5 +1056,18 @@
     "outlets": [],
     "article_count": null,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-05T07:24:08+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mnjm7ykraq24",
+    "lede": "Trump threatens to bomb Oman as it negotiates Iran strait deal with US ally watching",
+    "had_news_cluster": true,
+    "story_headline": "Iran seeks to impose service fee on Strait of Hormuz",
+    "outlets": [
+      "CBS News",
+      "The Guardian"
+    ],
+    "article_count": 16,
+    "engagement": null
   }
 ]
