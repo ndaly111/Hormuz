@@ -1040,7 +1040,7 @@
     ],
     "article_count": 13,
     "engagement": {
-      "fetched_at": "2026-06-04T13:07:36+00:00",
+      "fetched_at": "2026-06-06T12:30:29+00:00",
       "likes": 0,
       "reposts": 0,
       "replies": 0,
@@ -1074,7 +1074,13 @@
       "The Guardian"
     ],
     "article_count": 16,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-06-06T12:30:29+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-06-06T07:01:09+00:00",
