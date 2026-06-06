@@ -1075,5 +1075,22 @@
     ],
     "article_count": 16,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-06T07:01:09+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mnm3ft4glj2s",
+    "lede": "Iran fires seven ballistic missiles at US bases as Hormuz traffic flatlines at 5% of normal",
+    "had_news_cluster": true,
+    "story_headline": "US and Iran exchange strikes in Gulf in latest test of ceasefire",
+    "outlets": [
+      "BBC",
+      "NBC News",
+      "Reuters",
+      "The Guardian",
+      "The New York Times",
+      "USA Today"
+    ],
+    "article_count": 64,
+    "engagement": null
   }
 ]
