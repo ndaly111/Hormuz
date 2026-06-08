@@ -1134,5 +1134,18 @@
     ],
     "article_count": 4,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-08T07:35:19+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mnr6aqgtfx2r",
+    "lede": "OPEC+ raises output targets for fourth month straight while actual production collapsed 23% since February",
+    "had_news_cluster": true,
+    "story_headline": "OPEC+ Set For Fourth Oil Quota Hike Since Hormuz Closure",
+    "outlets": [
+      "CNBC",
+      "gCaptain"
+    ],
+    "article_count": 13,
+    "engagement": null
   }
 ]
