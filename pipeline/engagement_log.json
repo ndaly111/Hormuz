@@ -1139,7 +1139,13 @@
       "Reuters"
     ],
     "article_count": 4,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-06-09T13:03:28+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-06-08T07:35:19+00:00",
@@ -1152,7 +1158,13 @@
       "gCaptain"
     ],
     "article_count": 13,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-06-09T13:03:28+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-06-08T18:00:26+00:00",
