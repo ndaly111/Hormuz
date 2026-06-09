@@ -1166,5 +1166,21 @@
     ],
     "article_count": 5,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-09T07:09:28+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mntnbgwoty22",
+    "lede": "US Apache helicopter goes down near Hormuz as Iran-Israel strikes shake ceasefire",
+    "had_news_cluster": true,
+    "story_headline": "Crew Rescued After U.S. Helicopter Goes Down Near Strait of Hormuz",
+    "outlets": [
+      "CNN",
+      "NBC News",
+      "NPR",
+      "Reuters",
+      "The New York Times"
+    ],
+    "article_count": 45,
+    "engagement": null
   }
 ]
