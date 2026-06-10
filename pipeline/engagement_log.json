@@ -1207,5 +1207,30 @@
     ],
     "article_count": 16,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-10T07:25:36+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mnw6n7jrxd26",
+    "lede": "Trump orders strikes on Iran as sea drone rescues downed Apache crew",
+    "had_news_cluster": true,
+    "story_headline": "Trump vows response after Iran downs U.S. helicopter",
+    "outlets": [
+      "Al Jazeera",
+      "Axios",
+      "BBC",
+      "CBS News",
+      "CNBC",
+      "CNN",
+      "NBC News",
+      "NPR",
+      "Reuters",
+      "Stars and Stripes",
+      "The Guardian",
+      "The New York Times",
+      "USA Today",
+      "WSJ"
+    ],
+    "article_count": 91,
+    "engagement": null
   }
 ]
