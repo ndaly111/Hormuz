@@ -1278,5 +1278,19 @@
     ],
     "article_count": 107,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-11T18:03:42+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mnzsr4truc2w",
+    "lede": "Trump cancels strikes after threatening to seize Kharg Island, Iran's main oil export hub",
+    "had_news_cluster": true,
+    "story_headline": "Trump says US strikes canceled after threat to \u2018take\u2019 Iran\u2019s Kharg Island",
+    "outlets": [
+      "Al Jazeera",
+      "CNBC",
+      "CNN"
+    ],
+    "article_count": 4,
+    "engagement": null
   }
 ]
