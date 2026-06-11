@@ -1244,5 +1244,27 @@
     ],
     "article_count": 91,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-11T07:35:35+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mnypnyjmhp2n",
+    "lede": "Iran hits two tankers in Strait as closure hits day 96, traffic at 6% of normal",
+    "had_news_cluster": true,
+    "story_headline": "US launches a second straight day of airstrikes in Iran",
+    "outlets": [
+      "Al Jazeera",
+      "BBC",
+      "CNBC",
+      "Financial Times",
+      "NBC News",
+      "NPR",
+      "Politico",
+      "Reuters",
+      "The Maritime Executive",
+      "The New York Times",
+      "USA Today"
+    ],
+    "article_count": 107,
+    "engagement": null
   }
 ]
