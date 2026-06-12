@@ -1277,7 +1277,13 @@
       "USA Today"
     ],
     "article_count": 107,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-06-12T13:12:12+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-06-11T18:03:42+00:00",
