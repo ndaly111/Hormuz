@@ -1312,5 +1312,18 @@
     ],
     "article_count": 10,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-12T17:46:58+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mo4cc5x6b72r",
+    "lede": "Iran charges $2m per ship to let them through, then declares strait closed anyway",
+    "had_news_cluster": true,
+    "story_headline": "Iran shuts Hormuz strait: But wasn\u2019t it already closed?",
+    "outlets": [
+      "Al Jazeera",
+      "gCaptain"
+    ],
+    "article_count": 44,
+    "engagement": null
   }
 ]
