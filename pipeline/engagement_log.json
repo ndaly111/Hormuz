@@ -1325,5 +1325,20 @@
     ],
     "article_count": 44,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-13T07:14:59+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mo5pgysq4626",
+    "lede": "US shoots down Iranian drones as Trump claims deal imminent, Tehran says nothing's finalised",
+    "had_news_cluster": true,
+    "story_headline": "U.S., Iran signal peace deal near as Tehran claims victory",
+    "outlets": [
+      "BBC",
+      "NBC News",
+      "Reuters",
+      "The Guardian"
+    ],
+    "article_count": 50,
+    "engagement": null
   }
 ]
