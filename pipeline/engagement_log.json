@@ -1364,5 +1364,18 @@
       "replies": 0,
       "quotes": 0
     }
+  },
+  {
+    "ts": "2026-06-14T17:30:00+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mobcbnkvae2q",
+    "lede": "Trump tells Netanyahu he has \"no fucking judgement\" as Iran deal hangs on Israeli strikes in Lebanon",
+    "had_news_cluster": true,
+    "story_headline": "U.S. peace deal with Iran in question as Israel strikes Lebanon, Trump warns not to 'blow it'",
+    "outlets": [
+      "CNBC",
+      "The Guardian"
+    ],
+    "article_count": 2,
+    "engagement": null
   }
 ]
