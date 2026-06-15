@@ -1377,5 +1377,31 @@
     ],
     "article_count": 2,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-15T07:54:51+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mocsm4kavv2b",
+    "lede": "Trump authorizes Navy blockade removal as Hormuz traffic stays at 6% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Oil prices slide after US-Iran deal announced",
+    "outlets": [
+      "Al Jazeera",
+      "Axios",
+      "BBC",
+      "CBS News",
+      "CNBC",
+      "CNN",
+      "Financial Times",
+      "NBC News",
+      "NPR",
+      "Reuters",
+      "Stars and Stripes",
+      "The Guardian",
+      "The New York Times",
+      "The Washington Post",
+      "WSJ"
+    ],
+    "article_count": 150,
+    "engagement": null
   }
 ]
