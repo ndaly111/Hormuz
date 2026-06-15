@@ -1403,5 +1403,18 @@
     ],
     "article_count": 150,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-15T18:31:05+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3modw5rcj3n25",
+    "lede": "Trump's \"let the oil flow\" deal leaves Hormuz at 6% of normal on day 96",
+    "had_news_cluster": true,
+    "story_headline": "Oil prices fall and shares jump after US-Iran deal announced",
+    "outlets": [
+      "BBC",
+      "NBC News"
+    ],
+    "article_count": 3,
+    "engagement": null
   }
 ]
