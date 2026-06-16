@@ -1416,5 +1416,33 @@
     ],
     "article_count": 3,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-16T07:55:53+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mofd4vcrqq23",
+    "lede": "Trump says Hormuz is open, but ships staying put as largest tanker operator warns weeks to resume",
+    "had_news_cluster": true,
+    "story_headline": "U.S.-Iran peace deal reopens Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "Axios",
+      "BBC",
+      "CBS News",
+      "CNBC",
+      "CNN",
+      "Financial Times",
+      "FreightWaves",
+      "Lloyd's List",
+      "NBC News",
+      "NPR",
+      "Politico",
+      "Reuters",
+      "The New York Times",
+      "The Washington Post",
+      "WSJ",
+      "gCaptain"
+    ],
+    "article_count": 155,
+    "engagement": null
   }
 ]
