@@ -1456,5 +1456,18 @@
     ],
     "article_count": 155,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-16T18:30:34+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mogglsgrzz2f",
+    "lede": "Trump authorizes Hormuz opening, then says it's contingent on Friday deal signing",
+    "had_news_cluster": true,
+    "story_headline": "What\u2019s in \u2013 and what\u2019s not in \u2013 the US-Iran peace deal",
+    "outlets": [
+      "Reuters",
+      "The Guardian"
+    ],
+    "article_count": 5,
+    "engagement": null
   }
 ]
