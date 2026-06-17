@@ -1469,5 +1469,22 @@
     ],
     "article_count": 5,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-17T07:44:15+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mohswyfs5y2e",
+    "lede": "Trump claims deal signed but Iran hasn't confirmed it, Hormuz still at 3% of normal on day 103",
+    "had_news_cluster": true,
+    "story_headline": "Trump says the Strait of Hormuz will be 'completely open' by Friday",
+    "outlets": [
+      "Al Jazeera",
+      "CNBC",
+      "Financial Times",
+      "NBC News",
+      "NPR",
+      "The New York Times"
+    ],
+    "article_count": 37,
+    "engagement": null
   }
 ]
