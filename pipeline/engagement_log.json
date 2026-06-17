@@ -1498,5 +1498,18 @@
     ],
     "article_count": 37,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-17T17:54:42+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3moiv2kh67l25",
+    "lede": "Iran offered this deal over a month ago, Trump just said yes as Hormuz traffic collapses to 3% of normal",
+    "had_news_cluster": true,
+    "story_headline": "US\u2013Iran deal: Progress\u2026 but not quite lasting peace",
+    "outlets": [
+      "Hellenic Shipping News",
+      "The Guardian"
+    ],
+    "article_count": 4,
+    "engagement": null
   }
 ]
