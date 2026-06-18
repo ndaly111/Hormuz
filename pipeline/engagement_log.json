@@ -1511,5 +1511,21 @@
     ],
     "article_count": 4,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-18T07:35:24+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mokcw3xbbi2e",
+    "lede": "Three Iranian tankers slip through blockade as Trump signs deal at Versailles dinner",
+    "had_news_cluster": true,
+    "story_headline": "Iranian tankers exit US blockade zone before talks to end war",
+    "outlets": [
+      "Al Jazeera",
+      "CNBC",
+      "NBC News",
+      "The Guardian",
+      "The New York Times"
+    ],
+    "article_count": 64,
+    "engagement": null
   }
 ]
