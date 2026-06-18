@@ -1377,7 +1377,7 @@
     ],
     "article_count": 2,
     "engagement": {
-      "fetched_at": "2026-06-16T13:51:19+00:00",
+      "fetched_at": "2026-06-18T13:12:41+00:00",
       "likes": 2,
       "reposts": 0,
       "replies": 0,
@@ -1409,7 +1409,7 @@
     ],
     "article_count": 150,
     "engagement": {
-      "fetched_at": "2026-06-16T13:51:19+00:00",
+      "fetched_at": "2026-06-18T13:12:41+00:00",
       "likes": 0,
       "reposts": 0,
       "replies": 0,
@@ -1480,7 +1480,13 @@
       "The Guardian"
     ],
     "article_count": 5,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-06-18T13:12:41+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-06-17T07:44:15+00:00",
@@ -1497,7 +1503,13 @@
       "The New York Times"
     ],
     "article_count": 37,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-06-18T13:12:41+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-06-17T17:54:42+00:00",
