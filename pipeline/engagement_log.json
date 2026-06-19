@@ -1574,5 +1574,18 @@
     ],
     "article_count": 93,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-19T17:35:53+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3monuwqh7ol2z",
+    "lede": "Iran honors Hormuz commitment as tankers cross for second night, but traffic stays at 3% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Brent falls as Israel, Hezbollah agree to ceasefire",
+    "outlets": [
+      "CNBC",
+      "Reuters"
+    ],
+    "article_count": 2,
+    "engagement": null
   }
 ]
