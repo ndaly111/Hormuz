@@ -1587,5 +1587,19 @@
     ],
     "article_count": 2,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-20T07:16:20+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mopcruigh22v",
+    "lede": "Iran's new Hormuz rules undercut Trump deal signed 48 hours earlier, traffic at 3% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Iran Asserts Control Over the Strait of Hormuz",
+    "outlets": [
+      "Financial Times",
+      "Lloyd's List",
+      "gCaptain"
+    ],
+    "article_count": 24,
+    "engagement": null
   }
 ]
