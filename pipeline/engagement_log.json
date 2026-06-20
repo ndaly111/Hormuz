@@ -1573,7 +1573,13 @@
       "gCaptain"
     ],
     "article_count": 93,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-06-20T12:39:22+00:00",
+      "likes": 0,
+      "reposts": 1,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-06-19T17:35:53+00:00",
