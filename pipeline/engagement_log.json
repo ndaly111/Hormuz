@@ -1691,5 +1691,19 @@
     ],
     "article_count": 22,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-23T17:34:50+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3moxwqlmwkp2u",
+    "lede": "Iran and US back evacuation of 11,000 seafarers stuck in Persian Gulf as Hormuz traffic hits 3% of normal",
+    "had_news_cluster": true,
+    "story_headline": "U.N. Sets Plan to Evacuate Stranded Ships Out of Persian Gulf",
+    "outlets": [
+      "CNBC",
+      "Reuters",
+      "The New York Times"
+    ],
+    "article_count": 3,
+    "engagement": null
   }
 ]
