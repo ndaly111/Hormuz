@@ -1671,5 +1671,19 @@
     ],
     "article_count": 3,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-23T07:10:10+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mowttl4lsd2v",
+    "lede": "Iran's \"closed\" strait still moving dark tankers as deal collapses, traffic plummets to 3% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Shipping Slows After Iran Says It Has Again Shut The Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "CNBC",
+      "gCaptain"
+    ],
+    "article_count": 22,
+    "engagement": null
   }
 ]
