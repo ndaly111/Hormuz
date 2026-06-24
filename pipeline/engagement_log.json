@@ -1705,5 +1705,24 @@
     ],
     "article_count": 3,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-24T07:07:06+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3moze4yxkrx2y",
+    "lede": "UN evacuates 11,000 stranded sailors as US and Iran clash over nuclear inspections and Hormuz tolls",
+    "had_news_cluster": true,
+    "story_headline": "US and Iran give shipowners conflicting Hormuz orders",
+    "outlets": [
+      "Al Jazeera",
+      "Axios",
+      "BBC",
+      "CBS News",
+      "CNBC",
+      "Financial Times",
+      "Reuters",
+      "The New York Times"
+    ],
+    "article_count": 57,
+    "engagement": null
   }
 ]
