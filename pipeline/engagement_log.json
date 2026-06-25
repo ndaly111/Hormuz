@@ -1776,5 +1776,18 @@
     ],
     "article_count": 27,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-25T17:51:46+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mp4ymotkf62q",
+    "lede": "Three supertankers carrying 5 million barrels slip out of Hormuz as 90 million more barrels remain trapped in the Gulf",
+    "had_news_cluster": true,
+    "story_headline": "More Stranded Oil Tankers Exit Hormuz, Adding to Global Supply",
+    "outlets": [
+      "Reuters",
+      "gCaptain"
+    ],
+    "article_count": 2,
+    "engagement": null
   }
 ]
