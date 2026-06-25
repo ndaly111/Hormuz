@@ -1749,5 +1749,20 @@
     ],
     "article_count": 16,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-25T07:06:37+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mp3ul3sk5h2d",
+    "lede": "Trump plans to buy Iranian food with frozen assets as Hormuz talks stall at 15% of normal traffic",
+    "had_news_cluster": true,
+    "story_headline": "Hormuz Fees Branded \u2018Unacceptable\u2019 by Trump in Warning to Iran",
+    "outlets": [
+      "Bloomberg",
+      "CNBC",
+      "Reuters",
+      "gCaptain"
+    ],
+    "article_count": 27,
+    "engagement": null
   }
 ]
