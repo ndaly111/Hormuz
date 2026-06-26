@@ -1827,5 +1827,18 @@
     ],
     "article_count": 78,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-26T17:33:33+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mp7i2zyykx2x",
+    "lede": "Brent crude hits pre-war lows as tankers switch signals back on in Hormuz",
+    "had_news_cluster": true,
+    "story_headline": "Oil set for big weekly losses as tankers exit Strait of Hormuz",
+    "outlets": [
+      "Reuters",
+      "The Guardian"
+    ],
+    "article_count": 31,
+    "engagement": null
   }
 ]
