@@ -1919,5 +1919,18 @@
     ],
     "article_count": 117,
     "engagement": null
+  },
+  {
+    "ts": "2026-06-28T17:26:08+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mpeilmaudo2w",
+    "lede": "Iran vows \"crushing response\" to further US strikes as ceasefire crumbles after 10 days",
+    "had_news_cluster": true,
+    "story_headline": "US and Iran exchange strikes and accuse each other of violating ceasefire",
+    "outlets": [
+      "BBC",
+      "The Guardian"
+    ],
+    "article_count": 2,
+    "engagement": null
   }
 ]
