@@ -1937,7 +1937,13 @@
       "The Guardian"
     ],
     "article_count": 2,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-06-30T12:43:57+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-06-29T07:39:03+00:00",
@@ -1961,7 +1967,13 @@
       "gCaptain"
     ],
     "article_count": 73,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-06-30T12:43:57+00:00",
+      "likes": 1,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-06-30T07:13:13+00:00",
