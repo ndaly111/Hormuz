@@ -2026,5 +2026,18 @@
     ],
     "article_count": 28,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-02T17:32:46+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mpokt5tmuf2t",
+    "lede": "Oil crashes to pre-war levels as Hormuz traffic limps back at 36% of normal on day 117",
+    "had_news_cluster": true,
+    "story_headline": "Oil Tests Pre-War Levels on Optimism Over Hormuz, Talks",
+    "outlets": [
+      "Bloomberg",
+      "WSJ"
+    ],
+    "article_count": 3,
+    "engagement": null
   }
 ]
