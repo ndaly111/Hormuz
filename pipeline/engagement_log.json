@@ -2005,7 +2005,13 @@
       "The New York Times"
     ],
     "article_count": 9,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-07-02T12:41:35+00:00",
+      "likes": 1,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-07-02T07:07:50+00:00",
