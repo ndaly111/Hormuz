@@ -2006,5 +2006,19 @@
     ],
     "article_count": 9,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-02T07:07:50+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mpnhvou5x22f",
+    "lede": "Iran grounds ship for using unauthorized route as Hormuz traffic crawls at 36% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Iran Says Ship Ran Aground in \u2018Unauthorized\u2019 Hormuz Transit",
+    "outlets": [
+      "Marine Link",
+      "The Washington Post",
+      "gCaptain"
+    ],
+    "article_count": 28,
+    "engagement": null
   }
 ]
