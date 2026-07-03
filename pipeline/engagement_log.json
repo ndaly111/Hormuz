@@ -2039,5 +2039,18 @@
     ],
     "article_count": 3,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-03T08:48:19+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mpq5ycms7s2b",
+    "lede": "Iran's military wants all Hormuz traffic under its control, threatens force to prove it",
+    "had_news_cluster": true,
+    "story_headline": "Iran warns ships against using unapproved routes in Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "The Maritime Executive"
+    ],
+    "article_count": 58,
+    "engagement": null
   }
 ]
