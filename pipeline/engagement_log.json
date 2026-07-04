@@ -2071,5 +2071,18 @@
     ],
     "article_count": 2,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-04T08:23:30+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mpsn2tvgf52u",
+    "lede": "Iran's military wants control of Hormuz routes as talks claim \"positive progress",
+    "had_news_cluster": true,
+    "story_headline": "Iran warns ships against using unapproved routes in Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "The Maritime Executive"
+    ],
+    "article_count": 18,
+    "engagement": null
   }
 ]
