@@ -2044,7 +2044,13 @@
       "WSJ"
     ],
     "article_count": 3,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-07-04T13:18:48+00:00",
+      "likes": 2,
+      "reposts": 1,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-07-03T08:48:19+00:00",
@@ -2057,7 +2063,13 @@
       "The Maritime Executive"
     ],
     "article_count": 58,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-07-04T13:18:48+00:00",
+      "likes": 1,
+      "reposts": 0,
+      "replies": 1,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-07-03T18:08:40+00:00",
