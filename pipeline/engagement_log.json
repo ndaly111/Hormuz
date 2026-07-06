@@ -2118,5 +2118,18 @@
     "outlets": [],
     "article_count": null,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-06T09:54:58+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mpxt4ahs542k",
+    "lede": "Iran and Qatar restart shipping as Hormuz traffic crawls at 36% of normal on day 117",
+    "had_news_cluster": true,
+    "story_headline": "Iran and Qatar resume maritime trade, Iranian state media reports",
+    "outlets": [
+      "Marine Link",
+      "Reuters"
+    ],
+    "article_count": 10,
+    "engagement": null
   }
 ]
