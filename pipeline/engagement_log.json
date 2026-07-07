@@ -2163,5 +2163,18 @@
     ],
     "article_count": 99,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-07T18:54:55+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mq3bqonckv2u",
+    "lede": "NATO and Gulf Arabs convene on Hormuz as traffic climbs to 36% of normal on day 117",
+    "had_news_cluster": true,
+    "story_headline": "NATO allies to discuss Hormuz tensions, mission with Gulf Arabs",
+    "outlets": [
+      "Marine Link",
+      "Reuters"
+    ],
+    "article_count": 2,
+    "engagement": null
   }
 ]
