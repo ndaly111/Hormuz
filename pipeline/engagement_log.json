@@ -2137,5 +2137,25 @@
     ],
     "article_count": 10,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-07T09:23:22+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mq2bso43ff2w",
+    "lede": "Iran fires missiles at tanker ignoring warnings as Hormuz traffic crawls at 36% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Iran resumes attacks in Strait of Hormuz, U.S. says",
+    "outlets": [
+      "Al Jazeera",
+      "Axios",
+      "CNBC",
+      "CNN",
+      "Politico",
+      "Reuters",
+      "The New York Times",
+      "WSJ",
+      "gCaptain"
+    ],
+    "article_count": 99,
+    "engagement": null
   }
 ]
