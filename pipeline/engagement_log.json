@@ -2136,7 +2136,13 @@
       "Reuters"
     ],
     "article_count": 10,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-07-07T14:26:31+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-07-07T09:23:22+00:00",
