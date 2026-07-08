@@ -2176,5 +2176,34 @@
     ],
     "article_count": 2,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-08T08:11:54+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mq4obr6fuh2o",
+    "lede": "US revokes Iran oil waiver after tanker strikes as Hormuz traffic crawls at 36% of normal",
+    "had_news_cluster": true,
+    "story_headline": "U.S. Strikes Iran and Blocks Its Oil Sales",
+    "outlets": [
+      "Al Jazeera",
+      "Axios",
+      "BBC",
+      "CBS News",
+      "CNBC",
+      "CNN",
+      "Financial Times",
+      "NBC News",
+      "NPR",
+      "Politico",
+      "Reuters",
+      "Splash247",
+      "The Guardian",
+      "The New York Times",
+      "The Washington Post",
+      "USA Today",
+      "WSJ",
+      "gCaptain"
+    ],
+    "article_count": 176,
+    "engagement": null
   }
 ]
