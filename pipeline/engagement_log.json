@@ -2226,5 +2226,28 @@
     ],
     "article_count": 9,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-09T09:34:41+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mq7deqocse2n",
+    "lede": "Trump declares ceasefire \"over\" as Brent crude jumps to $80, highest since deal signed",
+    "had_news_cluster": true,
+    "story_headline": "US launches attacks on Iran near Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "Axios",
+      "BBC",
+      "CBS News",
+      "CNBC",
+      "CNN",
+      "NBC News",
+      "The Guardian",
+      "The Maritime Executive",
+      "The Washington Post",
+      "USA Today",
+      "gCaptain"
+    ],
+    "article_count": 83,
+    "engagement": null
   }
 ]
