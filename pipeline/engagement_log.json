@@ -2261,5 +2261,18 @@
     ],
     "article_count": 83,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-09T18:46:33+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mqac7k7wlw2k",
+    "lede": "Iran hits US bases in Kuwait and Bahrain as Hormuz traffic stays at 36% of normal",
+    "had_news_cluster": true,
+    "story_headline": "US strikes southern Iran, Tehran claims attacks on US military sites",
+    "outlets": [
+      "Al Jazeera",
+      "BBC"
+    ],
+    "article_count": 2,
+    "engagement": null
   }
 ]
