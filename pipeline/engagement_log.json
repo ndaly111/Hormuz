@@ -2274,5 +2274,24 @@
     ],
     "article_count": 2,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-10T09:05:46+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mqbs7xcj2q2r",
+    "lede": "US strikes Iran as Hormuz traffic grinds to halt, ships going dark to cross",
+    "had_news_cluster": true,
+    "story_headline": "US launches attacks on Iran near Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "Axios",
+      "BBC",
+      "CBS News",
+      "CNBC",
+      "CNN",
+      "NBC News",
+      "The Washington Post"
+    ],
+    "article_count": 57,
+    "engagement": null
   }
 ]
