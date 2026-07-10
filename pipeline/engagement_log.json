@@ -2305,5 +2305,18 @@
     ],
     "article_count": 57,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-10T18:26:06+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mqcrjvsbix2p",
+    "lede": "Oil prices fall as Hormuz traffic climbs to 36% of normal on day 124",
+    "had_news_cluster": true,
+    "story_headline": "Oil prices fall on hopes for smoother shipping in Strait of Hormuz",
+    "outlets": [
+      "Reuters",
+      "The New York Times"
+    ],
+    "article_count": 3,
+    "engagement": null
   }
 ]
