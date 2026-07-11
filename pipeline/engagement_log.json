@@ -2346,5 +2346,18 @@
     ],
     "article_count": 64,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-11T17:46:17+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mqf7rmczml2r",
+    "lede": "Iran's top diplomat talks safe passage in Oman as Khamenei vows revenge",
+    "had_news_cluster": true,
+    "story_headline": "Iran war live: Araghchi in Oman for talks as Tehran vows Khamenei revenge",
+    "outlets": [
+      "Al Jazeera",
+      "The New York Times"
+    ],
+    "article_count": 3,
+    "engagement": null
   }
 ]
