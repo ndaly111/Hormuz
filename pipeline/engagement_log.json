@@ -2318,5 +2318,21 @@
     ],
     "article_count": 3,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-11T07:40:05+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mqe5vnearw2p",
+    "lede": "Iran blamed rogue hardliners for shooting ships, now faces US demand to publicly declare Strait open",
+    "had_news_cluster": true,
+    "story_headline": "Strait of Hormuz traffic plunges as US, Iran resume fighting",
+    "outlets": [
+      "Al Jazeera",
+      "BBC",
+      "CBS News",
+      "CNN",
+      "Reuters"
+    ],
+    "article_count": 64,
+    "engagement": null
   }
 ]
