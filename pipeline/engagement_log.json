@@ -2435,5 +2435,18 @@
     ],
     "article_count": 146,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-13T18:27:04+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mqkcyflevi2p",
+    "lede": "Trump reinstates Iran naval blockade as Hormuz traffic inches toward 36% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Dollar wavers amid renewed Iran attacks, yen slides on pensions doubts",
+    "outlets": [
+      "CNBC",
+      "Reuters"
+    ],
+    "article_count": 2,
+    "engagement": null
   }
 ]
