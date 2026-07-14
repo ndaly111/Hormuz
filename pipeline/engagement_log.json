@@ -2482,5 +2482,18 @@
     ],
     "article_count": 178,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-14T17:56:45+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mqmrr4kdxl2p",
+    "lede": "Iran's Houthi allies threaten to close Red Sea gateway, warning oil could hit $200 a barrel",
+    "had_news_cluster": true,
+    "story_headline": "After Hormuz, Iran turns to Red Sea gateway as new pressure point",
+    "outlets": [
+      "Reuters",
+      "gCaptain"
+    ],
+    "article_count": 3,
+    "engagement": null
   }
 ]
