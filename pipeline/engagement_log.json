@@ -2448,5 +2448,33 @@
     ],
     "article_count": 2,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-14T07:50:51+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mqlpvnzpsa2d",
+    "lede": "Trump's 20% Hormuz toll as Iran hits tankers, killing Indian crew member on day 124",
+    "had_news_cluster": true,
+    "story_headline": "US, Iran exchange attacks around Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "Axios",
+      "BBC",
+      "CBS News",
+      "CNBC",
+      "CNN",
+      "Defense News",
+      "NBC News",
+      "NPR",
+      "Politico",
+      "Reuters",
+      "The Guardian",
+      "The New York Times",
+      "The Washington Post",
+      "USA Today",
+      "WSJ",
+      "gCaptain"
+    ],
+    "article_count": 178,
+    "engagement": null
   }
 ]
