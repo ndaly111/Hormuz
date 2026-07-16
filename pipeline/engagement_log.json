@@ -2578,5 +2578,18 @@
     ],
     "article_count": 84,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-16T17:59:26+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mqrstqq5tw24",
+    "lede": "Trump threatens power plants and bridges next week as Iran vows to \"crush\" all regional infrastructure",
+    "had_news_cluster": true,
+    "story_headline": "Iran warns of 'red line' as Hormuz standoff escalates",
+    "outlets": [
+      "CNBC",
+      "CNN"
+    ],
+    "article_count": 15,
+    "engagement": null
   }
 ]
