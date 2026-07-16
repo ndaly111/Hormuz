@@ -2546,5 +2546,25 @@
     ],
     "article_count": 4,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-16T07:58:46+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mqqrbo7tdv26",
+    "lede": "Trump kills his own 20% toll, doubles down on Iran blockade as Hormuz traffic plummets to 18% of normal",
+    "had_news_cluster": true,
+    "story_headline": "US launches new strikes on Iran",
+    "outlets": [
+      "Al Jazeera",
+      "CBS News",
+      "NBC News",
+      "NPR",
+      "Politico",
+      "Reuters",
+      "The Washington Post",
+      "USA Today",
+      "WSJ"
+    ],
+    "article_count": 84,
+    "engagement": null
   }
 ]
