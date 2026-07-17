@@ -101,6 +101,28 @@ def capture_share_assets(port: int) -> tuple[bytes, str]:
     return png_bytes, caption.strip()
 
 
+def _retry_connect(fn, what: str, attempts: int = 3, delay: int = 30):
+    """Retry a network call, but ONLY on connection-establishment failures
+    (ConnectError/ConnectTimeout fire before the request is sent, so a retry
+    can never double-post). Any error after the connection is up — including
+    read timeouts on send_post — raises immediately for the same reason.
+    Seen in the wild 2026-07-17: a single TLS-handshake timeout to bsky.social
+    killed the whole daily run."""
+    import time
+
+    import httpx
+
+    for attempt in range(1, attempts + 1):
+        try:
+            return fn()
+        except (httpx.ConnectError, httpx.ConnectTimeout) as e:
+            if attempt == attempts:
+                raise
+            print(f"  {what}: connection failed ({e!r}); "
+                  f"retrying in {delay}s ({attempt}/{attempts - 1} retries used)")
+            time.sleep(delay)
+
+
 def post(png_bytes: bytes, caption: str) -> str:
     if not APP_PASSWORD:
         raise RuntimeError("BLUESKY_APP_PASSWORD not set")
@@ -109,9 +131,9 @@ def post(png_bytes: bytes, caption: str) -> str:
     from atproto import Client, client_utils, models
 
     client = Client()
-    client.login(HANDLE, APP_PASSWORD)
+    _retry_connect(lambda: client.login(HANDLE, APP_PASSWORD), "login")
 
-    blob = client.upload_blob(png_bytes)
+    blob = _retry_connect(lambda: client.upload_blob(png_bytes), "upload_blob")
 
     # Build the rich-text post. Hashtags must be added via tb.tag() so they
     # become real Bluesky facets — without that they render as plain text and
@@ -133,11 +155,14 @@ def post(png_bytes: bytes, caption: str) -> str:
     tb.link(SITE_LABEL, SITE_URL)
 
     alt = "Hormuz Strait daily vessel transit chart. Source: IMF PortWatch."
-    response = client.send_post(
-        text=tb,
-        embed=models.AppBskyEmbedImages.Main(
-            images=[models.AppBskyEmbedImages.Image(alt=alt, image=blob.blob)]
+    response = _retry_connect(
+        lambda: client.send_post(
+            text=tb,
+            embed=models.AppBskyEmbedImages.Main(
+                images=[models.AppBskyEmbedImages.Image(alt=alt, image=blob.blob)]
+            ),
         ),
+        "send_post",
     )
     return response.uri
 
