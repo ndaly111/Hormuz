@@ -1,0 +1,79 @@
+name: Weekly recap post
+
+# Sunday week-in-review Bluesky post: 7-day avg, busiest/quietest day,
+# % vs pre-closure norm, with the d30 chart. Caption computed straight
+# from transits.json (post_bluesky.py --weekly-recap) — no news pipeline.
+
+on:
+  schedule:
+    # Sundays 13:00 UTC = 9am ET.
+    - cron: "0 13 * * 0"
+  workflow_dispatch:
+    inputs:
+      dry_run_post:
+        description: "Render image + log caption, but skip actual Bluesky post"
+        required: false
+        default: "false"
+        type: choice
+        options: [ "false", "true" ]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-recap
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: pipeline/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r pipeline/requirements.txt
+
+      - name: Install Playwright browser
+        run: python -m playwright install --with-deps chromium
+
+      - name: Post weekly recap to Bluesky
+        env:
+          BLUESKY_HANDLE: hormuz-traffic.bsky.social
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          SHARE_RANGE_KEY: d30
+        run: |
+          if [ "${{ inputs.dry_run_post }}" = "true" ]; then
+            python pipeline/post_bluesky.py --weekly-recap --dry-run
+          else
+            python pipeline/post_bluesky.py --weekly-recap
+          fi
+
+      - name: Commit ledger update (if changed)
+        if: inputs.dry_run_post != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pipeline/engagement_log.json
+          if git diff --cached --quiet; then
+            echo "No ledger changes to commit."
+          else
+            git pull --rebase --autostash origin main || true
+            git commit -m "Append weekly recap entry to engagement ledger $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Upload dry-run preview
+        if: inputs.dry_run_post == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-recap-dry-run-preview
+          path: pipeline/_latest_share.png
+          if-no-files-found: ignore

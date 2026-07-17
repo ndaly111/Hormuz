@@ -1,0 +1,54 @@
+name: Follow scout
+
+# Weekly: follow up to 10 accounts actively posting about Hormuz / oil /
+# shipping (see pipeline/grow_follows.py for caps and filters). Never
+# unfollows. Commits follow_log.json so graph growth is auditable.
+
+on:
+  schedule:
+    # Mondays 15:00 UTC.
+    - cron: "0 15 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: follow-scout
+  cancel-in-progress: false
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: pipeline/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r pipeline/requirements.txt
+
+      - name: Run follow scout
+        env:
+          BLUESKY_HANDLE: hormuz-traffic.bsky.social
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+        run: python pipeline/grow_follows.py
+
+      - name: Commit follow log (if changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pipeline/follow_log.json
+          if git diff --cached --quiet; then
+            echo "No follow log changes to commit."
+          else
+            git pull --rebase --autostash origin main || true
+            git commit -m "Append follow scout entries $(date -u +%Y-%m-%d)"
+            git push
+          fi

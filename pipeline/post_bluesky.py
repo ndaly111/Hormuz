@@ -37,6 +37,12 @@ from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parent.parent
 SITE_DIR = ROOT / "site"
 
+# Keep in sync with CLOSURE_DATE in site/today.js
+CLOSURE_DATE = "2026-03-04"
+
+# Bluesky counts graphemes with a 300 cap. The link label is part of the text.
+POST_CHAR_LIMIT = 300
+
 HANDLE = os.environ.get("BLUESKY_HANDLE", "hormuz-traffic.bsky.social")
 APP_PASSWORD = os.environ.get("BLUESKY_APP_PASSWORD")
 RANGE_KEY = os.environ.get("SHARE_RANGE_KEY", "war")
@@ -167,6 +173,33 @@ def post(png_bytes: bytes, caption: str) -> str:
     return response.uri
 
 
+def build_recap_caption() -> str:
+    """Weekly recap caption computed straight from transits.json — no news
+    pipeline. Posted Sundays with the d30 chart for visual contrast."""
+    import json
+    from datetime import date
+
+    data = json.loads((SITE_DIR / "data" / "transits.json").read_text(encoding="utf-8"))
+    cur = data["current"]
+    week = data["series"][-7:]
+    best = max(week, key=lambda r: r["total"])
+    worst = min(week, key=lambda r: r["total"])
+    day_n = (date.fromisoformat(cur["latest_date"]) - date.fromisoformat(CLOSURE_DATE)).days
+
+    def fmt_d(iso: str) -> str:
+        d = date.fromisoformat(iso)
+        return f"{d.strftime('%b')} {d.day}"
+
+    return (
+        f"Hormuz week in review — day {day_n} of the closure\n"
+        f"7-day avg: {cur['last_7d_avg']:.1f} ships/day "
+        f"({cur['vs_pre_feb_2026_pct']:+.0f}% vs pre-closure norm)\n"
+        f"Busiest day: {fmt_d(best['date'])} ({best['total']} ships) · "
+        f"Quietest: {fmt_d(worst['date'])} ({worst['total']})\n\n"
+        f"#StraitOfHormuz #OOTT #Shipping #Maritime"
+    )
+
+
 def get_news_lede(rank: int = 0) -> tuple[str | None, dict | None]:
     """Try to compose a Claude news lede for today. Returns (lede, story).
     rank=0 = top cluster; rank=1 = second cluster (for the afternoon post).
@@ -191,7 +224,8 @@ def get_news_lede(rank: int = 0) -> tuple[str | None, dict | None]:
         return None, None
 
 
-def append_to_ledger(post_uri: str, lede: str | None, story: dict | None) -> None:
+def append_to_ledger(post_uri: str, lede: str | None, story: dict | None,
+                     kind: str | None = None) -> None:
     """Append a post entry to engagement_log.json. Called once per successful
     Bluesky post. Engagement metrics are filled in later by fetch_engagement.py
     once the post is at least 24h old."""
@@ -214,6 +248,8 @@ def append_to_ledger(post_uri: str, lede: str | None, story: dict | None) -> Non
         "article_count": (story or {}).get("article_count"),
         "engagement": None,  # filled in by fetch_engagement.py
     }
+    if kind:
+        entry["kind"] = kind
     existing.append(entry)
     ledger_path.write_text(json.dumps(existing, indent=2), encoding="utf-8")
     print(f"  appended to engagement ledger ({len(existing)} entries)")
@@ -231,16 +267,23 @@ def main() -> int:
                              "cluster exists at the requested rank. Used by the "
                              "afternoon workflow so quiet news days don't force "
                              "a redundant data-only second post.")
+    parser.add_argument("--weekly-recap", action="store_true",
+                        help="Post the Sunday week-in-review caption computed "
+                             "from transits.json instead of the daily caption. "
+                             "Skips the news-lede pipeline entirely.")
     args = parser.parse_args()
 
     if not args.dry_run and not APP_PASSWORD:
         print("ERROR: BLUESKY_APP_PASSWORD env var not set", file=sys.stderr)
         return 2
 
-    lede, story = get_news_lede(rank=args.cluster_rank)
-    if args.require_cluster and story is None:
-        print(f"Skipping post — no qualifying cluster at rank {args.cluster_rank}.")
-        return 0
+    if args.weekly_recap:
+        lede, story = None, None
+    else:
+        lede, story = get_news_lede(rank=args.cluster_rank)
+        if args.require_cluster and story is None:
+            print(f"Skipping post — no qualifying cluster at rank {args.cluster_rank}.")
+            return 0
 
     srv, port = _start_server()
     try:
@@ -248,8 +291,16 @@ def main() -> int:
         png, caption = capture_share_assets(port)
         print(f"  PNG: {len(png):,} bytes   Base caption: {caption!r}")
 
-        if lede:
+        if args.weekly_recap:
+            caption = build_recap_caption()
+            print(f"  Weekly recap caption: {caption!r}")
+        elif lede:
             caption = f"{lede}\n\n{caption}"
+            # News-day discovery tag; skip when it would push past the 300 cap
+            # (the final post text also carries "\n\n" + the site-link label).
+            budget = POST_CHAR_LIMIT - (len(caption) + 2 + len(SITE_LABEL))
+            if budget >= len(" #Iran"):
+                caption += " #Iran"
             print(f"  With Claude lede prepended: {caption!r}")
         else:
             print("  no lede; posting data-only caption")
@@ -264,7 +315,8 @@ def main() -> int:
         uri = post(png, caption)
         print(f"Posted to Bluesky: {uri}")
         try:
-            append_to_ledger(uri, lede, story)
+            append_to_ledger(uri, lede, story,
+                             kind="weekly_recap" if args.weekly_recap else None)
         except Exception as e:
             print(f"  ledger append failed (non-fatal): {e}", file=sys.stderr)
         return 0
