@@ -52,11 +52,19 @@ jobs:
       - name: Check whether today's refresh committed new data
         id: gate
         run: |
-          if git log --since "$(date -u +%Y-%m-%d)T00:00:00Z" --oneline -- site/data/transits.json | grep -q .; then
-            echo "Data commit found for today."
+          if ! git log --since "$(date -u +%Y-%m-%d)T00:00:00Z" --oneline -- site/data/transits.json | grep -q .; then
+            echo "No data commit today — skipping post."
+            echo "post=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # Dedupe: skip if a morning post already went out today (e.g. a
+          # manual force_post recovery run) — anything in the ledger before
+          # 16:00 UTC that isn't a weekly recap counts.
+          if python3 -c 'import json,sys;from datetime import datetime,timezone;e=json.load(open("pipeline/engagement_log.json"));t=datetime.now(timezone.utc).date().isoformat();sys.exit(1 if any(x["ts"][:10]==t and int(x["ts"][11:13])<16 and x.get("kind")!="weekly_recap" for x in e) else 0)'; then
+            echo "Data commit found and no morning post yet today."
             echo "post=true" >> "$GITHUB_OUTPUT"
           else
-            echo "No data commit today — skipping post."
+            echo "A morning post already exists in today's ledger — skipping."
             echo "post=false" >> "$GITHUB_OUTPUT"
           fi
 
