@@ -1,0 +1,92 @@
+[
+  {
+    "ts": "2026-07-17T11:04:50+00:00",
+    "did": "did:plc:uvr6uji6jbkazc67gpt6yfei",
+    "handle": "shipstalker.bsky.social",
+    "followers_count": 299,
+    "bio_keyword_hits": 0,
+    "query_hits": 34,
+    "score": 170.3
+  },
+  {
+    "ts": "2026-07-17T11:04:50+00:00",
+    "did": "did:plc:xhrtfphu4gzqrztkpb3a63qf",
+    "handle": "babygoldie.bsky.social",
+    "followers_count": 541,
+    "bio_keyword_hits": 0,
+    "query_hits": 27,
+    "score": 135.5
+  },
+  {
+    "ts": "2026-07-17T11:04:50+00:00",
+    "did": "did:plc:vjkeb27udn27kyheuhmi4mex",
+    "handle": "energyticker.bsky.social",
+    "followers_count": 370,
+    "bio_keyword_hits": 1,
+    "query_hits": 22,
+    "score": 120.4
+  },
+  {
+    "ts": "2026-07-17T11:04:50+00:00",
+    "did": "did:plc:lyisevus4p7w67nv2xqhedt7",
+    "handle": "staunovo.bsky.social",
+    "followers_count": 248,
+    "bio_keyword_hits": 1,
+    "query_hits": 14,
+    "score": 80.2
+  },
+  {
+    "ts": "2026-07-17T11:04:50+00:00",
+    "did": "did:plc:exd5p6uqhd7n2jt4d3gw4yjx",
+    "handle": "tankertrackers.com",
+    "followers_count": 2953,
+    "bio_keyword_hits": 3,
+    "query_hits": 4,
+    "score": 53.0
+  },
+  {
+    "ts": "2026-07-17T11:04:50+00:00",
+    "did": "did:plc:wiuqiruv62xilr6p43bdyep5",
+    "handle": "iran-news.bsky.social",
+    "followers_count": 317,
+    "bio_keyword_hits": 0,
+    "query_hits": 9,
+    "score": 45.3
+  },
+  {
+    "ts": "2026-07-17T11:04:50+00:00",
+    "did": "did:plc:pyrh4zigvhmpztjtddoce2n7",
+    "handle": "24hhotnewsai.bsky.social",
+    "followers_count": 68,
+    "bio_keyword_hits": 0,
+    "query_hits": 9,
+    "score": 45.1
+  },
+  {
+    "ts": "2026-07-17T11:04:50+00:00",
+    "did": "did:plc:djowckly7p3eszq66rw3ggib",
+    "handle": "artesh.com",
+    "followers_count": 37,
+    "bio_keyword_hits": 3,
+    "query_hits": 1,
+    "score": 35.0
+  },
+  {
+    "ts": "2026-07-17T11:04:50+00:00",
+    "did": "did:plc:4aeinxjwao74le6dktiiyxg4",
+    "handle": "marketwire.bsky.social",
+    "followers_count": 272,
+    "bio_keyword_hits": 1,
+    "query_hits": 4,
+    "score": 30.3
+  },
+  {
+    "ts": "2026-07-17T11:04:50+00:00",
+    "did": "did:plc:o6ggjvnj4ze3mnrpnv5oravg",
+    "handle": "longtail-news.bsky.social",
+    "followers_count": 2170,
+    "bio_keyword_hits": 0,
+    "query_hits": 5,
+    "score": 27.2
+  }
+]
