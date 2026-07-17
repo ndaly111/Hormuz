@@ -2621,5 +2621,19 @@
     ],
     "article_count": 40,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-17T17:58:25+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mqudatum3y2u",
+    "lede": "Trump targets Iran's power grid as Hormuz traffic collapses to 18% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Iran accuses US of hitting civilian infrastructure",
+    "outlets": [
+      "Al Jazeera",
+      "BBC",
+      "The Guardian"
+    ],
+    "article_count": 7,
+    "engagement": null
   }
 ]
