@@ -2557,7 +2557,13 @@
       "CNN"
     ],
     "article_count": 4,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-07-17T13:21:44+00:00",
+      "likes": 1,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-07-16T07:58:46+00:00",
@@ -2577,7 +2583,13 @@
       "WSJ"
     ],
     "article_count": 84,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-07-17T13:21:44+00:00",
+      "likes": 1,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-07-16T17:59:26+00:00",
