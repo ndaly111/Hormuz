@@ -2666,5 +2666,24 @@
     ],
     "article_count": 6,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-19T14:01:46+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mqywxj43er2g",
+    "lede": "Iran warns ships face \"accidents\" in Strait as US and Iran trade eighth consecutive night of strikes",
+    "had_news_cluster": true,
+    "story_headline": "US strikes hit Iran for seventh consecutive night",
+    "outlets": [
+      "Al Jazeera",
+      "BBC",
+      "Financial Times",
+      "NPR",
+      "Reuters",
+      "The Guardian",
+      "The Washington Post",
+      "gCaptain"
+    ],
+    "article_count": 35,
+    "engagement": null
   }
 ]
