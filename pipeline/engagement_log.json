@@ -2696,5 +2696,18 @@
     "article_count": null,
     "engagement": null,
     "kind": "weekly_recap"
+  },
+  {
+    "ts": "2026-07-19T17:50:44+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mqzdqwysxe2u",
+    "lede": "U.S. conducts 8th straight night of strikes as Iran's Supreme Leader calls Trump's signature \"utterly worthless",
+    "had_news_cluster": true,
+    "story_headline": "U.S. Launches Strikes After Iranian Attack Kills 2 American Soldiers",
+    "outlets": [
+      "CBS News",
+      "The New York Times"
+    ],
+    "article_count": 2,
+    "engagement": null
   }
 ]
