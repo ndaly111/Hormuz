@@ -2715,5 +2715,18 @@
     ],
     "article_count": 2,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-20T14:38:17+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mr3jhqi2jw2o",
+    "lede": "Houthis blockade Saudi oil pipeline as Hormuz traffic collapses to 18% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Houthis impose Saudi naval blockade, opening new front in US-Iran war",
+    "outlets": [
+      "CNBC",
+      "Reuters"
+    ],
+    "article_count": 8,
+    "engagement": null
   }
 ]
