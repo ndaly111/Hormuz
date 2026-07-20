@@ -2728,5 +2728,18 @@
     ],
     "article_count": 8,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-20T18:48:57+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mr3xhxt5pc2g",
+    "lede": "Trump vows Iran pays \"many times over\" for each soldier killed as Hormuz traffic plummets to 18% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Iran war live: Trump threatens more attacks on Iran if US soldiers killed",
+    "outlets": [
+      "Al Jazeera",
+      "The New York Times"
+    ],
+    "article_count": 2,
+    "engagement": null
   }
 ]
