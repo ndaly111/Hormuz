@@ -88,5 +88,95 @@
     "bio_keyword_hits": 0,
     "query_hits": 5,
     "score": 27.2
+  },
+  {
+    "ts": "2026-07-20T16:38:26+00:00",
+    "did": "did:plc:43fdk46qa5gsokzygzildsaq",
+    "handle": "fintwitter.bsky.social",
+    "followers_count": 16280,
+    "bio_keyword_hits": 0,
+    "query_hits": 6,
+    "score": 35.0
+  },
+  {
+    "ts": "2026-07-20T16:38:26+00:00",
+    "did": "did:plc:we4hrdwurlbu7qj3wh3346ba",
+    "handle": "me.skyfleet.blue",
+    "followers_count": 1666,
+    "bio_keyword_hits": 1,
+    "query_hits": 3,
+    "score": 26.7
+  },
+  {
+    "ts": "2026-07-20T16:38:26+00:00",
+    "did": "did:plc:mcuhkcbd5c4du3wexehy25qw",
+    "handle": "clydecommods.bsky.social",
+    "followers_count": 578,
+    "bio_keyword_hits": 2,
+    "query_hits": 1,
+    "score": 25.6
+  },
+  {
+    "ts": "2026-07-20T16:38:26+00:00",
+    "did": "did:plc:lc6hdhnjkgccd6ysi7e23pll",
+    "handle": "bigearthdata.ai",
+    "followers_count": 7852,
+    "bio_keyword_hits": 0,
+    "query_hits": 4,
+    "score": 25.0
+  },
+  {
+    "ts": "2026-07-20T16:38:26+00:00",
+    "did": "did:plc:2j7yuilleggycr4ddg2tohnv",
+    "handle": "nicholasabrown.bsky.social",
+    "followers_count": 1494,
+    "bio_keyword_hits": 1,
+    "query_hits": 2,
+    "score": 21.5
+  },
+  {
+    "ts": "2026-07-20T16:38:26+00:00",
+    "did": "did:plc:3rizd6kdxg7jsluit7kqgx7h",
+    "handle": "almarosar572.bsky.social",
+    "followers_count": 1413,
+    "bio_keyword_hits": 1,
+    "query_hits": 2,
+    "score": 21.4
+  },
+  {
+    "ts": "2026-07-20T16:38:26+00:00",
+    "did": "did:plc:nmo6l74omrhh6hvndiwlj7zn",
+    "handle": "tambria.bsky.social",
+    "followers_count": 5703,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-07-20T16:38:27+00:00",
+    "did": "did:plc:3qfvl5yl6kslgiqtbuqzwsly",
+    "handle": "intelnightowl.bsky.social",
+    "followers_count": 8323,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-07-20T16:38:27+00:00",
+    "did": "did:plc:sghe7apqdkp4jq7l6iwho6qs",
+    "handle": "votebluecrew1.bsky.social",
+    "followers_count": 10931,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-07-20T16:38:27+00:00",
+    "did": "did:plc:vqzg7mjoyhvdtkgjv35dtphc",
+    "handle": "csis.org",
+    "followers_count": 8811,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
   }
 ]
