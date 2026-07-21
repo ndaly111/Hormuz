@@ -2759,5 +2759,23 @@
     ],
     "article_count": 2,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-21T14:33:53+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mr5zosmb342g",
+    "lede": "US strikes Iran for 10th straight night as Hormuz traffic collapses to 18% of normal",
+    "had_news_cluster": true,
+    "story_headline": "US attacks Iran for 10th consecutive night",
+    "outlets": [
+      "Al Jazeera",
+      "CNBC",
+      "CNN",
+      "Reuters",
+      "The Maritime Executive",
+      "The Washington Post",
+      "gCaptain"
+    ],
+    "article_count": 72,
+    "engagement": null
   }
 ]
