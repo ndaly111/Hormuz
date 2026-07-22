@@ -2819,5 +2819,19 @@
     ],
     "article_count": 52,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-22T18:03:03+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mravtoyekd2u",
+    "lede": "Rubio says Iran violated its deal within two weeks as Hormuz traffic drops to 13% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Oil prices rise after Rubio says Iran is not serious about a deal",
+    "outlets": [
+      "Al Jazeera",
+      "CNBC",
+      "Reuters"
+    ],
+    "article_count": 5,
+    "engagement": null
   }
 ]
