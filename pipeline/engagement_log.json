@@ -2865,5 +2865,21 @@
     ],
     "article_count": 30,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-23T18:08:04+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mrdgljwsoe27",
+    "lede": "Trump vows to hit Iranian bridge or power plant for every ship the Houthis target as Hormuz traffic collapses to 13% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Trump says he is close to decision on largest-yet attack on Iran",
+    "outlets": [
+      "Axios",
+      "BBC",
+      "CNBC",
+      "Reuters",
+      "The Guardian"
+    ],
+    "article_count": 42,
+    "engagement": null
   }
 ]
