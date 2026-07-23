@@ -2845,5 +2845,25 @@
     ],
     "article_count": 5,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-23T14:40:24+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mrd2yc4d672p",
+    "lede": "Trump vows to bomb Iranian bridges for each ship attacked as Hormuz traffic collapses to 13% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Donald Trump threatens to destroy Iranian bridges and power plants",
+    "outlets": [
+      "Al Jazeera",
+      "Axios",
+      "BBC",
+      "CNBC",
+      "Financial Times",
+      "Reuters",
+      "The New York Times",
+      "USA Today",
+      "WSJ"
+    ],
+    "article_count": 30,
+    "engagement": null
   }
 ]
