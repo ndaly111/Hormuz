@@ -2893,5 +2893,18 @@
     ],
     "article_count": 42,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-24T14:19:24+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mrfkbnftly2u",
+    "lede": "Trump weighs \"massive attack\" as Arab allies tell NBC \"we have no clue where this is going",
+    "had_news_cluster": true,
+    "story_headline": "Iran war updates: Trump warns of unprecedented \u2018massive attack\u2019 on Iran",
+    "outlets": [
+      "Al Jazeera",
+      "NBC News"
+    ],
+    "article_count": 4,
+    "engagement": null
   }
 ]
