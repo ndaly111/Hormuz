@@ -2931,5 +2931,18 @@
     ],
     "article_count": 4,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-25T14:08:40+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mri25equlh27",
+    "lede": "Trump threatens China and Russia over Iran arms as Hormuz traffic collapses to 13% of normal",
+    "had_news_cluster": true,
+    "story_headline": "US Strikes Iran From South to North After Trump Threats Over Red Sea Shipping",
+    "outlets": [
+      "The Guardian",
+      "gCaptain"
+    ],
+    "article_count": 2,
+    "engagement": null
   }
 ]
