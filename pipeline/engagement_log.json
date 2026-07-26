@@ -2956,5 +2956,19 @@
     ],
     "article_count": 2,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-26T14:06:55+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mrkkj67kau2p",
+    "lede": "US halts strikes as Iran reports tanker hit mine in Hormuz, talks advance with Oman",
+    "had_news_cluster": true,
+    "story_headline": "US pauses Iran strikes as Oman pursues Hormuz transit deal",
+    "outlets": [
+      "Al Jazeera",
+      "CBS News",
+      "Financial Times"
+    ],
+    "article_count": 29,
+    "engagement": null
   }
 ]
