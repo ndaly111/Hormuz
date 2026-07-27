@@ -2993,5 +2993,23 @@
     "article_count": null,
     "engagement": null,
     "kind": "weekly_recap"
+  },
+  {
+    "ts": "2026-07-27T15:22:22+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mrn76zjyu32g",
+    "lede": "US military warned Trump bombing campaign hit its limits, so he paused strikes on Iran",
+    "had_news_cluster": true,
+    "story_headline": "US, Iran Extend Pause in Strikes as Oman Holds Hormuz Talks",
+    "outlets": [
+      "Al Jazeera",
+      "Bloomberg",
+      "CBS News",
+      "Financial Times",
+      "NBC News",
+      "NPR",
+      "The Guardian"
+    ],
+    "article_count": 94,
+    "engagement": null
   }
 ]
