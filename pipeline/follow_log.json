@@ -178,5 +178,95 @@
     "bio_keyword_hits": 1,
     "query_hits": 1,
     "score": 20.0
+  },
+  {
+    "ts": "2026-07-27T17:04:01+00:00",
+    "did": "did:plc:mrganbdjovxtfmjfjw6a7ibj",
+    "handle": "kormych.bsky.social",
+    "followers_count": 1435,
+    "bio_keyword_hits": 3,
+    "query_hits": 1,
+    "score": 36.4
+  },
+  {
+    "ts": "2026-07-27T17:04:01+00:00",
+    "did": "did:plc:u4o26nximjdtgooqshfz45zr",
+    "handle": "shipwreck75.bsky.social",
+    "followers_count": 26992,
+    "bio_keyword_hits": 2,
+    "query_hits": 2,
+    "score": 35.0
+  },
+  {
+    "ts": "2026-07-27T17:04:01+00:00",
+    "did": "did:plc:qih233gyc6kya4ovlqw7f27m",
+    "handle": "indica.osintnet.uk",
+    "followers_count": 1247,
+    "bio_keyword_hits": 2,
+    "query_hits": 2,
+    "score": 31.2
+  },
+  {
+    "ts": "2026-07-27T17:04:01+00:00",
+    "did": "did:plc:6b77l3ndzv2o7alhbdfc66zq",
+    "handle": "middleeastmonitor.bsky.social",
+    "followers_count": 2978,
+    "bio_keyword_hits": 1,
+    "query_hits": 3,
+    "score": 28.0
+  },
+  {
+    "ts": "2026-07-27T17:04:01+00:00",
+    "did": "did:plc:shegzclw5ced4efukd65g5a7",
+    "handle": "breakbulk.bsky.social",
+    "followers_count": 60,
+    "bio_keyword_hits": 2,
+    "query_hits": 1,
+    "score": 25.1
+  },
+  {
+    "ts": "2026-07-27T17:04:01+00:00",
+    "did": "did:plc:gbp4li6dnebjy7af3oqtfy5h",
+    "handle": "gulfstatesinst.bsky.social",
+    "followers_count": 175,
+    "bio_keyword_hits": 1,
+    "query_hits": 2,
+    "score": 20.2
+  },
+  {
+    "ts": "2026-07-27T17:04:01+00:00",
+    "did": "did:plc:allhy465i2zhwavznx4vi4u7",
+    "handle": "richard.wickedproblems.earth",
+    "followers_count": 4337,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 19.3
+  },
+  {
+    "ts": "2026-07-27T17:04:01+00:00",
+    "did": "did:plc:4d3enxq3fk4ukwwupihczbjg",
+    "handle": "thenationalnews.com",
+    "followers_count": 2982,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 18.0
+  },
+  {
+    "ts": "2026-07-27T17:04:01+00:00",
+    "did": "did:plc:vv6yukddxhwysinb4stttadm",
+    "handle": "andrewwr235.bsky.social",
+    "followers_count": 1080,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 16.1
+  },
+  {
+    "ts": "2026-07-27T17:04:01+00:00",
+    "did": "did:plc:6sfanwmqr6yr4kavngda4dre",
+    "handle": "sentdefender-mirr.selfhosted.social",
+    "followers_count": 679,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.7
   }
 ]
