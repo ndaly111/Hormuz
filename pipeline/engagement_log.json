@@ -3017,5 +3017,22 @@
     ],
     "article_count": 94,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-28T14:57:54+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mrpoc6jsld27",
+    "lede": "Oman pitches voluntary fees to Iran as US pauses strikes, but Hormuz traffic still at 13% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Oman presented regional mechanism for Hormuz to Iran, source says",
+    "outlets": [
+      "Al Jazeera",
+      "CNBC",
+      "Reuters",
+      "The Guardian",
+      "WSJ",
+      "gCaptain"
+    ],
+    "article_count": 60,
+    "engagement": null
   }
 ]
