@@ -2991,7 +2991,13 @@
     "story_headline": null,
     "outlets": [],
     "article_count": null,
-    "engagement": null,
+    "engagement": {
+      "fetched_at": "2026-07-28T13:59:40+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    },
     "kind": "weekly_recap"
   },
   {
