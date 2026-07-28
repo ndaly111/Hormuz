@@ -3034,5 +3034,18 @@
     ],
     "article_count": 60,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-28T18:07:13+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mrpyupt2tl2q",
+    "lede": "Houthis want to choke off two straits at once, Yemen's FM warns as Hormuz stays at 13% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Houthis want to copy Iran\u2019s Hormuz control in the Red Sea: Yemeni FM",
+    "outlets": [
+      "Al Jazeera",
+      "Reuters"
+    ],
+    "article_count": 3,
+    "engagement": null
   }
 ]
