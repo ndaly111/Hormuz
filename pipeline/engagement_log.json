@@ -3070,5 +3070,18 @@
     ],
     "article_count": 64,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-29T18:02:03+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mrsj2e2r2723",
+    "lede": "Oil futures spike 7% as Trump vows to hit Iran hard, Hormuz traffic collapses to 12% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Trump vows to hit Iran hard as he meets with Netanyahu",
+    "outlets": [
+      "Al Jazeera",
+      "CNBC"
+    ],
+    "article_count": 3,
+    "engagement": null
   }
 ]
