@@ -3053,5 +3053,22 @@
     ],
     "article_count": 3,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-29T14:39:08+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mrs5pjwipc2u",
+    "lede": "Iran demands more control as Hormuz talks stall on day 142, traffic at 12% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Iran and Oman exchange proposals to manage Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "Bloomberg",
+      "Lloyd's List",
+      "Reuters",
+      "The Maritime Executive",
+      "WSJ"
+    ],
+    "article_count": 64,
+    "engagement": null
   }
 ]
