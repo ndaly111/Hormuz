@@ -3095,5 +3095,19 @@
     ],
     "article_count": 3,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-30T14:40:15+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mruoahsd3r2g",
+    "lede": "Qatar's first LNG tanker breaks three-week freeze as a dozen more queue at Ras Laffan",
+    "had_news_cluster": true,
+    "story_headline": "Qatar Sends First LNG Shipment Through Hormuz in Three Weeks",
+    "outlets": [
+      "Bloomberg",
+      "Reuters",
+      "gCaptain"
+    ],
+    "article_count": 15,
+    "engagement": null
   }
 ]
