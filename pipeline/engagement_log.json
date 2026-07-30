@@ -3109,5 +3109,18 @@
     ],
     "article_count": 15,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-30T18:09:54+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mruzxdjshf27",
+    "lede": "US strikes Iran as Saudi Arabia pushes to de-escalate, Hormuz traffic plummets to 12% of normal",
+    "had_news_cluster": true,
+    "story_headline": "US launches 'heavy' strikes on Iran after attempted attack on American troops",
+    "outlets": [
+      "BBC",
+      "Politico"
+    ],
+    "article_count": 2,
+    "engagement": null
   }
 ]
