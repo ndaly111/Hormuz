@@ -3039,7 +3039,13 @@
       "gCaptain"
     ],
     "article_count": 60,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-07-30T13:52:20+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-07-28T18:07:13+00:00",
@@ -3052,7 +3058,13 @@
       "Reuters"
     ],
     "article_count": 3,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-07-30T13:52:20+00:00",
+      "likes": 2,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-07-29T14:39:08+00:00",
