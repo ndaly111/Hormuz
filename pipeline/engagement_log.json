@@ -3134,5 +3134,20 @@
     ],
     "article_count": 2,
     "engagement": null
+  },
+  {
+    "ts": "2026-07-31T14:45:51+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mrx6zfu6fz2q",
+    "lede": "Iran strikes US-escorted tankers as first Qatar LNG breaks three-week freeze, Hormuz at 12% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Qatar Sends First LNG Shipment Through Hormuz in Three Weeks",
+    "outlets": [
+      "CBS News",
+      "Reuters",
+      "The Guardian",
+      "gCaptain"
+    ],
+    "article_count": 42,
+    "engagement": null
   }
 ]
