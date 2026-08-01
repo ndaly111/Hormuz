@@ -3161,5 +3161,18 @@
     ],
     "article_count": 42,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-01T14:05:03+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mrzn7crnbq23",
+    "lede": "Iran strikes tankers under US escort as Trump cabinet weighs war response, Hormuz at 12% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Oil prices rise after Iran says it attacked two tankers transiting Strait of Hormuz",
+    "outlets": [
+      "CNBC",
+      "The Guardian"
+    ],
+    "article_count": 30,
+    "engagement": null
   }
 ]
