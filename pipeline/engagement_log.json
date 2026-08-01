@@ -3120,7 +3120,13 @@
       "gCaptain"
     ],
     "article_count": 15,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-08-01T13:13:28+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-07-30T18:09:54+00:00",
@@ -3133,7 +3139,13 @@
       "Politico"
     ],
     "article_count": 2,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-08-01T13:13:28+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-07-31T14:45:51+00:00",
