@@ -3241,5 +3241,18 @@
     ],
     "article_count": 88,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-03T18:43:50+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3ms75ppsz7f23",
+    "lede": "Trump cancels Iran strikes as UK recession fears mount, Hormuz traffic still at 12% of normal",
+    "had_news_cluster": true,
+    "story_headline": "UK faces recession if Strait of Hormuz stays closed, forecaster warns",
+    "outlets": [
+      "Reuters",
+      "The Guardian"
+    ],
+    "article_count": 6,
+    "engagement": null
   }
 ]
