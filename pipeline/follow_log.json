@@ -268,5 +268,95 @@
     "bio_keyword_hits": 1,
     "query_hits": 1,
     "score": 15.7
+  },
+  {
+    "ts": "2026-08-03T17:14:18+00:00",
+    "did": "did:plc:ayaou77uk22bfpti6rkwhb7w",
+    "handle": "vetsfight.bsky.social",
+    "followers_count": 4864,
+    "bio_keyword_hits": 1,
+    "query_hits": 2,
+    "score": 24.9
+  },
+  {
+    "ts": "2026-08-03T17:14:18+00:00",
+    "did": "did:plc:n52lxkxcduw5jxvftwlnusq2",
+    "handle": "peotuqad.com",
+    "followers_count": 91,
+    "bio_keyword_hits": 1,
+    "query_hits": 2,
+    "score": 20.1
+  },
+  {
+    "ts": "2026-08-03T17:14:18+00:00",
+    "did": "did:plc:j32otpq4maqshxyprk3ehb2b",
+    "handle": "tomh-analyst.bsky.social",
+    "followers_count": 2744,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 17.7
+  },
+  {
+    "ts": "2026-08-03T17:14:18+00:00",
+    "did": "did:plc:zibx3delbo24mdsccz6s7qa4",
+    "handle": "euenergy.bsky.social",
+    "followers_count": 197,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.2
+  },
+  {
+    "ts": "2026-08-03T17:14:18+00:00",
+    "did": "did:plc:i6inqewjuimwmjtr3oobmylr",
+    "handle": "montelnews.bsky.social",
+    "followers_count": 131,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.1
+  },
+  {
+    "ts": "2026-08-03T17:14:18+00:00",
+    "did": "did:plc:aq3wnzwalvh432yhuwra5esi",
+    "handle": "v1s1on-3ndl3ss.bsky.social",
+    "followers_count": 117,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 15.1
+  },
+  {
+    "ts": "2026-08-03T17:14:18+00:00",
+    "did": "did:plc:6ww7okz6jqpephokvsrx3dvm",
+    "handle": "osint-mirrors.bsky.social",
+    "followers_count": 52,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.1
+  },
+  {
+    "ts": "2026-08-03T17:14:18+00:00",
+    "did": "did:plc:j2w2cfun7kam2chtajg22te4",
+    "handle": "chudonew.bsky.social",
+    "followers_count": 21318,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 15.0
+  },
+  {
+    "ts": "2026-08-03T17:14:18+00:00",
+    "did": "did:plc:lzfzawdilrmsfikvr4c6ytk4",
+    "handle": "mcbridetd.bsky.social",
+    "followers_count": 19549,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 15.0
+  },
+  {
+    "ts": "2026-08-03T17:14:18+00:00",
+    "did": "did:plc:7lueeglwmok6fmza7rfsnwpw",
+    "handle": "jennyyeremiy.bsky.social",
+    "followers_count": 6489,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 15.0
   }
 ]
