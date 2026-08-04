@@ -3273,5 +3273,18 @@
     ],
     "article_count": 110,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-04T18:23:44+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3msbn2o2q3x27",
+    "lede": "Trump called off \"biggest strike since world war two\" over weekend as Hormuz traffic hits 12% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Trump says ongoing talks are Iran\u2019s \u2018last chance\u2019",
+    "outlets": [
+      "Al Jazeera",
+      "The Guardian"
+    ],
+    "article_count": 6,
+    "engagement": null
   }
 ]
