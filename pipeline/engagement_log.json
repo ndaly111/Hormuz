@@ -3298,5 +3298,26 @@
     ],
     "article_count": 6,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-05T14:46:36+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3msdrfdqcy72t",
+    "lede": "Trump threatens \"hit very hard\" as Hormuz talks advance but traffic stays at 5% of normal",
+    "had_news_cluster": true,
+    "story_headline": "FirstFT: Hopes for Strait of Hormuz deal grow",
+    "outlets": [
+      "BBC",
+      "CBS News",
+      "CNBC",
+      "CNN",
+      "Financial Times",
+      "NBC News",
+      "Reuters",
+      "The Guardian",
+      "The New York Times",
+      "The Washington Post"
+    ],
+    "article_count": 132,
+    "engagement": null
   }
 ]
