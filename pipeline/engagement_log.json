@@ -3331,5 +3331,28 @@
     ],
     "article_count": 132,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-06T14:49:35+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3msgbzlm7ix2n",
+    "lede": "Iran claims control over Hormuz inbound traffic as deal with Oman nears final stages",
+    "had_news_cluster": true,
+    "story_headline": "Iran and Oman close in on new Hormuz traffic regime",
+    "outlets": [
+      "Al Jazeera",
+      "BBC",
+      "CBS News",
+      "CNBC",
+      "CNN",
+      "Financial Times",
+      "Lloyd's List",
+      "NBC News",
+      "Splash247",
+      "The Guardian",
+      "The New York Times",
+      "gCaptain"
+    ],
+    "article_count": 142,
+    "engagement": null
   }
 ]
