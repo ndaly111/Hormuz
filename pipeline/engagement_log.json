@@ -3284,7 +3284,13 @@
       "gCaptain"
     ],
     "article_count": 110,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-08-06T14:00:16+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-08-04T18:23:44+00:00",
@@ -3297,7 +3303,13 @@
       "The Guardian"
     ],
     "article_count": 6,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-08-06T14:00:16+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-08-05T14:46:36+00:00",
