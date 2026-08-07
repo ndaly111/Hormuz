@@ -3360,5 +3360,20 @@
     ],
     "article_count": 142,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-07T13:47:03+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3msioypasix2n",
+    "lede": "Iran's deal with Oman would let it charge ships 7% of cargo value to cross Hormuz",
+    "had_news_cluster": true,
+    "story_headline": "Iran weighs ban on US and Israeli ships in Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "Lloyd's List",
+      "NPR",
+      "Splash247"
+    ],
+    "article_count": 96,
+    "engagement": null
   }
 ]
