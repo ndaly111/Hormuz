@@ -3381,5 +3381,22 @@
     ],
     "article_count": 96,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-08T13:27:49+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3msl6f7u66a2y",
+    "lede": "Iran demands U.S. compensation before reopening Hormuz, even as deal with Oman nears",
+    "had_news_cluster": true,
+    "story_headline": "Iran weighs ban on US and Israeli ships in Hormuz",
+    "outlets": [
+      "CBS News",
+      "NBC News",
+      "Reuters",
+      "Splash247",
+      "The Washington Post",
+      "WSJ"
+    ],
+    "article_count": 63,
+    "engagement": null
   }
 ]
