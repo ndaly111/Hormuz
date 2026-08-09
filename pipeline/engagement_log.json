@@ -3404,5 +3404,27 @@
     ],
     "article_count": 63,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-09T13:32:03+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3msnp3pxdnh2l",
+    "lede": "Iran demands US \"completely compensate\" for war damage as Hormuz stays at 5% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Iran Demands U.S. Withdrawal to Open Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "CBS News",
+      "CNBC",
+      "CNN",
+      "NBC News",
+      "Politico",
+      "Reuters",
+      "The Guardian",
+      "The New York Times",
+      "The Washington Post",
+      "WSJ"
+    ],
+    "article_count": 136,
+    "engagement": null
   }
 ]
