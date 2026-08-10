@@ -3443,5 +3443,23 @@
     "article_count": null,
     "engagement": null,
     "kind": "weekly_recap"
+  },
+  {
+    "ts": "2026-08-10T13:52:32+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3msqapbgncq26",
+    "lede": "Iran's Revolutionary Guards commander demands US pay war damages as Hormuz stays at 5% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Oil Prices Climb on Stalemate in Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "CNBC",
+      "CNN",
+      "NBC News",
+      "Reuters",
+      "The Guardian",
+      "The New York Times"
+    ],
+    "article_count": 78,
+    "engagement": null
   }
 ]
