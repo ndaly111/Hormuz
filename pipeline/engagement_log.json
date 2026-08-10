@@ -3461,5 +3461,20 @@
     ],
     "article_count": 78,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-10T17:43:52+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3msqnmvzjre2i",
+    "lede": "Iran demands major US concessions as Hormuz stays at 5% of normal, oil up 16% since war started",
+    "had_news_cluster": true,
+    "story_headline": "Oil Prices Climb on Stalemate in Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "The Guardian",
+      "The New York Times",
+      "WSJ"
+    ],
+    "article_count": 13,
+    "engagement": null
   }
 ]
