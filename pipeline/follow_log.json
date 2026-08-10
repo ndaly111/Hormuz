@@ -358,5 +358,95 @@
     "bio_keyword_hits": 0,
     "query_hits": 2,
     "score": 15.0
+  },
+  {
+    "ts": "2026-08-10T16:04:41+00:00",
+    "did": "did:plc:g7bwmiaavgfbt5ic54gfkyd3",
+    "handle": "lightnews.app",
+    "followers_count": 437,
+    "bio_keyword_hits": 0,
+    "query_hits": 4,
+    "score": 20.4
+  },
+  {
+    "ts": "2026-08-10T16:04:41+00:00",
+    "did": "did:plc:vypmwcfxdihlrqrtiadg45za",
+    "handle": "peterwsinclair.bsky.social",
+    "followers_count": 5222,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-08-10T16:04:41+00:00",
+    "did": "did:plc:ogpzk3l77iv46gat55ghgs5r",
+    "handle": "analytics.social.vir.group.ap.brid.gy",
+    "followers_count": 444,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.4
+  },
+  {
+    "ts": "2026-08-10T16:04:41+00:00",
+    "did": "did:plc:xooufg6shz55cx6j2jablxee",
+    "handle": "palm7x.bsky.social",
+    "followers_count": 106,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.1
+  },
+  {
+    "ts": "2026-08-10T16:04:41+00:00",
+    "did": "did:plc:ig4j4joparmicuueb32agggf",
+    "handle": "armanshah.bsky.social",
+    "followers_count": 39,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.0
+  },
+  {
+    "ts": "2026-08-10T16:04:42+00:00",
+    "did": "did:plc:gigyenycvugplf5iqjons5sv",
+    "handle": "graphicgranola.bsky.social",
+    "followers_count": 6402,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 15.0
+  },
+  {
+    "ts": "2026-08-10T16:04:42+00:00",
+    "did": "did:plc:vhw4bje77b3x4q7io4ej3sph",
+    "handle": "jadedinmontana.bsky.social",
+    "followers_count": 10766,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 15.0
+  },
+  {
+    "ts": "2026-08-10T16:04:42+00:00",
+    "did": "did:plc:qadlgs4xioohnhi2jg54mqds",
+    "handle": "mvij.org",
+    "followers_count": 669,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 10.7
+  },
+  {
+    "ts": "2026-08-10T16:04:42+00:00",
+    "did": "did:plc:pv7tltwjcsdl3logwvxxla3i",
+    "handle": "ally007.bsky.social",
+    "followers_count": 533,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 10.5
+  },
+  {
+    "ts": "2026-08-10T16:04:42+00:00",
+    "did": "did:plc:aontvxxlb3owr6soszlbs64j",
+    "handle": "almonitor-rss.bsky.social",
+    "followers_count": 413,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 10.4
   }
 ]
