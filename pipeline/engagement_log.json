@@ -3488,5 +3488,24 @@
     ],
     "article_count": 13,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-11T13:51:27+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mssr4azih42u",
+    "lede": "Trump demands Iran pay 50 years of damages as Hormuz traffic collapses to 5% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Oil Prices Climb on Stalemate in Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "CBS News",
+      "CNBC",
+      "CNN",
+      "NBC News",
+      "Reuters",
+      "The New York Times",
+      "gCaptain"
+    ],
+    "article_count": 63,
+    "engagement": null
   }
 ]
