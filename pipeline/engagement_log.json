@@ -3507,5 +3507,19 @@
     ],
     "article_count": 63,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-11T17:50:11+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mst6h4ssni2i",
+    "lede": "Pakistan defense minister says US and Iran close to deal as Hormuz traffic collapses to 5% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Iran war live: Pakistan interior minister in Tehran as Hormuz talks advance",
+    "outlets": [
+      "Al Jazeera",
+      "CBS News",
+      "Reuters"
+    ],
+    "article_count": 11,
+    "engagement": null
   }
 ]
