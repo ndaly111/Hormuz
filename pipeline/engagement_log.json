@@ -3548,5 +3548,20 @@
     ],
     "article_count": 34,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-12T17:52:04+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3msvozfmsep2r",
+    "lede": "Pakistan's defense minister says US and Iran are \"close to some sort\" of deal as Hormuz traffic stays at 6% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Trump says US has 'total control' over Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "Reuters",
+      "WSJ",
+      "gCaptain"
+    ],
+    "article_count": 49,
+    "engagement": null
   }
 ]
