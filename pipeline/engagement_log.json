@@ -3533,5 +3533,20 @@
     ],
     "article_count": 11,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-12T13:55:48+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3msvbsx6u7y2y",
+    "lede": "Trump tells Iran \"they get blown away\" as Hormuz stays at 6% of normal on day 159",
+    "had_news_cluster": true,
+    "story_headline": "New attacks on shipping as Iran war talks hit fresh impasse",
+    "outlets": [
+      "Al Jazeera",
+      "CBS News",
+      "Reuters",
+      "gCaptain"
+    ],
+    "article_count": 34,
+    "engagement": null
   }
 ]
