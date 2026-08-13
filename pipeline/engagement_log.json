@@ -3575,5 +3575,20 @@
     ],
     "article_count": 49,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-13T13:55:20+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3msxsazo5xj2p",
+    "lede": "Trump says he'll \"keep\" Hormuz as Iran blocks ships, traffic hits day 159 at 6% of normal",
+    "had_news_cluster": true,
+    "story_headline": "US-Iran talks in deadlock \u2013 what\u2019s the latest?",
+    "outlets": [
+      "Al Jazeera",
+      "CBS News",
+      "CNBC",
+      "Reuters"
+    ],
+    "article_count": 75,
+    "engagement": null
   }
 ]
