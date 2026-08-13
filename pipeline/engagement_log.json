@@ -3590,5 +3590,18 @@
     ],
     "article_count": 75,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-13T17:51:07+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3msy7gnhvn22t",
+    "lede": "IEA cuts 2026 oil demand forecast by 510,000 barrels a day as Hormuz stays at 6% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Hormuz closure squeezes global economy as oil demand destruction intensifies, IEA says",
+    "outlets": [
+      "CNBC",
+      "Reuters"
+    ],
+    "article_count": 11,
+    "engagement": null
   }
 ]
