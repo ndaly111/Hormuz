@@ -3629,5 +3629,19 @@
     ],
     "article_count": 23,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-14T17:44:58+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mt2pkka2lb2t",
+    "lede": "Iran attacks two ADNOC tankers as Hormuz traffic stays at 6% of normal",
+    "had_news_cluster": true,
+    "story_headline": "UAE accuses Iran of attacks on two ADNOC vessels in Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "Reuters",
+      "gCaptain"
+    ],
+    "article_count": 76,
+    "engagement": null
   }
 ]
