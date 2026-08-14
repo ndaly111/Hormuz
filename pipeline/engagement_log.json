@@ -3615,5 +3615,19 @@
     ],
     "article_count": 11,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-14T13:51:35+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mt2cjaeax22p",
+    "lede": "Trump vows to \"keep\" Strait of Hormuz as Iran blocks it, traffic at 6% of normal on day 159",
+    "had_news_cluster": true,
+    "story_headline": "Iran, US make competing claims over control of Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "CBS News",
+      "Reuters"
+    ],
+    "article_count": 23,
+    "engagement": null
   }
 ]
