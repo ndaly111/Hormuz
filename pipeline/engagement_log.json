@@ -3559,7 +3559,13 @@
       "gCaptain"
     ],
     "article_count": 34,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-08-14T12:58:48+00:00",
+      "likes": 1,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-08-12T17:52:04+00:00",
@@ -3574,7 +3580,13 @@
       "gCaptain"
     ],
     "article_count": 49,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-08-14T12:58:48+00:00",
+      "likes": 3,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-08-13T13:55:20+00:00",
