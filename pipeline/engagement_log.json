@@ -3655,5 +3655,25 @@
     ],
     "article_count": 76,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-15T13:06:51+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mt4qi6htlb24",
+    "lede": "Trump vows to seize Hormuz \"after we finish defeating Iran\" as strait stays at 6% of normal traffic",
+    "had_news_cluster": true,
+    "story_headline": "Two More Tankers Attacked in the Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "CNBC",
+      "CNN",
+      "NBC News",
+      "Reuters",
+      "The Guardian",
+      "The Maritime Executive",
+      "USA Today",
+      "gCaptain"
+    ],
+    "article_count": 144,
+    "engagement": null
   }
 ]
