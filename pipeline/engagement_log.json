@@ -3687,5 +3687,19 @@
     ],
     "article_count": 144,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-16T13:08:18+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mt7azpdolw2p",
+    "lede": "Trump vows to seize Hormuz as US territory; Iran: \"cannot be seized by tweet\" as traffic hits 6% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Trump threatens to make the Strait of Hormuz a US territory: Can he?",
+    "outlets": [
+      "Al Jazeera",
+      "CNBC",
+      "NBC News"
+    ],
+    "article_count": 65,
+    "engagement": null
   }
 ]
