@@ -3718,5 +3718,19 @@
     "article_count": null,
     "engagement": null,
     "kind": "weekly_recap"
+  },
+  {
+    "ts": "2026-08-17T13:14:31+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mtbrtpwtld2p",
+    "lede": "Trump threatens to bomb Oman as 60-day ceasefire expires with no deal in sight",
+    "had_news_cluster": true,
+    "story_headline": "Trump threatens to make the Strait of Hormuz a US territory: Can he?",
+    "outlets": [
+      "Al Jazeera",
+      "CNBC",
+      "The Guardian"
+    ],
+    "article_count": 76,
+    "engagement": null
   }
 ]
