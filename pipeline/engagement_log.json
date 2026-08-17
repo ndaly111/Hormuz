@@ -3732,5 +3732,18 @@
     ],
     "article_count": 76,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-17T17:18:14+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mtc7hjgnul23",
+    "lede": "Oil stalls near $90 as Iran, U.S. talk past each other on Hormuz reopening",
+    "had_news_cluster": true,
+    "story_headline": "Oil steady on Iran war stalemate",
+    "outlets": [
+      "CNBC",
+      "Reuters"
+    ],
+    "article_count": 4,
+    "engagement": null
   }
 ]
