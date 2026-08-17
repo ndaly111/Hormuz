@@ -448,5 +448,95 @@
     "bio_keyword_hits": 0,
     "query_hits": 2,
     "score": 10.4
+  },
+  {
+    "ts": "2026-08-17T15:32:14+00:00",
+    "did": "did:plc:xm5idhcnphijrnsikrofmr2o",
+    "handle": "factline-events.bsky.social",
+    "followers_count": 364,
+    "bio_keyword_hits": 2,
+    "query_hits": 2,
+    "score": 30.4
+  },
+  {
+    "ts": "2026-08-17T15:32:14+00:00",
+    "did": "did:plc:udfkf5psyjiangq5cmwmzpvw",
+    "handle": "timkmak.bsky.social",
+    "followers_count": 36631,
+    "bio_keyword_hits": 1,
+    "query_hits": 2,
+    "score": 25.0
+  },
+  {
+    "ts": "2026-08-17T15:32:14+00:00",
+    "did": "did:plc:lvdomifeya5zaszytskmghek",
+    "handle": "stefwenzel.bsky.social",
+    "followers_count": 957,
+    "bio_keyword_hits": 1,
+    "query_hits": 2,
+    "score": 21.0
+  },
+  {
+    "ts": "2026-08-17T15:32:14+00:00",
+    "did": "did:plc:5uv2fzg5bj2wmfqqrc34opyf",
+    "handle": "busbyj2.bsky.social",
+    "followers_count": 27903,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-08-17T15:32:14+00:00",
+    "did": "did:plc:lpcsumiee6obcimaqmtnaypr",
+    "handle": "pulseofnations.lol",
+    "followers_count": 6697,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-08-17T15:32:14+00:00",
+    "did": "did:plc:bbgz6l7my6o54krjyba6hwms",
+    "handle": "peterlipman.bsky.social",
+    "followers_count": 1832,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 16.8
+  },
+  {
+    "ts": "2026-08-17T15:32:14+00:00",
+    "did": "did:plc:ewc3leao65iptnuvhqzxxprh",
+    "handle": "yanqin.bsky.social",
+    "followers_count": 722,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.7
+  },
+  {
+    "ts": "2026-08-17T15:32:14+00:00",
+    "did": "did:plc:n2jsmusnh3jt6nokd5dcloe6",
+    "handle": "wittywebhandle.bsky.social",
+    "followers_count": 14509,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 15.0
+  },
+  {
+    "ts": "2026-08-17T15:32:14+00:00",
+    "did": "did:plc:gszsx5qhrnwd477dmxk6sq5y",
+    "handle": "architecturenerd.bsky.social",
+    "followers_count": 32362,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 15.0
+  },
+  {
+    "ts": "2026-08-17T15:32:15+00:00",
+    "did": "did:plc:yo32zg7kqrxgox7vut467aj6",
+    "handle": "zimmermanv66.bsky.social",
+    "followers_count": 28905,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 15.0
   }
 ]
