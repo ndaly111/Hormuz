@@ -3778,5 +3778,19 @@
     ],
     "article_count": 98,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-18T17:24:12+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mteqb44cgp2m",
+    "lede": "Chief engineer killed as projectile strikes bulker in Hormuz, Iran detains UAE tanker",
+    "had_news_cluster": true,
+    "story_headline": "Seafarer killed in latest Hormuz strike",
+    "outlets": [
+      "Lloyd's List",
+      "Splash247",
+      "gCaptain"
+    ],
+    "article_count": 3,
+    "engagement": null
   }
 ]
