@@ -3757,5 +3757,26 @@
     ],
     "article_count": 4,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-18T13:22:32+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mtecqxy5672m",
+    "lede": "Trump demands Iran surrender, threatens to bomb Oman as 60-day talks expire",
+    "had_news_cluster": true,
+    "story_headline": "Ship Exiting the Strait of Hormuz Is Attacked",
+    "outlets": [
+      "Al Jazeera",
+      "Axios",
+      "BBC",
+      "CBS News",
+      "CNBC",
+      "NBC News",
+      "NPR",
+      "The Guardian",
+      "The Maritime Executive",
+      "The New York Times"
+    ],
+    "article_count": 98,
+    "engagement": null
   }
 ]
