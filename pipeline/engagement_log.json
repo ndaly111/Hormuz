@@ -3804,5 +3804,22 @@
     ],
     "article_count": 3,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-19T13:24:24+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mtgtdafol32p",
+    "lede": "Trump posts map claiming Hormuz as U.S. territory as seafarer killed in latest attack",
+    "had_news_cluster": true,
+    "story_headline": "Seafarer killed in latest Hormuz strike",
+    "outlets": [
+      "Al Jazeera",
+      "CBS News",
+      "CNBC",
+      "Reuters",
+      "Splash247",
+      "gCaptain"
+    ],
+    "article_count": 110,
+    "engagement": null
   }
 ]
