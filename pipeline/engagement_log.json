@@ -3821,5 +3821,18 @@
     ],
     "article_count": 110,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-19T17:18:46+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mthagd2z7x23",
+    "lede": "Trump threatens to bomb Oman as Iran-US peace talks expire, Hormuz traffic flatlines at 5% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Why has Trump threatened to bomb Oman \u2013 for a second time?",
+    "outlets": [
+      "Al Jazeera",
+      "USA Today"
+    ],
+    "article_count": 4,
+    "engagement": null
   }
 ]
