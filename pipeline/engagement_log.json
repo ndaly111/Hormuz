@@ -3846,5 +3846,18 @@
     ],
     "article_count": 4,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-20T13:26:29+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mtjdvv3nsx2j",
+    "lede": "Trump threatens \"economic warfare\" on Iran allies as Hormuz stays at 5% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Trump warns of economic consequences for any country that supports Iran",
+    "outlets": [
+      "NBC News",
+      "Reuters"
+    ],
+    "article_count": 3,
+    "engagement": null
   }
 ]
