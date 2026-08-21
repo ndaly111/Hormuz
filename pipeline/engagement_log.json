@@ -3884,5 +3884,18 @@
     ],
     "article_count": 12,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-21T13:25:50+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mtludndcrj2d",
+    "lede": null,
+    "had_news_cluster": true,
+    "story_headline": "Iran vows \u2018devastating\u2019 response as U.S. threatens toughest ever economic hit",
+    "outlets": [
+      "NBC News",
+      "Reuters"
+    ],
+    "article_count": 5,
+    "engagement": null
   }
 ]
