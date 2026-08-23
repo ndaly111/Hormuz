@@ -3929,5 +3929,20 @@
     ],
     "article_count": 49,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-23T13:09:09+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mtqudnsyf72s",
+    "lede": null,
+    "had_news_cluster": true,
+    "story_headline": "Watch oil tankers\u2019 covert route through Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "CNN",
+      "Reuters",
+      "gCaptain"
+    ],
+    "article_count": 30,
+    "engagement": null
   }
 ]
