@@ -538,5 +538,95 @@
     "bio_keyword_hits": 0,
     "query_hits": 2,
     "score": 15.0
+  },
+  {
+    "ts": "2026-08-24T15:46:48+00:00",
+    "did": "did:plc:lqkvnbubnecmd2l3j7mxs3er",
+    "handle": "tiafarris10.bsky.social",
+    "followers_count": 562,
+    "bio_keyword_hits": 4,
+    "query_hits": 1,
+    "score": 45.6
+  },
+  {
+    "ts": "2026-08-24T15:46:48+00:00",
+    "did": "did:plc:kyvvwelbhtlncyo7j5de3org",
+    "handle": "newnarrative.bsky.social",
+    "followers_count": 4364,
+    "bio_keyword_hits": 0,
+    "query_hits": 5,
+    "score": 29.4
+  },
+  {
+    "ts": "2026-08-24T15:46:48+00:00",
+    "did": "did:plc:sewklaksm6shfchca3vayei3",
+    "handle": "gbw56.bsky.social",
+    "followers_count": 275,
+    "bio_keyword_hits": 2,
+    "query_hits": 1,
+    "score": 25.3
+  },
+  {
+    "ts": "2026-08-24T15:46:48+00:00",
+    "did": "did:plc:amlt26eozi6kozdkf3b5cmht",
+    "handle": "sentineldesk.eurosky.social",
+    "followers_count": 79,
+    "bio_keyword_hits": 2,
+    "query_hits": 1,
+    "score": 25.1
+  },
+  {
+    "ts": "2026-08-24T15:46:48+00:00",
+    "did": "did:plc:gp2hlwg55wc24g62f33qegku",
+    "handle": "warheatmap.bsky.social",
+    "followers_count": 71,
+    "bio_keyword_hits": 2,
+    "query_hits": 1,
+    "score": 25.1
+  },
+  {
+    "ts": "2026-08-24T15:46:48+00:00",
+    "did": "did:plc:av2qrfhmnpnlfk3svqk6jdmo",
+    "handle": "techpedo.bsky.social",
+    "followers_count": 83,
+    "bio_keyword_hits": 0,
+    "query_hits": 4,
+    "score": 20.1
+  },
+  {
+    "ts": "2026-08-24T15:46:48+00:00",
+    "did": "did:plc:bkz5iy23uveimdkeinwm42a2",
+    "handle": "divedoc.bsky.social",
+    "followers_count": 34650,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-08-24T15:46:49+00:00",
+    "did": "did:plc:j6ye65hxe3fndeq7ejez5gsk",
+    "handle": "cto1usn.bsky.social",
+    "followers_count": 16433,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-08-24T15:46:49+00:00",
+    "did": "did:plc:py3iflznoekuxvr7fa3yvt6k",
+    "handle": "scottpwaldman.bsky.social",
+    "followers_count": 3733,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 18.7
+  },
+  {
+    "ts": "2026-08-24T15:46:49+00:00",
+    "did": "did:plc:uzkfcfxl3fbmjdzknxksb3fw",
+    "handle": "mmnewsletter.bsky.social",
+    "followers_count": 639,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.6
   }
 ]
