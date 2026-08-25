@@ -3999,5 +3999,21 @@
     ],
     "article_count": 3,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-25T13:27:03+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mtvwbitxfl2d",
+    "lede": null,
+    "had_news_cluster": true,
+    "story_headline": "Greek-owned tanker hit in Strait of Hormuz",
+    "outlets": [
+      "Financial Times",
+      "Lloyd's List",
+      "Reuters",
+      "The Maritime Executive",
+      "gCaptain"
+    ],
+    "article_count": 65,
+    "engagement": null
   }
 ]
