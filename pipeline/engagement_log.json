@@ -3949,7 +3949,13 @@
       "gCaptain"
     ],
     "article_count": 30,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-08-25T12:40:55+00:00",
+      "likes": 1,
+      "reposts": 1,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-08-23T13:28:59+00:00",
@@ -3959,7 +3965,13 @@
     "story_headline": null,
     "outlets": [],
     "article_count": null,
-    "engagement": null,
+    "engagement": {
+      "fetched_at": "2026-08-25T12:40:55+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    },
     "kind": "weekly_recap"
   },
   {
