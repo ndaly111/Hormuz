@@ -4041,5 +4041,24 @@
     ],
     "article_count": 19,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-26T13:34:18+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mtyh5f6dlw2n",
+    "lede": null,
+    "had_news_cluster": true,
+    "story_headline": "Iran, Oman agree on new temporary route in Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "CNBC",
+      "Financial Times",
+      "Lloyd's List",
+      "Reuters",
+      "The New York Times",
+      "The Washington Post",
+      "WSJ"
+    ],
+    "article_count": 110,
+    "engagement": null
   }
 ]
