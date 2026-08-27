@@ -4098,5 +4098,20 @@
       "replies": 0,
       "quotes": 0
     }
+  },
+  {
+    "ts": "2026-08-27T22:28:10+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mu3vgwjbmo2m",
+    "lede": null,
+    "had_news_cluster": true,
+    "story_headline": "Iran, Oman agree on temporary Hormuz route: What we know",
+    "outlets": [
+      "Al Jazeera",
+      "Reuters",
+      "The Maritime Executive",
+      "gCaptain"
+    ],
+    "article_count": 66,
+    "engagement": null
   }
 ]
