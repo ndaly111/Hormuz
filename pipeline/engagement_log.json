@@ -4160,5 +4160,20 @@
     ],
     "article_count": 6,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-29T21:49:30+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3muau7nju5z2e",
+    "lede": "Iran brands new U.S. sanctions \"crime against humanity\" as Hormuz stays at 6% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Iran war mediators focus on reopening Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "NBC News",
+      "Reuters",
+      "gCaptain"
+    ],
+    "article_count": 27,
+    "engagement": null
   }
 ]
