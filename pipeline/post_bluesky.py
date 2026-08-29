@@ -218,10 +218,35 @@ def get_news_lede(rank: int = 0) -> tuple[str | None, dict | None]:
             print(f"  no qualifying news cluster at rank {rank}")
             return None, None
         data = load_data()
-        return get_lede(data, story), story
+        lede = get_lede(data, story)
+        if not lede:
+            # We had a real corroborated story and still posted data-only.
+            # That is the silent-rot failure mode: an anthropic 1.x signature
+            # change ate every lede from 2026-08-21 to 08-29 and nothing
+            # surfaced it. Annotate the run so it shows up in Actions.
+            _annotate_missing_lede(story)
+        return lede, story
     except Exception as e:
         print(f"  lede composition failed: {e}", file=sys.stderr)
         return None, None
+
+
+def _annotate_missing_lede(story: dict) -> None:
+    """Emit a GitHub Actions error annotation for a story that got no lede.
+
+    Deliberately does NOT fail the step — the data-only post is still worth
+    sending. The workflow's final guard step turns this into a red run so a
+    failure notification actually goes out.
+    """
+    msg = (
+        f"News cluster found ({story.get('article_count')} articles, "
+        f"{len(story.get('whitelisted_outlets') or [])} whitelisted outlets) "
+        f"but Claude returned no lede — posting data-only. "
+        f"Top headline: {story.get('headline')!r}"
+    )
+    print(f"  {msg}", file=sys.stderr)
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        print(f"::error title=Lede composition failed::{msg}")
 
 
 def append_to_ledger(post_uri: str, lede: str | None, story: dict | None,

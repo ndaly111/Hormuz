@@ -176,7 +176,14 @@ def compose(req: HeadlineRequest) -> Optional[str]:
             resp = client.messages.create(
                 model=MODEL,
                 max_tokens=80,
-                temperature=0.4,
+                # anthropic 1.x removed temperature/top_p/top_k from the
+                # messages.create() signature (passing one is a TypeError, which
+                # is what silently killed every lede from 2026-08-21 when CI
+                # picked up 1.2.0 under the old `anthropic>=0.40` pin). Haiku 4.5
+                # still honours the setting on the wire, and 0.4 is load-bearing
+                # here -- the default of 1.0 makes the headlines wander off the
+                # gold-standard voice -- so pass it through extra_body.
+                extra_body={"temperature": 0.4},
                 system=SYSTEM_PROMPT,
                 messages=[{"role": "user", "content": user_msg}],
             )

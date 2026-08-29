@@ -114,6 +114,34 @@ jobs:
             git push
           fi
 
+      - name: Fail if a news cluster posted without a lede
+        # Runs after the ledger commit so a red run never skips the commit and
+        # breaks the dedupe gate. Turns the silent data-only fallback (an
+        # anthropic 1.x signature change ate every lede 2026-08-21..08-29 with
+        # nothing surfacing it) into a workflow failure notification.
+        # Only judges an entry this run just appended -- a run that skipped
+        # posting must not be failed by a stale entry from an earlier run.
+        if: always() && inputs.dry_run_post != 'true'
+        run: |
+          python3 - <<'EOF'
+          import json, sys
+          from datetime import datetime, timedelta, timezone
+          entries = json.load(open("pipeline/engagement_log.json"))
+          if not entries:
+              sys.exit(0)
+          last = entries[-1]
+          age = datetime.now(timezone.utc) - datetime.fromisoformat(last["ts"])
+          if age > timedelta(minutes=30):
+              print("No post appended by this run; nothing to check.")
+              sys.exit(0)
+          if last.get("had_news_cluster") and not last.get("lede"):
+              print(f"::error::Posted data-only despite a news cluster: "
+                    f"{last.get('story_headline')!r}. Check the compose_headline "
+                    f"output in the post step above.")
+              sys.exit(1)
+          print("Lede check OK.")
+          EOF
+
       - name: Upload dry-run preview
         if: inputs.dry_run_post == 'true'
         uses: actions/upload-artifact@v4
