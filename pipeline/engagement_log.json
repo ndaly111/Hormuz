@@ -4133,7 +4133,13 @@
       "gCaptain"
     ],
     "article_count": 26,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-08-30T16:00:02+00:00",
+      "likes": 1,
+      "reposts": 0,
+      "replies": 1,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-08-29T00:50:38+00:00",
@@ -4146,7 +4152,13 @@
       "The Washington Post"
     ],
     "article_count": 7,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-08-30T16:00:02+00:00",
+      "likes": 0,
+      "reposts": 1,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-08-29T19:36:33+00:00",
