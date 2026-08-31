@@ -628,5 +628,95 @@
     "bio_keyword_hits": 1,
     "query_hits": 1,
     "score": 15.6
+  },
+  {
+    "ts": "2026-08-31T20:45:03+00:00",
+    "did": "did:plc:iipowqhztticiguaxkwgtiwt",
+    "handle": "ownfeed.bsky.social",
+    "followers_count": 238,
+    "bio_keyword_hits": 0,
+    "query_hits": 9,
+    "score": 45.2
+  },
+  {
+    "ts": "2026-08-31T20:45:03+00:00",
+    "did": "did:plc:k5bxdlpblblb6nygunqvdgis",
+    "handle": "geoworldpolitical.bsky.social",
+    "followers_count": 307,
+    "bio_keyword_hits": 3,
+    "query_hits": 2,
+    "score": 40.3
+  },
+  {
+    "ts": "2026-08-31T20:45:04+00:00",
+    "did": "did:plc:rdc6gv5coaoq7tbjjxgp4c2n",
+    "handle": "dannysteenhorst.bsky.social",
+    "followers_count": 986,
+    "bio_keyword_hits": 2,
+    "query_hits": 1,
+    "score": 26.0
+  },
+  {
+    "ts": "2026-08-31T20:45:04+00:00",
+    "did": "did:plc:nasdzbpiyzph2lvcoijyxere",
+    "handle": "quartzmedia.bsky.social",
+    "followers_count": 206,
+    "bio_keyword_hits": 0,
+    "query_hits": 4,
+    "score": 20.2
+  },
+  {
+    "ts": "2026-08-31T20:45:04+00:00",
+    "did": "did:plc:2mknbvj4ecbfyqhmm23nzvvc",
+    "handle": "portlandken.bsky.social",
+    "followers_count": 22961,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-08-31T20:45:04+00:00",
+    "did": "did:plc:pnqqzvrc4kh2dzp5ccjiskdz",
+    "handle": "faredalmahlool.bsky.social",
+    "followers_count": 21683,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-08-31T20:45:04+00:00",
+    "did": "did:plc:g6fk6karvcg35plfsygelj55",
+    "handle": "bghart.bsky.social",
+    "followers_count": 2146,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 17.1
+  },
+  {
+    "ts": "2026-08-31T20:45:04+00:00",
+    "did": "did:plc:bgt62gzl3y5ke7b45xi5vkvu",
+    "handle": "bsfavourite.bsky.social",
+    "followers_count": 928,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 15.9
+  },
+  {
+    "ts": "2026-08-31T20:45:04+00:00",
+    "did": "did:plc:b5mih7j7iczr2jt3sgbizmgq",
+    "handle": "julielaumann.bsky.social",
+    "followers_count": 499,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.5
+  },
+  {
+    "ts": "2026-08-31T20:45:04+00:00",
+    "did": "did:plc:ka2xgjkcguf7woqvsr7mklg4",
+    "handle": "navyadvancement.com",
+    "followers_count": 454,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.5
   }
 ]
