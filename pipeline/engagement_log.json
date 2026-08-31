@@ -4252,5 +4252,22 @@
     ],
     "article_count": 108,
     "engagement": null
+  },
+  {
+    "ts": "2026-08-31T21:42:31+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mufuqyfwgs23",
+    "lede": "Iran vows \"dozens of times greater\" response as Trump threatens strikes, Hormuz traffic stays at 6% of normal",
+    "had_news_cluster": true,
+    "story_headline": "First US military attacks on Iran in a month prompt retaliation",
+    "outlets": [
+      "CBS News",
+      "CNBC",
+      "Financial Times",
+      "NBC News",
+      "Reuters",
+      "The Guardian"
+    ],
+    "article_count": 12,
+    "engagement": null
   }
 ]
