@@ -4232,5 +4232,25 @@
       "quotes": 0
     },
     "kind": "weekly_recap"
+  },
+  {
+    "ts": "2026-08-31T19:11:15+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mufmcjg5fp2d",
+    "lede": "US strikes Larak Island to stop Iran mining Hormuz as traffic stays at 6% of normal",
+    "had_news_cluster": true,
+    "story_headline": "US strikes Iran\u2019s Larak Island",
+    "outlets": [
+      "Al Jazeera",
+      "Axios",
+      "BBC",
+      "CBS News",
+      "Lloyd's List",
+      "Marine Link",
+      "Politico",
+      "The Maritime Executive",
+      "The New York Times"
+    ],
+    "article_count": 108,
+    "engagement": null
   }
 ]
