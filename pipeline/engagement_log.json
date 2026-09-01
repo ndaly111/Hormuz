@@ -4292,5 +4292,18 @@
     ],
     "article_count": 106,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-01T19:42:38+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mui6jk77n224",
+    "lede": "Oil jumps $4 as Hormuz stays at 6% of normal on day 173 of US-Iran fighting",
+    "had_news_cluster": true,
+    "story_headline": "Oil prices settle up more than $4 a barrel on renewed US-Iran fighting",
+    "outlets": [
+      "Reuters",
+      "WSJ"
+    ],
+    "article_count": 3,
+    "engagement": null
   }
 ]
