@@ -4269,5 +4269,28 @@
     ],
     "article_count": 12,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-01T16:48:41+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3muhusiemtp26",
+    "lede": "US strikes Larak Island to stop Iran from mining Hormuz with rockets as traffic stays at 6% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Tanker Hit As Hormuz Sailings Drop",
+    "outlets": [
+      "Al Jazeera",
+      "Axios",
+      "BBC",
+      "CBS News",
+      "Lloyd's List",
+      "Marine Link",
+      "NBC News",
+      "Reuters",
+      "Splash247",
+      "The New York Times",
+      "WSJ",
+      "gCaptain"
+    ],
+    "article_count": 106,
+    "engagement": null
   }
 ]
