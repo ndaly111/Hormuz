@@ -4317,5 +4317,22 @@
     ],
     "article_count": 3,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-02T16:44:19+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mukezlztfv2b",
+    "lede": "U.S. strikes Iran tankers as Hormuz traffic flatlines at 6% of normal on day 173",
+    "had_news_cluster": true,
+    "story_headline": "Oil supertankers hit in Strait of Hormuz",
+    "outlets": [
+      "Axios",
+      "Financial Times",
+      "Marine Link",
+      "Reuters",
+      "The New York Times",
+      "WSJ"
+    ],
+    "article_count": 74,
+    "engagement": null
   }
 ]
