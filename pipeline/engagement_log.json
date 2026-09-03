@@ -4303,7 +4303,13 @@
       "gCaptain"
     ],
     "article_count": 106,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-09-03T15:45:10+00:00",
+      "likes": 2,
+      "reposts": 1,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-09-01T19:42:38+00:00",
@@ -4316,7 +4322,13 @@
       "WSJ"
     ],
     "article_count": 3,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-09-03T15:45:10+00:00",
+      "likes": 1,
+      "reposts": 1,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-09-02T16:44:19+00:00",
