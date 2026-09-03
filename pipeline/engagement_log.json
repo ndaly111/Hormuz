@@ -4361,5 +4361,18 @@
     ],
     "article_count": 18,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-03T19:30:42+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mun6rzrfxu24",
+    "lede": "Iran kills two Filipino sailors on Saudi tanker as Hormuz traffic collapses to 5% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Saudi Arabia says Iran attacked vessel in Hormuz, killing two sailors",
+    "outlets": [
+      "Al Jazeera",
+      "Reuters"
+    ],
+    "article_count": 16,
+    "engagement": null
   }
 ]
