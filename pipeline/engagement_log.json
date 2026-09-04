@@ -4380,5 +4380,18 @@
     ],
     "article_count": 16,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-04T16:31:12+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mupf7yhsj32b",
+    "lede": "Trump claims Hormuz is \"under USA control\" as traffic plummets to 5% of normal on day 180",
+    "had_news_cluster": true,
+    "story_headline": "Strait of Hormuz Stalemate Worsens As US, Iran Refuse to Back Down",
+    "outlets": [
+      "Al Jazeera",
+      "Marine Link"
+    ],
+    "article_count": 23,
+    "engagement": null
   }
 ]
