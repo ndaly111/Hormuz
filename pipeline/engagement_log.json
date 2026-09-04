@@ -4393,5 +4393,18 @@
     ],
     "article_count": 23,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-04T19:13:45+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mupocnsfkx27",
+    "lede": "South Korea considers first overseas maritime patrol aircraft for Hormuz as Trump pressures Seoul",
+    "had_news_cluster": true,
+    "story_headline": "South Korea weighs Strait of Hormuz deployment as US pressure mounts",
+    "outlets": [
+      "Financial Times",
+      "The Guardian"
+    ],
+    "article_count": 16,
+    "engagement": null
   }
 ]
