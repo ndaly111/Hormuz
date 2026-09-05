@@ -4418,5 +4418,20 @@
     ],
     "article_count": 16,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-05T15:23:51+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3murrwi5ta32w",
+    "lede": "US destroys Iranian tanker as Admiral Cooper warns \"if you shoot at two of our ships, we will impose an even higher economic cost",
+    "had_news_cluster": true,
+    "story_headline": "U.S. Strikes Three Iranian \u2018Shadow Network\u2019 Oil Tankers, Military Says",
+    "outlets": [
+      "BBC",
+      "Financial Times",
+      "NPR",
+      "The New York Times"
+    ],
+    "article_count": 15,
+    "engagement": null
   }
 ]
