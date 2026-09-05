@@ -4304,7 +4304,7 @@
     ],
     "article_count": 106,
     "engagement": {
-      "fetched_at": "2026-09-03T15:45:10+00:00",
+      "fetched_at": "2026-09-05T14:32:46+00:00",
       "likes": 2,
       "reposts": 1,
       "replies": 0,
@@ -4323,7 +4323,7 @@
     ],
     "article_count": 3,
     "engagement": {
-      "fetched_at": "2026-09-03T15:45:10+00:00",
+      "fetched_at": "2026-09-05T14:32:46+00:00",
       "likes": 1,
       "reposts": 1,
       "replies": 0,
@@ -4366,7 +4366,13 @@
       "gCaptain"
     ],
     "article_count": 18,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-09-05T14:32:46+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 1,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-09-03T19:30:42+00:00",
@@ -4379,7 +4385,13 @@
       "Reuters"
     ],
     "article_count": 16,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-09-05T14:32:46+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-09-04T16:31:12+00:00",
