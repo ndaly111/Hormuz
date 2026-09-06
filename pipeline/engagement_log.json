@@ -4471,5 +4471,18 @@
     "article_count": null,
     "engagement": null,
     "kind": "weekly_recap"
+  },
+  {
+    "ts": "2026-09-06T18:44:55+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3muunmwssk22w",
+    "lede": "Iran's parliament speaker vows \"faster, heavier, more painful response\" as Hormuz traffic collapses to 5% of normal on day 180",
+    "had_news_cluster": true,
+    "story_headline": "Iran warns of 'faster, heavier, more painful response' to US attacks",
+    "outlets": [
+      "Al Jazeera",
+      "BBC"
+    ],
+    "article_count": 2,
+    "engagement": null
   }
 ]
