@@ -4445,5 +4445,20 @@
     ],
     "article_count": 15,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-06T15:38:45+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3muuda2c2sq2d",
+    "lede": "US destroys three Iranian tankers as Hormuz traffic collapses to 5% of normal on day 180",
+    "had_news_cluster": true,
+    "story_headline": "U.S. strikes Iran oil tankers after Iran fires at Naval ships",
+    "outlets": [
+      "CNN",
+      "NBC News",
+      "The New York Times",
+      "The Washington Post"
+    ],
+    "article_count": 97,
+    "engagement": null
   }
 ]
