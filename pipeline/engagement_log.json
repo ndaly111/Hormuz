@@ -4502,5 +4502,22 @@
     ],
     "article_count": 2,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-07T17:48:34+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mux2x446dr2h",
+    "lede": "Iran claims it hit a US drone as both sides trade strikes, Hormuz traffic collapses to 5% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Iran to announce restricted zone outside Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "CNBC",
+      "Lloyd's List",
+      "NBC News",
+      "Splash247",
+      "The New York Times"
+    ],
+    "article_count": 117,
+    "engagement": null
   }
 ]
