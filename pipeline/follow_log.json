@@ -718,5 +718,95 @@
     "bio_keyword_hits": 1,
     "query_hits": 1,
     "score": 15.5
+  },
+  {
+    "ts": "2026-09-07T19:05:00+00:00",
+    "did": "did:plc:amzpvaf7juduztuxue7tjxvh",
+    "handle": "mercoglianos.bsky.social",
+    "followers_count": 8263,
+    "bio_keyword_hits": 1,
+    "query_hits": 4,
+    "score": 35.0
+  },
+  {
+    "ts": "2026-09-07T19:05:00+00:00",
+    "did": "did:plc:z2gdgxz2um3eq47a2ebsz3wz",
+    "handle": "venezuelanewschepa.bsky.social",
+    "followers_count": 199,
+    "bio_keyword_hits": 0,
+    "query_hits": 5,
+    "score": 25.2
+  },
+  {
+    "ts": "2026-09-07T19:05:00+00:00",
+    "did": "did:plc:2ys35qzvc265dtaltqdmgxcm",
+    "handle": "worldnewsbriefly.bsky.social",
+    "followers_count": 185,
+    "bio_keyword_hits": 0,
+    "query_hits": 5,
+    "score": 25.2
+  },
+  {
+    "ts": "2026-09-07T19:05:01+00:00",
+    "did": "did:plc:ssqoljzytln7pigvfhae7jty",
+    "handle": "netasgardusa.bsky.social",
+    "followers_count": 48,
+    "bio_keyword_hits": 0,
+    "query_hits": 4,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-09-07T19:05:01+00:00",
+    "did": "did:plc:42han5exrxyrgdsbwosrp7sy",
+    "handle": "rankednews.bsky.social",
+    "followers_count": 40836,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-09-07T19:05:01+00:00",
+    "did": "did:plc:2pg7rfl24ufteqysij4x7qnt",
+    "handle": "mgerrydoyle.bsky.social",
+    "followers_count": 20686,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-09-07T19:05:01+00:00",
+    "did": "did:plc:jamymhnjtcpp2urhmd6rzu6a",
+    "handle": "ashoro.co.uk",
+    "followers_count": 3910,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 18.9
+  },
+  {
+    "ts": "2026-09-07T19:05:01+00:00",
+    "did": "did:plc:n53iyfxqusvsgik2aviugitj",
+    "handle": "faab64.bsky.social",
+    "followers_count": 1398,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 16.4
+  },
+  {
+    "ts": "2026-09-07T19:05:01+00:00",
+    "did": "did:plc:rmmtlkhupklk5krbq267svke",
+    "handle": "dal0028751.bsky.social",
+    "followers_count": 136,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 15.1
+  },
+  {
+    "ts": "2026-09-07T19:05:01+00:00",
+    "did": "did:plc:xr4reoimhk7aqcea2ep5oauo",
+    "handle": "commons-now.bsky.social",
+    "followers_count": 114,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.1
   }
 ]
