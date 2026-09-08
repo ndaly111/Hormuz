@@ -4555,5 +4555,18 @@
     ],
     "article_count": 48,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-08T19:41:14+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3muzrpihima2w",
+    "lede": "Hormuz traffic collapses to 5% of normal as US and Iran strike tankers on day 180",
+    "had_news_cluster": true,
+    "story_headline": "Tanker Strikes Push Hormuz Traffic To Lowest Since May",
+    "outlets": [
+      "Marine Link",
+      "Reuters"
+    ],
+    "article_count": 2,
+    "engagement": null
   }
 ]
