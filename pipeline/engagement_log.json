@@ -4538,5 +4538,22 @@
     ],
     "article_count": 5,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-08T16:46:39+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3muzhxcpk3i2k",
+    "lede": "Iran vows to sanction any ship entering new Gulf zone as Hormuz traffic collapses to 5% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Can Iran enforce a restricted zone in the Strait of Hormuz?",
+    "outlets": [
+      "Al Jazeera",
+      "CNBC",
+      "Lloyd's List",
+      "Reuters",
+      "Splash247",
+      "gCaptain"
+    ],
+    "article_count": 48,
+    "engagement": null
   }
 ]
