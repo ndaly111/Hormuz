@@ -4502,7 +4502,7 @@
     ],
     "article_count": 2,
     "engagement": {
-      "fetched_at": "2026-09-08T15:57:16+00:00",
+      "fetched_at": "2026-09-10T15:47:57+00:00",
       "likes": 0,
       "reposts": 0,
       "replies": 0,
@@ -4566,7 +4566,13 @@
       "gCaptain"
     ],
     "article_count": 48,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-09-10T15:47:57+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-09-08T19:41:14+00:00",
@@ -4579,7 +4585,13 @@
       "Reuters"
     ],
     "article_count": 2,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-09-10T15:47:57+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-09-09T16:50:50+00:00",
