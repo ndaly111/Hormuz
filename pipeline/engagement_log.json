@@ -4610,5 +4610,19 @@
     ],
     "article_count": 73,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-10T16:34:26+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mv6i7c5t6522",
+    "lede": "Trump warns Iran \"not to get cute\" over nuclear site as tanker attacks spike, Hormuz traffic at 4% of normal",
+    "had_news_cluster": true,
+    "story_headline": "US strikes five Iranian oil tankers, as Iran attacks 10 ships, Jordan base",
+    "outlets": [
+      "Al Jazeera",
+      "CNBC",
+      "The Guardian"
+    ],
+    "article_count": 22,
+    "engagement": null
   }
 ]
