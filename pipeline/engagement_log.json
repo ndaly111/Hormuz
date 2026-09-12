@@ -4702,5 +4702,19 @@
     ],
     "article_count": 13,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-12T18:53:03+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mvdquytzdb2k",
+    "lede": "Houthis seize Red Sea island as Saudi pipeline shuts down, Hormuz traffic collapses to 4% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Yemen's Houthis capture a Red Sea island in threat to shipping",
+    "outlets": [
+      "Al Jazeera",
+      "NPR",
+      "WSJ"
+    ],
+    "article_count": 11,
+    "engagement": null
   }
 ]
