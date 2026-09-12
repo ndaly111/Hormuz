@@ -4629,7 +4629,13 @@
       "The Guardian"
     ],
     "article_count": 22,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-09-12T14:57:28+00:00",
+      "likes": 1,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-09-10T19:22:15+00:00",
@@ -4642,7 +4648,13 @@
       "The New York Times"
     ],
     "article_count": 19,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-09-12T14:57:28+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-09-11T16:41:37+00:00",
