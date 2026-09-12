@@ -4686,5 +4686,21 @@
     ],
     "article_count": 32,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-12T15:40:52+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mvdg5dy5ei25",
+    "lede": "Saudi Arabia shuts East-West pipeline as Hormuz stays at 4% of normal, closing both escape routes",
+    "had_news_cluster": true,
+    "story_headline": "Saudi Arabia Shuts Down Pipeline That Was a Crucial Hormuz Bypass",
+    "outlets": [
+      "Al Jazeera",
+      "BBC",
+      "Financial Times",
+      "The Guardian",
+      "WSJ"
+    ],
+    "article_count": 13,
+    "engagement": null
   }
 ]
