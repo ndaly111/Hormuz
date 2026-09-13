@@ -4728,5 +4728,18 @@
     ],
     "article_count": 11,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-13T16:32:30+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mvfzimel5d2y",
+    "lede": "Iranian official kills diplomacy hopes: \"No negotiations. Until Iran's terms are met, talks are futile",
+    "had_news_cluster": true,
+    "story_headline": "Iran reports commercial vessel struck in Strait of Hormuz",
+    "outlets": [
+      "CNBC",
+      "CNN"
+    ],
+    "article_count": 65,
+    "engagement": null
   }
 ]
