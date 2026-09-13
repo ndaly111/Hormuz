@@ -4741,5 +4741,16 @@
     ],
     "article_count": 65,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-13T16:48:29+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mvg2f7f5ys2w",
+    "lede": null,
+    "had_news_cluster": false,
+    "story_headline": null,
+    "outlets": [],
+    "article_count": null,
+    "engagement": null,
+    "kind": "weekly_recap"
   }
 ]
