@@ -808,5 +808,95 @@
     "bio_keyword_hits": 1,
     "query_hits": 1,
     "score": 15.1
+  },
+  {
+    "ts": "2026-09-14T19:48:15+00:00",
+    "did": "did:plc:y5xpslr2bnzbnbyzkexm4ork",
+    "handle": "banmarnj.bsky.social",
+    "followers_count": 1791,
+    "bio_keyword_hits": 0,
+    "query_hits": 6,
+    "score": 31.8
+  },
+  {
+    "ts": "2026-09-14T19:48:15+00:00",
+    "did": "did:plc:xyb7mhgqqxwsz6if4jmtfext",
+    "handle": "shipbot.bsky.social",
+    "followers_count": 78,
+    "bio_keyword_hits": 2,
+    "query_hits": 2,
+    "score": 30.1
+  },
+  {
+    "ts": "2026-09-14T19:48:15+00:00",
+    "did": "did:plc:am76ptemaw3eordgfoyrwepi",
+    "handle": "middleeasteye-rss.bsky.social",
+    "followers_count": 43464,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-09-14T19:48:15+00:00",
+    "did": "did:plc:idhkouai2l4qzihu2j37idgd",
+    "handle": "jaimi.bsky.social",
+    "followers_count": 2949,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 17.9
+  },
+  {
+    "ts": "2026-09-14T19:48:15+00:00",
+    "did": "did:plc:7sqai7bwq4bfjru6ghchbeyt",
+    "handle": "shuffleosint.bsky.social",
+    "followers_count": 1599,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 16.6
+  },
+  {
+    "ts": "2026-09-14T19:48:16+00:00",
+    "did": "did:plc:dro3cvvfh5uql7me5repo2r7",
+    "handle": "free-thoughts.bsky.social",
+    "followers_count": 1356,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 16.4
+  },
+  {
+    "ts": "2026-09-14T19:48:16+00:00",
+    "did": "did:plc:7argvjldd6e46kzbvphhrwpo",
+    "handle": "seanews.bsky.social",
+    "followers_count": 631,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.6
+  },
+  {
+    "ts": "2026-09-14T19:48:16+00:00",
+    "did": "did:plc:x7q65755ijbzfcg77xrlrqim",
+    "handle": "geopoliticsnewss.bsky.social",
+    "followers_count": 548,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.5
+  },
+  {
+    "ts": "2026-09-14T19:48:16+00:00",
+    "did": "did:plc:i24xs3tt3cqtifnojnmsod76",
+    "handle": "aje.io.web.brid.gy",
+    "followers_count": 165,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.2
+  },
+  {
+    "ts": "2026-09-14T19:48:16+00:00",
+    "did": "did:plc:tqhrvxsaahmfgtrt3d2g4zlr",
+    "handle": "killbaitaustralia.bsky.social",
+    "followers_count": 121,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 15.1
   }
 ]
