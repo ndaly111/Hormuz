@@ -4776,5 +4776,22 @@
       "quotes": 0
     },
     "kind": "weekly_recap"
+  },
+  {
+    "ts": "2026-09-14T18:08:06+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mvipciara225",
+    "lede": "Hormuz talks collapse as Saudi pipeline closes and oil hits $108, traffic now at 4% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Iran reports commercial vessel struck in Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "CBS News",
+      "CNN",
+      "Reuters",
+      "The Guardian",
+      "The New York Times"
+    ],
+    "article_count": 71,
+    "engagement": null
   }
 ]
