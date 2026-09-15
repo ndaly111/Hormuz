@@ -4793,5 +4793,18 @@
     ],
     "article_count": 71,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-15T17:11:01+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mvl4ld4kwp2z",
+    "lede": "Saudi pipeline closes as Hormuz talks collapse, traffic plummets to 4% of normal on day 187",
+    "had_news_cluster": true,
+    "story_headline": "Strait of Hormuz talks postponed due to Yemen events, says Iran",
+    "outlets": [
+      "Al Jazeera",
+      "The Guardian"
+    ],
+    "article_count": 6,
+    "engagement": null
   }
 ]
