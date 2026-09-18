@@ -4844,5 +4844,18 @@
     "outlets": [],
     "article_count": null,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-18T16:36:19+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mvslzzt5if25",
+    "lede": "Iran strikes Togo tanker as IMO confirms 80th attack on merchant shipping since February",
+    "had_news_cluster": true,
+    "story_headline": "Iran war live: Second tanker reported struck in the Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "Splash247"
+    ],
+    "article_count": 92,
+    "engagement": null
   }
 ]
