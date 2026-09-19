@@ -4876,5 +4876,18 @@
     ],
     "article_count": 6,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-19T15:59:27+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mvv2gzmeck2d",
+    "lede": "Iran struck tanker Trend as shipping leaders warn UN that straits cannot require \"permission\" to transit",
+    "had_news_cluster": true,
+    "story_headline": "Freedom of navigation under fire as Iran strikes tanker in Hormuz",
+    "outlets": [
+      "Lloyd's List",
+      "Splash247"
+    ],
+    "article_count": 62,
+    "engagement": null
   }
 ]
