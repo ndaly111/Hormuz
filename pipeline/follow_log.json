@@ -898,5 +898,95 @@
     "bio_keyword_hits": 0,
     "query_hits": 3,
     "score": 15.1
+  },
+  {
+    "ts": "2026-09-21T19:56:14+00:00",
+    "did": "did:plc:pjpf33g57sryiate3aobacjy",
+    "handle": "papertrailgeo.zedsocial.ca",
+    "followers_count": 45,
+    "bio_keyword_hits": 2,
+    "query_hits": 1,
+    "score": 25.0
+  },
+  {
+    "ts": "2026-09-21T19:56:14+00:00",
+    "did": "did:plc:rnmcdnzjpyfmx6ghcaxgzgbo",
+    "handle": "bosunbot.bsky.social",
+    "followers_count": 27,
+    "bio_keyword_hits": 1,
+    "query_hits": 2,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-09-21T19:56:14+00:00",
+    "did": "did:plc:6ml4nxrk45cy23jay5hc2npp",
+    "handle": "justinmikulka.bsky.social",
+    "followers_count": 11634,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-09-21T19:56:14+00:00",
+    "did": "did:plc:vwajgkd45f5damhlwimo3bom",
+    "handle": "whodat35.bsky.social",
+    "followers_count": 44593,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-09-21T19:56:14+00:00",
+    "did": "did:plc:da6c43qgaslw7mlr3n45uh7h",
+    "handle": "eciu.net",
+    "followers_count": 3251,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 18.3
+  },
+  {
+    "ts": "2026-09-21T19:56:14+00:00",
+    "did": "did:plc:vhhvihkf7k2n5py6iiiwmlnv",
+    "handle": "unctad.bsky.social",
+    "followers_count": 2463,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 17.5
+  },
+  {
+    "ts": "2026-09-21T19:56:14+00:00",
+    "did": "did:plc:mri4qfwjhti5j4c3ob5vtudy",
+    "handle": "hapsis.bsky.social",
+    "followers_count": 1208,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 16.2
+  },
+  {
+    "ts": "2026-09-21T19:56:14+00:00",
+    "did": "did:plc:ulxrvfr2wr5icui6kc7samrv",
+    "handle": "rcsmitheco.bsky.social",
+    "followers_count": 1076,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 16.1
+  },
+  {
+    "ts": "2026-09-21T19:56:14+00:00",
+    "did": "did:plc:oxwn2wulcq6uclaj7lk3x4k7",
+    "handle": "eduardogray.bsky.social",
+    "followers_count": 805,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.8
+  },
+  {
+    "ts": "2026-09-21T19:56:14+00:00",
+    "did": "did:plc:i4uqcqeictd4irpzpdfnvj33",
+    "handle": "jordanehoser.bsky.social",
+    "followers_count": 369,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.4
   }
 ]
