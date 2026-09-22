@@ -4940,5 +4940,18 @@
       "quotes": 0
     },
     "kind": "weekly_recap"
+  },
+  {
+    "ts": "2026-09-22T17:07:18+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mw4pn4tihi2d",
+    "lede": "France pushes UN resolution as Hormuz traffic crawls at 6% of normal on day 194",
+    "had_news_cluster": true,
+    "story_headline": "France Mulls New UN Security Council Resolution on Hormuz",
+    "outlets": [
+      "Reuters",
+      "gCaptain"
+    ],
+    "article_count": 3,
+    "engagement": null
   }
 ]
