@@ -4966,5 +4966,18 @@
     ],
     "article_count": 3,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-23T17:20:10+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mw7at2eeoi23",
+    "lede": "Iran offers to reopen Hormuz within 7 days as traffic plummets to 4% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Sterling steady after report says Iran may reopen Hormuz",
+    "outlets": [
+      "Reuters",
+      "gCaptain"
+    ],
+    "article_count": 50,
+    "engagement": null
   }
 ]
