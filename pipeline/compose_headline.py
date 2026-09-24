@@ -285,7 +285,15 @@ def _build_user_message(req: HeadlineRequest) -> str:
         f"  - \"{-req.pct_vs_norm:.0f}% below norm\"\n"
         f"  - \"day {req.days_since_closure}\"\n\n"
         "Compose the sharpest one-line headline that drives engagement. "
-        "Lead with a buried fact from the article bodies if one is available."
+        + ("Lead with a buried fact from the article bodies."
+           if req.article_bodies else
+           # No bodies today. Without this the model reads the system prompt's
+           # "SCAN THE BODIES" rule, finds nothing to scan, and answers with
+           # meta-commentary about the missing sources instead of a headline
+           # (run 35637131701, 2026-09-21).
+           "No article bodies were extracted today -- work from the headlines "
+           "and traffic data alone. Do not mention missing or unavailable "
+           "sources; just write the headline.")
     )
 
 
