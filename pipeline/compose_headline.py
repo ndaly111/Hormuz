@@ -21,6 +21,10 @@ from typing import Optional
 # Bump to claude-sonnet-4-6 if quality is wanting. Cost is trivial either way.
 MODEL = os.environ.get("ANTHROPIC_HEADLINE_MODEL", "claude-haiku-4-5-20251001")
 
+# Ceiling for a composed lede. post_bluesky prepends it to a ~157-char caption
+# (stat line + hashtags + site link) against Bluesky's 300-grapheme cap.
+MAX_HEADLINE_CHARS = 130
+
 
 SYSTEM_PROMPT = """\
 You are writing the lede for a Bluesky post from @hormuz-traffic.bsky.social, \
@@ -212,6 +216,16 @@ def compose(req: HeadlineRequest) -> Optional[str]:
     # Single line only
     headline = headline.split("\n")[0].strip()
     if not headline:
+        return None
+    # Hard cap on the "Under 130 characters" contract the prompt above only
+    # asks for. An over-length lede pushes the Bluesky caption past the
+    # 300-grapheme limit and send_post rejects the entire record, so nothing
+    # posts at all (run 35637131701, 2026-09-21). Dropping the lede falls back
+    # to the data-only post; the workflow's lede guard turns that into a red
+    # run, so it can't rot silently.
+    if len(headline) > MAX_HEADLINE_CHARS:
+        print(f"[compose_headline] headline too long ({len(headline)} > "
+              f"{MAX_HEADLINE_CHARS} chars); dropping lede: {headline!r}")
         return None
     return headline
 
