@@ -249,8 +249,63 @@ def _annotate_missing_lede(story: dict) -> None:
         print(f"::error title=Lede composition failed::{msg}")
 
 
+def get_record_hook() -> tuple[str | None, str | None]:
+    """(hook_text, hook_key) from records.find_hook, or (None, None) — the
+    latest data point being a multi-week low/high or a closure milestone.
+    Never raises: a hook is a bonus, not a dependency."""
+    try:
+        import json
+        from records import find_hook
+        data = json.loads((SITE_DIR / "data" / "transits.json").read_text(encoding="utf-8"))
+        hook = find_hook(data)
+    except Exception as e:
+        print(f"  record hook check failed (non-fatal): {e}", file=sys.stderr)
+        return None, None
+    if not hook:
+        print("  no record/milestone hook for the latest data point")
+        return None, None
+    print(f"  record hook [{hook.key}]: {hook.text!r}")
+    return hook.text, hook.key
+
+
+def _texts_from_feed(feed: dict, handle: str) -> list[str]:
+    """Our own top-level post texts from an app.bsky.feed.getAuthorFeed
+    response. Reposts carry a `reason`; drop them and anything not ours."""
+    texts = []
+    for item in feed.get("feed", []):
+        if item.get("reason"):
+            continue
+        post = item.get("post") or {}
+        if (post.get("author") or {}).get("handle") != handle:
+            continue
+        text = (post.get("record") or {}).get("text")
+        if text is not None:
+            texts.append(text)
+    return texts
+
+
+def recent_post_texts(limit: int = 10) -> list[str]:
+    """Text of our last few top-level posts via the public AppView (no auth).
+    Fails open — a hiccup here must not block the post; the guard is
+    cosmetic, the post is the product."""
+    import requests
+
+    try:
+        r = requests.get(
+            "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed",
+            params={"actor": HANDLE, "limit": limit, "filter": "posts_no_replies"},
+            timeout=15,
+        )
+        r.raise_for_status()
+        return _texts_from_feed(r.json(), HANDLE)
+    except Exception as e:
+        print(f"  could not fetch recent posts for the duplicate check ({e}); "
+              f"posting anyway", file=sys.stderr)
+        return []
+
+
 def append_to_ledger(post_uri: str, lede: str | None, story: dict | None,
-                     kind: str | None = None) -> None:
+                     kind: str | None = None, hook: str | None = None) -> None:
     """Append a post entry to engagement_log.json. Called once per successful
     Bluesky post. Engagement metrics are filled in later by fetch_engagement.py
     once the post is at least 24h old."""
@@ -275,6 +330,8 @@ def append_to_ledger(post_uri: str, lede: str | None, story: dict | None,
     }
     if kind:
         entry["kind"] = kind
+    if hook:
+        entry["hook"] = hook
     existing.append(entry)
     ledger_path.write_text(json.dumps(existing, indent=2), encoding="utf-8")
     print(f"  appended to engagement ledger ({len(existing)} entries)")
@@ -310,6 +367,16 @@ def main() -> int:
             print(f"Skipping post — no qualifying cluster at rank {args.cluster_rank}.")
             return 0
 
+    # Data-driven hook (records/milestones) for the morning post. The lede
+    # keeps the slot when there is one; the hook mainly rescues data-only
+    # days from saying nothing new.
+    hook_text = hook_key = None
+    if not args.weekly_recap and args.cluster_rank == 0:
+        hook_text, hook_key = get_record_hook()
+        if lede and hook_text:
+            print(f"  lede takes the slot; hook [{hook_key}] not posted")
+            hook_text = hook_key = None
+
     srv, port = _start_server()
     try:
         print(f"Local server on :{port}, rendering today.html (range={RANGE_KEY})")
@@ -327,21 +394,39 @@ def main() -> int:
             if budget >= len(" #Iran"):
                 caption += " #Iran"
             print(f"  With Claude lede prepended: {caption!r}")
+        elif hook_text and len(hook_text) + 2 + len(caption) + 2 + len(SITE_LABEL) <= POST_CHAR_LIMIT:
+            caption = f"{hook_text}\n\n{caption}"
+            print(f"  With record hook prepended: {caption!r}")
         else:
-            print("  no lede; posting data-only caption")
+            hook_key = None
+            print("  no lede or hook; posting data-only caption")
+
+        # Never post text identical to a recent post. Happens on data-only
+        # days when PortWatch hasn't advanced (Sept 16/17/20 2026 went out
+        # byte-identical) and reads as a broken bot.
+        final_text = f"{caption}\n\n{SITE_LABEL}"   # what post() sends, as plain text
+        duplicate = final_text in recent_post_texts()
 
         if args.dry_run:
             out = ROOT / "pipeline" / "_latest_share.png"
             out.write_bytes(png)
             print(f"DRY RUN — PNG saved to {out}, not posting.")
             print(f"DRY RUN — final caption:\n{caption}")
+            if duplicate:
+                print("DRY RUN — identical to a recent post; a live run would skip it.")
+            return 0
+
+        if duplicate:
+            print("Skipping post — identical to one of our recent posts "
+                  "(data hasn't advanced and there is nothing new to say).")
             return 0
 
         uri = post(png, caption)
         print(f"Posted to Bluesky: {uri}")
         try:
             append_to_ledger(uri, lede, story,
-                             kind="weekly_recap" if args.weekly_recap else None)
+                             kind="weekly_recap" if args.weekly_recap else None,
+                             hook=hook_key)
         except Exception as e:
             print(f"  ledger append failed (non-fatal): {e}", file=sys.stderr)
         return 0
