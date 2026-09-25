@@ -5007,5 +5007,19 @@
     "outlets": [],
     "article_count": null,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-25T17:24:09+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mwebxzg4c42d",
+    "lede": "Iran vows to reopen Hormuz in 7 days as traffic collapses to 4% of normal on day 201",
+    "had_news_cluster": true,
+    "story_headline": "Iran Proposes 7-Day Plan to End War",
+    "outlets": [
+      "CBS News",
+      "CNBC",
+      "The New York Times"
+    ],
+    "article_count": 49,
+    "engagement": null
   }
 ]
