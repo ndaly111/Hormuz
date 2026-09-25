@@ -5021,5 +5021,18 @@
     ],
     "article_count": 49,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-25T20:11:36+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mweldgpqem2q",
+    "lede": "Iran pitches seven-day ceasefire as Hormuz traffic collapses to 4% of normal on day 201",
+    "had_news_cluster": true,
+    "story_headline": "Iran offers US new seven-day ceasefire proposal",
+    "outlets": [
+      "Al Jazeera",
+      "Financial Times"
+    ],
+    "article_count": 3,
+    "engagement": null
   }
 ]
