@@ -5040,5 +5040,29 @@
     ],
     "article_count": 3,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-26T16:34:24+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mwgpny5zsb2l",
+    "lede": "Trump expects renewed bombing after midterms as Hormuz traffic collapses to 4% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Iran\u2019s new proposal to re-open Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "Axios",
+      "BBC",
+      "CNBC",
+      "CNN",
+      "NBC News",
+      "Reuters",
+      "The Guardian",
+      "The Maritime Executive",
+      "The New York Times",
+      "The Washington Post",
+      "USA Today",
+      "WSJ"
+    ],
+    "article_count": 122,
+    "engagement": null
   }
 ]
