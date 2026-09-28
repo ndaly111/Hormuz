@@ -5146,5 +5146,18 @@
     ],
     "article_count": 69,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-28T22:21:45+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mwmdyw2djk2q",
+    "lede": "Iranian missile hits US Marine transport in Hormuz as traffic collapses to 4% of normal",
+    "had_news_cluster": true,
+    "story_headline": "U.S. Marines injured in recent Iranian attack",
+    "outlets": [
+      "NBC News",
+      "gCaptain"
+    ],
+    "article_count": 15,
+    "engagement": null
   }
 ]
