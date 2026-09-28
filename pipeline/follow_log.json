@@ -988,5 +988,95 @@
     "bio_keyword_hits": 1,
     "query_hits": 1,
     "score": 15.4
+  },
+  {
+    "ts": "2026-09-28T21:10:50+00:00",
+    "did": "did:plc:2aqybdhkgskcgdhm5gh3coqw",
+    "handle": "kautious.com",
+    "followers_count": 216,
+    "bio_keyword_hits": 0,
+    "query_hits": 5,
+    "score": 25.2
+  },
+  {
+    "ts": "2026-09-28T21:10:50+00:00",
+    "did": "did:plc:4ldo3gojw5tzeuowt3egt5kr",
+    "handle": "georgialee.bsky.social",
+    "followers_count": 19393,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-09-28T21:10:50+00:00",
+    "did": "did:plc:qw4ikz7u5slmby5vdkqgl2fc",
+    "handle": "matslbengtsson.bsky.social",
+    "followers_count": 6544,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-09-28T21:10:50+00:00",
+    "did": "did:plc:i27z3l4bparxvjxsfjkxqa26",
+    "handle": "fadahjassem.bsky.social",
+    "followers_count": 10948,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-09-28T21:10:50+00:00",
+    "did": "did:plc:olhdixmvq2cibrtbi5nbrvfm",
+    "handle": "revealinglight.bsky.social",
+    "followers_count": 15016,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-09-28T21:10:50+00:00",
+    "did": "did:plc:gecbyaldpk3krxszimvlwdxh",
+    "handle": "animus45.bsky.social",
+    "followers_count": 3696,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 18.7
+  },
+  {
+    "ts": "2026-09-28T21:10:50+00:00",
+    "did": "did:plc:xc25fjmpp5pfpou627ud7n3b",
+    "handle": "electricdonkey.me",
+    "followers_count": 1441,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 16.4
+  },
+  {
+    "ts": "2026-09-28T21:10:50+00:00",
+    "did": "did:plc:meba3dux5aglqiqolgjf6rqd",
+    "handle": "fintoolbox.app",
+    "followers_count": 134,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.1
+  },
+  {
+    "ts": "2026-09-28T21:10:50+00:00",
+    "did": "did:plc:xzh4y5uw75he5zjv7i6in7c2",
+    "handle": "thecircuitry.to",
+    "followers_count": 31,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.0
+  },
+  {
+    "ts": "2026-09-28T21:10:50+00:00",
+    "did": "did:plc:huaawwuli7v7dtmrpi23f4re",
+    "handle": "worldstatetrading.com",
+    "followers_count": 27,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.0
   }
 ]
