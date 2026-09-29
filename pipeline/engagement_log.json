@@ -5173,5 +5173,18 @@
     ],
     "article_count": 8,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-29T21:10:59+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mwoqjce32f2g",
+    "lede": "Trump rejects Iran's Hormuz plan as traffic collapses to 4% of normal on day 201",
+    "had_news_cluster": true,
+    "story_headline": "Oil prices surge after Trump rejects Iran\u2019s plan to reopen Strait of Hormuz",
+    "outlets": [
+      "Al Jazeera",
+      "NBC News"
+    ],
+    "article_count": 29,
+    "engagement": null
   }
 ]
