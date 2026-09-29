@@ -191,7 +191,9 @@ def load_chart_context() -> dict:
         pct_of_norm = (sd / pre_norm * 100) if pre_norm > 0 else 0.0
         from datetime import date
         latest = datetime.fromisoformat(cur["latest_date"]).date()
-        days_since = (latest - date(2026, 3, 4)).days + 1
+        # Same arithmetic as today.js daysBetween, so replies quote the same
+        # "day N" as our posts.
+        days_since = (latest - date(2026, 3, 4)).days
         return {
             "seven_day_avg": sd,
             "pre_norm": pre_norm,
@@ -260,8 +262,10 @@ Output: the reply text alone, or SKIP.
 """
 
 
-def draft_reply(cand: Candidate, chart: dict, news: Optional[dict]) -> Optional[str]:
-    """Raw model output for one candidate, or None if drafting is unavailable."""
+def draft_reply(cand: Candidate, chart: dict, news: Optional[dict],
+                feedback: Optional[str] = None) -> Optional[str]:
+    """Raw model output for one candidate, or None if drafting is unavailable.
+    `feedback` is appended for a retry after a rejected draft."""
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
         return None
@@ -299,6 +303,8 @@ def draft_reply(cand: Candidate, chart: dict, news: Optional[dict]) -> Optional[
         f"{chart_block}{news_block}\n"
         "Write the reply, or SKIP."
     )
+    if feedback:
+        user_msg += f"\n\n{feedback}"
 
     try:
         client = Anthropic(api_key=api_key)
@@ -331,8 +337,8 @@ def parse_draft(raw: str) -> str:
 def validate_reply(text: str) -> Optional[str]:
     """Return why `text` must not be posted, or None if it passes."""
     t = text.strip()
-    if not t or t.upper() == "SKIP":
-        return "skip"
+    if not t or t.upper().startswith("SKIP"):
+        return "skip"     # the model often explains its SKIP; still a skip
     if len(t) > MAX_REPLY_CHARS:
         return f"too long ({len(t)} > {MAX_REPLY_CHARS})"
     if not re.search(r"\d", t):
@@ -514,6 +520,15 @@ def main() -> int:
             continue
         text = parse_draft(raw)
         why = validate_reply(text)
+        if why and why != "skip":
+            # One retry with the rejection spelled out: near-misses (a few
+            # chars over, an em dash) are the common failure.
+            raw = draft_reply(c, chart, news, feedback=(
+                f"Your previous reply was rejected: {why}. It was: {text!r}. "
+                f"Write a corrected reply that fixes exactly that, or SKIP."))
+            if raw is not None:
+                text = parse_draft(raw)
+                why = validate_reply(text)
         if why:
             skipped.append((c, "model said SKIP" if why == "skip" else f"{why}: {text!r}"))
             continue

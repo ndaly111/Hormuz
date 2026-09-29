@@ -37,6 +37,7 @@ def test_skip_and_empty():
     assert validate_reply("SKIP") == "skip"
     assert validate_reply("  skip ") == "skip"
     assert validate_reply("") == "skip"
+    assert validate_reply("SKIP This post is political commentary, not shipping.") == "skip"
 
 
 def test_rejects_without_a_number():
