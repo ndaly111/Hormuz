@@ -5159,5 +5159,19 @@
     ],
     "article_count": 15,
     "engagement": null
+  },
+  {
+    "ts": "2026-09-29T18:10:41+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mwoggwabr52x",
+    "lede": "Qatar LNG tankers slip through as Hormuz stays at 4% of normal, day 201",
+    "had_news_cluster": true,
+    "story_headline": "Qatar-Linked LNG Tankers Resume Hormuz Transits",
+    "outlets": [
+      "Marine Link",
+      "Reuters",
+      "WSJ"
+    ],
+    "article_count": 8,
+    "engagement": null
   }
 ]
