@@ -332,9 +332,12 @@ def draft_reply(cand: Candidate, chart: dict, news: Optional[dict],
 
 def parse_draft(raw: str) -> str:
     """Normalize model output to one line. Strips a leading '1.' / bullet
-    that the old multi-option prompt trained the model to produce."""
+    that the old multi-option prompt trained the model to produce, and turns
+    an em dash into a comma: the model keeps using them even when told not
+    to, and it is the one style rule that is safe to fix mechanically."""
     t = raw.strip()
     t = re.sub(r"^\s*(?:\d+[.)]|[-*])\s*", "", t)
+    t = re.sub(r"\s*—\s*", ", ", t)
     return " ".join(t.split())
 
 

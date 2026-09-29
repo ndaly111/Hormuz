@@ -71,6 +71,12 @@ def test_parse_draft_strips_numbering_and_newlines():
     assert parse_draft("  SKIP\n") == "SKIP"
 
 
+def test_parse_draft_turns_em_dashes_into_commas():
+    assert parse_draft("3.1 ships daily through Hormuz—4% of normal.") == \
+        "3.1 ships daily through Hormuz, 4% of normal."
+    assert validate_reply(parse_draft("Day 200 — 3 ships.")) is None
+
+
 def test_never_reply_to_same_post_twice():
     c = _cand()
     log = [_entry(NOW - timedelta(days=30), c.uri, "other.bsky.social")]
