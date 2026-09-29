@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "ts": "2026-09-29T18:59:00+00:00",
+    "target_uri": "at://did:plc:v2cnvepyoukt3cpbzxh5sviv/app.bsky.feed.post/3mwmnlzery22s",
+    "target_url": "https://bsky.app/profile/decodingfoxnews.bsky.social/post/3mwmnlzery22s",
+    "target_author": "decodingfoxnews.bsky.social",
+    "target_likes": 219,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mwoj5pn5j62d",
+    "text": "We're at day 200 of reduced traffic through Hormuz, currently 3.1 ships per day, down 96% from normal. LNG tankers have started moving through again, but that's still a fraction of what usually flows.",
+    "image": true,
+    "followers": 87
+  }
+]
