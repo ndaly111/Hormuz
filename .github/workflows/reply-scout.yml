@@ -1,4 +1,10 @@
-name: Reply scout
+name: Reply bot
+
+# Replies under high-engagement Hormuz posts with a data point and today's
+# chart. Autoposting since 2026-09-24; the guardrails are in
+# pipeline/reply_scout.py. Kill switch: set the repo variable
+# REPLY_AUTOPOST=false and it goes back to drafts-only (Discord report,
+# nothing posted).
 
 on:
   schedule:
@@ -6,9 +12,16 @@ on:
     # Most peer accounts have posted by then; gives us a fresh 24h window.
     - cron: "0 14 * * *"
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Search, draft and validate; post and write nothing"
+        required: false
+        default: "false"
+        type: choice
+        options: [ "false", "true" ]
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: reply-scout
@@ -31,10 +44,30 @@ jobs:
       - name: Install dependencies
         run: pip install -r pipeline/requirements.txt
 
-      - name: Run reply scout
+      - name: Run reply bot
         env:
           BLUESKY_HANDLE: hormuz-traffic.bsky.social
           BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
           ANTHROPIC_API_KEY: ${{ secrets.claude }}
           DISCORD_WEBHOOK: ${{ secrets.Discord_webhook }}
-        run: python pipeline/reply_scout.py
+          REPLY_AUTOPOST: ${{ vars.REPLY_AUTOPOST || 'true' }}
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python pipeline/reply_scout.py --dry-run
+          else
+            python pipeline/reply_scout.py
+          fi
+
+      - name: Commit reply log (if changed)
+        if: inputs.dry_run != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pipeline/reply_log.json
+          if git diff --cached --quiet; then
+            echo "No reply log changes to commit."
+          else
+            git pull --rebase --autostash origin main || true
+            git commit -m "Append reply bot entries $(date -u +%Y-%m-%d)"
+            git push
+          fi

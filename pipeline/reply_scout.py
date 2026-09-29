@@ -1,26 +1,50 @@
-"""Daily reply-target scout: surface high-engagement Hormuz posts and draft replies.
+"""Daily reply bot: find high-engagement Hormuz posts and reply with a data point.
 
-Searches Bluesky for posts about Strait of Hormuz / Iran / oil / shipping
-in the last 24h. Filters to posts with >=10 likes (engagement signal that
-the post is from an account with reach, not a zero-follower account).
-For each candidate, asks Claude to draft 2-3 reply options that add a
-specific data point from our chart or a buried fact from today's news
-cluster.
+Searches Bluesky for posts about Strait of Hormuz / Iran / oil / shipping in
+the last 24h from accounts with reach (>= MIN_LIKES), asks Claude for ONE
+reply that adds a specific number from our chart or a buried fact from
+today's news cluster, validates it mechanically, and posts it under the
+target with today's chart image attached.
 
-Output goes to Discord for MANUAL review and copy-paste reply. No auto-
-replies — that gets accounts banned and reads as spam.
+Autoposting was switched on 2026-09-24. From May to September the drafts
+went to Discord for manual copy-paste and not one was ever posted; for a
+76-follower account a reply under a 500-like post is the only reach there
+is. Guardrails, in order:
 
-Run via .github/workflows/reply-scout.yml (manual or daily cron at 14:00 UTC).
+  - hard cap MAX_REPLIES_PER_DAY, counted from reply_log.json, so a second
+    run the same day can't double it
+  - one reply per author per AUTHOR_COOLDOWN_DAYS; never the same post twice
+  - only top-level posts with >= MIN_LIKES from the last LOOKBACK
+  - every reply must pass validate_reply(): a concrete number, at most
+    MAX_REPLY_CHARS, no link, no @-mention, no hashtag, no em dash, no
+    emoji, none of the banned filler
+  - Claude may answer SKIP for posts that are hostile, sarcastic, or not
+    actually about Hormuz shipping
+  - kill switch: REPLY_AUTOPOST != "true" -> report-only (drafts to Discord,
+    nothing posted). Set the repo variable REPLY_AUTOPOST=false to stop.
+
+Every posted reply is appended to pipeline/reply_log.json (committed by
+the workflow) with the target and our follower count at the time, so the
+trial can be judged on follower delta and reply engagement.
+
+Run via .github/workflows/reply-scout.yml (daily 14:00 UTC).
 
 Env:
-  ANTHROPIC_API_KEY   For draft replies. Required.
-  DISCORD_WEBHOOK     Where candidates land. Falls back to stdout.
+  BLUESKY_HANDLE, BLUESKY_APP_PASSWORD   required
+  ANTHROPIC_API_KEY                      required for drafting
+  DISCORD_WEBHOOK                        run summary; falls back to stdout
+  REPLY_AUTOPOST                         "true" to post; anything else = report only
+
+CLI:
+  --dry-run   search + draft + validate, print everything, post and write nothing
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import os
+import re
 import sys
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
@@ -31,6 +55,7 @@ import requests
 
 ROOT = Path(__file__).resolve().parent.parent
 TRANSITS_JSON = ROOT / "site" / "data" / "transits.json"
+REPLY_LOG = ROOT / "pipeline" / "reply_log.json"
 
 SEARCH_KEYWORDS = [
     "Strait of Hormuz",
@@ -41,28 +66,43 @@ SEARCH_KEYWORDS = [
     "OPEC oil",
 ]
 
-OUR_HANDLE = "hormuz-traffic.bsky.social"
+OUR_HANDLE = os.environ.get("BLUESKY_HANDLE", "hormuz-traffic.bsky.social")
 LOOKBACK = timedelta(hours=24)
-MIN_LIKES = 10
-MAX_CANDIDATES = 8  # cap candidates fed to Claude to bound cost
+MIN_LIKES = 25
+MAX_CANDIDATES = 8            # bound on Claude calls per run
+MAX_REPLIES_PER_DAY = 2
+AUTHOR_COOLDOWN_DAYS = 7
+MAX_REPLY_CHARS = 200
+AUTOPOST = os.environ.get("REPLY_AUTOPOST", "").strip().lower() == "true"
 
 MODEL = os.environ.get("ANTHROPIC_HEADLINE_MODEL", "claude-haiku-4-5-20251001")
 
+# Style rules from the old draft prompt, now enforced in code as well.
+# Single words match on word boundaries ("navigate" is banned, "navigation"
+# is not); phrases match as substrings.
+BANNED_PHRASES = (
+    "amid", "ongoing", "remains", "mounting", "escalating", "navigate",
+    "underscore", "robust", "reportedly", "allegedly", "potentially",
+    "as tensions mount", "raises questions", "growing concerns",
+    "in the wake of", "thoughts?",
+)
+_EMOJI_RE = re.compile(r"[\U0001F000-\U0001FAFF☀-➿⭐⭕]")
+
 
 def _bsky_client():
-    """Logged-in atproto client. searchPosts now requires auth on bsky.app."""
-    handle = os.environ.get("BLUESKY_HANDLE")
+    """Logged-in atproto client. searchPosts requires auth on bsky.app."""
     pw = os.environ.get("BLUESKY_APP_PASSWORD")
     from atproto import Client
     client = Client()
-    if handle and pw:
-        client.login(handle, pw)
+    if OUR_HANDLE and pw:
+        client.login(OUR_HANDLE, pw)
     return client
 
 
 @dataclass
 class Candidate:
     uri: str
+    cid: str
     author_handle: str
     author_display: str
     text: str
@@ -71,6 +111,13 @@ class Candidate:
     replies: int
     created_at: str
     web_url: str
+
+
+def web_url_for(handle: str, uri: str) -> str:
+    try:
+        return f"https://bsky.app/profile/{handle}/post/{uri.split('/')[-1]}"
+    except Exception:
+        return uri
 
 
 def search_keyword(client, keyword: str, since_iso: str) -> list:
@@ -115,13 +162,9 @@ def collect_candidates(client, now: datetime) -> list[Candidate]:
             likes = getattr(p, "like_count", 0) or 0
             if likes < MIN_LIKES:
                 continue
-            try:
-                rkey = uri.split("/")[-1]
-                web_url = f"https://bsky.app/profile/{handle}/post/{rkey}"
-            except Exception:
-                web_url = uri
             out.append(Candidate(
                 uri=uri,
+                cid=getattr(p, "cid", "") or "",
                 author_handle=handle,
                 author_display=getattr(author, "display_name", handle) or handle,
                 text=text,
@@ -129,7 +172,7 @@ def collect_candidates(client, now: datetime) -> list[Candidate]:
                 reposts=getattr(p, "repost_count", 0) or 0,
                 replies=getattr(p, "reply_count", 0) or 0,
                 created_at=getattr(rec, "created_at", "") if rec else "",
-                web_url=web_url,
+                web_url=web_url_for(handle, uri),
             ))
     out.sort(key=lambda c: c.likes + 3 * c.reposts + 5 * c.replies, reverse=True)
     return out[:MAX_CANDIDATES]
@@ -184,42 +227,41 @@ def load_news_context() -> Optional[dict]:
 
 
 REPLY_SYSTEM = """\
-You are drafting reply candidates for @hormuz-traffic.bsky.social, an
-account that publishes daily Strait of Hormuz vessel-traffic data with a
-chart and (when news warrants) a sharp news lede.
+You are replying as @hormuz-traffic.bsky.social, an account that publishes
+daily Strait of Hormuz vessel-traffic data with a chart. You will be given
+a post from another Bluesky account about Iran / Hormuz / oil / shipping.
 
-You will be given a post from another Bluesky account about
-Iran / Hormuz / oil / shipping / maritime crisis. Your job: draft 2-3
-DISTINCT reply options that the human can pick from and copy-paste.
+Write ONE reply, or the single word SKIP.
 
-EACH REPLY MUST:
-- Add a specific data point from our chart, OR surface a buried fact from
-  today's news cluster. Concrete numbers, vessel names, named officials,
-  direct quotes are gold.
+Answer SKIP when the post is hostile, sarcastic, a joke, a flame war, not
+actually about shipping through Hormuz, or when you have nothing concrete
+to add. Skipping is always acceptable; a weak reply is not.
+
+THE REPLY MUST:
+- Add one specific data point from our chart, OR one buried fact from
+  today's news cluster. A concrete number is mandatory.
 - Be 1-2 sentences, under 200 characters.
 - Read like a person typing on Bluesky, not a model.
 - Move the conversation forward (not just agree, not just compliment).
+- Stand on its own: it is posted publicly under their post, with our
+  chart image attached.
 
 NEVER:
-- Use em dashes (—).
+- Use em dashes.
 - Use "amid", "ongoing", "remains", "mounting", "escalating", "navigate",
   "underscore", "robust", "reportedly", "allegedly", "potentially",
   "as tensions mount", "raises questions", "growing concerns", "in the wake of".
-- Link our site or self-promote (reads as spam).
+- Link, @-mention, use hashtags, or self-promote (reads as spam).
 - Use emojis.
 - Ask "thoughts?" or any filler question.
-- Wrap the reply in quotes.
+- Wrap the reply in quotes, number it, add a preamble, or explain yourself.
 
-Output FORMAT (exactly this, no preamble):
-1. [first reply]
-2. [second reply]
-3. [third reply, optional]
-
-If only 2 quality replies are possible, give 2.
+Output: the reply text alone, or SKIP.
 """
 
 
-def draft_replies(cand: Candidate, chart: dict, news: Optional[dict]) -> Optional[str]:
+def draft_reply(cand: Candidate, chart: dict, news: Optional[dict]) -> Optional[str]:
+    """Raw model output for one candidate, or None if drafting is unavailable."""
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
         return None
@@ -255,14 +297,14 @@ def draft_replies(cand: Candidate, chart: dict, news: Optional[dict]) -> Optiona
         f"Post we're replying to (@{cand.author_handle}, {cand.likes} likes):\n"
         f"  {cand.text}\n\n"
         f"{chart_block}{news_block}\n"
-        "Draft 2-3 reply options."
+        "Write the reply, or SKIP."
     )
 
     try:
         client = Anthropic(api_key=api_key)
         resp = client.messages.create(
             model=MODEL,
-            max_tokens=400,
+            max_tokens=200,
             temperature=0.5,
             system=REPLY_SYSTEM,
             messages=[{"role": "user", "content": user_msg}],
@@ -273,6 +315,117 @@ def draft_replies(cand: Candidate, chart: dict, news: Optional[dict]) -> Optiona
     if not resp.content or resp.content[0].type != "text":
         return None
     return resp.content[0].text.strip()
+
+
+def parse_draft(raw: str) -> str:
+    """Normalize model output to one line. Strips a leading '1.' / bullet
+    that the old multi-option prompt trained the model to produce."""
+    t = raw.strip()
+    t = re.sub(r"^\s*(?:\d+[.)]|[-*])\s*", "", t)
+    return " ".join(t.split())
+
+
+def validate_reply(text: str) -> Optional[str]:
+    """Return why `text` must not be posted, or None if it passes."""
+    t = text.strip()
+    if not t or t.upper() == "SKIP":
+        return "skip"
+    if len(t) > MAX_REPLY_CHARS:
+        return f"too long ({len(t)} > {MAX_REPLY_CHARS})"
+    if not re.search(r"\d", t):
+        return "no concrete number"
+    if re.search(r"https?://|\bwww\.|\.(com|org|net|io)\b", t, re.I):
+        return "contains a link"
+    if "@" in t:
+        return "contains an @-mention"
+    if "#" in t:
+        return "contains a hashtag"
+    if "—" in t:
+        return "em dash"
+    if _EMOJI_RE.search(t):
+        return "emoji"
+    if t[0] in "\"'“‘" and t[-1] in "\"'”’":
+        return "wrapped in quotes"
+    low = t.lower()
+    for phrase in BANNED_PHRASES:
+        if " " in phrase or not phrase.isalpha():
+            hit = phrase in low
+        else:
+            hit = re.search(rf"\b{re.escape(phrase)}\b", low) is not None
+        if hit:
+            return f"banned phrase {phrase!r}"
+    return None
+
+
+def load_reply_log() -> list[dict]:
+    try:
+        return json.loads(REPLY_LOG.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+
+
+def save_reply_log(log: list[dict]) -> None:
+    REPLY_LOG.write_text(json.dumps(log, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def replies_today(log: list[dict], now: datetime) -> int:
+    day = now.date().isoformat()
+    return sum(1 for e in log if e.get("ts", "")[:10] == day and e.get("reply_uri"))
+
+
+def ineligible_reason(cand: Candidate, log: list[dict], now: datetime) -> Optional[str]:
+    """Why we must not reply to this candidate, or None."""
+    cutoff = now - timedelta(days=AUTHOR_COOLDOWN_DAYS)
+    for e in log:
+        if e.get("target_uri") == cand.uri:
+            return "already replied to this post"
+    for e in log:
+        if e.get("target_author") != cand.author_handle or not e.get("reply_uri"):
+            continue
+        try:
+            ts = datetime.fromisoformat(e["ts"])
+        except (KeyError, ValueError):
+            continue
+        if ts >= cutoff:
+            return f"replied to @{cand.author_handle} within {AUTHOR_COOLDOWN_DAYS} days"
+    return None
+
+
+def todays_chart_image(client):
+    """Reuse the image blob from our most recent chart post so every reply
+    carries the current chart without re-rendering it (blobs are per-repo
+    and any number of our records may reference one). None if not found."""
+    from atproto import models
+    try:
+        feed = client.get_author_feed(actor=OUR_HANDLE, limit=10, filter="posts_no_replies").feed
+    except Exception as e:
+        print(f"  could not fetch our feed for the chart image: {e}", file=sys.stderr)
+        return None
+    for item in feed:
+        if getattr(item, "reason", None):
+            continue
+        embed = getattr(item.post.record, "embed", None)
+        images = getattr(embed, "images", None)
+        if images:
+            img = images[0]
+            alt = img.alt or "Hormuz Strait daily vessel transit chart. Source: IMF PortWatch."
+            return models.AppBskyEmbedImages.Main(
+                images=[models.AppBskyEmbedImages.Image(alt=alt, image=img.image)]
+            )
+    return None
+
+
+def post_reply(client, cand: Candidate, text: str, image) -> str:
+    """Post `text` as a reply to `cand` (root == parent: we only reply to
+    top-level posts). Returns the reply URI."""
+    from atproto import models
+    ref = models.ComAtprotoRepoStrongRef.Main(uri=cand.uri, cid=cand.cid)
+    resp = client.send_post(
+        text=text,
+        reply_to=models.AppBskyFeedPost.ReplyRef(parent=ref, root=ref),
+        embed=image,
+    )
+    return resp.uri
 
 
 def post_discord(content: str) -> None:
@@ -298,56 +451,107 @@ def post_discord(content: str) -> None:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dry-run", action="store_true",
+                        help="Search, draft and validate; post and write nothing.")
+    args = parser.parse_args()
+
     now = datetime.now(timezone.utc)
-    print(f"Reply scout — {now:%Y-%m-%d %H:%M UTC}")
-    print("Searching Bluesky...")
+    live = AUTOPOST and not args.dry_run
+    mode = "LIVE" if live else ("dry-run" if args.dry_run else "report-only (REPLY_AUTOPOST off)")
+    print(f"Reply bot — {now:%Y-%m-%d %H:%M UTC} — {mode}")
+    header = f"**Reply bot — {now:%Y-%m-%d %H:%M UTC} — {mode}**\n"
+
     try:
         client = _bsky_client()
     except Exception as e:
         print(f"Bluesky login failed: {e}", file=sys.stderr)
-        post_discord(
-            f"**Reply scout — {now:%Y-%m-%d %H:%M UTC}**\n"
-            f"_Could not log in to Bluesky: {e}_"
-        )
+        post_discord(header + f"_Could not log in to Bluesky: {e}_")
         return 1
+
+    followers = None
+    try:
+        followers = client.get_profile(OUR_HANDLE).followers_count
+    except Exception as e:
+        print(f"  follower count unavailable: {e}", file=sys.stderr)
+
+    log = load_reply_log()
+    budget = MAX_REPLIES_PER_DAY - replies_today(log, now)
+    if budget <= 0:
+        print("Daily reply cap already reached; nothing to do.")
+        post_discord(header + "_Daily reply cap already reached._")
+        return 0
+
+    print("Searching Bluesky...")
     candidates = collect_candidates(client, now)
     print(f"\n{len(candidates)} candidates after filtering")
     if not candidates:
-        post_discord(
-            f"**Reply scout — {now:%Y-%m-%d %H:%M UTC}**\n"
-            "No qualifying posts in the last 24h "
-            f"(min {MIN_LIKES} likes across {len(SEARCH_KEYWORDS)} keywords)."
-        )
+        post_discord(header + f"No qualifying posts in the last 24h "
+                              f"(min {MIN_LIKES} likes across {len(SEARCH_KEYWORDS)} keywords).")
         return 0
 
     chart = load_chart_context()
     news = load_news_context()
+    image = todays_chart_image(client) if live else None
+    if live and image is None:
+        print("  no chart image found on our recent posts; replies go out text-only")
 
-    sections = []
-    for i, c in enumerate(candidates, 1):
-        drafts = draft_replies(c, chart, news) or "_(no drafts available)_"
-        snippet = c.text.replace("\n", " ")
-        if len(snippet) > 240:
-            snippet = snippet[:240] + "…"
-        sections.append(
-            f"### {i}. @{c.author_handle} ({c.likes}♥ {c.reposts}↻ {c.replies}💬)\n"
-            f"<{c.web_url}>\n"
-            f"> {snippet}\n\n"
-            f"**Drafts:**\n{drafts}\n"
-        )
+    posted: list[tuple[Candidate, str, Optional[str]]] = []
+    skipped: list[tuple[Candidate, str]] = []
+    for c in candidates:
+        if len(posted) >= budget:
+            break
+        why = ineligible_reason(c, log, now)
+        if why:
+            skipped.append((c, why))
+            continue
+        raw = draft_reply(c, chart, news)
+        if raw is None:
+            skipped.append((c, "no draft (API key missing or call failed)"))
+            continue
+        text = parse_draft(raw)
+        why = validate_reply(text)
+        if why:
+            skipped.append((c, "model said SKIP" if why == "skip" else f"{why}: {text!r}"))
+            continue
 
-    header = (
-        f"**Reply scout — {now:%Y-%m-%d %H:%M UTC}**\n"
-        f"{len(candidates)} qualifying posts, drafts attached. "
-        "Pick one, edit if needed, paste as a reply on Bluesky.\n\n"
-    )
-    full = header + "\n---\n".join(sections)
+        reply_uri = None
+        if live:
+            try:
+                reply_uri = post_reply(client, c, text, image)
+            except Exception as e:
+                skipped.append((c, f"post failed: {e}"))
+                continue
+            log.append({
+                "ts": now.isoformat(timespec="seconds"),
+                "target_uri": c.uri,
+                "target_url": c.web_url,
+                "target_author": c.author_handle,
+                "target_likes": c.likes,
+                "reply_uri": reply_uri,
+                "text": text,
+                "image": image is not None,
+                "followers": followers,
+            })
+            save_reply_log(log)
+        posted.append((c, text, reply_uri))
 
-    print("\n========== REPLY SCOUT REPORT ==========\n")
-    print(full)
-    print("\n========== END REPORT ==========\n")
+    lines = [header]
+    verb = "Posted" if live else "Would post"
+    lines.append(f"{verb} {len(posted)} of {budget} allowed today. Followers: {followers}.")
+    for c, text, uri in posted:
+        link = f" → <{web_url_for(OUR_HANDLE, uri)}>" if uri else ""
+        lines.append(f"• @{c.author_handle} ({c.likes}♥) <{c.web_url}>{link}\n  > {text}")
+    if skipped:
+        lines.append(f"\nSkipped {len(skipped)}:")
+        for c, why in skipped:
+            lines.append(f"• @{c.author_handle} ({c.likes}♥): {why}")
+    summary = "\n".join(lines)
 
-    post_discord(full)
+    print("\n========== REPLY BOT SUMMARY ==========\n")
+    print(summary)
+    print("\n========== END ==========\n")
+    post_discord(summary)
     return 0
 
 
