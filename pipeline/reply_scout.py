@@ -305,7 +305,10 @@ def draft_reply(cand: Candidate, chart: dict, news: Optional[dict]) -> Optional[
         resp = client.messages.create(
             model=MODEL,
             max_tokens=200,
-            temperature=0.5,
+            # anthropic 1.x dropped temperature from the messages.create()
+            # signature (TypeError); the API still honours it via extra_body.
+            # Same fix as compose_headline.
+            extra_body={"temperature": 0.5},
             system=REPLY_SYSTEM,
             messages=[{"role": "user", "content": user_msg}],
         )
