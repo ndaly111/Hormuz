@@ -69,6 +69,9 @@ def test_parse_draft_strips_numbering_and_newlines():
     assert parse_draft("1. Only 3 ships\ntransited today.") == "Only 3 ships transited today."
     assert parse_draft("- 3 ships") == "3 ships"
     assert parse_draft("  SKIP\n") == "SKIP"
+    # a reply that starts with a number is not a list item
+    assert parse_draft("3.1 ships a day is 4% of normal.") == "3.1 ships a day is 4% of normal."
+    assert parse_draft("200 days in, 3 ships.") == "200 days in, 3 ships."
 
 
 def test_parse_draft_turns_em_dashes_into_commas():

@@ -336,7 +336,8 @@ def parse_draft(raw: str) -> str:
     an em dash into a comma: the model keeps using them even when told not
     to, and it is the one style rule that is safe to fix mechanically."""
     t = raw.strip()
-    t = re.sub(r"^\s*(?:\d+[.)]|[-*])\s*", "", t)
+    # A list marker is "1." / "-" followed by whitespace; "3.1 ships" is not one.
+    t = re.sub(r"^\s*(?:\d+[.)]|[-*])\s+", "", t)
     t = re.sub(r"\s*—\s*", ", ", t)
     return " ".join(t.split())
 
