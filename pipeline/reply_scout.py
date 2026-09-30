@@ -198,7 +198,10 @@ def load_chart_context() -> dict:
             "seven_day_avg": sd,
             "pre_norm": pre_norm,
             "pct_of_norm": pct_of_norm,
-            "pct_below_norm": -float(cur.get("vs_pre_feb_2026_pct") or 0.0),
+            "pct_below_norm": -float(
+                cur.get("last_7d_vs_pre_closure_pct", cur.get("vs_pre_feb_2026_pct"))
+                or 0.0
+            ),
             "days_since": days_since,
         }
     except Exception as e:
@@ -281,7 +284,8 @@ def draft_reply(cand: Candidate, chart: dict, news: Optional[dict],
     chart_block = (
         f"Our chart data (for citing):\n"
         f"  - Day {chart.get('days_since', '?')} of Hormuz closure\n"
-        f"  - 7-day avg: {chart.get('seven_day_avg', 0):.1f} ships/day\n"
+        f"  - PortWatch 7-day avg: {chart.get('seven_day_avg', 0):.1f} "
+        f"AIS-visible commercial transits/day\n"
         f"  - Currently {chart.get('pct_of_norm', 0):.0f}% of pre-war norm "
         f"({chart.get('pct_below_norm', 0):.0f}% below norm)\n"
     )

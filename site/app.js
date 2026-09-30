@@ -257,7 +257,8 @@ function renderTicker(data) {
    ============================================================ */
 function renderHero(data) {
   const cur = data.current;
-  const pct = cur.vs_pre_feb_2026_pct;
+  const pct = cur.last_7d_vs_pre_closure_pct ?? cur.vs_pre_feb_2026_pct;
+  const baseline = data.baselines.pre_feb_2026.avg_total;
   const headline = document.getElementById("heroHeadline");
   const deck = document.getElementById("heroDeck");
   if (!headline) return;
@@ -272,28 +273,26 @@ function renderHero(data) {
   animatePercent(headline, pct);
 
   // Editorial deck — context-aware framing
-  const daysSince = daysBetween(CLOSURE_DATE, cur.latest_date);
-  const deckText = composeDeck(pct, daysSince, cur);
+  const deckText = composeDeck(pct, cur, baseline);
   if (deck) deck.innerHTML = deckText;
 }
 
-function composeDeck(pct, daysSince, cur) {
-  const pre = "~89/day";
-  const latest = `${cur.latest_total} transits`;
+function composeDeck(pct, cur, baseline) {
+  const pre = baseline == null ? "the pre-closure baseline" : `${fmt.num(baseline)}/day`;
   const sevenDay = fmt.num(cur.last_7d_avg);
   if (pct == null) {
-    return `Live count of ship traffic through the world's most critical oil chokepoint, refreshed daily from satellite AIS.`;
+    return `Latest IMF PortWatch count of AIS-visible commercial transit calls through the Strait of Hormuz.`;
   }
   if (pct < -50) {
-    return `Ship traffic through the strait has <strong>collapsed</strong> from a pre-closure baseline near <strong>${pre}</strong> to a 7-day average of <strong>${sevenDay}/day</strong>. Iran has held the chokepoint closed for <strong>${daysSince} days</strong>.`;
+    return `AIS-visible commercial transit calls have <strong>collapsed</strong> from a 365-day pre-closure baseline of <strong>${pre}</strong> to a 7-day average of <strong>${sevenDay}/day</strong>. Latest source data is shown through <strong>${fmt.dateShort(cur.latest_date)}</strong>.`;
   }
   if (pct < -15) {
-    return `Transit traffic remains materially below pre-closure levels (~${pre}) at <strong>${sevenDay}/day</strong> on a 7-day average. <strong>Day ${daysSince}</strong> of the closure crisis.`;
+    return `AIS-visible commercial transit calls remain materially below the 365-day pre-closure baseline of <strong>${pre}</strong>, at <strong>${sevenDay}/day</strong> on a 7-day average.`;
   }
   if (pct > 15) {
-    return `Transit traffic now exceeds pre-closure norms — <strong>${sevenDay}/day</strong> vs. a baseline of <strong>${pre}</strong>.`;
+    return `AIS-visible commercial transit calls exceed the 365-day pre-closure baseline — <strong>${sevenDay}/day</strong> versus <strong>${pre}</strong>.`;
   }
-  return `Transit traffic is hovering near pre-closure norms — <strong>${sevenDay}/day</strong> vs. a baseline of <strong>${pre}</strong>. ${daysSince > 0 ? `Day ${daysSince} since the closure was declared.` : ""}`;
+  return `AIS-visible commercial transit calls are near the 365-day pre-closure baseline — <strong>${sevenDay}/day</strong> versus <strong>${pre}</strong>.`;
 }
 
 /* ============================================================
@@ -305,9 +304,9 @@ function renderStats(data) {
 
   const cards = [
     {
-      label: "Days closed",
+      label: "Days since Mar 4",
       value: daysSinceClosure >= 0 ? String(daysSinceClosure) : "—",
-      sub: `since ${fmt.dateShort(CLOSURE_DATE)} '26`,
+      sub: "through source date",
       animate: { kind: "int", target: daysSinceClosure },
     },
     {
@@ -318,7 +317,7 @@ function renderStats(data) {
     {
       label: "Latest day",
       value: fmt.int(cur.latest_total),
-      sub: `${fmt.dateShort(cur.latest_date)} · ${cur.latest_tanker} tankers`,
+      sub: `${fmt.dateShort(cur.latest_date)} · ${cur.latest_tanker} tanker${cur.latest_tanker === 1 ? "" : "s"}`,
       animate: { kind: "int", target: cur.latest_total },
     },
   ];
@@ -725,7 +724,8 @@ function downloadChartAsImage(data) {
 
   // Subtitle
   const cur = data.current;
-  const sub = `30-DAY AVG ${fmt.num(cur.last_30d_avg)}/DAY · ${fmt.pct(cur.vs_pre_feb_2026_pct)} VS PRE-CLOSURE · THROUGH ${fmt.dateMonoFull(cur.latest_date)}`;
+  const pct = cur.last_7d_vs_pre_closure_pct ?? cur.vs_pre_feb_2026_pct;
+  const sub = `7-DAY AVG ${fmt.num(cur.last_7d_avg)}/DAY · ${fmt.pct(pct)} VS PRE-CLOSURE · PORTWATCH THROUGH ${fmt.dateMonoFull(cur.latest_date)}`;
   ctx.fillStyle = C.paperDim;
   ctx.font = `500 18px ${FONT_MONO}`;
   ctx.fillText(sub, 60, 145);

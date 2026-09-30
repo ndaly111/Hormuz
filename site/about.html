@@ -18,10 +18,10 @@
         <span class="wire-ticker__item">
           <span class="wire-ticker__dot" aria-hidden="true"></span>
           <span class="wire-ticker__label">Status</span>
-          <span class="wire-ticker__value">Strait closed</span>
+          <span class="wire-ticker__value">Traffic severely disrupted</span>
         </span>
       </div>
-      <span class="wire-ticker__brand">Dispatch · 06:00 UTC daily</span>
+      <span class="wire-ticker__brand">Checked daily · source published in batches</span>
     </div>
   </div>
 
@@ -48,7 +48,7 @@
         <span>Mission</span>
         <span class="ruler"></span>
       </div>
-      <h2 class="mission__h1">A daily public count of ships in a closed strait.</h2>
+      <h2 class="mission__h1">A public record of AIS-visible commercial traffic through the strait.</h2>
 
       <p class="mission__lede">
         Roughly one in five barrels of seaborne oil passes through the Strait of Hormuz. When that artery seizes, it touches every gas pump, every airline ticket, every container ship rerouted around Africa. This site exists to put that movement — or the absence of it — in front of the public, every day, for free.
@@ -56,26 +56,29 @@
 
       <div class="mission__body">
         <p>
-          Specialist trackers like Lloyd's List, TankerTrackers, and Kpler do this work behind paywalls for shipping firms and intelligence shops. Most people never see those numbers. <strong>Hormuz Tracker is a public-facing alternative</strong>: simpler, free, refreshed every 24 hours, and built so a journalist, an analyst, or a curious citizen can find the same evidence in 10 seconds.
+          Specialist trackers like Lloyd's List, TankerTrackers, and Kpler combine additional commercial feeds and analysis behind paywalls. <strong>Hormuz Tracker is a public-facing view of one reproducible source</strong>: IMF PortWatch. The pipeline checks for new source data every day and shows the source's latest available observation.
         </p>
         <p>
-          Each morning a small Python pipeline pulls the latest satellite AIS-derived counts from the IMF's PortWatch dataset, recomputes the rolling averages and historical baselines, and republishes the page. Major geopolitical events are annotated by hand so the data sits inside the story it belongs to.
+          Each morning a small Python pipeline pulls the complete satellite AIS-derived history from the IMF's PortWatch dataset, validates and caches it, then recomputes the rolling averages and a fixed pre-closure baseline. Major geopolitical events are annotated by hand so the data sits inside the story it belongs to.
         </p>
       </div>
 
       <h3 class="mission__h2">Methodology</h3>
       <ul class="mission__list">
         <li><strong>Source</strong>IMF PortWatch — "Daily Chokepoint Transit Calls and Trade Volume Estimates," chokepoint6 (Strait of Hormuz). Derived from satellite AIS vessel transponders.</li>
-        <li><strong>Refresh</strong>Pipeline runs daily at 06:00 UTC via GitHub Actions. Output JSON re-deploys to Cloudflare automatically.</li>
+        <li><strong>Refresh</strong>The pipeline checks daily via GitHub Actions. PortWatch publishes new observations in batches, so “checked” and “data through” are shown separately.</li>
         <li><strong>Coverage</strong>Daily counts go back to January 2019 — over six years of baseline.</li>
         <li><strong>Vessel types</strong>Tankers (oil, product, chemical), dry bulk, container, RoRo, general cargo.</li>
-        <li><strong>Lag</strong>PortWatch typically lags real-world events by 2 to 5 days. The closure of the strait can extend that further as ships go AIS-dark.</li>
+        <li><strong>Counting rule</strong>PortWatch defines a transit call when a ship crosses the chokepoint boundary. A transit spanning multiple days is counted once, and the same ship is not counted again within 48 hours.</li>
+        <li><strong>Baseline</strong>The headline compares the latest seven complete source days with the 365 complete days from February 28, 2025 through February 27, 2026.</li>
+        <li><strong>Lag</strong>The dataset is delayed and commonly arrives in weekly batches. Always use the displayed “data through” date, not the page-refresh time, to judge freshness.</li>
       </ul>
 
       <h3 class="mission__h2">Caveats</h3>
       <ul class="mission__list">
-        <li><strong>Definition</strong>PortWatch counts <em>port calls within the chokepoint geofence</em>, not literal transits. Numbers are directionally meaningful, not a pure ship census.</li>
-        <li><strong>AIS dark</strong>Vessels that disable transponders for security reasons do not appear. During an active closure, this undercount is likely material.</li>
+        <li><strong>Scope</strong>The total covers five commercial categories: tanker, container, dry bulk, general cargo, and ro-ro. It is not a census of military, fishing, tug, service, or other vessel traffic.</li>
+        <li><strong>AIS limitation</strong>Vessels without sufficient AIS observations—including ships operating dark, spoofing positions, or affected by interference—may be absent. During conflict this undercount can be material, so the headline describes <em>PortWatch AIS-visible traffic</em>, not every physical crossing.</li>
+        <li><strong>Revisions</strong>Recent observations can be revised by the source. Each rebuild replaces the full local cache and republishes the complete history rather than appending unverified rows.</li>
         <li><strong>Editorial framing</strong>Event annotations are the author's judgment about which dates matter most for context. Reasonable readers can disagree about the framing; the data itself is unfiltered.</li>
       </ul>
 

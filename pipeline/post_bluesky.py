@@ -192,8 +192,9 @@ def build_recap_caption() -> str:
 
     return (
         f"Hormuz week in review — day {day_n} of the closure\n"
-        f"7-day avg: {cur['last_7d_avg']:.1f} ships/day "
-        f"({cur['vs_pre_feb_2026_pct']:+.0f}% vs pre-closure norm)\n"
+        f"PortWatch 7-day avg: {cur['last_7d_avg']:.1f} AIS-visible commercial transits/day "
+        f"({cur.get('last_7d_vs_pre_closure_pct', cur['vs_pre_feb_2026_pct']):+.0f}% "
+        f"vs 365-day pre-closure baseline)\n"
         f"Busiest day: {fmt_d(best['date'])} ({best['total']} ships) · "
         f"Quietest: {fmt_d(worst['date'])} ({worst['total']})\n\n"
         f"#StraitOfHormuz #OOTT #Shipping #Maritime"

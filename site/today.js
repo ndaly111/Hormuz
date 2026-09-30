@@ -107,9 +107,9 @@ async function generateShareImage(data, events, rangeKey) {
   ctx.fillStyle = C.paper;
   ctx.font = `500 11px ${FONT_MONO}`;
   ctx.textBaseline = "middle";
-  ctx.fillText("STATUS: STRAIT CLOSED", 64, 16);
+  ctx.fillText("STATUS: TRAFFIC SEVERELY DISRUPTED", 64, 16);
   ctx.fillStyle = C.paperFaint;
-  ctx.fillText(`DAY ${daysSince}  ·  DATA THRU ${fmt.dateMonoFull(cur.latest_date)}`, 244, 16);
+  ctx.fillText(`DAYS SINCE MAR 4: ${daysSince}  ·  PORTWATCH THRU ${fmt.dateMonoFull(cur.latest_date)}`, 330, 16);
   ctx.textAlign = "right";
   ctx.fillStyle = C.paperDim;
   ctx.fillText("HORMUZ-TRAFFIC.COM", W - 24, 16);
@@ -127,7 +127,7 @@ async function generateShareImage(data, events, rangeKey) {
   ctx.fillText("HORMUZ TRACKER", 50, 130);
 
   // Headline collapse % — large, alert-colored
-  const pct = cur.vs_pre_feb_2026_pct;
+  const pct = cur.last_7d_vs_pre_closure_pct ?? cur.vs_pre_feb_2026_pct;
   const pctStr = pct == null ? "—" : `${pct > 0 ? "+" : pct < 0 ? "−" : ""}${Math.abs(pct).toFixed(1)}%`;
   ctx.fillStyle = pct < -2 ? C.alert : pct > 2 ? "#4caf6d" : C.caution;
   ctx.font = `400 86px ${FONT_DISPLAY}`;
@@ -136,7 +136,7 @@ async function generateShareImage(data, events, rangeKey) {
   // Headline label
   ctx.fillStyle = C.paperDim;
   ctx.font = `500 13px ${FONT_MONO}`;
-  ctx.fillText("VS. PRE-CLOSURE BASELINE  ·  7-DAY AVG " + fmt.num(cur.last_7d_avg) + "/DAY  ·  " + range.label.toUpperCase(), 50, 248);
+  ctx.fillText("PORTWATCH AIS-VISIBLE TRANSITS  ·  VS. 365-DAY PRE-CLOSURE BASELINE  ·  7-DAY AVG " + fmt.num(cur.last_7d_avg) + "/DAY", 50, 248);
 
   // ----- Chart area -----
   const chartTop = 280;
@@ -262,8 +262,8 @@ async function generateShareImage(data, events, rangeKey) {
 
 function buildTweetText(data) {
   const cur = data.current;
-  const daysSince = daysBetween(CLOSURE_DATE, cur.latest_date);
-  const stat = `Day ${daysSince} of Hormuz closure: 7-day avg ${fmt.num(cur.last_7d_avg)} ships/day (${fmt.pct(cur.vs_pre_feb_2026_pct)} vs pre-closure norm)`;
+  const pct = cur.last_7d_vs_pre_closure_pct ?? cur.vs_pre_feb_2026_pct;
+  const stat = `Hormuz AIS-visible commercial transits: 7-day avg ${fmt.num(cur.last_7d_avg)}/day (${fmt.pct(pct)} vs 365-day pre-closure baseline; PortWatch through ${cur.latest_date})`;
   const tags = "#StraitOfHormuz #OOTT #Shipping #Geopolitics #Maritime";
   return `${stat}\n\n${tags}`;
 }

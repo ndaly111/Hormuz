@@ -50,14 +50,15 @@ def build_caption(data: dict, story: dict | None, lede: str | None) -> str:
     cur = data["current"]
     latest = datetime.fromisoformat(cur["latest_date"]).date()
     days_since = (latest - CLOSURE_DATE).days + 1
-    pct = cur.get("vs_pre_feb_2026_pct")
+    pct = cur.get("last_7d_vs_pre_closure_pct", cur.get("vs_pre_feb_2026_pct"))
     pct_s = f"{pct:+.1f}%" if pct is not None else "n/a"
     avg = cur.get("last_7d_avg")
     avg_s = f"{avg:,.1f}" if avg is not None else "n/a"
 
     stat = (
         f"Day {days_since} of Hormuz closure: "
-        f"7-day avg {avg_s} ships/day ({pct_s} vs pre-closure norm)"
+        f"PortWatch 7-day avg {avg_s} AIS-visible commercial transits/day "
+        f"({pct_s} vs 365-day pre-closure baseline)"
     )
 
     parts: list[str] = []
@@ -92,7 +93,10 @@ def get_lede(data: dict, story: dict) -> str | None:
         days_since_closure=days_since,
         seven_day_avg=float(cur.get("last_7d_avg") or 0.0),
         thirty_day_avg=float(cur.get("last_30d_avg") or 0.0),
-        pct_vs_norm=float(cur.get("vs_pre_feb_2026_pct") or 0.0),
+        pct_vs_norm=float(
+            cur.get("last_7d_vs_pre_closure_pct", cur.get("vs_pre_feb_2026_pct"))
+            or 0.0
+        ),
         pre_closure_norm=float(pre_norm),
         article_bodies=story.get("article_bodies") or None,
     )
