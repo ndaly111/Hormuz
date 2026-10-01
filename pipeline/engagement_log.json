@@ -5223,5 +5223,18 @@
     ],
     "article_count": 31,
     "engagement": null
+  },
+  {
+    "ts": "2026-10-01T21:37:04+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mwtsvrc5u52v",
+    "lede": "Supertanker catches fire after projectile strike as Hormuz traffic plummets to 4% of normal",
+    "had_news_cluster": true,
+    "story_headline": "Three Vessels Struck in Strait of Hormuz as Iran\u2019s Grip Loosens",
+    "outlets": [
+      "Reuters",
+      "The Maritime Executive"
+    ],
+    "article_count": 36,
+    "engagement": null
   }
 ]
