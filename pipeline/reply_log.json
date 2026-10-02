@@ -31,5 +31,16 @@
     "text": "The East-West pipeline bypass doesn't matter much right now, Hormuz traffic is at 4% of normal anyway. Today alone, 2 tankers were struck in the strait.",
     "image": true,
     "followers": 87
+  },
+  {
+    "ts": "2026-10-02T18:46:34+00:00",
+    "target_uri": "at://did:plc:oqexhdqbizq24v6ikjhhig2h/app.bsky.feed.post/3mwu7dhvfn22m",
+    "target_url": "https://bsky.app/profile/bcfinucane.bsky.social/post/3mwu7dhvfn22m",
+    "target_author": "bcfinucane.bsky.social",
+    "target_likes": 63,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mwvzudugli2u",
+    "text": "We're 207 days into this and averaging 3 transits a day through Hormuz, that's 96% below the pre-war baseline. The cost question gets easier to answer when you see what's actually moving.",
+    "image": true,
+    "followers": 90
   }
 ]
