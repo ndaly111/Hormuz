@@ -5222,7 +5222,13 @@
       "The Maritime Executive"
     ],
     "article_count": 31,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-10-02T17:25:32+00:00",
+      "likes": 4,
+      "reposts": 6,
+      "replies": 1,
+      "quotes": 1
+    }
   },
   {
     "ts": "2026-10-01T21:37:04+00:00",
