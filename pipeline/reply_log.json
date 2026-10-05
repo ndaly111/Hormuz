@@ -42,5 +42,16 @@
     "text": "We're 207 days into this and averaging 3 transits a day through Hormuz, that's 96% below the pre-war baseline. The cost question gets easier to answer when you see what's actually moving.",
     "image": true,
     "followers": 90
+  },
+  {
+    "ts": "2026-10-05T21:17:02+00:00",
+    "target_uri": "at://did:plc:4llrhdclvdlmmynkwsmg5tdc/app.bsky.feed.post/3mx5oievx3i2n",
+    "target_url": "https://bsky.app/profile/atrupar.com/post/3mx5oievx3i2n",
+    "target_author": "atrupar.com",
+    "target_likes": 1429,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mx5tnvoqkc2p",
+    "text": "The WSJ piece might've been optimistic, we're tracking 3.1 transits per day right now, which is 4% of pre-war traffic. That's still a near-total closure, whatever the headline said.",
+    "image": true,
+    "followers": 92
   }
 ]
