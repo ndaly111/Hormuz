@@ -1078,5 +1078,95 @@
     "bio_keyword_hits": 1,
     "query_hits": 1,
     "score": 15.0
+  },
+  {
+    "ts": "2026-10-05T21:56:43+00:00",
+    "did": "did:plc:lwkamruh7nl3szqa7hv4i3gk",
+    "handle": "newarab.com.web.brid.gy",
+    "followers_count": 282,
+    "bio_keyword_hits": 1,
+    "query_hits": 3,
+    "score": 25.3
+  },
+  {
+    "ts": "2026-10-05T21:56:43+00:00",
+    "did": "did:plc:6rmrhohel6shjpoug4yfzspr",
+    "handle": "thenewarab.bsky.social",
+    "followers_count": 9278,
+    "bio_keyword_hits": 1,
+    "query_hits": 2,
+    "score": 25.0
+  },
+  {
+    "ts": "2026-10-05T21:56:43+00:00",
+    "did": "did:plc:pehp4bugsgjil44yqxji6gpi",
+    "handle": "livesquawknews.bsky.social",
+    "followers_count": 29367,
+    "bio_keyword_hits": 0,
+    "query_hits": 4,
+    "score": 25.0
+  },
+  {
+    "ts": "2026-10-05T21:56:43+00:00",
+    "did": "did:plc:ijn7lseerxnkh5vdf2qoc6t2",
+    "handle": "maxboot.bsky.social",
+    "followers_count": 45541,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-10-05T21:56:43+00:00",
+    "did": "did:plc:b42zkq7eht3xftkfoupjwxh6",
+    "handle": "nafoffs.bsky.social",
+    "followers_count": 4344,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 19.3
+  },
+  {
+    "ts": "2026-10-05T21:56:43+00:00",
+    "did": "did:plc:obs2lphtzg3iam5qtd5im6e6",
+    "handle": "kostianv.bsky.social",
+    "followers_count": 3095,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 18.1
+  },
+  {
+    "ts": "2026-10-05T21:56:43+00:00",
+    "did": "did:plc:qq6tpffju3hto3n3p4hrfekm",
+    "handle": "queensicez.bsky.social",
+    "followers_count": 1293,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 16.3
+  },
+  {
+    "ts": "2026-10-05T21:56:43+00:00",
+    "did": "did:plc:dtg2oeh4jj3lmbcxyxl6nm34",
+    "handle": "some-news.bsky.social",
+    "followers_count": 1009,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 16.0
+  },
+  {
+    "ts": "2026-10-05T21:56:43+00:00",
+    "did": "did:plc:owu2lfrumlvvpoputmlmcwpd",
+    "handle": "financiernews.bsky.social",
+    "followers_count": 144,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 15.1
+  },
+  {
+    "ts": "2026-10-05T21:56:43+00:00",
+    "did": "did:plc:c5mn25aupflk4dondgtgqvpw",
+    "handle": "osint-signals.com",
+    "followers_count": 115,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.1
   }
 ]
