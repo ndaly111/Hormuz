@@ -5265,5 +5265,18 @@
       "quotes": 1
     },
     "kind": "weekly_recap"
+  },
+  {
+    "ts": "2026-10-05T23:01:00+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mx5zhkrxfl2u",
+    "lede": "Exports surge past pre-war levels while Hormuz traffic collapses to 4% of normal on day 208",
+    "had_news_cluster": true,
+    "story_headline": "Middle East oil exports surpass pre-war levels despite tensions, data shows",
+    "outlets": [
+      "Al Jazeera",
+      "Reuters"
+    ],
+    "article_count": 10,
+    "engagement": null
   }
 ]
