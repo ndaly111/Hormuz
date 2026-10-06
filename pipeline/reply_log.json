@@ -53,5 +53,27 @@
     "text": "The WSJ piece might've been optimistic, we're tracking 3.1 transits per day right now, which is 4% of pre-war traffic. That's still a near-total closure, whatever the headline said.",
     "image": true,
     "followers": 92
+  },
+  {
+    "ts": "2026-10-06T19:12:02+00:00",
+    "target_uri": "at://did:plc:aunpu65mdrhwfie7ynymlzeh/app.bsky.feed.post/3mx66zsvldi2a",
+    "target_url": "https://bsky.app/profile/thebulwark.com/post/3mx66zsvldi2a",
+    "target_author": "thebulwark.com",
+    "target_likes": 75,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mxa55dkpev2y",
+    "text": "The Strait of Hormuz is moving 3.1 commercial transits per day right now, down 96% from normal. Russia's refinery losses matter for diesel, but the closure here is still a major supply shock.",
+    "image": true,
+    "followers": 95
+  },
+  {
+    "ts": "2026-10-06T19:12:02+00:00",
+    "target_uri": "at://did:plc:kdu24jisfqi57vh2ckux5vqo/app.bsky.feed.post/3mx7lkhgmzc2y",
+    "target_url": "https://bsky.app/profile/padresj.bsky.social/post/3mx7lkhgmzc2y",
+    "target_author": "padresj.bsky.social",
+    "target_likes": 35,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mxa55hrt5q2n",
+    "text": "Your tracker's in the ballpark. Our 7-day average is 3.1 transits per day, 4% of pre-war normal. Today 12 seafarers were injured in a tanker strike, which is why rates are hitting records.",
+    "image": true,
+    "followers": 95
   }
 ]
