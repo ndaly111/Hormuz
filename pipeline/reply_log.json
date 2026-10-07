@@ -75,5 +75,27 @@
     "text": "Your tracker's in the ballpark. Our 7-day average is 3.1 transits per day, 4% of pre-war normal. Today 12 seafarers were injured in a tanker strike, which is why rates are hitting records.",
     "image": true,
     "followers": 95
+  },
+  {
+    "ts": "2026-10-07T19:37:49+00:00",
+    "target_uri": "at://did:plc:q3bbdtxch45wvfxrxpblphxn/app.bsky.feed.post/3mxadgrjnv22x",
+    "target_url": "https://bsky.app/profile/strictlychristo.bsky.social/post/3mxadgrjnv22x",
+    "target_author": "strictlychristo.bsky.social",
+    "target_likes": 108,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mxcp2cw3b62u",
+    "text": "Day 214: we're tracking 2.7 commercial transits daily, down 97% from pre-war baseline. The actual traffic number matters more than the blame.",
+    "image": true,
+    "followers": 97
+  },
+  {
+    "ts": "2026-10-07T19:37:49+00:00",
+    "target_uri": "at://did:plc:svawqo4jxobyyuqmixplvcux/app.bsky.feed.post/3mxbrly4kts2i",
+    "target_url": "https://bsky.app/profile/bgrueskin.bsky.social/post/3mxbrly4kts2i",
+    "target_author": "bgrueskin.bsky.social",
+    "target_likes": 99,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mxcp2fvw4b23",
+    "text": "That $1.3M/day premium reflects real scarcity: we're tracking just 2.7 commercial transits daily, down 97% from pre-war levels.",
+    "image": true,
+    "followers": 97
   }
 ]
