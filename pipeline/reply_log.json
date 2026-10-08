@@ -97,5 +97,16 @@
     "text": "That $1.3M/day premium reflects real scarcity: we're tracking just 2.7 commercial transits daily, down 97% from pre-war levels.",
     "image": true,
     "followers": 97
+  },
+  {
+    "ts": "2026-10-08T19:33:22+00:00",
+    "target_uri": "at://did:plc:znrkwcuzdbhduyqrbdpkl7pe/app.bsky.feed.post/3mxcr4degys2o",
+    "target_url": "https://bsky.app/profile/dreadships.bsky.social/post/3mxcr4degys2o",
+    "target_author": "dreadships.bsky.social",
+    "target_likes": 119,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mxf7clppc22p",
+    "text": "Day 214 of the closure and we're seeing 2.7 commercial transits per day on AIS. That's 3% of the pre-war normal flow through Hormuz.",
+    "image": true,
+    "followers": 99
   }
 ]
