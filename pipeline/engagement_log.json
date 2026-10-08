@@ -5298,5 +5298,19 @@
     ],
     "article_count": 15,
     "engagement": null
+  },
+  {
+    "ts": "2026-10-08T21:39:32+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mxfgcnaype2f",
+    "lede": "Iran blocks unauthorized Hormuz routes as traffic plummets to 3% of normal on day 215",
+    "had_news_cluster": true,
+    "story_headline": "Iran to Close Hormuz Routes, Risk of Tanker Attack Rises",
+    "outlets": [
+      "CBS News",
+      "Marine Link",
+      "Reuters"
+    ],
+    "article_count": 10,
+    "engagement": null
   }
 ]
