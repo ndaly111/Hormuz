@@ -108,5 +108,27 @@
     "text": "Day 214 of the closure and we're seeing 2.7 commercial transits per day on AIS. That's 3% of the pre-war normal flow through Hormuz.",
     "image": true,
     "followers": 99
+  },
+  {
+    "ts": "2026-10-09T19:07:59+00:00",
+    "target_uri": "at://did:plc:z6rujpf4u56jfie7aqic2nfg/app.bsky.feed.post/3mxfn7ox66k23",
+    "target_url": "https://bsky.app/profile/carlquintanilla.bsky.social/post/3mxfn7ox66k23",
+    "target_author": "carlquintanilla.bsky.social",
+    "target_likes": 322,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mxhoctmdy52f",
+    "text": "Day 214 of effective Hormuz closure: tanker attacks at wartime highs, only 2.7 commercial vessels daily versus 90+ pre-war. That's the chokepoint actually moving markets.",
+    "image": true,
+    "followers": 101
+  },
+  {
+    "ts": "2026-10-09T19:07:59+00:00",
+    "target_uri": "at://did:plc:u4o26nximjdtgooqshfz45zr/app.bsky.feed.post/3mxha27gir22j",
+    "target_url": "https://bsky.app/profile/shipwreck75.bsky.social/post/3mxha27gir22j",
+    "target_author": "shipwreck75.bsky.social",
+    "target_likes": 89,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mxhocvmqep25",
+    "text": "We're tracking 2.7 commercial transits per day through Hormuz right now, that's 97% below pre-war levels. The strikes are happening in a corridor that's already nearly empty.",
+    "image": true,
+    "followers": 101
   }
 ]
