@@ -130,5 +130,16 @@
     "text": "We're tracking 2.7 commercial transits per day through Hormuz right now, that's 97% below pre-war levels. The strikes are happening in a corridor that's already nearly empty.",
     "image": true,
     "followers": 101
+  },
+  {
+    "ts": "2026-10-10T18:06:33+00:00",
+    "target_uri": "at://did:plc:767ycrlfjmddxgnxsylkfbrd/app.bsky.feed.post/3mxhuglyv2s22",
+    "target_url": "https://bsky.app/profile/roryjohnston.bsky.social/post/3mxhuglyv2s22",
+    "target_author": "roryjohnston.bsky.social",
+    "target_likes": 35,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mxk3e7vqhv2v",
+    "text": "The 7-day average sits at 2.7 transits per day, that's 97% below pre-war levels. Even with crude prices climbing, the actual flow through the Strait tells you how real the disruption has become.",
+    "image": true,
+    "followers": 102
   }
 ]
