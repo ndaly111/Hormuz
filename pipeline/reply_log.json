@@ -141,5 +141,27 @@
     "text": "The 7-day average sits at 2.7 transits per day, that's 97% below pre-war levels. Even with crude prices climbing, the actual flow through the Strait tells you how real the disruption has become.",
     "image": true,
     "followers": 102
+  },
+  {
+    "ts": "2026-10-12T21:54:32+00:00",
+    "target_uri": "at://did:plc:feobw43ezgemam6r6zvfzp42/app.bsky.feed.post/3mxoly4b6xk2u",
+    "target_url": "https://bsky.app/profile/stevenbeschloss.bsky.social/post/3mxoly4b6xk2u",
+    "target_author": "stevenbeschloss.bsky.social",
+    "target_likes": 642,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mxpizg2gcg2d",
+    "text": "We're at day 214 with just 2.7 commercial transits daily, down 97% from normal. Whatever the cause, that's the actual throughput constraint driving prices.",
+    "image": true,
+    "followers": 109
+  },
+  {
+    "ts": "2026-10-12T21:54:32+00:00",
+    "target_uri": "at://did:plc:4aqzua5vsewimmusg66fyajl/app.bsky.feed.post/3mxosm6qqc22t",
+    "target_url": "https://bsky.app/profile/noelreports.com/post/3mxosm6qqc22t",
+    "target_author": "noelreports.com",
+    "target_likes": 566,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mxpizjfddm2j",
+    "text": "The Strait is at 3% of pre-war traffic levels right now. That's the actual constraint on global diesel supply, separate from refinery strikes.",
+    "image": true,
+    "followers": 109
   }
 ]
