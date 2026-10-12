@@ -1168,5 +1168,95 @@
     "bio_keyword_hits": 1,
     "query_hits": 1,
     "score": 15.1
+  },
+  {
+    "ts": "2026-10-12T22:27:42+00:00",
+    "did": "did:plc:pzt7alpo2373magrlob5s72e",
+    "handle": "theworldeye.bsky.social",
+    "followers_count": 83,
+    "bio_keyword_hits": 2,
+    "query_hits": 1,
+    "score": 25.1
+  },
+  {
+    "ts": "2026-10-12T22:27:42+00:00",
+    "did": "did:plc:6ipwfpqho6yhdpm7scrhhxvc",
+    "handle": "newsbase.bsky.social",
+    "followers_count": 30,
+    "bio_keyword_hits": 1,
+    "query_hits": 2,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-10-12T22:27:42+00:00",
+    "did": "did:plc:ldnqctu5ckbiog6yc3pbvzm2",
+    "handle": "fpriorbis.bsky.social",
+    "followers_count": 3268,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 18.3
+  },
+  {
+    "ts": "2026-10-12T22:27:42+00:00",
+    "did": "did:plc:wwc7lucxt2neewhckh7siamy",
+    "handle": "jasmius.bsky.social",
+    "followers_count": 233,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 15.2
+  },
+  {
+    "ts": "2026-10-12T22:27:42+00:00",
+    "did": "did:plc:ymca3tnbnkmqoio4n2t6yajf",
+    "handle": "bluraymc.bsky.social",
+    "followers_count": 137,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.1
+  },
+  {
+    "ts": "2026-10-12T22:27:42+00:00",
+    "did": "did:plc:3tvuxmwnrt5nw25f5pr6g5t3",
+    "handle": "irannewsupdate.com.web.brid.gy",
+    "followers_count": 114,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.1
+  },
+  {
+    "ts": "2026-10-12T22:27:42+00:00",
+    "did": "did:plc:phzlkxex36a2xt3svqrvzqkp",
+    "handle": "marine-insurance.wsocial.eu",
+    "followers_count": 53,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.1
+  },
+  {
+    "ts": "2026-10-12T22:27:42+00:00",
+    "did": "did:plc:5mlzxvwcewmwef2b3ziw3fl4",
+    "handle": "grinch67.bsky.social",
+    "followers_count": 11525,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 15.0
+  },
+  {
+    "ts": "2026-10-12T22:27:42+00:00",
+    "did": "did:plc:dc5tsew6wfnv5zuujfndjtan",
+    "handle": "yoruk.bsky.social",
+    "followers_count": 17282,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 15.0
+  },
+  {
+    "ts": "2026-10-12T22:27:42+00:00",
+    "did": "did:plc:3bv6fgizbmt6rgw2t7bzyetr",
+    "handle": "truthdig.com",
+    "followers_count": 3268,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 13.3
   }
 ]
