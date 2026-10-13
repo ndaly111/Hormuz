@@ -163,5 +163,16 @@
     "text": "The Strait is at 3% of pre-war traffic levels right now. That's the actual constraint on global diesel supply, separate from refinery strikes.",
     "image": true,
     "followers": 109
+  },
+  {
+    "ts": "2026-10-13T19:59:16+00:00",
+    "target_uri": "at://did:plc:movn6xzezospl7lnkhy7nzpt/app.bsky.feed.post/3mxpju443v22p",
+    "target_url": "https://bsky.app/profile/chadbourn.bsky.social/post/3mxpju443v22p",
+    "target_author": "chadbourn.bsky.social",
+    "target_likes": 243,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mxrt27hhcz2n",
+    "text": "We're seeing 2.7 commercial transits per day through Hormuz right now, down 97% from normal. Even with incidents grabbing headlines, the real story is how little is actually moving.",
+    "image": true,
+    "followers": 114
   }
 ]
