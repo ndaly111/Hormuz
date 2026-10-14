@@ -174,5 +174,16 @@
     "text": "We're seeing 2.7 commercial transits per day through Hormuz right now, down 97% from normal. Even with incidents grabbing headlines, the real story is how little is actually moving.",
     "image": true,
     "followers": 114
+  },
+  {
+    "ts": "2026-10-14T18:12:51+00:00",
+    "target_uri": "at://did:plc:6m7rbdgaz5vyg4bnbefi7kh6/app.bsky.feed.post/3mxtohshy4c2l",
+    "target_url": "https://bsky.app/profile/crampell.bsky.social/post/3mxtohshy4c2l",
+    "target_author": "crampell.bsky.social",
+    "target_likes": 345,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mxu5kt6rit2j",
+    "text": "Even with the attacks, we're seeing only 2.7 commercial transits per day through Hormuz right now, 97% below pre-war levels. The closure itself is doing more to choke traffic than the strikes.",
+    "image": true,
+    "followers": 158
   }
 ]
