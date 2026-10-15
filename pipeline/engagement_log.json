@@ -5341,5 +5341,23 @@
       "quotes": 0
     },
     "kind": "weekly_recap"
+  },
+  {
+    "ts": "2026-10-15T17:14:03+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mxwkqclkak2f",
+    "lede": "Two ships sink in Hormuz as traffic crawls at 5% of normal on day 222",
+    "had_news_cluster": true,
+    "story_headline": "Iranian attacks sink two ships in Strait of Hormuz",
+    "outlets": [
+      "CNN",
+      "Reuters",
+      "The Guardian",
+      "The Maritime Executive",
+      "The New York Times",
+      "The Washington Post",
+      "WSJ"
+    ],
+    "article_count": 86,
+    "engagement": null
   }
 ]
