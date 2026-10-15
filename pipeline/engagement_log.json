@@ -5359,5 +5359,18 @@
     ],
     "article_count": 86,
     "engagement": null
+  },
+  {
+    "ts": "2026-10-15T20:08:02+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mxwuhgwtth2i",
+    "lede": "UN warns fertilizer shortage could spark global food crisis as Hormuz stays at 5% of normal",
+    "had_news_cluster": true,
+    "story_headline": "UN official warns of looming food crisis as Hormuz fertiliser plan stalls",
+    "outlets": [
+      "Al Jazeera",
+      "Reuters"
+    ],
+    "article_count": 9,
+    "engagement": null
   }
 ]
