@@ -185,5 +185,16 @@
     "text": "Even with the attacks, we're seeing only 2.7 commercial transits per day through Hormuz right now, 97% below pre-war levels. The closure itself is doing more to choke traffic than the strikes.",
     "image": true,
     "followers": 158
+  },
+  {
+    "ts": "2026-10-17T16:43:58+00:00",
+    "target_uri": "at://did:plc:xjc7mkotpenvhh6ffewkdpyn/app.bsky.feed.post/3mxzoy64rok2g",
+    "target_url": "https://bsky.app/profile/meidastouch.com/post/3mxzoy64rok2g",
+    "target_author": "meidastouch.com",
+    "target_likes": 3195,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3my3jyotct625",
+    "text": "We're tracking 4.1 commercial transits per day, 95% below pre-war levels. That's the actual state of \"open for business\" right now.",
+    "image": true,
+    "followers": 159
   }
 ]
