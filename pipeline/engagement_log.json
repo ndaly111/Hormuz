@@ -5358,7 +5358,13 @@
       "WSJ"
     ],
     "article_count": 86,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-10-17T14:55:20+00:00",
+      "likes": 2,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   },
   {
     "ts": "2026-10-15T20:08:02+00:00",
@@ -5371,6 +5377,12 @@
       "Reuters"
     ],
     "article_count": 9,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-10-17T14:55:20+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   }
 ]
