@@ -1258,5 +1258,95 @@
     "bio_keyword_hits": 0,
     "query_hits": 2,
     "score": 13.3
+  },
+  {
+    "ts": "2026-10-19T20:30:31+00:00",
+    "did": "did:plc:q4ftjekb2e6bfoztr3eozief",
+    "handle": "strategicenergymap.org",
+    "followers_count": 25,
+    "bio_keyword_hits": 2,
+    "query_hits": 6,
+    "score": 50.0
+  },
+  {
+    "ts": "2026-10-19T20:30:31+00:00",
+    "did": "did:plc:46r5bgsfgf7cu7ped4jekbxn",
+    "handle": "rfnosblog.bsky.social",
+    "followers_count": 496,
+    "bio_keyword_hits": 3,
+    "query_hits": 1,
+    "score": 35.5
+  },
+  {
+    "ts": "2026-10-19T20:30:31+00:00",
+    "did": "did:plc:l4nz4nirybjz5qfemvtccqm7",
+    "handle": "defensehubnewsletter.com",
+    "followers_count": 63,
+    "bio_keyword_hits": 3,
+    "query_hits": 1,
+    "score": 35.1
+  },
+  {
+    "ts": "2026-10-19T20:30:31+00:00",
+    "did": "did:plc:axsb4cya6zgpnbtrkbjmu3pj",
+    "handle": "osintradar.bsky.social",
+    "followers_count": 12103,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-10-19T20:30:31+00:00",
+    "did": "did:plc:yoklwmt4av7aotmeuygirf4m",
+    "handle": "christianthiels.eurosky.social",
+    "followers_count": 9306,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-10-19T20:30:31+00:00",
+    "did": "did:plc:6uybbvnd3pfjh5oztjngzdss",
+    "handle": "euronews.com",
+    "followers_count": 44102,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-10-19T20:30:31+00:00",
+    "did": "did:plc:irtuz5ga77wkpe3j4c5zjufi",
+    "handle": "serenaribena.bsky.social",
+    "followers_count": 2946,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 17.9
+  },
+  {
+    "ts": "2026-10-19T20:30:31+00:00",
+    "did": "did:plc:dm55zfy25qc76gyv2kyhurrk",
+    "handle": "gary-wright.com",
+    "followers_count": 736,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.7
+  },
+  {
+    "ts": "2026-10-19T20:30:31+00:00",
+    "did": "did:plc:dwsbguzqsoyfuqtlwii7pdyy",
+    "handle": "zacharybeasley.bsky.social",
+    "followers_count": 20305,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 15.0
+  },
+  {
+    "ts": "2026-10-19T20:30:31+00:00",
+    "did": "did:plc:ecpaxm553okgh65ountlauen",
+    "handle": "jimlo-hi.bsky.social",
+    "followers_count": 7204,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 15.0
   }
 ]
