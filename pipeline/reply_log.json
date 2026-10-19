@@ -218,5 +218,16 @@
     "text": "We're seeing 4.1 commercial transits per day through Hormuz right now, that's 95% below pre-war levels. The attacks are real, and the throughput numbers show it.",
     "image": true,
     "followers": 161
+  },
+  {
+    "ts": "2026-10-19T19:32:47+00:00",
+    "target_uri": "at://did:plc:6dncjiyu42adb2irwodoskfz/app.bsky.feed.post/3my6kybg6722g",
+    "target_url": "https://bsky.app/profile/24hoursukraine.bsky.social/post/3my6kybg6722g",
+    "target_author": "24hoursukraine.bsky.social",
+    "target_likes": 384,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3myauehvrl62i",
+    "text": "Kellogg's right about the bottleneck. We're tracking 4.1 transits daily through Hormuz, 95% below normal. Iran's latest offer includes a seven-day reopening window.",
+    "image": true,
+    "followers": 163
   }
 ]
