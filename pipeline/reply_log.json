@@ -229,5 +229,16 @@
     "text": "Kellogg's right about the bottleneck. We're tracking 4.1 transits daily through Hormuz, 95% below normal. Iran's latest offer includes a seven-day reopening window.",
     "image": true,
     "followers": 163
+  },
+  {
+    "ts": "2026-10-20T18:10:40+00:00",
+    "target_uri": "at://did:plc:z6rujpf4u56jfie7aqic2nfg/app.bsky.feed.post/3mychiaqgsc2z",
+    "target_url": "https://bsky.app/profile/carlquintanilla.bsky.social/post/3mychiaqgsc2z",
+    "target_author": "carlquintanilla.bsky.social",
+    "target_likes": 445,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mydaagzvar2o",
+    "text": "The 2027 contract spike makes sense, we're at day 221 with only 4.1 transits per day, down 95% from normal. That's pricing in a very long disruption.",
+    "image": true,
+    "followers": 164
   }
 ]
