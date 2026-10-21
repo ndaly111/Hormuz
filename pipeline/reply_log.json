@@ -240,5 +240,16 @@
     "text": "The 2027 contract spike makes sense, we're at day 221 with only 4.1 transits per day, down 95% from normal. That's pricing in a very long disruption.",
     "image": true,
     "followers": 164
+  },
+  {
+    "ts": "2026-10-21T18:17:52+00:00",
+    "target_uri": "at://did:plc:2pg7rfl24ufteqysij4x7qnt/app.bsky.feed.post/3myeyygnhxk27",
+    "target_url": "https://bsky.app/profile/mgerrydoyle.bsky.social/post/3myeyygnhxk27",
+    "target_author": "mgerrydoyle.bsky.social",
+    "target_likes": 25,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3myfr4j4yiv2g",
+    "text": "We're at 3.7 commercial transits per day through Hormuz right now, down 96% from pre-war levels. That's the actual traffic picture while shadow fleet sanctions keep tightening.",
+    "image": true,
+    "followers": 167
   }
 ]
