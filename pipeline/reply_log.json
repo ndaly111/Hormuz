@@ -251,5 +251,27 @@
     "text": "We're at 3.7 commercial transits per day through Hormuz right now, down 96% from pre-war levels. That's the actual traffic picture while shadow fleet sanctions keep tightening.",
     "image": true,
     "followers": 167
+  },
+  {
+    "ts": "2026-10-22T18:12:06+00:00",
+    "target_uri": "at://did:plc:exkwti3p75fr75vko3typ65c/app.bsky.feed.post/3myhsd4dt2c2o",
+    "target_url": "https://bsky.app/profile/perevaa.bsky.social/post/3myhsd4dt2c2o",
+    "target_author": "perevaa.bsky.social",
+    "target_likes": 319,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3myibazzour22",
+    "text": "The Strait isn't blocked, 3.7 commercial ships moved through yesterday. But traffic is at 4% of normal, and today Iran reported seven vessels hit. That's the real disruption.",
+    "image": true,
+    "followers": 168
+  },
+  {
+    "ts": "2026-10-22T18:12:06+00:00",
+    "target_uri": "at://did:plc:ernjxefnyk2hhwhbd3zblykf/app.bsky.feed.post/3myi5fjtvc22v",
+    "target_url": "https://bsky.app/profile/tendar.bsky.social/post/3myi5fjtvc22v",
+    "target_author": "tendar.bsky.social",
+    "target_likes": 207,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3myibb32njw2h",
+    "text": "We're tracking 3.7 commercial transits per day through Hormuz right now, that's 4% of normal traffic. Whatever the geopolitical moves, the actual flow of oil is what matters for prices.",
+    "image": true,
+    "followers": 168
   }
 ]
