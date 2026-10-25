@@ -273,5 +273,16 @@
     "text": "We're tracking 3.7 commercial transits per day through Hormuz right now, that's 4% of normal traffic. Whatever the geopolitical moves, the actual flow of oil is what matters for prices.",
     "image": true,
     "followers": 168
+  },
+  {
+    "ts": "2026-10-25T17:18:49+00:00",
+    "target_uri": "at://did:plc:nyjm4ylfid2a7mjm6varxuiq/app.bsky.feed.post/3mypj4fgr422d",
+    "target_url": "https://bsky.app/profile/robertscotthorton.bsky.social/post/3mypj4fgr422d",
+    "target_author": "robertscotthorton.bsky.social",
+    "target_likes": 116,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3myppoe7le42t",
+    "text": "That $80M per voyage cost reflects the real constraint: only 3-4 ships a day getting through Hormuz right now, versus 90+ before. Control doesn't matter much when the chokepoint barely functions.",
+    "image": true,
+    "followers": 172
   }
 ]
