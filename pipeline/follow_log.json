@@ -1348,5 +1348,95 @@
     "bio_keyword_hits": 0,
     "query_hits": 2,
     "score": 15.0
+  },
+  {
+    "ts": "2026-10-26T20:24:06+00:00",
+    "did": "did:plc:767ycrlfjmddxgnxsylkfbrd",
+    "handle": "roryjohnston.bsky.social",
+    "followers_count": 39990,
+    "bio_keyword_hits": 2,
+    "query_hits": 2,
+    "score": 35.0
+  },
+  {
+    "ts": "2026-10-26T20:24:06+00:00",
+    "did": "did:plc:rdrteeamdh4ogtgcmcbt5s5i",
+    "handle": "bennythesnitch.bsky.social",
+    "followers_count": 3507,
+    "bio_keyword_hits": 0,
+    "query_hits": 5,
+    "score": 28.5
+  },
+  {
+    "ts": "2026-10-26T20:24:06+00:00",
+    "did": "did:plc:hgmdqnormts6qsey7vct55t3",
+    "handle": "zzac-hary.bsky.social",
+    "followers_count": 147,
+    "bio_keyword_hits": 0,
+    "query_hits": 5,
+    "score": 25.1
+  },
+  {
+    "ts": "2026-10-26T20:24:06+00:00",
+    "did": "did:plc:blxegjibt2h6mmokxw5ff7mz",
+    "handle": "warosintfella.bsky.social",
+    "followers_count": 13177,
+    "bio_keyword_hits": 1,
+    "query_hits": 2,
+    "score": 25.0
+  },
+  {
+    "ts": "2026-10-26T20:24:06+00:00",
+    "did": "did:plc:wk5i5b2ilhsa2xgnc5fghxy7",
+    "handle": "washinstitute.bsky.social",
+    "followers_count": 1197,
+    "bio_keyword_hits": 1,
+    "query_hits": 2,
+    "score": 21.2
+  },
+  {
+    "ts": "2026-10-26T20:24:06+00:00",
+    "did": "did:plc:ghfoqntbt2w2dhyifn75nkzw",
+    "handle": "riggsthermonucleon.bsky.social",
+    "followers_count": 521,
+    "bio_keyword_hits": 1,
+    "query_hits": 2,
+    "score": 20.5
+  },
+  {
+    "ts": "2026-10-26T20:24:06+00:00",
+    "did": "did:plc:jw3ocg24thye7i5sjjhia62e",
+    "handle": "markhamhislop.bsky.social",
+    "followers_count": 14230,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-10-26T20:24:07+00:00",
+    "did": "did:plc:mht47fwowze7ni44y7bdd7xc",
+    "handle": "alicemhancock.bsky.social",
+    "followers_count": 4650,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 19.6
+  },
+  {
+    "ts": "2026-10-26T20:24:07+00:00",
+    "did": "did:plc:wslxqbdz7xd5l2mcjkqg66dh",
+    "handle": "melangell.bsky.social",
+    "followers_count": 2085,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 17.1
+  },
+  {
+    "ts": "2026-10-26T20:24:07+00:00",
+    "did": "did:plc:pn5ccnmgx236u3pizqth2j6h",
+    "handle": "almonitor.bsky.social",
+    "followers_count": 1894,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 16.9
   }
 ]
