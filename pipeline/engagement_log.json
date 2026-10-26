@@ -5472,5 +5472,18 @@
       "quotes": 1
     },
     "kind": "weekly_recap"
+  },
+  {
+    "ts": "2026-10-26T21:16:49+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mysngmbk232b",
+    "lede": "Sri Lanka rescues 40 Iranian sailors as Hormuz stays at 4% of normal on day 229",
+    "had_news_cluster": true,
+    "story_headline": "Sri Lanka Rescues 40 Iranian Sailors",
+    "outlets": [
+      "BBC",
+      "gCaptain"
+    ],
+    "article_count": 4,
+    "engagement": null
   }
 ]
