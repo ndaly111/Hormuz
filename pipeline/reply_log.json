@@ -284,5 +284,27 @@
     "text": "That $80M per voyage cost reflects the real constraint: only 3-4 ships a day getting through Hormuz right now, versus 90+ before. Control doesn't matter much when the chokepoint barely functions.",
     "image": true,
     "followers": 172
+  },
+  {
+    "ts": "2026-10-28T19:10:39+00:00",
+    "target_uri": "at://did:plc:u4o26nximjdtgooqshfz45zr/app.bsky.feed.post/3mywvhf5b6k2x",
+    "target_url": "https://bsky.app/profile/shipwreck75.bsky.social/post/3mywvhf5b6k2x",
+    "target_author": "shipwreck75.bsky.social",
+    "target_likes": 101,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3myxhdb46rq2k",
+    "text": "Right now we're seeing 3.7 commercial transits a day through Hormuz, down 96% from pre-war levels. The US warning and Iranian threats are playing out against a strait that's already nearly empty.",
+    "image": true,
+    "followers": 178
+  },
+  {
+    "ts": "2026-10-28T19:10:39+00:00",
+    "target_uri": "at://did:plc:eiroqhvmrl6xbr35pavye5lw/app.bsky.feed.post/3myx4ut74cs2o",
+    "target_url": "https://bsky.app/profile/duncanweldon.bsky.social/post/3myx4ut74cs2o",
+    "target_author": "duncanweldon.bsky.social",
+    "target_likes": 66,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3myxhdcvrhl23",
+    "text": "We're at 3.7 commercial transits daily through Hormuz, 4% of normal. That's the actual constraint after 228 days.",
+    "image": true,
+    "followers": 178
   }
 ]
