@@ -306,5 +306,16 @@
     "text": "We're at 3.7 commercial transits daily through Hormuz, 4% of normal. That's the actual constraint after 228 days.",
     "image": true,
     "followers": 178
+  },
+  {
+    "ts": "2026-10-30T18:55:17+00:00",
+    "target_uri": "at://did:plc:movn6xzezospl7lnkhy7nzpt/app.bsky.feed.post/3mz4gwy2d622a",
+    "target_url": "https://bsky.app/profile/chadbourn.bsky.social/post/3mz4gwy2d622a",
+    "target_author": "chadbourn.bsky.social",
+    "target_likes": 44,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mz4hfmzka42s",
+    "text": "We're seeing 3.3 commercial transits per day through Hormuz right now, that's 96% below normal. The \"unsustainable\" part isn't just the risk; it's that almost nothing is moving.",
+    "image": true,
+    "followers": 178
   }
 ]
