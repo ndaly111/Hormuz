@@ -317,5 +317,27 @@
     "text": "We're seeing 3.3 commercial transits per day through Hormuz right now, that's 96% below normal. The \"unsustainable\" part isn't just the risk; it's that almost nothing is moving.",
     "image": true,
     "followers": 178
+  },
+  {
+    "ts": "2026-10-31T18:01:02+00:00",
+    "target_uri": "at://did:plc:keg556wyu4ly47xqratgwfi6/app.bsky.feed.post/3mz4uxobgis22",
+    "target_url": "https://bsky.app/profile/wesleymorgan.bsky.social/post/3mz4uxobgis22",
+    "target_author": "wesleymorgan.bsky.social",
+    "target_likes": 253,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mz6utkkccv27",
+    "text": "Four tankers hit mines today, but the deeper issue: we're averaging 3.3 commercial transits daily, down 96% from normal. Command reshuffles don't change that math.",
+    "image": true,
+    "followers": 181
+  },
+  {
+    "ts": "2026-10-31T18:01:02+00:00",
+    "target_uri": "at://did:plc:v63y3emmbz5dlvzkejca2mcc/app.bsky.feed.post/3mz546iu2jy2i",
+    "target_url": "https://bsky.app/profile/newsguy.bsky.social/post/3mz546iu2jy2i",
+    "target_author": "newsguy.bsky.social",
+    "target_likes": 29,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mz6utlrryf27",
+    "text": "Down to 3.3 commercial transits a day through Hormuz now, 96% below normal. Even with incidents grabbing headlines, the real story is how little is actually moving through the strait.",
+    "image": true,
+    "followers": 181
   }
 ]
