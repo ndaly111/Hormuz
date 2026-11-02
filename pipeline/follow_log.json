@@ -1438,5 +1438,95 @@
     "bio_keyword_hits": 1,
     "query_hits": 1,
     "score": 16.9
+  },
+  {
+    "ts": "2026-11-02T23:03:46+00:00",
+    "did": "did:plc:bx2one6aaewknjwqo4d56tpe",
+    "handle": "djnoneya.bsky.social",
+    "followers_count": 44168,
+    "bio_keyword_hits": 0,
+    "query_hits": 5,
+    "score": 30.0
+  },
+  {
+    "ts": "2026-11-02T23:03:46+00:00",
+    "did": "did:plc:jaghk4rwlrciav5aieckiiit",
+    "handle": "andyscollick.bsky.social",
+    "followers_count": 18913,
+    "bio_keyword_hits": 2,
+    "query_hits": 1,
+    "score": 30.0
+  },
+  {
+    "ts": "2026-11-02T23:03:46+00:00",
+    "did": "did:plc:ynw4rbzdzcjcwca6n5chyeyw",
+    "handle": "mscip.com",
+    "followers_count": 97,
+    "bio_keyword_hits": 2,
+    "query_hits": 1,
+    "score": 25.1
+  },
+  {
+    "ts": "2026-11-02T23:03:46+00:00",
+    "did": "did:plc:kbkyrxtm7hhg6njzmd34mole",
+    "handle": "amwajmedia.bsky.social",
+    "followers_count": 152,
+    "bio_keyword_hits": 1,
+    "query_hits": 2,
+    "score": 20.2
+  },
+  {
+    "ts": "2026-11-02T23:03:46+00:00",
+    "did": "did:plc:kxlnlljftggb3n3b2y7nodtp",
+    "handle": "jtcompton.bsky.social",
+    "followers_count": 14728,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-11-02T23:03:46+00:00",
+    "did": "did:plc:xqenhtpstxg6fjmkdvydlh3o",
+    "handle": "504spyboy.bsky.social",
+    "followers_count": 18614,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-11-02T23:03:46+00:00",
+    "did": "did:plc:6khpbdohhrji2ulnmye5l2de",
+    "handle": "salisbot.bsky.social",
+    "followers_count": 8789,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-11-02T23:03:47+00:00",
+    "did": "did:plc:3lnyccexjmfd7bvr46eiq2e2",
+    "handle": "liberoreporter.it",
+    "followers_count": 1799,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 16.8
+  },
+  {
+    "ts": "2026-11-02T23:03:47+00:00",
+    "did": "did:plc:7m2l7giygph5ruwfnlglajyu",
+    "handle": "local-news-pgh.bsky.social",
+    "followers_count": 761,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 15.8
+  },
+  {
+    "ts": "2026-11-02T23:03:47+00:00",
+    "did": "did:plc:wdblugqnkowgkqvgzfrm6rbu",
+    "handle": "atlelainesong.bsky.social",
+    "followers_count": 206,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.2
   }
 ]
