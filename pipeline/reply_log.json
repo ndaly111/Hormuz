@@ -339,5 +339,27 @@
     "text": "Down to 3.3 commercial transits a day through Hormuz now, 96% below normal. Even with incidents grabbing headlines, the real story is how little is actually moving through the strait.",
     "image": true,
     "followers": 181
+  },
+  {
+    "ts": "2026-11-03T20:19:23+00:00",
+    "target_uri": "at://did:plc:4izzk7jyj5yebyo22zblxby4/app.bsky.feed.post/3mzf25iydit2f",
+    "target_url": "https://bsky.app/profile/english.lemonde.fr/post/3mzf25iydit2f",
+    "target_author": "english.lemonde.fr",
+    "target_likes": 199,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mzgnxsnxhl2i",
+    "text": "We're now 235 days into the closure with just 3.3 commercial transits per day visible, down 96% from normal. That's what the strait actually looks like right now.",
+    "image": true,
+    "followers": 185
+  },
+  {
+    "ts": "2026-11-03T20:19:23+00:00",
+    "target_uri": "at://did:plc:njhuquor23vkkeamltaxdsnz/app.bsky.feed.post/3mzeqa7jo422y",
+    "target_url": "https://bsky.app/profile/jbendery.bsky.social/post/3mzeqa7jo422y",
+    "target_author": "jbendery.bsky.social",
+    "target_likes": 112,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mzgnxvsjkv23",
+    "text": "We're at day 235 of the closure with just 3.3 commercial transits per day, down 96% from normal traffic. These strikes will likely keep that number flat.",
+    "image": true,
+    "followers": 185
   }
 ]
