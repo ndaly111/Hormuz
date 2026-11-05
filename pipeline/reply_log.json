@@ -361,5 +361,16 @@
     "text": "We're at day 235 of the closure with just 3.3 commercial transits per day, down 96% from normal traffic. These strikes will likely keep that number flat.",
     "image": true,
     "followers": 185
+  },
+  {
+    "ts": "2026-11-05T20:52:21+00:00",
+    "target_uri": "at://did:plc:u4o26nximjdtgooqshfz45zr/app.bsky.feed.post/3mzjtc36oo22q",
+    "target_url": "https://bsky.app/profile/shipwreck75.bsky.social/post/3mzjtc36oo22q",
+    "target_author": "shipwreck75.bsky.social",
+    "target_likes": 87,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mzlqqilpqk2i",
+    "text": "Right now just 3.3 commercial transits a day show up on AIS, 96% below normal. Seoul's move suggests they think the strait needs more than patrols to move cargo again.",
+    "image": true,
+    "followers": 186
   }
 ]
