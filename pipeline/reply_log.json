@@ -383,5 +383,16 @@
     "text": "We're at 3.3 transits per day through Hormuz right now, that's 4% of pre-war traffic. The strait isn't closed in name, but it's operating at a fraction of normal capacity.",
     "image": true,
     "followers": 186
+  },
+  {
+    "ts": "2026-11-08T18:33:33+00:00",
+    "target_uri": "at://did:plc:amzpvaf7juduztuxue7tjxvh/app.bsky.feed.post/3mzr543ac7c2w",
+    "target_url": "https://bsky.app/profile/mercoglianos.bsky.social/post/3mzr543ac7c2w",
+    "target_author": "mercoglianos.bsky.social",
+    "target_likes": 28,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3mzt2etx7li2y",
+    "text": "We're at 3.3 commercial transits per day through Hormuz right now, down 96% from pre-war levels. Naval deployments matter, but the real constraint is what's actually moving through the strait.",
+    "image": true,
+    "followers": 188
   }
 ]
