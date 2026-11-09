@@ -1528,5 +1528,95 @@
     "bio_keyword_hits": 1,
     "query_hits": 1,
     "score": 15.2
+  },
+  {
+    "ts": "2026-11-09T23:44:40+00:00",
+    "did": "did:plc:42nygfl4lwieikb6xaqmxzlg",
+    "handle": "benborges.xyz",
+    "followers_count": 7514,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-11-09T23:44:40+00:00",
+    "did": "did:plc:rmpnc52nwhr2s5rwhcczjbck",
+    "handle": "rholt.bsky.social",
+    "followers_count": 1390,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 16.4
+  },
+  {
+    "ts": "2026-11-09T23:44:40+00:00",
+    "did": "did:plc:75fn6lliryfgu47y5y3qim7l",
+    "handle": "tomi-mcc.bsky.social",
+    "followers_count": 788,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.8
+  },
+  {
+    "ts": "2026-11-09T23:44:40+00:00",
+    "did": "did:plc:sv3tbxtrylnmbvxs7ynkmh2o",
+    "handle": "intellinews.com",
+    "followers_count": 352,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.4
+  },
+  {
+    "ts": "2026-11-09T23:44:40+00:00",
+    "did": "did:plc:kqydhsphxoeopfrxemdivfgs",
+    "handle": "aljazeera.com.web.brid.gy",
+    "followers_count": 181,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.2
+  },
+  {
+    "ts": "2026-11-09T23:44:40+00:00",
+    "did": "did:plc:6fdvn2ydk4rnoewj7ft7iv4z",
+    "handle": "no-niin.bsky.social",
+    "followers_count": 93,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 15.1
+  },
+  {
+    "ts": "2026-11-09T23:44:40+00:00",
+    "did": "did:plc:hjw5aj2dkamnvdhuyqacdxbq",
+    "handle": "wiki-vu.vublox.com",
+    "followers_count": 89,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 15.1
+  },
+  {
+    "ts": "2026-11-09T23:44:40+00:00",
+    "did": "did:plc:fsstod64p57ojhyuk2nlmpaf",
+    "handle": "capitalsnitch.bsky.social",
+    "followers_count": 61,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.1
+  },
+  {
+    "ts": "2026-11-09T23:44:40+00:00",
+    "did": "did:plc:3mgya6irrejw4tlmcsdvrnjf",
+    "handle": "woily.bsky.social",
+    "followers_count": 39,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.0
+  },
+  {
+    "ts": "2026-11-09T23:44:41+00:00",
+    "did": "did:plc:e7misiev5v32a2odrod6zgw7",
+    "handle": "justicetoall.bsky.social",
+    "followers_count": 20568,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 15.0
   }
 ]
