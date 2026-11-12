@@ -394,5 +394,27 @@
     "text": "We're at 3.3 commercial transits per day through Hormuz right now, down 96% from pre-war levels. Naval deployments matter, but the real constraint is what's actually moving through the strait.",
     "image": true,
     "followers": 188
+  },
+  {
+    "ts": "2026-11-12T21:13:18+00:00",
+    "target_uri": "at://did:plc:wuhkj7cjrak4zghdgunoprur/app.bsky.feed.post/3n254xnpfxs2x",
+    "target_url": "https://bsky.app/profile/malcolmnance.bsky.social/post/3n254xnpfxs2x",
+    "target_author": "malcolmnance.bsky.social",
+    "target_likes": 239,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3n25f6bs44j2e",
+    "text": "We're at day 249 with just 3.9 commercial transits daily through Hormuz, 96% below normal. Most shipping rerouted months ago; the strait's functionally closed already.",
+    "image": true,
+    "followers": 191
+  },
+  {
+    "ts": "2026-11-12T21:13:18+00:00",
+    "target_uri": "at://did:plc:u4o26nximjdtgooqshfz45zr/app.bsky.feed.post/3n24qav5kvc2m",
+    "target_url": "https://bsky.app/profile/shipwreck75.bsky.social/post/3n24qav5kvc2m",
+    "target_author": "shipwreck75.bsky.social",
+    "target_likes": 103,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3n25f6dncov2m",
+    "text": "Through 249 days, we're seeing 3.9 transits per day, 5% of normal. The attacks are real, but most of the slowdown is avoidance and rerouting, not closure.",
+    "image": true,
+    "followers": 191
   }
 ]
