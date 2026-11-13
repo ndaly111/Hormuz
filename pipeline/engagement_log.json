@@ -5555,6 +5555,12 @@
       "Reuters"
     ],
     "article_count": 3,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-11-13T19:10:37+00:00",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "quotes": 0
+    }
   }
 ]
