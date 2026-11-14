@@ -416,5 +416,27 @@
     "text": "Through 249 days, we're seeing 3.9 transits per day, 5% of normal. The attacks are real, but most of the slowdown is avoidance and rerouting, not closure.",
     "image": true,
     "followers": 191
+  },
+  {
+    "ts": "2026-11-14T18:53:22+00:00",
+    "target_uri": "at://did:plc:movn6xzezospl7lnkhy7nzpt/app.bsky.feed.post/3n27xpo3xsc22",
+    "target_url": "https://bsky.app/profile/chadbourn.bsky.social/post/3n27xpo3xsc22",
+    "target_author": "chadbourn.bsky.social",
+    "target_likes": 156,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3n2c6bvuncg2c",
+    "text": "With only 3.9 commercial transits per day now, the strait is running at 5% of pre-war traffic. These incidents matter more for what they signal than their immediate impact on flow.",
+    "image": true,
+    "followers": 193
+  },
+  {
+    "ts": "2026-11-14T18:53:22+00:00",
+    "target_uri": "at://did:plc:kqyvj2cqp5so4h5yi3kfsg2b/app.bsky.feed.post/3n2awvg2ifs23",
+    "target_url": "https://bsky.app/profile/sollenbergerrc.bsky.social/post/3n2awvg2ifs23",
+    "target_author": "sollenbergerrc.bsky.social",
+    "target_likes": 60,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3n2c6byb3lo2c",
+    "text": "We're at 3.9 transits per day through Hormuz right now, that's 96% below normal. Mine strikes today will push that even lower if insurers and operators pull back further.",
+    "image": true,
+    "followers": 193
   }
 ]
