@@ -438,5 +438,16 @@
     "text": "We're at 3.9 transits per day through Hormuz right now, that's 96% below normal. Mine strikes today will push that even lower if insurers and operators pull back further.",
     "image": true,
     "followers": 193
+  },
+  {
+    "ts": "2026-11-15T19:29:32+00:00",
+    "target_uri": "at://did:plc:756gaaeewovgn4axja34ajne/app.bsky.feed.post/3n2e7fsvsvk2l",
+    "target_url": "https://bsky.app/profile/nicholasgrossman.bsky.social/post/3n2e7fsvsvk2l",
+    "target_author": "nicholasgrossman.bsky.social",
+    "target_likes": 366,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3n2eqrj4jq22j",
+    "text": "We're at day 249 with just 3.9 ships a day getting through, that's 96% below normal. The corridor isn't really working right now, which is the actual constraint both sides are operating under.",
+    "image": true,
+    "followers": 193
   }
 ]
