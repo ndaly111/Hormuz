@@ -449,5 +449,27 @@
     "text": "We're at day 249 with just 3.9 ships a day getting through, that's 96% below normal. The corridor isn't really working right now, which is the actual constraint both sides are operating under.",
     "image": true,
     "followers": 193
+  },
+  {
+    "ts": "2026-11-16T23:05:36+00:00",
+    "target_uri": "at://did:plc:nyjm4ylfid2a7mjm6varxuiq/app.bsky.feed.post/3n2gx4xapm222",
+    "target_url": "https://bsky.app/profile/robertscotthorton.bsky.social/post/3n2gx4xapm222",
+    "target_author": "robertscotthorton.bsky.social",
+    "target_likes": 66,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3n2hncruqhu2m",
+    "text": "We're tracking 3.9 commercial transits per day through Hormuz right now, down 95% from pre-war levels. Even with these incidents, the strait hasn't fully closed, but traffic is near a standstill.",
+    "image": true,
+    "followers": 195
+  },
+  {
+    "ts": "2026-11-16T23:05:36+00:00",
+    "target_uri": "at://did:plc:fgzfg4udrqh65qrfuzpjccxn/app.bsky.feed.post/3n2gvuhwq6s24",
+    "target_url": "https://bsky.app/profile/mrglobaltoo.bsky.social/post/3n2gvuhwq6s24",
+    "target_author": "mrglobaltoo.bsky.social",
+    "target_likes": 35,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3n2hncu6pkp2l",
+    "text": "Right now we're seeing 3.9 commercial transits per day through Hormuz, that's 5% of normal traffic. Today's attacks on tankers will likely push that number even lower.",
+    "image": true,
+    "followers": 195
   }
 ]
