@@ -1618,5 +1618,95 @@
     "bio_keyword_hits": 0,
     "query_hits": 2,
     "score": 15.0
+  },
+  {
+    "ts": "2026-11-16T23:41:56+00:00",
+    "did": "did:plc:pc75ldm2gmsgbf7iloibfoxm",
+    "handle": "sagire.online",
+    "followers_count": 35,
+    "bio_keyword_hits": 2,
+    "query_hits": 4,
+    "score": 40.0
+  },
+  {
+    "ts": "2026-11-16T23:41:56+00:00",
+    "did": "did:plc:b5yfemng3d7krj5qm62gfr7a",
+    "handle": "warpointupdates.bsky.social",
+    "followers_count": 25,
+    "bio_keyword_hits": 1,
+    "query_hits": 2,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-11-16T23:41:56+00:00",
+    "did": "did:plc:mgvrlbikf5n2dfglo7hzw24g",
+    "handle": "keithdev.bsky.social",
+    "followers_count": 3837,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 18.8
+  },
+  {
+    "ts": "2026-11-16T23:41:56+00:00",
+    "did": "did:plc:watxvc4ekbebw4fx3ydbu2co",
+    "handle": "trade2spike.bsky.social",
+    "followers_count": 143,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.1
+  },
+  {
+    "ts": "2026-11-16T23:41:56+00:00",
+    "did": "did:plc:dom2rwwohwl2u2h74upw4atd",
+    "handle": "vaultlynews.bsky.social",
+    "followers_count": 136,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.1
+  },
+  {
+    "ts": "2026-11-16T23:41:57+00:00",
+    "did": "did:plc:t6ovet5d7rtjladsezrsadmr",
+    "handle": "mohintechbd.bsky.social",
+    "followers_count": 109,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 15.1
+  },
+  {
+    "ts": "2026-11-16T23:41:57+00:00",
+    "did": "did:plc:vynvevecxqmczugms5x62aub",
+    "handle": "energyflux.bsky.social",
+    "followers_count": 36,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.0
+  },
+  {
+    "ts": "2026-11-16T23:41:57+00:00",
+    "did": "did:plc:rb25gxlln7f2zuo2x6fynr6d",
+    "handle": "aimdesk.bsky.social",
+    "followers_count": 25,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.0
+  },
+  {
+    "ts": "2026-11-16T23:41:57+00:00",
+    "did": "did:plc:4ohgm56lvrcj6p7kjgxz5wey",
+    "handle": "flingjore.com",
+    "followers_count": 25168,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 15.0
+  },
+  {
+    "ts": "2026-11-16T23:41:57+00:00",
+    "did": "did:plc:ir2b7mnp3f7qouemawhhew72",
+    "handle": "biztoc.com",
+    "followers_count": 8948,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 15.0
   }
 ]
