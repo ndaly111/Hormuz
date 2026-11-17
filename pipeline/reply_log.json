@@ -471,5 +471,27 @@
     "text": "Right now we're seeing 3.9 commercial transits per day through Hormuz, that's 5% of normal traffic. Today's attacks on tankers will likely push that number even lower.",
     "image": true,
     "followers": 195
+  },
+  {
+    "ts": "2026-11-17T21:57:12+00:00",
+    "target_uri": "at://did:plc:5o6k7jvowuyaquloafzn3cfw/app.bsky.feed.post/3n2js4xd2ss2u",
+    "target_url": "https://bsky.app/profile/thetnholler.bsky.social/post/3n2js4xd2ss2u",
+    "target_author": "thetnholler.bsky.social",
+    "target_likes": 3499,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3n2jzxhojrl2l",
+    "text": "The insurance spike tracks with actual traffic: we're seeing 2.3 commercial transits per day now, down 97% from pre-war levels. That's the math behind those premiums.",
+    "image": true,
+    "followers": 196
+  },
+  {
+    "ts": "2026-11-17T21:57:12+00:00",
+    "target_uri": "at://did:plc:jy7ubxdbebjkh6odfwjctl7p/app.bsky.feed.post/3n2hocsxbmc2y",
+    "target_url": "https://bsky.app/profile/chariselee.bsky.social/post/3n2hocsxbmc2y",
+    "target_author": "chariselee.bsky.social",
+    "target_likes": 30,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3n2jzxpnmmu2k",
+    "text": "We're at 2.3 transits per day right now, that's 97% below normal traffic. The mines and strikes are working: the strait is effectively closed to commercial shipping.",
+    "image": true,
+    "followers": 196
   }
 ]
