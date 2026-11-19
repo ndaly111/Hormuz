@@ -493,5 +493,16 @@
     "text": "We're at 2.3 transits per day right now, that's 97% below normal traffic. The mines and strikes are working: the strait is effectively closed to commercial shipping.",
     "image": true,
     "followers": 196
+  },
+  {
+    "ts": "2026-11-19T21:54:30+00:00",
+    "target_uri": "at://did:plc:jamymhnjtcpp2urhmd6rzu6a/app.bsky.feed.post/3n2niigia7s2o",
+    "target_url": "https://bsky.app/profile/ashoro.co.uk/post/3n2niigia7s2o",
+    "target_author": "ashoro.co.uk",
+    "target_likes": 28,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3n2p2qjryzp2u",
+    "text": "We're at 2.3 transits per day, down 97% from normal. Most shipping has rerouted around the Cape rather than risk the strait.",
+    "image": true,
+    "followers": 197
   }
 ]
