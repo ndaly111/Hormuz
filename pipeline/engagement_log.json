@@ -5613,6 +5613,12 @@
       "gCaptain"
     ],
     "article_count": 141,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-11-19T19:55:42+00:00",
+      "likes": 1,
+      "reposts": 1,
+      "replies": 0,
+      "quotes": 0
+    }
   }
 ]
