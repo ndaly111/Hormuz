@@ -515,5 +515,27 @@
     "text": "We're at 2.3 transits per day through Hormuz right now, that's 3% of normal traffic. The $85-95 price floor makes sense when you're moving almost nothing through the world's most critical chokepoint.",
     "image": true,
     "followers": 197
+  },
+  {
+    "ts": "2026-11-21T20:17:25+00:00",
+    "target_uri": "at://did:plc:u4o26nximjdtgooqshfz45zr/app.bsky.feed.post/3n2t5b6e7s22k",
+    "target_url": "https://bsky.app/profile/shipwreck75.bsky.social/post/3n2t5b6e7s22k",
+    "target_author": "shipwreck75.bsky.social",
+    "target_likes": 107,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3n2twantmlj2a",
+    "text": "Traffic through the strait is down 97% from pre-war levels, just 2.3 commercial transits per day on average. The attacks are real, but they're happening in an already-hollowed shipping corridor.",
+    "image": true,
+    "followers": 198
+  },
+  {
+    "ts": "2026-11-21T20:17:25+00:00",
+    "target_uri": "at://did:plc:axsb4cya6zgpnbtrkbjmu3pj/app.bsky.feed.post/3n2tcaqyzqs22",
+    "target_url": "https://bsky.app/profile/osintradar.bsky.social/post/3n2tcaqyzqs22",
+    "target_author": "osintradar.bsky.social",
+    "target_likes": 54,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3n2twapsy4x24",
+    "text": "Even with record attacks, only 2.3 commercial ships transit daily through Hormuz now, down 97% from normal. The strait's real bottleneck isn't violence, it's avoidance.",
+    "image": true,
+    "followers": 198
   }
 ]
