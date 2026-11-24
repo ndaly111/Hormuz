@@ -1708,5 +1708,95 @@
     "bio_keyword_hits": 0,
     "query_hits": 2,
     "score": 15.0
+  },
+  {
+    "ts": "2026-11-24T02:05:54+00:00",
+    "did": "did:plc:6gq55foyisiajuee4hshtg65",
+    "handle": "transitionprotocol.bsky.social",
+    "followers_count": 47,
+    "bio_keyword_hits": 3,
+    "query_hits": 1,
+    "score": 35.0
+  },
+  {
+    "ts": "2026-11-24T02:05:54+00:00",
+    "did": "did:plc:byo5cxn3qth7l2zrux6nv7g4",
+    "handle": "umbrist.bsky.social",
+    "followers_count": 31,
+    "bio_keyword_hits": 2,
+    "query_hits": 1,
+    "score": 25.0
+  },
+  {
+    "ts": "2026-11-24T02:05:54+00:00",
+    "did": "did:plc:d7i5qjcdpqtrwe6bh6aqe2cc",
+    "handle": "paulmuaddib.bsky.social",
+    "followers_count": 14317,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 20.0
+  },
+  {
+    "ts": "2026-11-24T02:05:54+00:00",
+    "did": "did:plc:xvo7gsaojuuuxc6rlw374pls",
+    "handle": "judgement-bot.bsky.social",
+    "followers_count": 4685,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 19.7
+  },
+  {
+    "ts": "2026-11-24T02:05:54+00:00",
+    "did": "did:plc:utzadluuefrm6d46ma7u2yqz",
+    "handle": "christinebinzel.bsky.social",
+    "followers_count": 2239,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 17.2
+  },
+  {
+    "ts": "2026-11-24T02:05:54+00:00",
+    "did": "did:plc:me3d7zgpmnclscicpqzf5ckq",
+    "handle": "frenchie-osint.bsky.social",
+    "followers_count": 1772,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 16.8
+  },
+  {
+    "ts": "2026-11-24T02:05:54+00:00",
+    "did": "did:plc:v5ua4vbzqsjaqh7sb7hcjf4d",
+    "handle": "cdnhelp.bsky.social",
+    "followers_count": 879,
+    "bio_keyword_hits": 1,
+    "query_hits": 1,
+    "score": 15.9
+  },
+  {
+    "ts": "2026-11-24T02:05:54+00:00",
+    "did": "did:plc:2nh2pzjlbdny7rvl2u6kv3mj",
+    "handle": "fridayistired.bsky.social",
+    "followers_count": 44,
+    "bio_keyword_hits": 0,
+    "query_hits": 3,
+    "score": 15.0
+  },
+  {
+    "ts": "2026-11-24T02:05:54+00:00",
+    "did": "did:plc:hfzjfx74jxvecaenmegowfth",
+    "handle": "nathrach.bsky.social",
+    "followers_count": 6445,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 15.0
+  },
+  {
+    "ts": "2026-11-24T02:05:54+00:00",
+    "did": "did:plc:m7sa6jbzph2ln7a23ncy5g7f",
+    "handle": "chrissysea.bsky.social",
+    "followers_count": 7142,
+    "bio_keyword_hits": 0,
+    "query_hits": 2,
+    "score": 15.0
   }
 ]
