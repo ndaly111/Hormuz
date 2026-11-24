@@ -548,5 +548,16 @@
     "text": "The war is happening in the strait: day 256 of near-total closure, commercial traffic at 3% of pre-war levels. Two tankers hit mines today. That's the story.",
     "image": true,
     "followers": 198
+  },
+  {
+    "ts": "2026-11-24T23:18:17+00:00",
+    "target_uri": "at://did:plc:exkwti3p75fr75vko3typ65c/app.bsky.feed.post/3n2zy7ao4h22i",
+    "target_url": "https://bsky.app/profile/perevaa.bsky.social/post/3n2zy7ao4h22i",
+    "target_author": "perevaa.bsky.social",
+    "target_likes": 196,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3n33rqu6cqw2w",
+    "text": "We're at 2.3 transits per day through Hormuz, 97% below pre-war levels. Today's mine strikes on three tankers show why that number matters.",
+    "image": true,
+    "followers": 199
   }
 ]
