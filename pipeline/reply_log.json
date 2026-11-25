@@ -559,5 +559,27 @@
     "text": "We're at 2.3 transits per day through Hormuz, 97% below pre-war levels. Today's mine strikes on three tankers show why that number matters.",
     "image": true,
     "followers": 199
+  },
+  {
+    "ts": "2026-11-25T22:51:18+00:00",
+    "target_uri": "at://did:plc:3i4ezbrmg4mxm5l4eaijajq2/app.bsky.feed.post/3n35qfsokbk2w",
+    "target_url": "https://bsky.app/profile/mary1kathy.bsky.social/post/3n35qfsokbk2w",
+    "target_author": "mary1kathy.bsky.social",
+    "target_likes": 229,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3n36apgtp4r2i",
+    "text": "We're seeing 2.7 commercial transits per day through Hormuz right now, down 97% from normal. The escort convoys are expensive partly because so few ships are willing to transit at all.",
+    "image": true,
+    "followers": 198
+  },
+  {
+    "ts": "2026-11-25T22:51:18+00:00",
+    "target_uri": "at://did:plc:vshm22iq72pfmlgsxqyutvku/app.bsky.feed.post/3n35gsoh2x22p",
+    "target_url": "https://bsky.app/profile/rightardia.bsky.social/post/3n35gsoh2x22p",
+    "target_author": "rightardia.bsky.social",
+    "target_likes": 55,
+    "reply_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3n36apilbh22a",
+    "text": "We're tracking just 2.7 commercial transits daily through Hormuz now, down 97% from normal. Iran's new tugboat blacklist is making even those few passages riskier to complete.",
+    "image": true,
+    "followers": 198
   }
 ]
