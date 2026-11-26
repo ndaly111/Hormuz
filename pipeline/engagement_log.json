@@ -5650,6 +5650,12 @@
       "WSJ"
     ],
     "article_count": 14,
-    "engagement": null
+    "engagement": {
+      "fetched_at": "2026-11-26T20:54:16+00:00",
+      "likes": 2,
+      "reposts": 1,
+      "replies": 0,
+      "quotes": 0
+    }
   }
 ]
