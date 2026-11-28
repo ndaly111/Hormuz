@@ -5657,5 +5657,18 @@
       "replies": 0,
       "quotes": 0
     }
+  },
+  {
+    "ts": "2026-11-28T00:18:43+00:00",
+    "post_uri": "at://did:plc:re5ruem7nstbawfze2d3oizy/app.bsky.feed.post/3n3dgjd4kl62j",
+    "lede": "Oil rallies on Middle East fears as Hormuz traffic collapses to 3% of normal on day 264",
+    "had_news_cluster": true,
+    "story_headline": "Brent oil posts weekly gain on Middle East supply fears",
+    "outlets": [
+      "CNBC",
+      "Reuters"
+    ],
+    "article_count": 3,
+    "engagement": null
   }
 ]
